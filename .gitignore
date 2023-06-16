@@ -3,6 +3,11 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+### Large data files should be ignored ###
+src/main/java/org/example/Data/PublicIDSData/ids.txt
+src/main/java/org/example/Data/PublicIDSData/Junda2005.txt
+src/main/java/org/example/Data/PublicIDSData/Tzai2006.txt
+
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml
