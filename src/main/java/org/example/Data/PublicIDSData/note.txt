@@ -1,1 +1,6 @@
 This folder is for data copied from public repositories
+This should include:
+ids.txt
+Junda2005.txt
+Tzai2006.txt
+(see README)
