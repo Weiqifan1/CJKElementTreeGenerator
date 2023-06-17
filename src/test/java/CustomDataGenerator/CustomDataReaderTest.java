@@ -18,5 +18,15 @@ public class CustomDataReaderTest {
         assertEquals(example.get("char"), "亇");
         assertEquals(example.get("unicode"), "U+4E87");
         assertEquals(example.get("breakdownMetadata"), "[GK] [T]   ");
+        assertEquals(example.get("jundaOrdinal"), "");
+        assertEquals(example.get("tzaiOrdinal"), "");
+
+        Map<String, String> example2 = map.get("巴");
+        assertEquals(example2.get("breakdownList"), "巴");
+        assertEquals(example2.get("char"), "巴");
+        assertEquals(example2.get("unicode"), "U+5DF4");
+        assertEquals(example2.get("breakdownMetadata"), "");
+        assertEquals(example2.get("jundaOrdinal"), "546");
+        assertEquals(example2.get("tzaiOrdinal"), "850");
     }
 }
