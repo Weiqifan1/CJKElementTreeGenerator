@@ -16,7 +16,7 @@ public class CharRecursionNode {
     public CharRecursionNode(String currentBreakdownSubsection, Map<String, Map<String, String>> customIds) {
         this.currentBreakdownSubsection = currentBreakdownSubsection;
         this.subsectionIdsMapResult = CharRecursionNodeService.generateIdsMapResult(currentBreakdownSubsection, customIds);
-        this.subsequentSubsections = CharRecursionNodeService.generateSubsections(subsectionIdsMapResult, customIds);
+        this.subsequentSubsections = CharRecursionNodeService.generateSubsections(currentBreakdownSubsection, subsectionIdsMapResult, customIds);
     }
 
     private CharRecursionNode(Builder builder) {
