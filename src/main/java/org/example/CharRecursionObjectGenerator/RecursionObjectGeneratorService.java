@@ -1,12 +1,15 @@
 package org.example.CharRecursionObjectGenerator;
 
 import org.example.CustomDataHandler.CustomDataReader;
+import org.example.ObjectTypes.CharMetaInfo;
 import org.example.ObjectTypes.CharRecursionNode;
+
 import java.util.Map;
+
 import static org.example.GlobalConstants.customIdsJsonMapPath;
 
 public class RecursionObjectGeneratorService {
-    private static final Map<String, Map<String, String>> idsMap;
+    private static final Map<String, Map<CharMetaInfo, String>> idsMap;
 
     static {
         try {

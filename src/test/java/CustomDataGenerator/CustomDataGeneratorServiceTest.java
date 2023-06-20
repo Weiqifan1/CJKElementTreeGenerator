@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.CustomDataGenerator.CustomDataGeneratorService;
+import org.example.ObjectTypes.CharMetaInfo;
 import org.junit.Test;
 
 import java.nio.file.Paths;
@@ -46,11 +47,11 @@ public class CustomDataGeneratorServiceTest {
         Map<String, String> jundaMap = CustomDataGeneratorService.generateJundaMap(jundaLines);
         List<String> tzaiLines = getFileLinesFromPath(Paths.get(publicTzaiFilePath));
         Map<String, String> tzaiMap = CustomDataGeneratorService.generateTzaiMap(tzaiLines);
-        Map<String, Map<String, String>> firstMap = CustomDataGeneratorService.generateIdsJsonDataMapFromLines(idsLines, jundaMap, tzaiMap);
+        Map<String, Map<CharMetaInfo, String>> firstMap = CustomDataGeneratorService.generateIdsJsonDataMapFromLines(idsLines, jundaMap, tzaiMap);
 
         String jsonOutput = CustomDataGeneratorService.generateIdsJsonData(idsLines, jundaLines, tzaiLines);
         ObjectMapper objectMapper = new ObjectMapper();
-        Map<String, Map<String, String>> secondMap = objectMapper.readValue(jsonOutput, new TypeReference<Map<String, Map<String, String>>>() {});
+        Map<String, Map<CharMetaInfo, String>> secondMap = objectMapper.readValue(jsonOutput, new TypeReference<Map<String, Map<CharMetaInfo, String>>>() {});
 
         assertEquals(88939, idsLines.size());
         assertEquals(88937, firstMap.size());
@@ -73,20 +74,20 @@ public class CustomDataGeneratorServiceTest {
 
     }
 
-    private static void testMap(Map<String, Map<String, String>> map) {
-        Map<String, String> exampleOld = map.get("亇");
-        assertEquals(exampleOld.get("breakdownList"), "⿱𠂊亅 ⿱𠂉亅 ⿱𠂉丨 ⿰丿丁 ⿰丿𠄐");
-        assertEquals(exampleOld.get("char"), "亇");
-        assertEquals(exampleOld.get("unicode"), "U+4E87");
-        assertEquals(exampleOld.get("breakdownMetadata"), "[GK] [T]   ");
+    private static void testMap(Map<String, Map<CharMetaInfo, String>> map) {
+        Map<CharMetaInfo, String> example = map.get("亇");
+        assertEquals(example.get(CharMetaInfo.BREAKDOWN), "⿱𠂊亅 ⿱𠂉亅 ⿱𠂉丨 ⿰丿丁 ⿰丿𠄐");
+        assertEquals(example.get(CharMetaInfo.CHAR), "亇");
+        assertEquals(example.get(CharMetaInfo.UNICODE), "U+4E87");
+        assertEquals(example.get(CharMetaInfo.BREAKDOWNMETA), "[GK] [T]   ");
 
-        assertEquals(map.get("的").get("jundaOrdinal"), "1");
-        assertEquals(map.get("巴").get("jundaOrdinal"), "546");
-        assertEquals(map.get("鴒").get("jundaOrdinal"), "9933");
+        assertEquals(map.get("的").get(CharMetaInfo.JUNDAORDINAL), "1");
+        assertEquals(map.get("巴").get(CharMetaInfo.JUNDAORDINAL), "546");
+        assertEquals(map.get("鴒").get(CharMetaInfo.JUNDAORDINAL), "9933");
 
-        assertEquals(map.get("的").get("tzaiOrdinal"), "1");
-        assertEquals(map.get("巴").get("tzaiOrdinal"), "850");
-        assertEquals(map.get("鷍").get("tzaiOrdinal"), "13060");
+        assertEquals(map.get("的").get(CharMetaInfo.TZAIORDINAL), "1");
+        assertEquals(map.get("巴").get(CharMetaInfo.TZAIORDINAL), "850");
+        assertEquals(map.get("鷍").get(CharMetaInfo.TZAIORDINAL), "13060");
     }
 
     @Test
@@ -94,17 +95,22 @@ public class CustomDataGeneratorServiceTest {
         List<String> lines = idsTestData();
         String result = CustomDataGeneratorService.generateIdsJsonData(lines, new ArrayList<>(), new ArrayList<>());
         String jsonTestData = jsonResultTestData();
-        assertEquals(jsonTestData, result);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        Map<String, Map<CharMetaInfo, String>> resultMap = objectMapper.readValue(result, new TypeReference<Map<String, Map<CharMetaInfo, String>>>() {});
+        Map<String, Map<CharMetaInfo, String>> jsonTestDataMap = objectMapper.readValue(jsonTestData, new TypeReference<Map<String, Map<CharMetaInfo, String>>>() {});
+
+        assertEquals(resultMap, jsonTestDataMap);
     }
 
     private String jsonResultTestData() {
         /*
-        {"①":{"tzaiOrdinal":"","jundaOrdinal":"","breakdownList":"①","char":"①","unicode":"U+2460","breakdownMetadata":""},
-        "α":{"tzaiOrdinal":"","jundaOrdinal":"","breakdownList":"α","char":"α","unicode":"U+03B1","breakdownMetadata":""},
-        "光":{"tzaiOrdinal":"","jundaOrdinal":"","breakdownList":"⿱⺌兀","char":"光","unicode":"U+5149","breakdownMetadata":""},
-        "免":{"tzaiOrdinal":"","jundaOrdinal":"","breakdownList":"⿱𠂊⑤ ⿳𠂊𫩏儿","char":"免","unicode":"U+514D","breakdownMetadata":"[GTK] [J]"}}
+        {"①":{"TZAIORDINAL":"","UNICODE":"U+2460","BREAKDOWNMETA":"","CHAR":"①","JUNDAORDINAL":"","BREAKDOWN":"①"},
+        "α":{"TZAIORDINAL":"","UNICODE":"U+03B1","BREAKDOWNMETA":"","CHAR":"α","JUNDAORDINAL":"","BREAKDOWN":"α"},
+        "光":{"TZAIORDINAL":"","UNICODE":"U+5149","BREAKDOWNMETA":"","CHAR":"光","JUNDAORDINAL":"","BREAKDOWN":"⿱⺌兀"},
+        "免":{"TZAIORDINAL":"","UNICODE":"U+514D","BREAKDOWNMETA":"[GTK] [J]","CHAR":"免","JUNDAORDINAL":"","BREAKDOWN":"⿱𠂊⑤ ⿳𠂊𫩏儿"}}
         */
-        return "{\"①\":{\"tzaiOrdinal\":\"\",\"jundaOrdinal\":\"\",\"breakdownList\":\"①\",\"char\":\"①\",\"unicode\":\"U+2460\",\"breakdownMetadata\":\"\"},\"α\":{\"tzaiOrdinal\":\"\",\"jundaOrdinal\":\"\",\"breakdownList\":\"α\",\"char\":\"α\",\"unicode\":\"U+03B1\",\"breakdownMetadata\":\"\"},\"光\":{\"tzaiOrdinal\":\"\",\"jundaOrdinal\":\"\",\"breakdownList\":\"⿱⺌兀\",\"char\":\"光\",\"unicode\":\"U+5149\",\"breakdownMetadata\":\"\"},\"免\":{\"tzaiOrdinal\":\"\",\"jundaOrdinal\":\"\",\"breakdownList\":\"⿱\uD840\uDC8A⑤ ⿳\uD840\uDC8A\uD86E\uDE4F儿\",\"char\":\"免\",\"unicode\":\"U+514D\",\"breakdownMetadata\":\"[GTK] [J]\"}}";
+        return "{\"①\":{\"TZAIORDINAL\":\"\",\"UNICODE\":\"U+2460\",\"BREAKDOWNMETA\":\"\",\"CHAR\":\"①\",\"JUNDAORDINAL\":\"\",\"BREAKDOWN\":\"①\"},\"α\":{\"TZAIORDINAL\":\"\",\"UNICODE\":\"U+03B1\",\"BREAKDOWNMETA\":\"\",\"CHAR\":\"α\",\"JUNDAORDINAL\":\"\",\"BREAKDOWN\":\"α\"},\"光\":{\"TZAIORDINAL\":\"\",\"UNICODE\":\"U+5149\",\"BREAKDOWNMETA\":\"\",\"CHAR\":\"光\",\"JUNDAORDINAL\":\"\",\"BREAKDOWN\":\"⿱⺌兀\"},\"免\":{\"TZAIORDINAL\":\"\",\"UNICODE\":\"U+514D\",\"BREAKDOWNMETA\":\"[GTK] [J]\",\"CHAR\":\"免\",\"JUNDAORDINAL\":\"\",\"BREAKDOWN\":\"⿱\uD840\uDC8A⑤ ⿳\uD840\uDC8A\uD86E\uDE4F儿\"}}";
     }
 
     private List<String> idsTestData() {

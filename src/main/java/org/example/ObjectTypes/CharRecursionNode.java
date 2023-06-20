@@ -10,10 +10,10 @@ import java.util.Map;
 
 public class CharRecursionNode {
     private final String currentBreakdownSubsection;
-    private final Map<String, String> subsectionIdsMapResult;
+    private final Map<CharMetaInfo, String> subsectionIdsMapResult;
     private final List<CharRecursionNode> subsequentSubsections;
 
-    public CharRecursionNode(String currentBreakdownSubsection, Map<String, Map<String, String>> customIds) {
+    public CharRecursionNode(String currentBreakdownSubsection, Map<String, Map<CharMetaInfo, String>> customIds) {
         this.currentBreakdownSubsection = currentBreakdownSubsection;
         this.subsectionIdsMapResult = CharRecursionNodeService.generateIdsMapResult(currentBreakdownSubsection, customIds);
         this.subsequentSubsections = CharRecursionNodeService.generateSubsections(currentBreakdownSubsection, subsectionIdsMapResult, customIds);
@@ -27,14 +27,14 @@ public class CharRecursionNode {
 
     public static class Builder {
         private String currentBreakdownSubsection = "";
-        private Map<String, String> subsectionIdsMapResult = new HashMap<>();
+        private Map<CharMetaInfo, String> subsectionIdsMapResult = new HashMap<>();
         private List<CharRecursionNode> subsequentSubsections = new ArrayList<>();
 
         public Builder withCurrentBreakdownSubsection(String currentBreakdownSubsection) {
             this.currentBreakdownSubsection = currentBreakdownSubsection;
             return this;
         }
-        public Builder withSubsectionIdsMapResult(Map<String, String> subsectionIdsMapResult) {
+        public Builder withSubsectionIdsMapResult(Map<CharMetaInfo, String> subsectionIdsMapResult) {
             this.subsectionIdsMapResult = subsectionIdsMapResult;
             return this;
         }

@@ -1,5 +1,6 @@
 package CustomDataGenerator;
 import org.example.CustomDataHandler.CustomDataReader;
+import org.example.ObjectTypes.CharMetaInfo;
 import org.junit.Test;
 
 import java.util.Map;
@@ -11,22 +12,22 @@ public class CustomDataReaderTest {
 
     @Test
     public void testGenerateIdsJsonData_smallTestData() throws Exception {
-        Map<String, Map<String, String>> map = CustomDataReader.getCustomIdsMap(customIdsJsonMapPath);
+        Map<String, Map<CharMetaInfo, String>> map = CustomDataReader.getCustomIdsMap(customIdsJsonMapPath);
         assertEquals(88937, map.size());
-        Map<String, String> example = map.get("亇");
-        assertEquals(example.get("breakdownList"), "⿱𠂊亅 ⿱𠂉亅 ⿱𠂉丨 ⿰丿丁 ⿰丿𠄐");
-        assertEquals(example.get("char"), "亇");
-        assertEquals(example.get("unicode"), "U+4E87");
-        assertEquals(example.get("breakdownMetadata"), "[GK] [T]   ");
-        assertEquals(example.get("jundaOrdinal"), "");
-        assertEquals(example.get("tzaiOrdinal"), "");
+        Map<CharMetaInfo, String> example = map.get("亇");
+        assertEquals(example.get(CharMetaInfo.BREAKDOWN), "⿱𠂊亅 ⿱𠂉亅 ⿱𠂉丨 ⿰丿丁 ⿰丿𠄐");
+        assertEquals(example.get(CharMetaInfo.CHAR), "亇");
+        assertEquals(example.get(CharMetaInfo.UNICODE), "U+4E87");
+        assertEquals(example.get(CharMetaInfo.BREAKDOWNMETA), "[GK] [T]   ");
+        assertEquals(example.get(CharMetaInfo.JUNDAORDINAL), "");
+        assertEquals(example.get(CharMetaInfo.TZAIORDINAL), "");
 
-        Map<String, String> example2 = map.get("巴");
-        assertEquals(example2.get("breakdownList"), "巴");
-        assertEquals(example2.get("char"), "巴");
-        assertEquals(example2.get("unicode"), "U+5DF4");
-        assertEquals(example2.get("breakdownMetadata"), "");
-        assertEquals(example2.get("jundaOrdinal"), "546");
-        assertEquals(example2.get("tzaiOrdinal"), "850");
+        Map<CharMetaInfo, String> example2 = map.get("巴");
+        assertEquals(example2.get(CharMetaInfo.BREAKDOWN), "巴");
+        assertEquals(example2.get(CharMetaInfo.CHAR), "巴");
+        assertEquals(example2.get(CharMetaInfo.UNICODE), "U+5DF4");
+        assertEquals(example2.get(CharMetaInfo.BREAKDOWNMETA), "");
+        assertEquals(example2.get(CharMetaInfo.JUNDAORDINAL), "546");
+        assertEquals(example2.get(CharMetaInfo.TZAIORDINAL), "850");
     }
 }

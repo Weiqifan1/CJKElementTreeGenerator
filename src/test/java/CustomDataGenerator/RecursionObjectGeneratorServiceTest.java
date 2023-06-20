@@ -1,5 +1,7 @@
 package CustomDataGenerator;
 
+import org.example.CharRecursionObjectGenerator.RecursionObjectGeneratorService;
+import org.example.ObjectTypes.CharRecursionNode;
 import org.junit.Test;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -23,9 +25,11 @@ public class RecursionObjectGeneratorServiceTest {
     @Test
     public void testRecursionObjectGeneratorService() {
 
+        CharRecursionNode obj = RecursionObjectGeneratorService.generateRecursionObj("的");
 
 
-        assertEquals(true, true);
+
+        assertEquals(true, false);
 
     }
 }

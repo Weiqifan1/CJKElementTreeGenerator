@@ -1,6 +1,7 @@
 package org.example.CustomDataGenerator;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.example.ObjectTypes.CharMetaInfo;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,7 +15,7 @@ public class CustomDataGeneratorService {
     public static String generateIdsJsonData(List<String> lines, List<String> jundaLines, List<String> tzaiLines) {
         Map<String, String> jundaMap = CustomDataGeneratorService.generateJundaMap(jundaLines);
         Map<String, String> tzaiMap = CustomDataGeneratorService.generateTzaiMap(tzaiLines);
-        Map<String, Map<String, String>> nesteIdsMap = generateIdsJsonDataMapFromLines(lines, jundaMap, tzaiMap);
+        Map<String, Map<CharMetaInfo, String>> nesteIdsMap = generateIdsJsonDataMapFromLines(lines, jundaMap, tzaiMap);
 
         String generatedJsonData = generatedJsonDataFromMap(nesteIdsMap);
         return generatedJsonData;
@@ -34,7 +35,7 @@ public class CustomDataGeneratorService {
         }
     }
 
-    private static String generatedJsonDataFromMap(Map<String, Map<String, String>> nestedMap) {
+    private static String generatedJsonDataFromMap(Map<String, Map<CharMetaInfo, String>> nestedMap) {
         String result = "";
         try {
             ObjectMapper objectMapper = new ObjectMapper();
@@ -45,10 +46,10 @@ public class CustomDataGeneratorService {
         return result;
     }
 
-    public static Map<String, Map<String, String>> generateIdsJsonDataMapFromLines(List<String> lines,
+    public static Map<String, Map<CharMetaInfo, String>> generateIdsJsonDataMapFromLines(List<String> lines,
                                                                                    Map<String, String> jundaMap,
                                                                                    Map<String, String> tzaiMap) {
-        Map<String, Map<String, String>> nestedMap = new HashMap<>();
+        Map<String, Map<CharMetaInfo, String>> nestedMap = new HashMap<>();
         int lineNum = 0;
         for (String line : lines) {
             try {
@@ -73,28 +74,28 @@ public class CustomDataGeneratorService {
         return lines;
     }
 
-    private static Map<String, Map<String, String>> updatedNestedMap(String line,
-                                                                     Map<String, Map<String, String>> nestedMap,
+    private static Map<String, Map<CharMetaInfo, String>> updatedNestedMap(String line,
+                                                                     Map<String, Map<CharMetaInfo, String>> nestedMap,
                                                                      Map<String, String> jundaMap,
                                                                      Map<String, String> tzaiMap) throws Exception {
-        Map<String, String> newmap = new HashMap<>();
+        Map<CharMetaInfo, String> newmap = new HashMap<>();
         List<String> list = Arrays.stream(line.split("\\s+")).toList();
         validateList(list);
         String jundaResult = getFrequencyDataForIdsChar(list.get(1), jundaMap);
-        newmap.put("jundaOrdinal", jundaResult);
+        newmap.put(CharMetaInfo.JUNDAORDINAL, jundaResult);
 
         String tzaiResult = getFrequencyDataForIdsChar(list.get(1), tzaiMap);
-        newmap.put("tzaiOrdinal", tzaiResult);
+        newmap.put(CharMetaInfo.TZAIORDINAL, tzaiResult);
 
-        newmap.put("unicode", list.get(0));
-        newmap.put("char", list.get(1));
+        newmap.put(CharMetaInfo.UNICODE, list.get(0));
+        newmap.put(CharMetaInfo.CHAR, list.get(1));
         if (list.get(1).equals("亇")) {
             String test = "";
         }
         String breakdownList = getBreakdownList(list.subList(2, list.size()));
         String breakdownMetadata = getBreakdownMetadata(list.subList(2, list.size()));
-        newmap.put("breakdownList", breakdownList);
-        newmap.put("breakdownMetadata", breakdownMetadata);
+        newmap.put(CharMetaInfo.BREAKDOWN, breakdownList);
+        newmap.put(CharMetaInfo.BREAKDOWNMETA, breakdownMetadata);
 
         nestedMap.put(list.get(1), newmap);
         return nestedMap;
