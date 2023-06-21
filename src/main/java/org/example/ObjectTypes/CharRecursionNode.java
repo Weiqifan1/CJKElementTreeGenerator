@@ -6,32 +6,44 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.zip.DataFormatException;
 
 
 public class CharRecursionNode {
     private final String currentBreakdownSubsection;
+    private final String currentMetaBreakdown;
     private final Map<CharMetaInfo, String> subsectionIdsMapResult;
     private final List<CharRecursionNode> subsequentSubsections;
 
-    public CharRecursionNode(String currentBreakdownSubsection, Map<String, Map<CharMetaInfo, String>> customIds) {
+    public CharRecursionNode(String currentBreakdownSubsection,
+                             String currentMetaBreakdown,
+                             Map<String, Map<CharMetaInfo, String>> customIds) throws DataFormatException {
         this.currentBreakdownSubsection = currentBreakdownSubsection;
         this.subsectionIdsMapResult = CharRecursionNodeService.generateIdsMapResult(currentBreakdownSubsection, customIds);
-        this.subsequentSubsections = CharRecursionNodeService.generateSubsections(currentBreakdownSubsection, subsectionIdsMapResult, customIds);
+        this.currentMetaBreakdown = currentMetaBreakdown;
+        this.subsequentSubsections = CharRecursionNodeService.handleSubsectionPathways(
+                currentBreakdownSubsection, currentMetaBreakdown, subsectionIdsMapResult, customIds);
     }
 
     private CharRecursionNode(Builder builder) {
         currentBreakdownSubsection = builder.currentBreakdownSubsection;
+        currentMetaBreakdown = builder.currentMetaBreakdown;
         subsectionIdsMapResult = builder.subsectionIdsMapResult;
         subsequentSubsections = builder.subsequentSubsections;
     }
 
     public static class Builder {
         private String currentBreakdownSubsection = "";
+        private String currentMetaBreakdown = "";
         private Map<CharMetaInfo, String> subsectionIdsMapResult = new HashMap<>();
         private List<CharRecursionNode> subsequentSubsections = new ArrayList<>();
 
         public Builder withCurrentBreakdownSubsection(String currentBreakdownSubsection) {
             this.currentBreakdownSubsection = currentBreakdownSubsection;
+            return this;
+        }
+        public Builder withCurrentMetaBreakdown(String currentMetaBreakdown) {
+            this.currentMetaBreakdown = currentMetaBreakdown;
             return this;
         }
         public Builder withSubsectionIdsMapResult(Map<CharMetaInfo, String> subsectionIdsMapResult) {

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.CustomDataGenerator.CustomDataGeneratorService;
 import org.example.ObjectTypes.CharMetaInfo;
 import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
 
 import java.nio.file.Paths;
 import java.util.ArrayList;

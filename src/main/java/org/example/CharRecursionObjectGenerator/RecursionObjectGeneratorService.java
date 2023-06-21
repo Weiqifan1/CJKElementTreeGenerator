@@ -5,6 +5,7 @@ import org.example.ObjectTypes.CharMetaInfo;
 import org.example.ObjectTypes.CharRecursionNode;
 
 import java.util.Map;
+import java.util.zip.DataFormatException;
 
 import static org.example.GlobalConstants.customIdsJsonMapPath;
 
@@ -19,8 +20,8 @@ public class RecursionObjectGeneratorService {
         }
     }
 
-    public static CharRecursionNode generateRecursionObj(String input) {
-        CharRecursionNode newObj = new CharRecursionNode(input, idsMap);
+    public static CharRecursionNode generateRecursionObj(String input) throws DataFormatException {
+        CharRecursionNode newObj = new CharRecursionNode(input, "", idsMap);
         return newObj;
     }
 }
