@@ -2,7 +2,7 @@ package CustomDataGenerator;
 
 import org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.CharRecursionNodeService;
 import org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.RecursionObjectGeneratorService;
-import org.example.ObjectTypes.CharRecursionNode;
+import org.example.ObjectTypes.GenericTypes.CharRecursionNode;
 import org.junit.Test;
 
 import java.util.List;

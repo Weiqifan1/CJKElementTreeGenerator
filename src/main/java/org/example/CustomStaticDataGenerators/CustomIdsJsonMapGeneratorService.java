@@ -1,7 +1,7 @@
 package org.example.CustomStaticDataGenerators;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.ObjectTypes.CharMetaInfo;
+import org.example.ObjectTypes.GenericTypes.CharMetaInfo;
 
 import java.io.FileWriter;
 import java.io.IOException;

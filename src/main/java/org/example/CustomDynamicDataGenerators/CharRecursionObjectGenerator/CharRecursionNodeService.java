@@ -1,9 +1,9 @@
 package org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator;
 
 
-import org.example.ObjectTypes.CJKDescription;
-import org.example.ObjectTypes.CharMetaInfo;
-import org.example.ObjectTypes.CharRecursionNode;
+import org.example.ObjectTypes.GenericTypes.CJKDescription;
+import org.example.ObjectTypes.GenericTypes.CharMetaInfo;
+import org.example.ObjectTypes.GenericTypes.CharRecursionNode;
 
 import java.util.*;
 import java.util.stream.Collectors;

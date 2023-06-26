@@ -2,7 +2,7 @@ package org.example.Data.InputMethodData;
 
 import java.util.HashMap;
 
-public class ArrayInspiredInputData {
+public class AYmethodInputData {
 
     private static final HashMap<String, String> arrayInspiredElemsV1 = new HashMap<>();
     static {

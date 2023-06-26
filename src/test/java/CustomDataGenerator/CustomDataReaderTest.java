@@ -1,6 +1,6 @@
 package CustomDataGenerator;
 import org.example.CustomDataHandler.CustomDataReader;
-import org.example.ObjectTypes.CharMetaInfo;
+import org.example.ObjectTypes.GenericTypes.CharMetaInfo;
 import org.junit.Test;
 
 import java.util.Map;

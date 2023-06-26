@@ -2,7 +2,7 @@ package org.example.CustomDataHandler;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.ObjectTypes.CharMetaInfo;
+import org.example.ObjectTypes.GenericTypes.CharMetaInfo;
 
 import java.nio.file.Files;
 import java.nio.file.Path;

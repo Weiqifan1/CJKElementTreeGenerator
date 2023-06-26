@@ -1,4 +1,4 @@
-package org.example.ObjectTypes;
+package org.example.ObjectTypes.GenericTypes;
 
 public enum CharMetaInfo {
     TZAIORDINAL, //eg. "1" the ordinal number of the character in the tzai frequency list

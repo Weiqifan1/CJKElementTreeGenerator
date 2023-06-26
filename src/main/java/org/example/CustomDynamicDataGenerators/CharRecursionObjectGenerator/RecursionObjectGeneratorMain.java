@@ -1,6 +1,6 @@
 package org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator;
 
-import org.example.ObjectTypes.CharRecursionNode;
+import org.example.ObjectTypes.GenericTypes.CharRecursionNode;
 
 
 public class RecursionObjectGeneratorMain {

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.CustomStaticDataGenerators.CustomIdsJsonMapGeneratorService;
-import org.example.ObjectTypes.CharMetaInfo;
+import org.example.ObjectTypes.GenericTypes.CharMetaInfo;
 import org.junit.Test;
 
 import java.nio.file.Paths;

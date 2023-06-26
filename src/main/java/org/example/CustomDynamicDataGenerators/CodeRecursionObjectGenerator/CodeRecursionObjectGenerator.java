@@ -1,7 +1,7 @@
 package org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator;
 
 import org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.RecursionObjectGeneratorService;
-import org.example.ObjectTypes.CharRecursionNode;
+import org.example.ObjectTypes.GenericTypes.CharRecursionNode;
 
 public class CodeRecursionObjectGenerator {
 

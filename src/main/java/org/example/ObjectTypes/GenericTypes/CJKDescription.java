@@ -1,4 +1,4 @@
-package org.example.ObjectTypes;
+package org.example.ObjectTypes.GenericTypes;
 
 public enum CJKDescription {
 
