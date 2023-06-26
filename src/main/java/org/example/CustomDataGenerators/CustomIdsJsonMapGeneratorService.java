@@ -1,4 +1,4 @@
-package org.example.CustomDataGenerator;
+package org.example.CustomDataGenerators;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.ObjectTypes.CharMetaInfo;
@@ -10,11 +10,11 @@ import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class CustomDataGeneratorService {
+public class CustomIdsJsonMapGeneratorService {
 
     public static String generateIdsJsonData(List<String> lines, List<String> jundaLines, List<String> tzaiLines) {
-        Map<String, String> jundaMap = CustomDataGeneratorService.generateJundaMap(jundaLines);
-        Map<String, String> tzaiMap = CustomDataGeneratorService.generateTzaiMap(tzaiLines);
+        Map<String, String> jundaMap = CustomIdsJsonMapGeneratorService.generateJundaMap(jundaLines);
+        Map<String, String> tzaiMap = CustomIdsJsonMapGeneratorService.generateTzaiMap(tzaiLines);
         Map<String, Map<CharMetaInfo, String>> nesteIdsMap = generateIdsJsonDataMapFromLines(lines, jundaMap, tzaiMap);
 
         String generatedJsonData = generatedJsonDataFromMap(nesteIdsMap);

@@ -3,7 +3,7 @@ package CustomDataGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.CustomDataGenerator.CustomDataGeneratorService;
+import org.example.CustomDataGenerators.CustomIdsJsonMapGeneratorService;
 import org.example.ObjectTypes.CharMetaInfo;
 import org.junit.Test;
 import org.junit.jupiter.api.Disabled;
@@ -14,16 +14,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import static org.example.CustomDataGenerator.CustomDataGeneratorService.getFileLinesFromPath;
+import static org.example.CustomDataGenerators.CustomIdsJsonMapGeneratorService.getFileLinesFromPath;
 import static org.example.GlobalConstants.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-public class CustomDataGeneratorServiceTest {
+public class CustomIdsJsonMapGeneratorServiceTest {
 
     @Test
     public void testGenerateJundaMap() {
         List<String> lines = getFileLinesFromPath(Paths.get(publicJundaFilePath));
-        Map<String, String> jundaMap = CustomDataGeneratorService.generateJundaMap(lines);
+        Map<String, String> jundaMap = CustomIdsJsonMapGeneratorService.generateJundaMap(lines);
 
         assertEquals(9933, jundaMap.size());
         assertEquals("的" + " " + "1", jundaMap.get("的"));
@@ -34,24 +34,23 @@ public class CustomDataGeneratorServiceTest {
     @Test
     public void testGenerateTzaiMap() {
         List<String> lines = getFileLinesFromPath(Paths.get(publicTzaiFilePath));
-        Map<String, String> tzaiMap = CustomDataGeneratorService.generateTzaiMap(lines);
+        Map<String, String> tzaiMap = CustomIdsJsonMapGeneratorService.generateTzaiMap(lines);
 
         assertEquals(13060, tzaiMap.size());
         assertEquals("的" + " " + "1", tzaiMap.get("的"));
         assertEquals("鷍" + " " + "13060", tzaiMap.get("鷍"));
     }
 
-    @Disabled
     @Test
     public void testGenerateIdsJsonData_fullIdsData() throws JsonProcessingException {
         List<String> idsLines = getFileLinesFromPath(Paths.get(publicIdsFilePath));
         List<String> jundaLines = getFileLinesFromPath(Paths.get(publicJundaFilePath));
-        Map<String, String> jundaMap = CustomDataGeneratorService.generateJundaMap(jundaLines);
+        Map<String, String> jundaMap = CustomIdsJsonMapGeneratorService.generateJundaMap(jundaLines);
         List<String> tzaiLines = getFileLinesFromPath(Paths.get(publicTzaiFilePath));
-        Map<String, String> tzaiMap = CustomDataGeneratorService.generateTzaiMap(tzaiLines);
-        Map<String, Map<CharMetaInfo, String>> firstMap = CustomDataGeneratorService.generateIdsJsonDataMapFromLines(idsLines, jundaMap, tzaiMap);
+        Map<String, String> tzaiMap = CustomIdsJsonMapGeneratorService.generateTzaiMap(tzaiLines);
+        Map<String, Map<CharMetaInfo, String>> firstMap = CustomIdsJsonMapGeneratorService.generateIdsJsonDataMapFromLines(idsLines, jundaMap, tzaiMap);
 
-        String jsonOutput = CustomDataGeneratorService.generateIdsJsonData(idsLines, jundaLines, tzaiLines);
+        String jsonOutput = CustomIdsJsonMapGeneratorService.generateIdsJsonData(idsLines, jundaLines, tzaiLines);
         ObjectMapper objectMapper = new ObjectMapper();
         Map<String, Map<CharMetaInfo, String>> secondMap = objectMapper.readValue(jsonOutput, new TypeReference<Map<String, Map<CharMetaInfo, String>>>() {});
 
@@ -95,7 +94,7 @@ public class CustomDataGeneratorServiceTest {
     @Test
     public void testGenerateIdsJsonData_smallTestData() throws JsonProcessingException {
         List<String> lines = idsTestData();
-        String result = CustomDataGeneratorService.generateIdsJsonData(lines, new ArrayList<>(), new ArrayList<>());
+        String result = CustomIdsJsonMapGeneratorService.generateIdsJsonData(lines, new ArrayList<>(), new ArrayList<>());
         String jsonTestData = jsonResultTestData();
 
         ObjectMapper objectMapper = new ObjectMapper();
