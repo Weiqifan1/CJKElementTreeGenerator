@@ -1,9 +1,9 @@
-package org.example.CharRecursionObjectGenerator;
+package org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator;
 
+import org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.RecursionObjectGeneratorService;
 import org.example.ObjectTypes.CharRecursionNode;
 
-
-public class RecursionObjectGeneratorMain {
+public class CodeRecursionObjectGenerator {
 
     public static void main(String[] args) throws Exception {
         System.out.println("Recursion Object Generator started!");
@@ -12,4 +12,5 @@ public class RecursionObjectGeneratorMain {
 
         System.out.println("Recursion Object Generator ended!");
     }
+
 }

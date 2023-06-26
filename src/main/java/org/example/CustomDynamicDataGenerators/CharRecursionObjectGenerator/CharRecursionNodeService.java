@@ -1,4 +1,4 @@
-package org.example.CharRecursionObjectGenerator;
+package org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator;
 
 
 import org.example.ObjectTypes.CJKDescription;

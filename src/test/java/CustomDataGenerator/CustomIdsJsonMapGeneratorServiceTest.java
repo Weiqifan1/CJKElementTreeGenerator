@@ -3,10 +3,9 @@ package CustomDataGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.CustomDataGenerators.CustomIdsJsonMapGeneratorService;
+import org.example.CustomStaticDataGenerators.CustomIdsJsonMapGeneratorService;
 import org.example.ObjectTypes.CharMetaInfo;
 import org.junit.Test;
-import org.junit.jupiter.api.Disabled;
 
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -14,7 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import static org.example.CustomDataGenerators.CustomIdsJsonMapGeneratorService.getFileLinesFromPath;
+import static org.example.CustomStaticDataGenerators.CustomIdsJsonMapGeneratorService.getFileLinesFromPath;
 import static org.example.GlobalConstants.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

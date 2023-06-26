@@ -1,6 +1,6 @@
 package org.example.ObjectTypes;
 
-import org.example.CharRecursionObjectGenerator.CharRecursionNodeService;
+import org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.CharRecursionNodeService;
 
 import java.util.ArrayList;
 import java.util.HashMap;

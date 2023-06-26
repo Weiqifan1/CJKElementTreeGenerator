@@ -1,7 +1,7 @@
 package CustomDataGenerator;
 
-import org.example.CharRecursionObjectGenerator.CharRecursionNodeService;
-import org.example.CharRecursionObjectGenerator.RecursionObjectGeneratorService;
+import org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.CharRecursionNodeService;
+import org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.RecursionObjectGeneratorService;
 import org.example.ObjectTypes.CharRecursionNode;
 import org.junit.Test;
 

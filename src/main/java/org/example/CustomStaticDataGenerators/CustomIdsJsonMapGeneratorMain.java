@@ -1,10 +1,10 @@
-package org.example.CustomDataGenerators;
+package org.example.CustomStaticDataGenerators;
 
 import java.nio.file.Paths;
 import java.util.List;
 
-import static org.example.CustomDataGenerators.CustomIdsJsonMapGeneratorService.generateIdsJsonData;
-import static org.example.CustomDataGenerators.CustomIdsJsonMapGeneratorService.writeToJsonFile;
+import static org.example.CustomStaticDataGenerators.CustomIdsJsonMapGeneratorService.generateIdsJsonData;
+import static org.example.CustomStaticDataGenerators.CustomIdsJsonMapGeneratorService.writeToJsonFile;
 import static org.example.GlobalConstants.*;
 
 public class CustomIdsJsonMapGeneratorMain {

@@ -1,4 +1,4 @@
-package org.example.CustomDataGenerators;
+package org.example.CustomStaticDataGenerators;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.ObjectTypes.CharMetaInfo;
