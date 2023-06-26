@@ -15,6 +15,22 @@ public class CharRecursionNode {
     private final Map<CharMetaInfo, String> subsectionIdsMapResult;
     private final List<CharRecursionNode> subsequentSubsections;
 
+    public String getCurrentBreakdownSubsection() {
+        return currentBreakdownSubsection;
+    }
+
+    public String getCurrentMetaBreakdown() {
+        return currentMetaBreakdown;
+    }
+
+    public Map<CharMetaInfo, String> getSubsectionIdsMapResult() {
+        return subsectionIdsMapResult;
+    }
+
+    public List<CharRecursionNode> getSubsequentSubsections() {
+        return subsequentSubsections;
+    }
+
     public CharRecursionNode(String currentBreakdownSubsection,
                              String currentMetaBreakdown,
                              Map<String, Map<CharMetaInfo, String>> customIds) throws DataFormatException {
@@ -22,7 +38,7 @@ public class CharRecursionNode {
         this.subsectionIdsMapResult = CharRecursionNodeService.generateIdsMapResult(currentBreakdownSubsection, customIds);
         this.currentMetaBreakdown = currentMetaBreakdown;
         this.subsequentSubsections = CharRecursionNodeService.handleSubsectionPathways(
-                currentBreakdownSubsection, currentMetaBreakdown, subsectionIdsMapResult, customIds);
+                currentBreakdownSubsection, customIds);
     }
 
     private CharRecursionNode(Builder builder) {

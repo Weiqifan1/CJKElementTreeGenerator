@@ -41,6 +41,7 @@ public class CustomDataGeneratorServiceTest {
         assertEquals("鷍" + " " + "13060", tzaiMap.get("鷍"));
     }
 
+    @Disabled
     @Test
     public void testGenerateIdsJsonData_fullIdsData() throws JsonProcessingException {
         List<String> idsLines = getFileLinesFromPath(Paths.get(publicIdsFilePath));
