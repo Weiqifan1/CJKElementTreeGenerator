@@ -36,7 +36,7 @@ public class AYMethodCodeGeneratorService {
             List<String> codesFromSubs = getCodesFromSubsections(subsequentSubsections);
             return codesFromSubs;
         }else {
-            throw new DataFormatException("missing codes from char: "+ originalInput);
+            //throw new DataFormatException("missing codes from char: "+ originalInput);
         }
 
 

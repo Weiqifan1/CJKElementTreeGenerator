@@ -143,7 +143,7 @@ public class AYmethodInputData {
 
         //l
         //㇀
-        arrayInspiredElemsV1.put("㇀", "ll"); //l=9
+        arrayInspiredElemsV1.put("㇀", "ll"); //l=9  //eg. 白
         arrayInspiredElemsV1.put("几", "lg"); //l=9+5 g=5
         arrayInspiredElemsV1.put("勹", "lg"); //l=9+5 g=5
         //arrayInputMap.put("", "");

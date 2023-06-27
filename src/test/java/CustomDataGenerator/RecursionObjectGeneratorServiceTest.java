@@ -20,7 +20,7 @@ public class RecursionObjectGeneratorServiceTest {
         assertEquals("⿰白勺", obj.getSubsequentSubsections().get(0).getCurrentBreakdownSubsection());
 
         assertEquals("白", obj.getSubsequentSubsections().get(0).getSubsequentSubsections().get(1).getCurrentBreakdownSubsection());
-        assertEquals(0, obj.getSubsequentSubsections().get(0).getSubsequentSubsections().get(1).getSubsequentSubsections().size());
+        assertEquals(1, obj.getSubsequentSubsections().get(0).getSubsequentSubsections().get(1).getSubsequentSubsections().size());
 
         assertEquals("勺", obj.getSubsequentSubsections().get(0).getSubsequentSubsections().get(2).getCurrentBreakdownSubsection());
         assertEquals(1, obj.getSubsequentSubsections().get(0).getSubsequentSubsections().get(2).getSubsequentSubsections().size());
