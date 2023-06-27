@@ -5,16 +5,14 @@ import org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.Char
 import org.example.CustomDynamicDataGenerators.InputMethodCodeGenerators.AYMethodCodeGeneratorService;
 import org.example.Data.InputMethodData.AYmethodInputData;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.zip.DataFormatException;
 
 import static org.example.GlobalConstants.customIdsJsonMapPath;
 
 public class CharRecursionNode implements CharRecursionNodeInterface {
     private final String currentBreakdownSubsection;
+    private String originalInput;
     private final Map<CharMetaInfo, String> subsectionIdsMapResult;
     private final List<CharRecursionNode> subsequentSubsections;
     private static final Map<String, Map<CharMetaInfo, String>> idsMap;
@@ -31,13 +29,21 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
         }
     }
 
-    public CharRecursionNode(String currentBreakdownSubsection) throws DataFormatException {
+    public CharRecursionNode(String currentBreakdownSubsection, String originalInput) throws DataFormatException {
         this.currentBreakdownSubsection = currentBreakdownSubsection;
+        if (Objects.nonNull(originalInput)) {
+            this.originalInput = originalInput;
+        } else {
+            this.originalInput = currentBreakdownSubsection;
+        }
 
         this.subsectionIdsMapResult = CharRecursionNodeService.generateIdsMapResult(currentBreakdownSubsection, idsMap);
         this.subsequentSubsections = CharRecursionNodeService.handleSubsectionPathways(
-                currentBreakdownSubsection, idsMap);
-        this.fullCode = AYMethodCodeGeneratorService.generateFullCodeFromCodeMap(currentBreakdownSubsection, subsequentSubsections, codeMap);
+                currentBreakdownSubsection, idsMap, this.originalInput);
+        this.fullCode = AYMethodCodeGeneratorService.generateFullCodeFromCodeMap(
+                currentBreakdownSubsection,
+                subsequentSubsections,
+                codeMap, this.originalInput);
         this.normalCode = AYMethodCodeGeneratorService.generateNormalCodeFromFullCode(fullCode);
     }
 
@@ -70,6 +76,7 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
     }
 
     public static class Builder {
+        private String originalInput = null;
         private String normalCode = "";
         private List<String> fullCode = new ArrayList<>();
         private String currentBreakdownSubsection = "";
@@ -86,8 +93,9 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
             return this;
         }
 
-        public Builder withCurrentBreakdownSubsection(String currentBreakdownSubsection) {
+        public Builder withCurrentBreakdownSubsection(String currentBreakdownSubsection, String originalInput) {
             this.currentBreakdownSubsection = currentBreakdownSubsection;
+            this.originalInput = originalInput;
             return this;
         }
         public Builder withSubsectionIdsMapResult(Map<CharMetaInfo, String> subsectionIdsMapResult) {

@@ -23,7 +23,7 @@ public class ChrRecursionNodeServiceTest {
         String inputToOne = String.join("", input);
 
         //When
-        List<CharRecursionNode> res = handleSubsectionPathways(inputToOne, customIds);
+        List<CharRecursionNode> res = handleSubsectionPathways(inputToOne, customIds, null);
 
         //Then
         assertEquals(5, res.size());
@@ -35,7 +35,7 @@ public class ChrRecursionNodeServiceTest {
         Map<String, Map<CharMetaInfo, String>> customIds = CustomDataReader.getCustomIdsMap(customIdsJsonMapPath);
         List<String> input = List.of("⿵", "几", "⿳", "一", "⿴", "𠂊" , "⺀", "王");
 
-        CharRecursionNode res = CharRecursionNodeService.getNestedSubstrings(input, customIds);
+        CharRecursionNode res = CharRecursionNodeService.getNestedSubstrings(input, customIds, null);
 
         assertEquals(8, CharRecursionNodeService.unicodeBreakup(res.getCurrentBreakdownSubsection()).size());
         assertEquals(3, res.getSubsequentSubsections().size());

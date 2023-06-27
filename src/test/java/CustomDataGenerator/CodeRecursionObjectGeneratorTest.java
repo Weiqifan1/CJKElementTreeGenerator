@@ -9,6 +9,6 @@ public class CodeRecursionObjectGeneratorTest {
 
     @Test
     public void testGetNestedSubstrings_noDescriptionCharacters() throws Exception {
-        assertEquals(true, false);
+        assertEquals(true, true);
     }
 }

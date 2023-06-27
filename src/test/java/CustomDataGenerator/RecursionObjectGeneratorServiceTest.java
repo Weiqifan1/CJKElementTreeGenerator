@@ -1,7 +1,6 @@
 package CustomDataGenerator;
 
 import org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.CharRecursionNodeService;
-import org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.RecursionObjectGeneratorService;
 import org.example.ObjectTypes.GenericTypes.CharRecursionNode;
 import org.junit.Test;
 
@@ -15,7 +14,7 @@ public class RecursionObjectGeneratorServiceTest {
     @Test
     public void testRecursionObjectGeneratorService_basic() throws DataFormatException {
         //的
-        CharRecursionNode obj = new CharRecursionNode("的");
+        CharRecursionNode obj = new CharRecursionNode("的", null);
 
         assertEquals(1, obj.getSubsequentSubsections().size());
         assertEquals("⿰白勺", obj.getSubsequentSubsections().get(0).getCurrentBreakdownSubsection());
@@ -44,7 +43,7 @@ public class RecursionObjectGeneratorServiceTest {
 
     @Test
     public void testRecursionObjectGeneratorService_nestedCodes() throws DataFormatException {
-        CharRecursionNode obj = new CharRecursionNode("𥵋");
+        CharRecursionNode obj = new CharRecursionNode("𥵋", null);
 
         assertEquals("𥵋", obj.getCurrentBreakdownSubsection());
         assertEquals(1, obj.getSubsequentSubsections().size());
@@ -59,7 +58,7 @@ public class RecursionObjectGeneratorServiceTest {
 
     @Test
     public void testRecursionObjectGeneratorService_doubleCodes() throws DataFormatException {
-        CharRecursionNode obj = new CharRecursionNode("㓘");
+        CharRecursionNode obj = new CharRecursionNode("㓘", null);
 
         assertEquals("㓘", obj.getCurrentBreakdownSubsection());
         assertEquals(1, obj.getSubsequentSubsections().size());

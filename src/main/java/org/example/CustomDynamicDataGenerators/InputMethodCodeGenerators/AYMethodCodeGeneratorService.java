@@ -9,7 +9,10 @@ import java.util.stream.Collectors;
 import static org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.CharRecursionNodeService.unicodeBreakup;
 
 public class AYMethodCodeGeneratorService {
-    public static List<String> generateFullCodeFromCodeMap(String currentBreakdownSubsection, List<CharRecursionNode> subsequentSubsections, HashMap<String, String> codeMap) {
+    public static List<String> generateFullCodeFromCodeMap(String currentBreakdownSubsection,
+                                                           List<CharRecursionNode> subsequentSubsections,
+                                                           HashMap<String, String> codeMap,
+                                                           String originalInput) {
 
         boolean currentIsSingleChar = unicodeBreakup(currentBreakdownSubsection).size() < 2;
         boolean currentIsUnicode = Arrays.stream(CJKDescription.values())
