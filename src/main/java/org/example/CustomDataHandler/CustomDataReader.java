@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.example.Data.CustomData.customIdsSupplementMaps.customIdsSupplement;
+import static org.example.InputMethods.customIdsSupplementMaps.customIdsSupplement;
 
 
 public class CustomDataReader {

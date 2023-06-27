@@ -1,4 +1,4 @@
-package org.example.Data.CustomData;
+package org.example.InputMethods;
 
 import org.example.ObjectTypes.GenericTypes.CharMetaInfo;
 
