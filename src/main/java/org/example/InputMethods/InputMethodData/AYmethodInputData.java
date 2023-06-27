@@ -94,6 +94,7 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("立", "yz"); //y=6+1 z=1+8
 
         //h
+        arrayInspiredElemsV1.put("丶", "hh"); //h=6
         arrayInspiredElemsV1.put("方", "hz"); //h=6+5 z=1+9
 
         //n
@@ -143,7 +144,8 @@ public class AYmethodInputData {
         //l
         //㇀
         arrayInspiredElemsV1.put("㇀", "ll"); //l=9
-        arrayInspiredElemsV1.put("几", "lg"); //l=9+5 5=g
+        arrayInspiredElemsV1.put("几", "lg"); //l=9+5 g=5
+        arrayInspiredElemsV1.put("勹", "lg"); //l=9+5 g=5
         //arrayInputMap.put("", "");
 
         //.

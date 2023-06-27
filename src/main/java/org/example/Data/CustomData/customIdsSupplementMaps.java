@@ -5,7 +5,7 @@ import org.example.ObjectTypes.GenericTypes.CharMetaInfo;
 import java.util.HashMap;
 import java.util.Map;
 
-public class customIdsSupplement {
+public class customIdsSupplementMaps {
 
     private Map<CharMetaInfo, String> tempMap = new HashMap<>();
     public static final HashMap<String, String> customIdsSupplement = new HashMap<>();
@@ -17,6 +17,7 @@ public class customIdsSupplement {
                 "UNICODE":"U+51F6",
                 "JUNDAORDINAL":"1378"};*/
         customIdsSupplement.put("白", "⿻㇀日");
+
 //C:\intellijprojects\javaProjects\CJKElementTreeGenerator\src\main\java\org\example\Data\CustomData\customIdsJsonMap.txt
     }
 }

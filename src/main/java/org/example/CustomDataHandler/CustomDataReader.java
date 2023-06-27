@@ -7,7 +7,11 @@ import org.example.ObjectTypes.GenericTypes.CharMetaInfo;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import static org.example.Data.CustomData.customIdsSupplementMaps.customIdsSupplement;
 
 
 public class CustomDataReader {
@@ -21,6 +25,14 @@ public class CustomDataReader {
         }
         ObjectMapper objectMapper = new ObjectMapper();
         Map<String, Map<CharMetaInfo, String>> map = objectMapper.readValue(content, new TypeReference<Map<String, Map<CharMetaInfo, String>>>() {});
+        HashMap<String, String> customIdsCodesMap = customIdsSupplement;
+        List<String> keysFromCustom = customIdsCodesMap.keySet().stream().toList();
+        for (String key : keysFromCustom) {
+            String addInfo = customIdsCodesMap.get(key);
+            Map<CharMetaInfo, String> subMap = map.get(key);
+            subMap.put(CharMetaInfo.BREAKDOWN, addInfo);
+            map.put(key, subMap);
+        }
         return map;
     }
 

@@ -8,7 +8,6 @@ import org.example.InputMethods.InputMethodData.AYmethodInputData;
 import java.util.*;
 import java.util.zip.DataFormatException;
 
-import static org.example.Data.CustomData.customIdsSupplement.customIdsSupplement;
 import static org.example.GlobalConstants.customIdsJsonMapPath;
 
 public class CharRecursionNode implements CharRecursionNodeInterface {
