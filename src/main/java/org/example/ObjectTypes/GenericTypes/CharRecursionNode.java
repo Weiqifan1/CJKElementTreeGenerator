@@ -2,6 +2,8 @@ package org.example.ObjectTypes.GenericTypes;
 
 import org.example.CustomDataHandler.CustomDataReader;
 import org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.CharRecursionNodeService;
+import org.example.CustomDynamicDataGenerators.InputMethodCodeGenerators.AYMethodCodeGeneratorService;
+import org.example.Data.InputMethodData.AYmethodInputData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,10 +18,14 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
     private final Map<CharMetaInfo, String> subsectionIdsMapResult;
     private final List<CharRecursionNode> subsequentSubsections;
     private static final Map<String, Map<CharMetaInfo, String>> idsMap;
+    private static final HashMap<String, String> codeMap;
+    private final List<String> fullCode;
+    private final String normalCode;
 
     static {
         try {
             idsMap = CustomDataReader.getCustomIdsMap(customIdsJsonMapPath);
+            codeMap = AYmethodInputData.arrayInspiredElemsV1;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -27,9 +33,20 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
 
     public CharRecursionNode(String currentBreakdownSubsection) throws DataFormatException {
         this.currentBreakdownSubsection = currentBreakdownSubsection;
+
         this.subsectionIdsMapResult = CharRecursionNodeService.generateIdsMapResult(currentBreakdownSubsection, idsMap);
         this.subsequentSubsections = CharRecursionNodeService.handleSubsectionPathways(
                 currentBreakdownSubsection, idsMap);
+        this.fullCode = AYMethodCodeGeneratorService.generateFullCodeFromCodeMap(currentBreakdownSubsection, subsequentSubsections, codeMap);
+        this.normalCode = AYMethodCodeGeneratorService.generateNormalCodeFromFullCode(fullCode);
+    }
+
+    public List<String> getFullCode() {
+        return fullCode;
+    }
+
+    public String getNormalCode() {
+        return normalCode;
     }
 
     public String getCurrentBreakdownSubsection() {
@@ -45,15 +62,29 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
     }
 
     private CharRecursionNode(Builder builder) {
+        normalCode = builder.normalCode;
+        fullCode = builder.fullCode;
         currentBreakdownSubsection = builder.currentBreakdownSubsection;
         subsectionIdsMapResult = builder.subsectionIdsMapResult;
         subsequentSubsections = builder.subsequentSubsections;
     }
 
     public static class Builder {
+        private String normalCode = "";
+        private List<String> fullCode = new ArrayList<>();
         private String currentBreakdownSubsection = "";
         private Map<CharMetaInfo, String> subsectionIdsMapResult = new HashMap<>();
         private List<CharRecursionNode> subsequentSubsections = new ArrayList<>();
+
+        public Builder wihtNormalCode(String code) {
+            this.normalCode = code;
+            return this;
+        }
+
+        public Builder withFullCode(List<String> fullCode) {
+            this.fullCode = fullCode;
+            return this;
+        }
 
         public Builder withCurrentBreakdownSubsection(String currentBreakdownSubsection) {
             this.currentBreakdownSubsection = currentBreakdownSubsection;
