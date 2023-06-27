@@ -1,4 +1,4 @@
-package org.example.CustomDynamicDataGenerators.InputMethodCodeGenerators;
+package org.example.InputMethods.InputMethodCodeGenerators;
 
 import org.example.ObjectTypes.GenericTypes.CJKDescription;
 import org.example.ObjectTypes.GenericTypes.CharRecursionNode;

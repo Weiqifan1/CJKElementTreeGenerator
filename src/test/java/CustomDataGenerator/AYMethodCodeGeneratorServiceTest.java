@@ -15,6 +15,10 @@ public class AYMethodCodeGeneratorServiceTest {
     @Test
     public void testGenerateFullCodeFromCodeMap_basic() throws DataFormatException {
         //的
+
+
+
+
         CharRecursionNode obj = new CharRecursionNode("的", null);
 
         assertEquals(true, false);

@@ -1,4 +1,4 @@
-package org.example.Data.InputMethodData;
+package org.example.InputMethods.InputMethodData;
 
 import java.util.HashMap;
 
@@ -141,6 +141,8 @@ public class AYmethodInputData {
 
 
         //l
+        //㇀
+        arrayInspiredElemsV1.put("㇀", "ll"); //l=9
         arrayInspiredElemsV1.put("几", "lg"); //l=9+5 5=g
         //arrayInputMap.put("", "");
 

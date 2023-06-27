@@ -2,12 +2,13 @@ package org.example.ObjectTypes.GenericTypes;
 
 import org.example.CustomDataHandler.CustomDataReader;
 import org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.CharRecursionNodeService;
-import org.example.CustomDynamicDataGenerators.InputMethodCodeGenerators.AYMethodCodeGeneratorService;
-import org.example.Data.InputMethodData.AYmethodInputData;
+import org.example.InputMethods.InputMethodCodeGenerators.AYMethodCodeGeneratorService;
+import org.example.InputMethods.InputMethodData.AYmethodInputData;
 
 import java.util.*;
 import java.util.zip.DataFormatException;
 
+import static org.example.Data.CustomData.customIdsSupplement.customIdsSupplement;
 import static org.example.GlobalConstants.customIdsJsonMapPath;
 
 public class CharRecursionNode implements CharRecursionNodeInterface {
@@ -15,14 +16,16 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
     private String originalInput;
     private final Map<CharMetaInfo, String> subsectionIdsMapResult;
     private final List<CharRecursionNode> subsequentSubsections;
-    private static final Map<String, Map<CharMetaInfo, String>> idsMap;
-    private static final HashMap<String, String> codeMap;
+    private static Map<String, Map<CharMetaInfo, String>> idsMap;
+    private static HashMap<String, String> codeMap;
     private final List<String> fullCode;
     private final String normalCode;
 
     static {
         try {
             idsMap = CustomDataReader.getCustomIdsMap(customIdsJsonMapPath);
+            //HashMap<String, Map<CharMetaInfo, String>> supplement = customIdsSupplement;
+            //idsMap.putAll(supplement);
             codeMap = AYmethodInputData.arrayInspiredElemsV1;
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -45,6 +48,14 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
                 subsequentSubsections,
                 codeMap, this.originalInput);
         this.normalCode = AYMethodCodeGeneratorService.generateNormalCodeFromFullCode(fullCode);
+    }
+
+    public void setIdsMap(Map<String, Map<CharMetaInfo, String>> idsMap) {
+        this.idsMap = idsMap;
+    }
+
+    public void setCodeMap(HashMap<String, String> codeMap) {
+        this.codeMap = codeMap;
     }
 
     public List<String> getFullCode() {
