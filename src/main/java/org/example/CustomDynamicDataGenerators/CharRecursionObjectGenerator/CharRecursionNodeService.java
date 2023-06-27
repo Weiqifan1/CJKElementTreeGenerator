@@ -105,7 +105,7 @@ public class CharRecursionNodeService {
             updatedRecursionNode.add(recur);
         }else if (Objects.nonNull(lookupStr)) {
             //the lookup result is a char that has a novel breakupValue- this can be a split string
-            recur = new CharRecursionNode(lookupStr, "", customIds);
+            recur = new CharRecursionNode(lookupStr);
             updatedRecursionNode.add(recur);
         }else if (Objects.isNull(lookupStr)) {
             updatedRecursionNode = handleFinalSubsection(
@@ -146,7 +146,7 @@ public class CharRecursionNodeService {
         } else {
             List<CharRecursionNode> newlittlelist = currentBreakdonwUnicode.stream().map(each -> {
                 try {
-                    return new CharRecursionNode(each, "", customIds);
+                    return new CharRecursionNode(each);
                 } catch (DataFormatException e) {
                     throw new RuntimeException(e);
                 }
@@ -195,7 +195,7 @@ public class CharRecursionNodeService {
         for (String item: substringToPassOn) {
             CharRecursionNode lookup = updatedRecursion.get(item);
             if (Objects.isNull(lookup)) {
-                nodeList.add(new CharRecursionNode(item, "", customIds));
+                nodeList.add(new CharRecursionNode(item));
             }else {
                 nodeList.add(lookup);
             }
@@ -289,7 +289,7 @@ public class CharRecursionNodeService {
         boolean hasOtherCJKDesc = hasOtherCJKDesc(breakList.subList(1, breakList.size() - 1));
         if (!hasOtherCJKDesc) {
             for (int i = 0; i < breakList.size(); i++) {
-                CharRecursionNode first = new CharRecursionNode(breakList.get(i), metaBreakdown, customIds);
+                CharRecursionNode first = new CharRecursionNode(breakList.get(i));
                 result.add(first);
             }
         } else {

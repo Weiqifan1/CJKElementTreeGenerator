@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class AYmethodInputData {
 
-    private static final HashMap<String, String> arrayInspiredElemsV1 = new HashMap<>();
+    public static final HashMap<String, String> arrayInspiredElemsV1 = new HashMap<>();
     static {
         //theme: I must find a way to distinguis every element below, so they can be written individually.
         //Use a 2-letter system:

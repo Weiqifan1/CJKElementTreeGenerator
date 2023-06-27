@@ -1,30 +1,28 @@
 package org.example.ObjectTypes.GenericTypes;
 
-import org.example.CustomDataHandler.CustomDataReader;
-
 import java.util.List;
 import java.util.Map;
-import java.util.zip.DataFormatException;
-
-import static org.example.GlobalConstants.customIdsJsonMapPath;
 
 public abstract class CharRecursionNodeDecorator implements CharRecursionNodeInterface{
-    protected CharRecursionNodeInterface charRecursionNodeInterface;
 
+    protected CharRecursionNodeInterface decoratedCharRecursionNode;
 
+    public CharRecursionNodeDecorator(CharRecursionNodeInterface charRecursionNodeInterface) {
+        this.decoratedCharRecursionNode = charRecursionNodeInterface;
+    }
+
+    @Override
     public String getCurrentBreakdownSubsection() {
-        return this.charRecursionNodeInterface.getCurrentBreakdownSubsection();
+        return this.decoratedCharRecursionNode.getCurrentBreakdownSubsection();
     }
 
-    public String getCurrentMetaBreakdown() {
-        return this.charRecursionNodeInterface.getCurrentMetaBreakdown();
-    }
-
+    @Override
     public Map<CharMetaInfo, String> getSubsectionIdsMapResult() {
-        return this.charRecursionNodeInterface.getSubsectionIdsMapResult();
+        return this.decoratedCharRecursionNode.getSubsectionIdsMapResult();
     }
 
+    @Override
     public List<CharRecursionNode> getSubsequentSubsections() {
-        return this.charRecursionNodeInterface.getSubsequentSubsections();
+        return this.decoratedCharRecursionNode.getSubsequentSubsections();
     }
 }
