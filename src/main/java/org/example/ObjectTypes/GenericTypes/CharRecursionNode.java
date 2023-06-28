@@ -17,8 +17,9 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
     private final List<CharRecursionNode> subsequentSubsections;
     private static Map<String, Map<CharMetaInfo, String>> idsMap;
     private static HashMap<String, String> codeMap;
-    private final List<String> fullCode;
-    private final String normalCode;
+    //ful code is reversed by default
+    private final List<List<String>> fullCode;
+    private final List<String> normalCode;
 
     static {
         try {
@@ -57,11 +58,11 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
         this.codeMap = codeMap;
     }
 
-    public List<String> getFullCode() {
+    public List<List<String>> getFullCode() {
         return fullCode;
     }
 
-    public String getNormalCode() {
+    public List<String> getNormalCode() {
         return normalCode;
     }
 
@@ -99,18 +100,18 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
 
     public static class Builder {
         private String originalInput = null;
-        private String normalCode = "";
-        private List<String> fullCode = new ArrayList<>();
+        private List<String> normalCode = new ArrayList<>();
+        private List<List<String>> fullCode = new ArrayList<>();
         private String currentBreakdownSubsection = "";
         private Map<CharMetaInfo, String> subsectionIdsMapResult = new HashMap<>();
         private List<CharRecursionNode> subsequentSubsections = new ArrayList<>();
 
-        public Builder wihtNormalCode(String code) {
+        public Builder wihtNormalCode(List<String> code) {
             this.normalCode = code;
             return this;
         }
 
-        public Builder withFullCode(List<String> fullCode) {
+        public Builder withFullCode(List<List<String>> fullCode) {
             this.fullCode = fullCode;
             return this;
         }

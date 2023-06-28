@@ -10,36 +10,98 @@ import java.util.zip.DataFormatException;
 import static org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.CharRecursionNodeService.unicodeBreakup;
 
 public class AYMethodCodeGeneratorService {
-    public static List<String> generateFullCodeFromCodeMap(String currentBreakdownSubsection,
+    public static List<List<String>> generateFullCodeFromCodeMap(String currentBreakdownSubsection,
                                                            List<CharRecursionNode> subsequentSubsections,
                                                            HashMap<String, String> codeMap,
                                                            String originalInput) throws DataFormatException {
 
-        boolean currentIsSingleChar = unicodeBreakup(currentBreakdownSubsection).size() < 2;
-        boolean currentIsUnicode = isUnicodeDesc(currentBreakdownSubsection);
-        String codeMapResult = codeMap.get(currentBreakdownSubsection);
-        boolean allSubsectionsHasFullCode = allSubsectionsHasCodes(subsequentSubsections);
+        //split currentBreakdownSubsection
+        List<String> splitBreakdown = Arrays.stream(currentBreakdownSubsection.split("\\s+")).toList();
+        List<List<String>> result = new ArrayList<>();
 
-        if (currentIsUnicode) {
-            return List.of(currentBreakdownSubsection);
-        } else if (currentIsSingleChar
-                && subsequentSubsections.size() == 0
-                && Objects.nonNull(codeMapResult)) {
-            return List.of(codeMapResult);
-        } else if (currentIsSingleChar
-                && subsequentSubsections.size() == 0) {
-            //TODO: continue to implement missing codes
+        if ("勺".equals(currentBreakdownSubsection)) {
             String tes = "";
-        }else if (allSubsectionsHasFullCode) {
-            List<String> codesFromSubs = getCodesFromSubsections(subsequentSubsections);
-            return codesFromSubs;
-        }else {
+        }else if ("⿰白勺".equals(currentBreakdownSubsection)) {
+            String test = "";
+        }
+
+        boolean isUnicodeDesc = isUnicodeDesc(currentBreakdownSubsection);
+        String code = codeMap.get(currentBreakdownSubsection);
+        boolean isEndNode = Objects.isNull(subsequentSubsections) || subsequentSubsections.isEmpty();
+        if (isUnicodeDesc) {
+            //handle endnode that is unicode desciption character
+            List<String> temStr = new ArrayList<>();
+            temStr.add(currentBreakdownSubsection);
+            result.add(temStr);
+        } else if (isEndNode && Objects.nonNull(code)) {
+            //handle endnode that has a code in the codemap
+            List<String> temStr = new ArrayList<>();
+            temStr.add(code);
+            result.add(temStr);
+        }else if (isEndNode) {
+            //handle endnode that is not unicode description and doesnt have a code
+            //TODO: this will continually need to be handled
+            String test = "";
+            //throw new DataFormatException("missing codes from char: "+ originalInput);
+        } else if (splitBreakdown.size() == 1) {
+            //handle node that has nodes and is not a fork
+            List<List<String>> cecusiveList = recursiveNonForkNodeHandling(subsequentSubsections);
+            result = cecusiveList;
+        } else if (splitBreakdown.size() > 1) {
+            //handle node that has nodes and IS a fork
+            List<List<String>> cecusiveList = forkNodeHandling(subsequentSubsections);
+            result = cecusiveList;
+        }
+        if (Objects.isNull(result) || result.isEmpty()) {
             //throw new DataFormatException("missing codes from char: "+ originalInput);
         }
-        return new ArrayList<>();
+        return result;
+    }
 
-        //throw new DataFormatException("missing codes from char: "+ originalInput);
+    private static List<List<String>> forkNodeHandling(List<CharRecursionNode> subsequentSubsections) {
+        //handle node that has nodes and IS a fork
+        List<List<String>> result = new ArrayList<>();
+        for (CharRecursionNode recur : subsequentSubsections) {
+            List<List<String>> eachFullCode = recur.getFullCode();
+            result.addAll(eachFullCode);
+        }
 
+        return result;
+    }
+
+    private static List<List<String>> recursiveNonForkNodeHandling(List<CharRecursionNode> subsequentSubsections) {
+        //handle node that has nodes and is not a fork
+        //create a recursive function that takes the full codes from each CharRecursionNode
+        List<List<String>> result = new ArrayList<>();
+        result = nonForkFullCodeRecur(subsequentSubsections, result);
+
+        return result;
+    }
+
+    private static List<List<String>> nonForkFullCodeRecur(List<CharRecursionNode> subsequentSubsections, List<List<String>> result) {
+        if (subsequentSubsections.isEmpty()) {
+            return result;
+        }
+        //get head
+        List<List<String>> head = subsequentSubsections.get(0).getFullCode();
+        //get tail
+        List<CharRecursionNode> updatedSubsequentSubsection = subsequentSubsections.subList(1, subsequentSubsections.size());
+
+        List<List<String>> finishedResult = new ArrayList<>();
+        for (int i = 0; i < head.size(); i++) {
+            List<String> headStr = head.get(i);
+            for (int k = 0; k < result.size(); k++) {
+                List<String> resultStr = result.get(k);
+                List<String> tempStr = new ArrayList<>();
+                tempStr.addAll(headStr);
+                tempStr.addAll(resultStr);
+                finishedResult.add(tempStr);
+            }
+            if (result.isEmpty()) {
+                finishedResult.add(headStr);
+            }
+        }
+        return nonForkFullCodeRecur(updatedSubsequentSubsection, finishedResult);
     }
 
     private static boolean isUnicodeDesc(String currentBreakdownSubsection) {
@@ -48,48 +110,20 @@ public class AYMethodCodeGeneratorService {
                 .contains(currentBreakdownSubsection);
     }
 
-    private static List<String> getCodesFromSubsections(List<CharRecursionNode> subsequentSubsections) {
-        if (Objects.isNull(subsequentSubsections)) {
-            return new ArrayList<>();
+    public static List<String> generateNormalCodeFromFullCode(List<List<String>> fullCode) throws DataFormatException {
+        List<String> result = new ArrayList<>();
+        for (List<String> eachCode : fullCode) {
+            String code = normalCodeFromFullCode(eachCode);
+            result.add(code);
         }
-        //get full Codes from subsequent subsections
-        List<String> fullCode = subsequentSubsections.stream()
-                .map(recur -> recur.getFullCode())
-                .filter(Objects::nonNull)
-                .filter(code -> !code.isEmpty())
-                .flatMap(Collection::stream).collect(Collectors.toList());
-
-        //filter our unicode character
-        List<String> noNullAndNoUni = fullCode.stream()
-                .filter(Objects::nonNull)
-                .filter(code -> !code.isEmpty())
-                .filter(code -> !isUnicodeDesc(code)).toList();
-        // no code
-        if (noNullAndNoUni.size() == 0) {
-            return new ArrayList<>();
-        } else {
-            return noNullAndNoUni;
-        }
+        return result;
     }
 
-    private static boolean allSubsectionsHasCodes(List<CharRecursionNode> subsequentSubsections) {
-        boolean allSubsectionsHasFullCode = true;
-        for (CharRecursionNode node : subsequentSubsections) {
-            String current = node.getCurrentBreakdownSubsection();
-            List<String> code = node.getFullCode();
-            boolean isUnicode = isUnicodeDesc(current);
-            if (Objects.isNull(code)) {
-                return false;
-            }
-            if (!isUnicode && code.size() < 1) {
-                allSubsectionsHasFullCode = false;
-            }
-        }
-        return allSubsectionsHasFullCode;
-    }
+    private static String normalCodeFromFullCode(List<String> inputCode) throws DataFormatException {
+        //the full code is reversed by default. It needs to be corrected.
+        List<String> fullCode = new ArrayList<>(inputCode);
+        Collections.reverse(fullCode);
 
-    public static String generateNormalCodeFromFullCode(List<String> fullCode) throws DataFormatException {
-        String result = "";
         if (Objects.isNull(fullCode)) {
             return null;
         }
