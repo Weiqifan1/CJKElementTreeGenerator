@@ -16,7 +16,7 @@ public class customIdsSupplementMaps {
                 "CHAR":"凶",
                 "UNICODE":"U+51F6",
                 "JUNDAORDINAL":"1378"};*/
-        customIdsSupplement.put("白", "⿻㇀日");
+        customIdsSupplement.put("白", "⿻㇓日");
 
 //C:\intellijprojects\javaProjects\CJKElementTreeGenerator\src\main\java\org\example\Data\CustomData\customIdsJsonMap.txt
     }

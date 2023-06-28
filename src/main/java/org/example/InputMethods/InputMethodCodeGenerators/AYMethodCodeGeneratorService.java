@@ -16,9 +16,7 @@ public class AYMethodCodeGeneratorService {
                                                            String originalInput) throws DataFormatException {
 
         boolean currentIsSingleChar = unicodeBreakup(currentBreakdownSubsection).size() < 2;
-        boolean currentIsUnicode = Arrays.stream(CJKDescription.values())
-                .map(CJKD -> String.valueOf(CJKD.getUnicodeCharacter())).collect(Collectors.toSet())
-                .contains(currentBreakdownSubsection);
+        boolean currentIsUnicode = isUnicodeDesc(currentBreakdownSubsection);
         String codeMapResult = codeMap.get(currentBreakdownSubsection);
         boolean allSubsectionsHasFullCode = allSubsectionsHasCodes(subsequentSubsections);
 
@@ -38,23 +36,102 @@ public class AYMethodCodeGeneratorService {
         }else {
             //throw new DataFormatException("missing codes from char: "+ originalInput);
         }
+        return new ArrayList<>();
 
+        //throw new DataFormatException("missing codes from char: "+ originalInput);
 
-        return null;
+    }
+
+    private static boolean isUnicodeDesc(String currentBreakdownSubsection) {
+        return Arrays.stream(CJKDescription.values())
+                .map(CJKD -> String.valueOf(CJKD.getUnicodeCharacter())).collect(Collectors.toSet())
+                .contains(currentBreakdownSubsection);
     }
 
     private static List<String> getCodesFromSubsections(List<CharRecursionNode> subsequentSubsections) {
-        //TODO: write method
-        return null;
+        if (Objects.isNull(subsequentSubsections)) {
+            return new ArrayList<>();
+        }
+        //get full Codes from subsequent subsections
+        List<String> fullCode = subsequentSubsections.stream()
+                .map(recur -> recur.getFullCode())
+                .filter(Objects::nonNull)
+                .filter(code -> !code.isEmpty())
+                .flatMap(Collection::stream).collect(Collectors.toList());
+
+        //filter our unicode character
+        List<String> noNullAndNoUni = fullCode.stream()
+                .filter(Objects::nonNull)
+                .filter(code -> !code.isEmpty())
+                .filter(code -> !isUnicodeDesc(code)).toList();
+        // no code
+        if (noNullAndNoUni.size() == 0) {
+            return new ArrayList<>();
+        } else {
+            return noNullAndNoUni;
+        }
     }
 
     private static boolean allSubsectionsHasCodes(List<CharRecursionNode> subsequentSubsections) {
-        //TODO: write method
-        return false;
+        boolean allSubsectionsHasFullCode = true;
+        for (CharRecursionNode node : subsequentSubsections) {
+            String current = node.getCurrentBreakdownSubsection();
+            List<String> code = node.getFullCode();
+            boolean isUnicode = isUnicodeDesc(current);
+            if (Objects.isNull(code)) {
+                return false;
+            }
+            if (!isUnicode && code.size() < 1) {
+                allSubsectionsHasFullCode = false;
+            }
+        }
+        return allSubsectionsHasFullCode;
     }
 
-    public static String generateNormalCodeFromFullCode(List<String> fullCode) {
+    public static String generateNormalCodeFromFullCode(List<String> fullCode) throws DataFormatException {
+        String result = "";
+        if (Objects.isNull(fullCode)) {
+            return null;
+        }
+        //filter our unicode character
+        List<String> noNullAndNoUni = fullCode.stream()
+                .filter(Objects::nonNull)
+                .filter(code -> !code.isEmpty())
+                .filter(code -> !isUnicodeDesc(code)).toList();
+        // no code
+        if (noNullAndNoUni.size() == 0) {
+            return null;
+        }
+        //one code
+        if (noNullAndNoUni.size() == 1) {
+            return noNullAndNoUni.get(0);
+        }
+        //two codes
+        if (noNullAndNoUni.size() == 2) {
+            String oneone = noNullAndNoUni.get(0).substring(0, 1);
+            String twoone = noNullAndNoUni.get(1).substring(0,1);
+            String twotwo = noNullAndNoUni.get(1).substring(1);
+            String oneTwo = noNullAndNoUni.get(0).substring(1);
+            return oneone + twoone + twotwo + oneTwo;
+        }
 
-        return null;
+        //three codes
+        if (noNullAndNoUni.size() == 3) {
+            String oneone = noNullAndNoUni.get(0).substring(0, 1);
+            String twoone = noNullAndNoUni.get(1).substring(0,1);
+            String threeone = noNullAndNoUni.get(2).substring(0,1);
+            String threeTwo = noNullAndNoUni.get(2).substring(1);
+            return oneone + twoone + threeone + threeTwo;
+        }
+
+        //four+
+        if (noNullAndNoUni.size() > 3) {
+            String oneone = noNullAndNoUni.get(0).substring(0, 1);
+            String twoone = noNullAndNoUni.get(1).substring(0,1);
+            String threeone = noNullAndNoUni.get(2).substring(0,1);
+            String lastone = noNullAndNoUni.get(noNullAndNoUni.size()-1).substring(0,1);
+            return oneone + twoone + threeone + lastone;
+        }
+        throw new DataFormatException("unhandled normal code code case");
     }
 }
