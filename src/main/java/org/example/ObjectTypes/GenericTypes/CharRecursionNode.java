@@ -77,12 +77,24 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
         return subsequentSubsections;
     }
 
-    private CharRecursionNode(Builder builder) {
-        normalCode = builder.normalCode;
-        fullCode = builder.fullCode;
+    private CharRecursionNode(Builder builder) throws DataFormatException {
+        originalInput = builder.originalInput;
         currentBreakdownSubsection = builder.currentBreakdownSubsection;
         subsectionIdsMapResult = builder.subsectionIdsMapResult;
         subsequentSubsections = builder.subsequentSubsections;
+        if (Objects.nonNull(builder.fullCode) && !builder.fullCode.isEmpty()) {
+            fullCode = builder.fullCode;
+        } else {
+            fullCode = AYMethodCodeGeneratorService.generateFullCodeFromCodeMap(
+                    currentBreakdownSubsection,
+                    subsequentSubsections,
+                    codeMap, this.originalInput);
+        }
+        if (Objects.nonNull(builder.normalCode) && !builder.normalCode.isEmpty()) {
+            normalCode = builder.normalCode;
+        } else {
+            normalCode = AYMethodCodeGeneratorService.generateNormalCodeFromFullCode(fullCode);
+        }
     }
 
     public static class Builder {
@@ -117,7 +129,7 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
             return this;
         }
 
-        public CharRecursionNode build() {
+        public CharRecursionNode build() throws DataFormatException {
             return new CharRecursionNode(this);
         }
     }

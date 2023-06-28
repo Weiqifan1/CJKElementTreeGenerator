@@ -17,8 +17,6 @@ public class AYMethodCodeGeneratorServiceTest {
         //的
 
 
-
-
         CharRecursionNode obj = new CharRecursionNode("的", null);
 
         assertEquals(true, false);
