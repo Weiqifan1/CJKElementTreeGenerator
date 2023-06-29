@@ -270,7 +270,11 @@ public class CharRecursionNodeService {
     }
 
     private static boolean isOVERLAPDesc(String input) {
-        if (Objects.nonNull(input) && input.equals(CJKDescription.OVERLAP)) {
+        char first = input.charAt(0);
+        if (Objects.isNull(first)) {
+            return false;
+        }
+        if (first == CJKDescription.OVERLAP.getUnicodeCharacter()) {
             return true;
         }else {
             return false;

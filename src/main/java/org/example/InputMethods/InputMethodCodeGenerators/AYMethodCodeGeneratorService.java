@@ -42,7 +42,7 @@ public class AYMethodCodeGeneratorService {
             //handle endnode that is not unicode description and doesnt have a code
             //TODO: this will continually need to be handled
             String test = "";
-            //throw new DataFormatException("missing codes from char: "+ originalInput);
+            throw new DataFormatException("missing codes from char: "+ originalInput);
         } else if (splitBreakdown.size() == 1) {
             //handle node that has nodes and is not a fork
             List<List<String>> cecusiveList = recursiveNonForkNodeHandling(subsequentSubsections);
@@ -53,7 +53,7 @@ public class AYMethodCodeGeneratorService {
             result = cecusiveList;
         }
         if (Objects.isNull(result) || result.isEmpty()) {
-            //throw new DataFormatException("missing codes from char: "+ originalInput);
+            throw new DataFormatException("missing codes from char: "+ originalInput);
         }
         return result;
     }
@@ -65,7 +65,6 @@ public class AYMethodCodeGeneratorService {
             List<List<String>> eachFullCode = recur.getFullCode();
             result.addAll(eachFullCode);
         }
-
         return result;
     }
 
@@ -110,23 +109,30 @@ public class AYMethodCodeGeneratorService {
                 .contains(currentBreakdownSubsection);
     }
 
-    public static List<String> generateNormalCodeFromFullCode(List<List<String>> fullCode) throws DataFormatException {
+    public static List<String> generateNormalCodeFromFullCode(List<List<String>> fullCode, String originalInput) throws DataFormatException {
         List<String> result = new ArrayList<>();
         for (List<String> eachCode : fullCode) {
-            String code = normalCodeFromFullCode(eachCode);
+            String code = normalCodeFromFullCode(eachCode, originalInput);
             result.add(code);
         }
         return result;
     }
 
-    private static String normalCodeFromFullCode(List<String> inputCode) throws DataFormatException {
-        //the full code is reversed by default. It needs to be corrected.
+    private static String normalCodeFromFullCode(List<String> inputCode, String originalInput) throws DataFormatException {
+        if (Objects.isNull(inputCode)) {
+            return null;
+        }
+        //the full code is reversed by default. It needs to be corrected
         List<String> fullCode = new ArrayList<>(inputCode);
         Collections.reverse(fullCode);
 
-        if (Objects.isNull(fullCode)) {
-            return null;
-        }
+        //ids breakup doesnt follow strokeorder. At some point, it might be nessasary to change it here.
+
+        String resultingNormalCodes = extractFourCodes(fullCode);
+        return resultingNormalCodes;
+    }
+
+    private static String extractFourCodes(List<String> fullCode) throws DataFormatException {
         //filter our unicode character
         List<String> noNullAndNoUni = fullCode.stream()
                 .filter(Objects::nonNull)

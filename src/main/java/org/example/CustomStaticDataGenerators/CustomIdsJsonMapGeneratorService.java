@@ -12,6 +12,18 @@ import java.util.stream.Collectors;
 
 public class CustomIdsJsonMapGeneratorService {
 
+    public static List<String> orderedFrequencyList(Map<String, String> tzaiOrJundsMap) {
+        List<String> allValues = tzaiOrJundsMap.values().stream().toList();
+        List<List<String>> nested = new ArrayList<>();
+        for (String value : allValues) {
+            List<String> splitValue = Arrays.stream(value.split("\\s+")).toList();
+            nested.add(splitValue);
+        }
+        nested.sort(Comparator.comparingInt(list -> Integer.parseInt(list.get(1))));
+        List<String> onlyChars = nested.stream().map(charNumberPairs -> charNumberPairs.get(0)).toList();
+        return onlyChars;
+    }
+
     public static String generateIdsJsonData(List<String> lines, List<String> jundaLines, List<String> tzaiLines) {
         Map<String, String> jundaMap = CustomIdsJsonMapGeneratorService.generateJundaMap(jundaLines);
         Map<String, String> tzaiMap = CustomIdsJsonMapGeneratorService.generateTzaiMap(tzaiLines);

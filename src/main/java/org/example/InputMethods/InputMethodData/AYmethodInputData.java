@@ -31,6 +31,8 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("一", "aa"); //a=1
 
         //z
+        arrayInspiredElemsV1.put("厂", "zl"); //z=1+9 l=9
+        arrayInspiredElemsV1.put("𠂇", "zl"); //z=1+9 l=9
         arrayInspiredElemsV1.put("大", "z."); //z=1+8 .=9+8
 
         // Second column
@@ -42,6 +44,9 @@ public class AYmethodInputData {
 
         //s
         arrayInspiredElemsV1.put("乙", "ss"); //s=2
+        arrayInspiredElemsV1.put("㇟", "ss"); //s=2
+        arrayInspiredElemsV1.put("㇄", "ss"); //s=2
+        arrayInspiredElemsV1.put("㇗", "ss"); //s=2
         //arrayInputMap.put("几", ""); //s=
 
         //x
@@ -55,7 +60,9 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("門", "et"); //e=3+1 t=5+1
         arrayInspiredElemsV1.put("止", "eq"); //e=3+1 q=1+3
 
+
         //d
+        arrayInspiredElemsV1.put("丨", "dd");
         arrayInspiredElemsV1.put("山", "dw"); //d=3+3 w=2+3
         //arrayInputMap.put("片", "le"); //l=9+5 e=3+1
 
@@ -101,6 +108,7 @@ public class AYmethodInputData {
         //n
         arrayInspiredElemsV1.put("之", "nb"); //n=6+8 b=5+8
         arrayInspiredElemsV1.put("心", "nx"); //n=6+6 x=2+6
+        arrayInspiredElemsV1.put("辶", "nb"); //n=6+8 g=5+8
 
         //Seventh column
         //1	 2	3	4	5	6	7	8	9	0
@@ -125,6 +133,7 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("金", "iq"); //i=8+1 q=1+1    //arrayInputMap.put("半", ""); //i=8+3
 
         //k
+        arrayInspiredElemsV1.put("㇂", "kk");
         arrayInspiredElemsV1.put("八", "kk"); //k=8
         //arrayInputMap.put("人", ""); //l=9 k=8
         arrayInspiredElemsV1.put("入", "kl"); //k=8 l=9
@@ -138,9 +147,9 @@ public class AYmethodInputData {
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
         //o
         arrayInspiredElemsV1.put("手", "oq"); //o=9+3 q=1+1 //I take the last 2 strokes to be 1 and 3, not 4
+        arrayInspiredElemsV1.put("扌", "oq");
         arrayInspiredElemsV1.put("斤", "oo"); //o=9+3 o=9+1
         arrayInspiredElemsV1.put("臼", "oe"); //o=9+1 e=3+1
-
 
         //l
         //㇀
@@ -150,6 +159,7 @@ public class AYmethodInputData {
         //arrayInputMap.put("", "");
 
         //.
+        arrayInspiredElemsV1.put("𧘇", ".x"); //.=9+8 x=2+9
         //arrayInputMap.put("", "");
 
         //Tenth column
@@ -158,6 +168,7 @@ public class AYmethodInputData {
         //p
         arrayInspiredElemsV1.put("日", "pa"); //p=0+1 a=1
         arrayInspiredElemsV1.put("田", "pq"); //p=0+4 q=1+3
+        arrayInspiredElemsV1.put("罒", "/e"); // /=0+3 e=3+3
 
         //;
         arrayInspiredElemsV1.put("口", ";;"); //;=0
@@ -165,6 +176,7 @@ public class AYmethodInputData {
         // /
         arrayInspiredElemsV1.put("四", "/."); // /=0+8 .=9+8
         arrayInspiredElemsV1.put("虫", "/e"); // /=0+6 e=3+1
+
 
         //arrayInputMap.put("", "");
         //arrayInputMap.put("", "");

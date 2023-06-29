@@ -47,7 +47,7 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
                 currentBreakdownSubsection,
                 subsequentSubsections,
                 codeMap, this.originalInput);
-        this.normalCode = AYMethodCodeGeneratorService.generateNormalCodeFromFullCode(fullCode);
+        this.normalCode = AYMethodCodeGeneratorService.generateNormalCodeFromFullCode(fullCode, originalInput);
     }
 
     public void setIdsMap(Map<String, Map<CharMetaInfo, String>> idsMap) {
@@ -94,7 +94,7 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
         if (Objects.nonNull(builder.normalCode) && !builder.normalCode.isEmpty()) {
             normalCode = builder.normalCode;
         } else {
-            normalCode = AYMethodCodeGeneratorService.generateNormalCodeFromFullCode(fullCode);
+            normalCode = AYMethodCodeGeneratorService.generateNormalCodeFromFullCode(fullCode, originalInput);
         }
     }
 
