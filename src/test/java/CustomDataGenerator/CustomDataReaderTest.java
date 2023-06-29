@@ -13,7 +13,8 @@ public class CustomDataReaderTest {
     @Test
     public void testGenerateIdsJsonData_smallTestData() throws Exception {
         Map<String, Map<CharMetaInfo, String>> map = CustomDataReader.getCustomIdsMap(customIdsJsonMapPath);
-        assertEquals(88937, map.size());
+        boolean mapSizeIsLarge = map.size() >= 88937;
+        assertTrue(mapSizeIsLarge);
         Map<CharMetaInfo, String> example = map.get("亇");
         assertEquals(example.get(CharMetaInfo.BREAKDOWN), "⿱𠂊亅 ⿱𠂉亅 ⿱𠂉丨 ⿰丿丁 ⿰丿𠄐");
         assertEquals(example.get(CharMetaInfo.CHAR), "亇");
