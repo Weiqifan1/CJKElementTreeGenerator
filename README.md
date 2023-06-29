@@ -15,7 +15,10 @@ by the class CustomDataGeneratorMain
 
 The Project has 3 files that need ongoing work:
 org/example/InputMethods/InputMethodCodeGenerators/
-AYMethodCodeGeneratorService.java
+AYMethodCodeGeneratorService.java 
+
+in particular this function: generateFullCodeFromCodeMap
+
 org/example/InputMethods/InputMethodData/
 AYmethodInputData.java
 and
@@ -26,3 +29,6 @@ to work on them, run this test:
 CustomDataGenerator/
 AYMethodCodeGeneratorServiceTest.java
 --testCreateCodesForTziaAndJunda_TzaiAndJunda
+
+and uncomment the exception throws in the function:
+generateFullCodeFromCodeMap
