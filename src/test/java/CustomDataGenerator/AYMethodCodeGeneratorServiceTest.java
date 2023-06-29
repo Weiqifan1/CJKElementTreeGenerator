@@ -60,6 +60,9 @@ public class AYMethodCodeGeneratorServiceTest {
         List<List<String>> ordCharsAndCodes = new ArrayList<>();
 
         for (String CJKchar : sorted) {
+            if (CJKchar.equals("在")) {
+                String test = "";
+            }
             List<String> ordcharcode = new ArrayList<>();
             ordcharcode.add(String.valueOf(currentOrdinal));
             ordcharcode.add(CJKchar);

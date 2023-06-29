@@ -2,6 +2,9 @@ package org.example.InputMethods.InputMethodData;
 
 import java.util.HashMap;
 
+import static org.example.InputMethods.customIdsSupplementMaps.LEFTSLANT_SHARP;
+import static org.example.InputMethods.customIdsSupplementMaps.LEFTSlANT_SLEIGHT;
+
 public class AYmethodInputData {
 
     public static final HashMap<String, String> arrayInspiredElemsV1 = new HashMap<>();
@@ -60,14 +63,15 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("門", "et"); //e=3+1 t=5+1
         arrayInspiredElemsV1.put("止", "eq"); //e=3+1 q=1+3
 
-
         //d
         arrayInspiredElemsV1.put("丨", "dd");
+        arrayInspiredElemsV1.put("亅", "dd");
         arrayInspiredElemsV1.put("山", "dw"); //d=3+3 w=2+3
         //arrayInputMap.put("片", "le"); //l=9+5 e=3+1
 
         //c
         arrayInspiredElemsV1.put("小", "c."); //c=3+8 .=9+8
+        arrayInspiredElemsV1.put("龰", "cz"); //c=3+8 z=a+9
 
         //Forth coulmn
         //1	 2	3	4	5	6	7	8	9	0
@@ -86,6 +90,7 @@ public class AYmethodInputData {
         //1	 2	3	4	5	6	7	8	9	0
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
         //t
+        arrayInspiredElemsV1.put("乛", "tt"); //t=5
         arrayInspiredElemsV1.put("阝", "td"); //t=5+3 d=3
 
         //g
@@ -102,7 +107,7 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("立", "yz"); //y=6+1 z=1+8
 
         //h
-        arrayInspiredElemsV1.put("丶", "hh"); //h=6
+        arrayInspiredElemsV1.put("丶", "hh"); //h=6  // 兎 ⿱丿⿷⑤丶  匆 ⿻勿丶 ⿹勹⿻⿱丿丿丶
         arrayInspiredElemsV1.put("方", "hz"); //h=6+5 z=1+9
 
         //n
@@ -152,13 +157,15 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("臼", "oe"); //o=9+1 e=3+1
 
         //l
-        //㇀
-        arrayInspiredElemsV1.put("㇓", "ll"); //l=9  //eg. 白
+        arrayInspiredElemsV1.put(LEFTSLANT_SHARP, "ll"); //l=9
+        arrayInspiredElemsV1.put(LEFTSlANT_SLEIGHT, "ll"); //l=9
         arrayInspiredElemsV1.put("几", "lg"); //l=9+5 g=5
         arrayInspiredElemsV1.put("勹", "lg"); //l=9+5 g=5
         //arrayInputMap.put("", "");
 
         //.
+        arrayInspiredElemsV1.put("人", ".k"); //.=9+8 k=8
+        arrayInspiredElemsV1.put("亻", ".k"); //short 人
         arrayInspiredElemsV1.put("𧘇", ".x"); //.=9+8 x=2+9
         //arrayInputMap.put("", "");
 

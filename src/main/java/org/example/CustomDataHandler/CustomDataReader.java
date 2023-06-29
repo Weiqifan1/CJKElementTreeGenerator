@@ -7,9 +7,7 @@ import org.example.ObjectTypes.GenericTypes.CharMetaInfo;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.example.InputMethods.customIdsSupplementMaps.customIdsSupplement;
 
@@ -27,11 +25,23 @@ public class CustomDataReader {
         Map<String, Map<CharMetaInfo, String>> map = objectMapper.readValue(content, new TypeReference<Map<String, Map<CharMetaInfo, String>>>() {});
         HashMap<String, String> customIdsCodesMap = customIdsSupplement;
         List<String> keysFromCustom = customIdsCodesMap.keySet().stream().toList();
+        List<CharMetaInfo> metaInfoVals = List.of(org.example.ObjectTypes.GenericTypes.CharMetaInfo.values());
         for (String key : keysFromCustom) {
-            String addInfo = customIdsCodesMap.get(key);
-            Map<CharMetaInfo, String> subMap = map.get(key);
-            subMap.put(CharMetaInfo.BREAKDOWN, addInfo);
-            map.put(key, subMap);
+            if (Objects.nonNull(map.get(key))) {
+                String addInfo = customIdsCodesMap.get(key);
+                Map<CharMetaInfo, String> subMap = map.get(key);
+                subMap.put(CharMetaInfo.BREAKDOWN, addInfo);
+                map.put(key, subMap);
+            } else {
+                String addInfo = customIdsCodesMap.get(key);
+                Map<CharMetaInfo, String> subMap = new HashMap<>();
+                for (org.example.ObjectTypes.GenericTypes.CharMetaInfo info : metaInfoVals) {
+                    subMap.put(info, "");
+                }
+                subMap.put(CharMetaInfo.CHAR, key);
+                subMap.put(CharMetaInfo.BREAKDOWN, addInfo);
+                map.put(key, subMap);
+            }
         }
         return map;
     }
