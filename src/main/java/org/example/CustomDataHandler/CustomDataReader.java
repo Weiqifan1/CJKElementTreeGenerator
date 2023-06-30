@@ -9,8 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
-import static org.example.InputMethods.customIdsSupplementMaps.customIdsSupplement;
-
+import static org.example.InputMethods.CustomIdsSupplementMaps.customIdsSupplement;
 
 public class CustomDataReader {
     public static Map<String, Map<CharMetaInfo, String>> getCustomIdsMap(String customIdsPath) throws Exception {

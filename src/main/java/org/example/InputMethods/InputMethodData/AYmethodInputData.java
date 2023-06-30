@@ -2,8 +2,8 @@ package org.example.InputMethods.InputMethodData;
 
 import java.util.HashMap;
 
-import static org.example.InputMethods.customIdsSupplementMaps.LEFTSLANT_SHARP;
-import static org.example.InputMethods.customIdsSupplementMaps.LEFTSlANT_SLEIGHT;
+import static org.example.InputMethods.CustomIdsSupplementMaps.LEFTSLANT_SHARP;
+import static org.example.InputMethods.CustomIdsSupplementMaps.LEFTSlANT_SLEIGHT;
 
 public class AYmethodInputData {
 
@@ -53,6 +53,7 @@ public class AYmethodInputData {
         //arrayInputMap.put("几", ""); //s=
 
         //x
+        arrayInspiredElemsV1.put("厶", "xs"); //x=2+6 s=6
         //arrayInputMap.put("風", ""); //
         //arrayInputMap.put("", "");
 
@@ -62,6 +63,7 @@ public class AYmethodInputData {
         //e
         arrayInspiredElemsV1.put("門", "et"); //e=3+1 t=5+1
         arrayInspiredElemsV1.put("止", "eq"); //e=3+1 q=1+3
+        arrayInspiredElemsV1.put("刂", "ed"); //e=3+3 d=3
 
         //d
         arrayInspiredElemsV1.put("丨", "dd");
@@ -91,6 +93,7 @@ public class AYmethodInputData {
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
         //t
         arrayInspiredElemsV1.put("乛", "tt"); //t=5
+        arrayInspiredElemsV1.put("㇆", "tt");
         arrayInspiredElemsV1.put("阝", "td"); //t=5+3 d=3
 
         //g
@@ -136,9 +139,11 @@ public class AYmethodInputData {
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
         //i
         arrayInspiredElemsV1.put("金", "iq"); //i=8+1 q=1+1    //arrayInputMap.put("半", ""); //i=8+3
+        arrayInspiredElemsV1.put("冫", "ik"); //i=6+1 k=1    ?  資
 
         //k
         arrayInspiredElemsV1.put("㇂", "kk");
+        arrayInspiredElemsV1.put("乀", "kk"); //k=8
         arrayInspiredElemsV1.put("八", "kk"); //k=8
         //arrayInputMap.put("人", ""); //l=9 k=8
         arrayInspiredElemsV1.put("入", "kl"); //k=8 l=9
@@ -166,6 +171,8 @@ public class AYmethodInputData {
         //.
         arrayInspiredElemsV1.put("人", ".k"); //.=9+8 k=8
         arrayInspiredElemsV1.put("亻", ".k"); //short 人
+        //⿱亠乂
+        arrayInspiredElemsV1.put("乂", ".k"); //ex. 文
         arrayInspiredElemsV1.put("𧘇", ".x"); //.=9+8 x=2+9
         //arrayInputMap.put("", "");
 

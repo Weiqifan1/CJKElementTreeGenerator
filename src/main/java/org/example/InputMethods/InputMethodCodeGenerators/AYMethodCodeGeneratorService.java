@@ -19,7 +19,7 @@ public class AYMethodCodeGeneratorService {
         List<String> splitBreakdown = Arrays.stream(currentBreakdownSubsection.split("\\s+")).toList();
         List<List<String>> result = new ArrayList<>();
 
-        if ("勺".equals(currentBreakdownSubsection)) {
+        if ("乂".equals(currentBreakdownSubsection)) {
             String tes = "";
         }else if ("⿰白勺".equals(currentBreakdownSubsection)) {
             String test = "";
@@ -32,6 +32,11 @@ public class AYMethodCodeGeneratorService {
             //handle endnode that is unicode desciption character
             List<String> temStr = new ArrayList<>();
             temStr.add(currentBreakdownSubsection);
+            result.add(temStr);
+        } else if (!isEndNode && Objects.nonNull(code)) {
+            //handle node that is not an endnode but has a code in the codemap
+            List<String> temStr = new ArrayList<>();
+            temStr.add(code);
             result.add(temStr);
         } else if (isEndNode && Objects.nonNull(code)) {
             //handle endnode that has a code in the codemap

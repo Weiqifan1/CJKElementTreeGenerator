@@ -5,7 +5,7 @@ import org.example.ObjectTypes.GenericTypes.CharMetaInfo;
 import java.util.HashMap;
 import java.util.Map;
 
-public class customIdsSupplementMaps {
+public class CustomIdsSupplementMaps {
 
     private Map<CharMetaInfo, String> tempMap = new HashMap<>();
 
@@ -28,9 +28,11 @@ public class customIdsSupplementMaps {
         customIdsSupplement.put("我", "⿻"+LEFTSLANT_SHARP+"⿻扌⿻㇂⿻"+LEFTSLANT_SHARP+"丶");
         customIdsSupplement.put("尢", "⿸𠂇㇟");
         customIdsSupplement.put("卜", "⿻丨丶");
+        customIdsSupplement.put("也", "⿻㇆⿻丨㇟");//?
         //customIdsSupplement.put("丆", "⿱㇐㇓");
         customIdsSupplement.put("不", "⿱一" +"𒀀");
         customIdsSupplement.put("在", "⿸𒀁土");
+        //customIdsSupplement.put("欠", "⿵");
         //customIdsSupplement.put("人", "⿻"+LEFTSLANT_SHARP+"㇂");
         //customIdsSupplement.put("不", "⿸丆卜");
         //customIdsSupplement.put(, "");
