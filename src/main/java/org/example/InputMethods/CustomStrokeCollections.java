@@ -13,7 +13,7 @@ public enum CustomStrokeCollections {
     // eg: 㢤 ⿹⿶弋十⿰丿𠃌  㻄 ⿰王⿱丿𤴓  䇖  ⿱竹⿹勹丿  万  ⿱一⿰丿𠃌   儿  ⿰丿乚
     // 䖝 ⿱丿虫 ⿱丿⿷虫丿  䘮 ⿱⿻土从⿰𠄌⿺乀丿  䣨 ⿰酉⿻丿七  丆 ⿱一丿  丌  ⿱一⿰丿丨
 
-    //BENTDOWN_LARGE('𠃌'),
+    //BENTTOPHOOK_LARGE('𠃌'),
     BENTBUTHOOK_LARGE("乚"),
 
     //Non unicode stroke collections
