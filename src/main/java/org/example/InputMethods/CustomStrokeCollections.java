@@ -4,6 +4,8 @@ import java.util.*;
 import java.util.zip.DataFormatException;
 
 import static org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.CharRecursionNodeService.unicodeBreakup;
+import static org.example.ObjectTypes.GenericTypes.CJKDescription.ENCTOPRIGHT;
+import static org.example.ObjectTypes.GenericTypes.CJKDescription.OVERLAP;
 
 public enum CustomStrokeCollections {
 
@@ -22,8 +24,9 @@ public enum CustomStrokeCollections {
 
     //Non unicode stroke collections
     //I will use non CJK codepoints as the string key
+    OUTTOPRIGHT2(OVERLAP.charVal()+"一"+"亅", false), //outer side of 寸
     OLAP3DOWNFORk("⿸"+LEFTSLANT_SHARP.val()+"卜", false),  //buttom side of 不
-    OUTTOPLEFT3("⿻𠂇丨", false),
+    OUTTOPLEFT3("⿻𠂇丨", false),//outer side of 在
         //customIdsSupplement.put("𒀀", "⿸"+LEFTSLANT_SHARP+"卜"); //buttom side of 不
         //customIdsSupplement.put("𒀁", "⿻𠂇丨"); //outer side of 在
     ;

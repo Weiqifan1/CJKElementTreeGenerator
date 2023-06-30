@@ -97,6 +97,7 @@ public class AYmethodInputData {
 
         //b
         arrayInspiredElemsV1.put("刀", "bl"); //b=5+9 l=9
+        arrayInspiredElemsV1.put("又", "bk"); //b=5+8 k=8又 对
 
         //Sixth column
         //1	 2	3	4	5	6	7	8	9	0
@@ -124,6 +125,9 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("目", "uq"); //u=0+1  q=1+1
 
         //j
+        arrayInspiredElemsV1.put("冖", "jj"); //j=5 冖
+        arrayInspiredElemsV1.put("冂", "jj"); //j=5 冂 from 用
+        arrayInspiredElemsV1.put("⺆", "jj"); //j=5 ⺆ from 能
         //arrayInputMap.put("目", "uq"); u=7+1 q=1+1
 
         //m
@@ -159,6 +163,7 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("扌", "oq");
         arrayInspiredElemsV1.put("斤", "oo"); //o=9+3 o=9+1
         arrayInspiredElemsV1.put("臼", "oe"); //o=9+1 e=3+1
+        arrayInspiredElemsV1.put("𦥑", "oe"); //o=9+1 e=3+1
 
         //l
         arrayInspiredElemsV1.put(LEFTSLANT_HORI.val(), "ll"); //l=9 "㇀"
@@ -172,6 +177,7 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("人", ".k"); //.=9+8 k=8
         arrayInspiredElemsV1.put("亻", ".k"); //short 人
         arrayInspiredElemsV1.put("乂", ".k"); //ex. 文
+        arrayInspiredElemsV1.put("㐅", ".k"); //ex. 學
         arrayInspiredElemsV1.put("𧘇", ".x"); //.=9+8 x=2+9
         //arrayInputMap.put("", "");
 

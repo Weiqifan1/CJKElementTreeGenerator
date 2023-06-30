@@ -9,6 +9,7 @@ import java.util.zip.DataFormatException;
 
 import static org.example.InputMethods.CustomStrokeCollections.*;
 import static org.example.ObjectTypes.GenericTypes.CJKDescription.ENCIRTOP;
+import static org.example.ObjectTypes.GenericTypes.CJKDescription.ENCTOPRIGHT;
 
 public class CustomIdsSupplementMaps {
 
@@ -27,7 +28,8 @@ public class CustomIdsSupplementMaps {
             customIdsSupplement.put("也", "⿻"+BENTTOPHOOK_LARGE.val()+"⿻丨"+BENTBUTHOOK_LARGE.val());//?
             customIdsSupplement.put("不", "⿱一" +OLAP3DOWNFORk.key());
             customIdsSupplement.put("在", "⿸"+OUTTOPLEFT3.key()+"土");
-            customIdsSupplement.put("月", ENCIRTOP.charVal()+"⿻"+LEFTSLANT_SHARP.val()+BENTTOPHOOK_LARGE.val()+"⿱一一");
+            //customIdsSupplement.put("月", ENCIRTOP.charVal()+"⿻"+LEFTSLANT_SHARP.val()+BENTTOPHOOK_LARGE.val()+"⿱一一");
+            customIdsSupplement.put("月", ENCIRTOP.charVal()+"冂"+"⿱一一"); //月 shoud have the same enclosure as 用
             customIdsSupplement.put("门", "⿻丶⿻丨"+BENTTOPHOOK_LARGE.val());
             customIdsSupplement.put("以", "⿻"+BENTBUTHOOK_LARGE.val()+"⿻丶人");
             customIdsSupplement.put("来", "⿻木⿻丷一");
@@ -38,6 +40,11 @@ public class CustomIdsSupplementMaps {
             customIdsSupplement.put("子", "⿻"+BENTTOPHOOK_LARGE.val()+"亅"+"一");
             customIdsSupplement.put("為", "⿻"+"丶"+"⿻"+LEFTSLANT_SHARP.val()+"⿻"
                     +BENTTOPHOOK_LARGE.val()+"⿻"+BENTTOPHOOK_LARGE.val()+"⿻"+BENTTOPHOOK_LARGE.val()+"灬");//為
+            customIdsSupplement.put("臼", "⿻"+LEFTSLANT_HORI.val()+"⿻"+"丨"+"⿻"+"一"+"⿻"+BENTTOPHOOK_LARGE.val()+"⿻"+"一"+"一");
+            customIdsSupplement.put("𦥑", "⿻"+LEFTSLANT_HORI.val()+"⿻"+"丨"+"⿻"+"一"+"⿻"+"一"+"⿻"+BENTTOPHOOK_LARGE.val()+"⿻"+"一"+"一");
+            customIdsSupplement.put("寸", ENCTOPRIGHT.charVal()+OUTTOPRIGHT2.val()+"丶");
+            customIdsSupplement.put("凵", "⿻"+BENTBUTHOOK_LARGE.val()+"丨"); //出
+            //TODO: break down Char 生
 
             //Custom String Replacements
             customIdsSupplement.put(CustomStrokeCollections.OLAP3DOWNFORk.key(), OLAP3DOWNFORk.val()); //buttom side of 不
