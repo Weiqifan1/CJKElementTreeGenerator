@@ -1,8 +1,8 @@
 package org.example.InputMethods.InputMethodData;
 
 import java.util.HashMap;
-import static org.example.InputMethods.CustomStrokeCollections.LEFTSLANT_SHARP;
-import static org.example.InputMethods.CustomStrokeCollections.LEFTSlANT_SLEIGHT;
+
+import static org.example.InputMethods.CustomStrokeCollections.*;
 
 public class AYmethodInputData {
 
@@ -46,9 +46,7 @@ public class AYmethodInputData {
 
         //s
         arrayInspiredElemsV1.put("乙", "ss"); //s=2
-        arrayInspiredElemsV1.put("㇟", "ss"); //s=2
-        arrayInspiredElemsV1.put("㇄", "ss"); //s=2
-        arrayInspiredElemsV1.put("㇗", "ss"); //s=2
+        arrayInspiredElemsV1.put(BENTBUTHOOK_LARGE.val(), "ss"); //s=2
         //arrayInputMap.put("几", ""); //s=
 
         //x
@@ -92,7 +90,7 @@ public class AYmethodInputData {
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
         //t
         arrayInspiredElemsV1.put("乛", "tt"); //t=5
-        arrayInspiredElemsV1.put("㇆", "tt");
+        arrayInspiredElemsV1.put("𠃌", "tt"); //t=5 有万令
         arrayInspiredElemsV1.put("阝", "td"); //t=5+3 d=3
 
         //g
@@ -106,6 +104,7 @@ public class AYmethodInputData {
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
         //y
         arrayInspiredElemsV1.put("言", "yq"); //y=6+1 q=1+1
+        arrayInspiredElemsV1.put("讠", "yq"); //言 short
         arrayInspiredElemsV1.put("立", "yz"); //y=6+1 z=1+8
 
         //h
@@ -116,13 +115,14 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("之", "nb"); //n=6+8 b=5+8
         arrayInspiredElemsV1.put("心", "nx"); //n=6+6 x=2+6
         arrayInspiredElemsV1.put("辶", "nb"); //n=6+8 g=5+8
+        arrayInspiredElemsV1.put("灬", "nn"); //n=6+6 n=6+6
 
         //Seventh column
         //1	 2	3	4	5	6	7	8	9	0
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
         //u
-        arrayInspiredElemsV1.put("月", "uq"); //u=7+1 q=1+1
         arrayInspiredElemsV1.put("皿", "ue"); //u=7+1 e=3+3
+        arrayInspiredElemsV1.put("目", "uq"); //u=0+1  q=1+1
 
         //j
         //arrayInputMap.put("目", "uq"); u=7+1 q=1+1
@@ -144,6 +144,7 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("㇂", "kk");
         arrayInspiredElemsV1.put("乀", "kk"); //k=8
         arrayInspiredElemsV1.put("八", "kk"); //k=8
+        arrayInspiredElemsV1.put("丷", "kk"); //丷 --八 variation
         //arrayInputMap.put("人", ""); //l=9 k=8
         arrayInspiredElemsV1.put("入", "kl"); //k=8 l=9
 
@@ -155,7 +156,7 @@ public class AYmethodInputData {
         //1	 2	3	4	5	6	7	8	9	0
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
         //o
-        arrayInspiredElemsV1.put("手", "oq"); //o=9+3 q=1+1 //I take the last 2 strokes to be 1 and 3, not 4
+        arrayInspiredElemsV1.put("手", "oq"); //o=9+3 q=1+3 //I take the last 2 strokes to be 1 and 3, not 4
         arrayInspiredElemsV1.put("扌", "oq");
         arrayInspiredElemsV1.put("斤", "oo"); //o=9+3 o=9+1
         arrayInspiredElemsV1.put("臼", "oe"); //o=9+1 e=3+1
@@ -170,7 +171,6 @@ public class AYmethodInputData {
         //.
         arrayInspiredElemsV1.put("人", ".k"); //.=9+8 k=8
         arrayInspiredElemsV1.put("亻", ".k"); //short 人
-        //⿱亠乂
         arrayInspiredElemsV1.put("乂", ".k"); //ex. 文
         arrayInspiredElemsV1.put("𧘇", ".x"); //.=9+8 x=2+9
         //arrayInputMap.put("", "");
@@ -185,6 +185,7 @@ public class AYmethodInputData {
 
         //;
         arrayInspiredElemsV1.put("口", ";;"); //;=0
+        arrayInspiredElemsV1.put("囗", ";;"); //;=0
 
         // /
         arrayInspiredElemsV1.put("四", "/."); // /=0+8 .=9+8

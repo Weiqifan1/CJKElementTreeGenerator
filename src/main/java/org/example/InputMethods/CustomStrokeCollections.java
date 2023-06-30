@@ -12,12 +12,17 @@ public enum CustomStrokeCollections {
     LEFTSLANT_SHARP('丿'),
     // eg: 㢤 ⿹⿶弋十⿰丿𠃌  㻄 ⿰王⿱丿𤴓  䇖  ⿱竹⿹勹丿  万  ⿱一⿰丿𠃌   儿  ⿰丿乚
     // 䖝 ⿱丿虫 ⿱丿⿷虫丿  䘮 ⿱⿻土从⿰𠄌⿺乀丿  䣨 ⿰酉⿻丿七  丆 ⿱一丿  丌  ⿱一⿰丿丨
-    OLAP3DOWNFORk("⿸"+LEFTSLANT_SHARP.val()+"卜"),  //buttom side of 不
-    OUTTOPLEFT3("⿻𠂇丨");
-        //customIdsSupplement.put("𒀀", "⿸"+LEFTSLANT_SHARP+"卜"); //buttom side of 不
-        //customIdsSupplement.put("𒀁", "⿻𠂇丨"); //outer side of 在
+
+    //BENTDOWN_LARGE('𠃌'),
+    BENTBUTHOOK_LARGE("乚"),
+
     //Non unicode stroke collections
     //I will use non CJK codepoints as the string key
+    OLAP3DOWNFORk("⿸"+LEFTSLANT_SHARP.val()+"卜"),  //buttom side of 不
+    OUTTOPLEFT3("⿻𠂇丨"),
+        //customIdsSupplement.put("𒀀", "⿸"+LEFTSLANT_SHARP+"卜"); //buttom side of 不
+        //customIdsSupplement.put("𒀁", "⿻𠂇丨"); //outer side of 在
+    ;
 
     //private final char key;
     private final String val;

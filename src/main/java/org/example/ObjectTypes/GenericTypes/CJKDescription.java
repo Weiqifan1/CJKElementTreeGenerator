@@ -25,6 +25,10 @@ public enum CJKDescription {
         return unicodeCharacter;
     }
 
+    public String charVal() {
+        return String.valueOf(unicodeCharacter);
+    }
+
     @Override
     public String toString() {
         return name().toLowerCase();
