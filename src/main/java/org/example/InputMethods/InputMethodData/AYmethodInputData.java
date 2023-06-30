@@ -29,7 +29,6 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("車", "qd"); //q=1+3 d=3+5
 
         //a
-        arrayInspiredElemsV1.put("㇀", "aa"); //a=1
         arrayInspiredElemsV1.put("一", "aa"); //a=1
 
         //z
@@ -89,11 +88,11 @@ public class AYmethodInputData {
         //1	 2	3	4	5	6	7	8	9	0
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
         //t
-        arrayInspiredElemsV1.put("乛", "tt"); //t=5
-        arrayInspiredElemsV1.put("𠃌", "tt"); //t=5 有万令
         arrayInspiredElemsV1.put("阝", "td"); //t=5+3 d=3
 
         //g
+        arrayInspiredElemsV1.put("乛", "gg"); //t=5
+        arrayInspiredElemsV1.put(BENTTOPHOOK_LARGE.val(), "gg"); //"𠃌" g=5 有万令
         //arrayInputMap.put("", "");
 
         //b
@@ -162,8 +161,9 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("臼", "oe"); //o=9+1 e=3+1
 
         //l
+        arrayInspiredElemsV1.put(LEFTSLANT_HORI.val(), "ll"); //l=9 "㇀"
         arrayInspiredElemsV1.put(LEFTSLANT_SHARP.val(), "ll"); //l=9
-        arrayInspiredElemsV1.put(LEFTSlANT_SLEIGHT.val(), "ll"); //l=9
+        arrayInspiredElemsV1.put(LEFTSlANT_VERT.val(), "ll"); //l=9
         arrayInspiredElemsV1.put("几", "lg"); //l=9+5 g=5
         arrayInspiredElemsV1.put("勹", "lg"); //l=9+5 g=5
         //arrayInputMap.put("", "");

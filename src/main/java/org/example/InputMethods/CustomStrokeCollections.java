@@ -1,44 +1,49 @@
 package org.example.InputMethods;
 
 import java.util.*;
-import java.util.stream.Collectors;
 import java.util.zip.DataFormatException;
+
+import static org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.CharRecursionNodeService.unicodeBreakup;
 
 public enum CustomStrokeCollections {
 
     //Single Stroke Aliases
-    LEFTSlANT_SLEIGHT('㇓'),
+    LEFTSlANT_VERT("㇓", true),
     //eg: 㷗 ⿱⿲㇓㠯巳火  𠗎 ⿰⿰冫㇓全  𥪐 ⿱立⿰⿰冫㇓⿺乚仌
-    LEFTSLANT_SHARP('丿'),
+    LEFTSLANT_SHARP("丿", true),
     // eg: 㢤 ⿹⿶弋十⿰丿𠃌  㻄 ⿰王⿱丿𤴓  䇖  ⿱竹⿹勹丿  万  ⿱一⿰丿𠃌   儿  ⿰丿乚
     // 䖝 ⿱丿虫 ⿱丿⿷虫丿  䘮 ⿱⿻土从⿰𠄌⿺乀丿  䣨 ⿰酉⿻丿七  丆 ⿱一丿  丌  ⿱一⿰丿丨
 
-    //BENTTOPHOOK_LARGE('𠃌'),
-    BENTBUTHOOK_LARGE("乚"),
+    LEFTSLANT_HORI("㇀", true),
+    //刁 ⿹𠃌㇀    七	⿻㇀乚   𢏻	⿰⿹⿱𠂊③㇀⿹弓⿱丿丿
+
+    BENTTOPHOOK_LARGE("𠃌", true),
+    BENTBUTHOOK_LARGE("乚", true),
 
     //Non unicode stroke collections
     //I will use non CJK codepoints as the string key
-    OLAP3DOWNFORk("⿸"+LEFTSLANT_SHARP.val()+"卜"),  //buttom side of 不
-    OUTTOPLEFT3("⿻𠂇丨"),
+    OLAP3DOWNFORk("⿸"+LEFTSLANT_SHARP.val()+"卜", false),  //buttom side of 不
+    OUTTOPLEFT3("⿻𠂇丨", false),
         //customIdsSupplement.put("𒀀", "⿸"+LEFTSLANT_SHARP+"卜"); //buttom side of 不
         //customIdsSupplement.put("𒀁", "⿻𠂇丨"); //outer side of 在
     ;
 
-    //private final char key;
     private final String val;
 
-    CustomStrokeCollections(char value) {
-        //For single strokes that needs an alias,
-        //the key and the value must be the same
-        //this.key = (char) 57344;
-        this.val = String.valueOf(value);
-    }
-
-    CustomStrokeCollections(String value) {
-        //For longer sequences, the key needs to be generated
-        //from a static list of non-CJK unicode characters
-        //this.key = (char) 57344;
-        this.val = validateValue(value);
+    CustomStrokeCollections(String value, boolean singleStroke) {
+        if (singleStroke) {
+            //For single strokes that needs an alias,
+            //the key and the value must be the same
+            //this.key = (char) 57344;
+            //The stroke might be from the supplementary plane, so the function must handle multibyte characters.
+            List<String> breakUpList = unicodeBreakup(value);
+            this.val = breakUpList.get(0);
+        }else {
+            //For longer sequences, the key needs to be generated
+            //from a static list of non-CJK unicode characters
+            //this.key = (char) 57344;
+            this.val = validateValue(value);
+        }
     }
 
     private char generateKey() throws DataFormatException {
