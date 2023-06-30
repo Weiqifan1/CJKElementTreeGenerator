@@ -1,9 +1,8 @@
 package org.example.InputMethods.InputMethodData;
 
 import java.util.HashMap;
-
-import static org.example.InputMethods.CustomIdsSupplementMaps.LEFTSLANT_SHARP;
-import static org.example.InputMethods.CustomIdsSupplementMaps.LEFTSlANT_SLEIGHT;
+import static org.example.InputMethods.CustomStrokeCollections.LEFTSLANT_SHARP;
+import static org.example.InputMethods.CustomStrokeCollections.LEFTSlANT_SLEIGHT;
 
 public class AYmethodInputData {
 
@@ -162,8 +161,8 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("臼", "oe"); //o=9+1 e=3+1
 
         //l
-        arrayInspiredElemsV1.put(LEFTSLANT_SHARP, "ll"); //l=9
-        arrayInspiredElemsV1.put(LEFTSlANT_SLEIGHT, "ll"); //l=9
+        arrayInspiredElemsV1.put(LEFTSLANT_SHARP.val(), "ll"); //l=9
+        arrayInspiredElemsV1.put(LEFTSlANT_SLEIGHT.val(), "ll"); //l=9
         arrayInspiredElemsV1.put("几", "lg"); //l=9+5 g=5
         arrayInspiredElemsV1.put("勹", "lg"); //l=9+5 g=5
         //arrayInputMap.put("", "");

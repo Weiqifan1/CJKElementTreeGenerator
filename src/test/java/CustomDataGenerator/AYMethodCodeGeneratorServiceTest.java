@@ -16,37 +16,6 @@ import static org.junit.Assert.assertEquals;
 
 public class AYMethodCodeGeneratorServiceTest {
 
-    private List<String> getSortedCharList() {
-        List<String> jundaLines = CustomIdsJsonMapGeneratorService.getFileLinesFromPath(Paths.get(publicJundaFilePath));
-        List<String> tzaiLines = CustomIdsJsonMapGeneratorService.getFileLinesFromPath(Paths.get(publicTzaiFilePath));
-        Map<String, String> jundaMap = CustomIdsJsonMapGeneratorService.generateJundaMap(jundaLines);
-        Map<String, String> tzaiMap = CustomIdsJsonMapGeneratorService.generateTzaiMap(tzaiLines);
-        List<String> tzai = orderedFrequencyList(tzaiMap);
-        List<String> junda = orderedFrequencyList(jundaMap);
-
-        int tzailengt = tzai.size();
-        int jundalength = junda.size();
-        int longest = tzailengt > jundalength ? tzailengt : jundalength;
-
-        List<String> set = new ArrayList<>();
-
-        for (int i = 0; i < longest; i++) {
-            if (i < tzailengt) {
-                String tzaiChar = tzai.get(i).trim();
-                if (!set.contains(tzaiChar)) {
-                    set.add(tzaiChar);
-                }
-            }
-            if (i < jundalength) {
-                String jundaChar = junda.get(i).trim();
-                if (!set.contains(jundaChar)) {
-                    set.add(jundaChar);
-                }
-            }
-        }
-        return set;
-    }
-
     @Test
     public void testCreateCodesForTziaAndJunda_TzaiAndJunda(){
         List<String> jundaLines = CustomIdsJsonMapGeneratorService.getFileLinesFromPath(Paths.get(publicJundaFilePath));
@@ -93,7 +62,7 @@ public class AYMethodCodeGeneratorServiceTest {
         //的 1
         CharRecursionNode de1 = new CharRecursionNode("的", null);
         assertEquals(Set.of("lplh", "lpla"), de1.getNormalCode().stream().collect(Collectors.toSet()));
-        //TODO: implement the test
+
         //我 4
         CharRecursionNode wo4 = new CharRecursionNode("我", null);
         assertEquals(Set.of("lokh"), wo4.getNormalCode().stream().collect(Collectors.toSet()));
@@ -106,7 +75,37 @@ public class AYMethodCodeGeneratorServiceTest {
         //n represent the 辶 stroke. For now, I will follow ids order, not stroke order for whole characters.
         //the codes for elements will still follow strokeorder, except for the normal array rules.
         assertEquals(Set.of("n/a."), hai56.getNormalCode().stream().collect(Collectors.toSet()));
+    }
 
+    private List<String> getSortedCharList() {
+        List<String> jundaLines = CustomIdsJsonMapGeneratorService.getFileLinesFromPath(Paths.get(publicJundaFilePath));
+        List<String> tzaiLines = CustomIdsJsonMapGeneratorService.getFileLinesFromPath(Paths.get(publicTzaiFilePath));
+        Map<String, String> jundaMap = CustomIdsJsonMapGeneratorService.generateJundaMap(jundaLines);
+        Map<String, String> tzaiMap = CustomIdsJsonMapGeneratorService.generateTzaiMap(tzaiLines);
+        List<String> tzai = orderedFrequencyList(tzaiMap);
+        List<String> junda = orderedFrequencyList(jundaMap);
+
+        int tzailengt = tzai.size();
+        int jundalength = junda.size();
+        int longest = tzailengt > jundalength ? tzailengt : jundalength;
+
+        List<String> set = new ArrayList<>();
+
+        for (int i = 0; i < longest; i++) {
+            if (i < tzailengt) {
+                String tzaiChar = tzai.get(i).trim();
+                if (!set.contains(tzaiChar)) {
+                    set.add(tzaiChar);
+                }
+            }
+            if (i < jundalength) {
+                String jundaChar = junda.get(i).trim();
+                if (!set.contains(jundaChar)) {
+                    set.add(jundaChar);
+                }
+            }
+        }
+        return set;
     }
 
 
