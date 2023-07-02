@@ -43,6 +43,8 @@ public class CustomIdsSupplementMaps {
                     +BENTTOPHOOK_LARGE.val()+"⿻"+BENTTOPHOOK_LARGE.val()+"⿻"+BENTTOPHOOK_LARGE.val()+"灬");//為
             customIdsSupplement.put("臼", "⿻"+LEFTSLANT_HORI.val()+"⿻"+"丨"+"⿻"+"一"+"⿻"+BENTTOPHOOK_LARGE.val()+"⿻"+"一"+"一");
             customIdsSupplement.put("𦥑", "⿻"+LEFTSLANT_HORI.val()+"⿻"+"丨"+"⿻"+"一"+"⿻"+"一"+"⿻"+BENTTOPHOOK_LARGE.val()+"⿻"+"一"+"一");
+            customIdsSupplement.put("與", "⿶"+"⿳𦥑"+OVERLAP.desc()+"一"+DOUBLEBENT_52.val()+"丨"
+                    + OVERLAP.desc()+"一"+"八"); //ids 與 ⿶⿳𦥑一八⿹②丿
             customIdsSupplement.put("寸", ENCTOPRIGHT.desc()+OUTTOPRIGHT2.val()+DOTRIGHT.val());
             customIdsSupplement.put("于", "⿱"+"一"+OUTTOPRIGHT2.val()); //于
             customIdsSupplement.put("冎", "⿱⿵"+OUTER2TOP_STRAIGHT.val()+"𠃍"+OUTER2TOP_STRAIGHT.val()); //冎 eg. 過
@@ -82,9 +84,47 @@ public class CustomIdsSupplementMaps {
             customIdsSupplement.put("馬", "馬"); //ids ⿹⑥灬
             customIdsSupplement.put("本", OVERLAP.desc()+"木"+"一"); //ids 本
             customIdsSupplement.put("最", "⿱日取"); //ids 最 ⿱日取 ⿱冃取
-            //TODO: handle 且
+            customIdsSupplement.put("且", OVERLAP.desc()+OUTER2TOP_STRAIGHT.val()+OVERLAP.desc()+"一"+OVERLAP.desc()+"一"+"一");
+            customIdsSupplement.put("头", OVERLAP.desc()+OVERLAP.desc()+DOTRIGHT.val()+DOTRIGHT.val()+"大");//头 eg. 实
+            customIdsSupplement.put("斗", OVERLAP.desc()+OVERLAP.desc()+DOTRIGHT.val()+DOTRIGHT.val()+"十"); //斗 eg. 科
+            customIdsSupplement.put("黑", "⿱"+"里"+"灬"); //might have to be refactored later //top side of 黑 ⿱⑧灬 eg. 點
+            customIdsSupplement.put("頁", "⿱"+OVERLAP.desc()+"一"+DOTLEFT.val()+"貝"); //ids 頁
+            customIdsSupplement.put("与", OVERLAP.desc()+"一"+OVERLAP.desc()+DOUBLEBENT_52.val()+"一"); //ids 与
+            customIdsSupplement.put("长", OVERLAP.desc()+LEFTSLANT_SHARP.val()
+                    +OVERLAP.desc()+"一"+OVERLAP.desc()+RIGHTBENTBUTHOOK_LARGE.val()+RIGHTSLANT_SHARP.val()); //长
+            customIdsSupplement.put("巴", OVERLAP.desc()+"巳" + "丨"); //ids 巴
+            customIdsSupplement.put("永", OVERLAP.desc()+DOTRIGHT.val() + OVERLAP.desc()+BENTTOP_ROUND.val()
+                    +OVERLAP.desc()+BENTTOP_SHARP.val()+OVERLAP.desc()+LEFTSLANT_SHARP.val()+RIGHTSLANT_SHARP.val()); //永 from 樣
+            customIdsSupplement.put("民", OVERLAP.desc()+OLAP3LEFTSIDEOFPEOPLE.val()+"一"+RIGHTSLANT_WITHHOOK.val()); //ids 民
+            customIdsSupplement.put("史", OVERLAP.desc()+"口"+"乂"); //史
+            customIdsSupplement.put("糹", "糹"); //ids 糹 ⿱幺③ from 經
+            customIdsSupplement.put("身", OVERLAP.desc()+DOTLEFT.val()+OVERLAP.desc()
+                    +OUTER2TOP_STRAIGHT.val()+OVERLAP.desc()+"⿳"+"一一一"+LEFTSLANT_SHARP.val()); //身 from 謝
+            customIdsSupplement.put("正", "⿱一止"); //ids 正 ⿱一止 ⿱④一
+            customIdsSupplement.put("干", "⿱一十"); //ids 干 ⿱一止
+            customIdsSupplement.put("冉", OVERLAP.desc()+OUTER2TOP_STRAIGHT.val()+"土"); //冉from 再
+            customIdsSupplement.put("華", "⿱艹𠦒"); //ids 華 ⿱艹⑦
+            customIdsSupplement.put("重", "⿳"+LEFTSLANT_SHARP.val()+"車"+"一"); // ids 重
+            customIdsSupplement.put("比", "⿰匕匕");//ids 比
+            customIdsSupplement.put("由", OVERLAP.desc()+OUTER2TOP_STRAIGHT.val()+"土"); //ids 由
+            customIdsSupplement.put("申", OVERLAP.desc()+OUTER2TOP_STRAIGHT.val()+OLAP3RUSSIANCROSS.key()); //申
+            customIdsSupplement.put("牛", OVERLAP.desc()+LEFTSLANT_SHARP.val()+OLAP3RUSSIANCROSS.key()); //牛
+            customIdsSupplement.put("攵", "⿱"+"𠂉"+"乂"); //攵 //ids 攵
+            customIdsSupplement.put("長", "⿳" + OLAP4CHANGTOP.key() + "一" + OLAP3YIANDCHANGBUTTOM.key()); ////ids 長 ⿳④一⿰𠄌⿺乀丿
+            customIdsSupplement.put("𧘇", OVERLAP.desc()+LEFTSLANT_SHARP.val()+OLAP3YIANDCHANGBUTTOM.key()); //from 還
+            customIdsSupplement.put("皮", "⿸"+OVERLAP.desc()+OVERLAP.desc()+"乛"+LEFTSLANT_SHARP.val()+"丨"+"又"); //ids 皮 from 被
+            customIdsSupplement.put("鳥", "⿹"
+                    //the bird part
+                    +OVERLAP.desc()+DOTLEFT.val()+OVERLAP.desc()+"丨"+OVERLAP.desc()+BENTTOP_SHARP.val()
+                    +OVERLAP.desc()+"一"+OVERLAP.desc()+"一"+OVERLAP.desc()+"一"+BENTTOPHOOK_LARGE.val()
+                    +"灬"); //鳥 from 鳳 , ids 鳥 ⿹⑦灬
+            //TODO: handle 才
 
             //Custom String Replacements
+
+            customIdsSupplement.put(OLAP4CHANGTOP.key(), OLAP4CHANGTOP.val()); //OLAP4CHANGTOP //top part of 長, ids 長 ⿳④一⿰𠄌⿺乀丿
+            customIdsSupplement.put(OLAP3YIANDCHANGBUTTOM.key(), OLAP3YIANDCHANGBUTTOM.val()); // buttom part of 長 ⿳④一⿰𠄌⿺乀丿  丧  喪 𠅕
+            customIdsSupplement.put(OLAP3LEFTSIDEOFPEOPLE.key(), OLAP3LEFTSIDEOFPEOPLE.val()); //first 3 strokes of 民
             customIdsSupplement.put(OLAP4TWOVERTTWOHORI.key(), OLAP4TWOVERTTWOHORI.val()); //example: 其 ⿱⿱⑤一八 and 面/囬
             customIdsSupplement.put(OLAP3HORIFORKLIKE.key(), OLAP3HORIFORKLIKE.val());
             customIdsSupplement.put(OLAP3ZHABUT.key(), OLAP3ZHABUT.val()); //button side of 乍 or left side of 耳

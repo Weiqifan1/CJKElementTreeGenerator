@@ -21,29 +21,39 @@ public enum CustomStrokeCollections {
     LEFTSLANT_HORI("㇀", true),
     //刁 ⿹𠃌㇀    七	⿻㇀乚   𢏻	⿰⿹⿱𠂊③㇀⿹弓⿱丿丿
 
+
+    DOUBLEBENT_52("㇉", true), //与 I need to make a decision regarding the 2nd stroke.
     BENTTOPHOOK_LARGE("𠃌", true),
     BENTTOP_SHARP("𠃍", true), // eg 過
+    BENTTOP_ROUND("㇇", true), //㇇ from 樣
     RIGHTBENTBUTHOOK_LARGE("乚", true),
     RIGHTBENTBUT_SHARP("L", true), //eg. 我
+    DOWNWITHHOOK("𠄌", true), //𠄌 eks: 長  丧  喪 𠅕
     RIGHTSLANT_SHARP("乀", true),
+    RIGHTSLANT_WITHHOOK("㇂", true),
+    //last strke of 民 //for the moment, I will use the stroke ㇂
     OUTER2TOP_STRAIGHT("冂", true), //冂 // 冂 from 向 南
     OUTER2TOP_USEANDMOONE("⺆", true), //⺆ from 用 周
 
     //Non unicode stroke collections
     //I will use non CJK codepoints as the string key
-    OLAP3WORIGHTSTROKES("⿻"+"⿻"+ RIGHTBENTBUT_SHARP.val() + LEFTSLANT_SHARP.val() + DOTRIGHT.val() , false), //戊 我
+
+    OLAP3LEFTSIDEOFPEOPLE(OVERLAP.desc()+BENTTOP_SHARP.val()
+            +OVERLAP.desc()+"一"+RIGHTBENTBUT_SHARP.val(), false),//first 3 strokes of 民
+    OLAP3WORIGHTSTROKES("⿻"+"⿻"+ RIGHTSLANT_WITHHOOK.val() + LEFTSLANT_SHARP.val() + DOTRIGHT.val() , false), //戊 我
     //customIdsSupplement.put("我", "⿻"+LEFTSLANT_SHARP.val()+"⿻扌⿻㇂⿻"+LEFTSLANT_SHARP.val()+DOTRIGHT.val());
     OLAP3HORIFORKLIKE("⿻コ一", false), //尹	⿻⿻コ一丿  eg. stroke 6,7,8 of of 事
     OLAP4TWOVERTTWOHORI(OVERLAP.desc()+"丨"+OVERLAP.desc()+"丨"+OVERLAP.desc()+"一"+"一", false), //example: 其 ⿱⿱⑤一八 and 面/囬
+    OLAP4CHANGTOP(OVERLAP.desc()+"丨"+"⿳一一一", false), //ids 長 ⿳④一⿰𠄌⿺乀丿
     OLAP3ZHABUT(OVERLAP.desc()+ "丨二", false), //button side of 乍
     OLAP4NIENBUT(OVERLAP.desc()+ "一" + OVERLAP.desc() +"丨" +OVERLAP.desc() + "一" +  "丨", false), //button side of 年
     OLAP3RUSSIANCROSS(OVERLAP.desc() + "二丨", false),
     //middle side of 生, top side of 龶, top right of 請
+    OLAP3YIANDCHANGBUTTOM("⿰𠄌⿺乀丿"
+            , false), // DOWNWITHHOOK ⿰𠄌⿺乀丿 buoom part of 長  丧  喪 𠅕 (not including "一")
     OUTTOPRIGHT2(OVERLAP.desc()+"一"+"亅", false), //outer side of 寸
     OLAP3DOWNFORk("⿸"+LEFTSLANT_SHARP.val()+"卜", false),  //buttom side of 不
     OUTTOPLEFT3("⿻𠂇丨", false),//outer side of 在
-        //customIdsSupplement.put("𒀀", "⿸"+LEFTSLANT_SHARP+"卜"); //buttom side of 不
-        //customIdsSupplement.put("𒀁", "⿻𠂇丨"); //outer side of 在
 
     ;
 
