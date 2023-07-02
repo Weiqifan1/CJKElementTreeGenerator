@@ -4,12 +4,14 @@ import java.util.*;
 import java.util.zip.DataFormatException;
 
 import static org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.CharRecursionNodeService.unicodeBreakup;
-import static org.example.ObjectTypes.GenericTypes.CJKDescription.ENCTOPRIGHT;
 import static org.example.ObjectTypes.GenericTypes.CJKDescription.OVERLAP;
 
 public enum CustomStrokeCollections {
 
     //Single Stroke Aliases
+    DOTRIGHT("丶", true), //eg. 丶   eg. 飠	⿱人⿱丶⑤   丸 ⿻九丶[GJ] ⿵九丶[TKV]
+    DOTLEFT("、", true), // eg. 、 自
+
     LEFTSlANT_VERT("㇓", true),
     //eg: 㷗 ⿱⿲㇓㠯巳火  𠗎 ⿰⿰冫㇓全  𥪐 ⿱立⿰⿰冫㇓⿺乚仌
     LEFTSLANT_SHARP("丿", true),
@@ -20,15 +22,29 @@ public enum CustomStrokeCollections {
     //刁 ⿹𠃌㇀    七	⿻㇀乚   𢏻	⿰⿹⿱𠂊③㇀⿹弓⿱丿丿
 
     BENTTOPHOOK_LARGE("𠃌", true),
-    BENTBUTHOOK_LARGE("乚", true),
+    BENTTOP_SHARP("𠃍", true), // eg 過
+    RIGHTBENTBUTHOOK_LARGE("乚", true),
+    RIGHTBENTBUT_SHARP("L", true), //eg. 我
+    RIGHTSLANT_SHARP("乀", true),
+    OUTER2TOP_STRAIGHT("冂", true), //冂 // 冂 from 向 南
+    OUTER2TOP_USEANDMOONE("⺆", true), //⺆ from 用 周
 
     //Non unicode stroke collections
     //I will use non CJK codepoints as the string key
-    OUTTOPRIGHT2(OVERLAP.charVal()+"一"+"亅", false), //outer side of 寸
+    OLAP3WORIGHTSTROKES("⿻"+"⿻"+ RIGHTBENTBUT_SHARP.val() + LEFTSLANT_SHARP.val() + DOTRIGHT.val() , false), //戊 我
+    //customIdsSupplement.put("我", "⿻"+LEFTSLANT_SHARP.val()+"⿻扌⿻㇂⿻"+LEFTSLANT_SHARP.val()+DOTRIGHT.val());
+    OLAP3HORIFORKLIKE("⿻コ一", false), //尹	⿻⿻コ一丿  eg. stroke 6,7,8 of of 事
+    OLAP4TWOVERTTWOHORI(OVERLAP.desc()+"丨"+OVERLAP.desc()+"丨"+OVERLAP.desc()+"一"+"一", false), //example: 其 ⿱⿱⑤一八 and 面/囬
+    OLAP3ZHABUT(OVERLAP.desc()+ "丨二", false), //button side of 乍
+    OLAP4NIENBUT(OVERLAP.desc()+ "一" + OVERLAP.desc() +"丨" +OVERLAP.desc() + "一" +  "丨", false), //button side of 年
+    OLAP3RUSSIANCROSS(OVERLAP.desc() + "二丨", false),
+    //middle side of 生, top side of 龶, top right of 請
+    OUTTOPRIGHT2(OVERLAP.desc()+"一"+"亅", false), //outer side of 寸
     OLAP3DOWNFORk("⿸"+LEFTSLANT_SHARP.val()+"卜", false),  //buttom side of 不
     OUTTOPLEFT3("⿻𠂇丨", false),//outer side of 在
         //customIdsSupplement.put("𒀀", "⿸"+LEFTSLANT_SHARP+"卜"); //buttom side of 不
         //customIdsSupplement.put("𒀁", "⿻𠂇丨"); //outer side of 在
+
     ;
 
     private final String val;

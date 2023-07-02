@@ -25,7 +25,7 @@ public enum CJKDescription {
         return unicodeCharacter;
     }
 
-    public String charVal() {
+    public String desc() {
         return String.valueOf(unicodeCharacter);
     }
 

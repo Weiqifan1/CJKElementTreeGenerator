@@ -29,7 +29,7 @@ public class AYMethodCodeGeneratorServiceTest {
         List<List<String>> ordCharsAndCodes = new ArrayList<>();
 
         for (String CJKchar : sorted) {
-            if (CJKchar.equals("學")) {
+            if (CJKchar.equals("最")) {
                 String test = "";
             }
             List<String> ordcharcode = new ArrayList<>();
