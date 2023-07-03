@@ -51,7 +51,7 @@ public class CodeRecursionObjectGenerator {
         int currentOrdinal = 1;
 
         for (String CJKchar : sorted) {
-            if (CJKchar.equals("最")) {
+            if (CJKchar.equals("體")) {
                 String test = "";
             }
             CharRecursionNode node = null;

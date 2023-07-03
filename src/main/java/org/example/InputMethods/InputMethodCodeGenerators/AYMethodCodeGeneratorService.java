@@ -47,7 +47,7 @@ public class AYMethodCodeGeneratorService {
             //handle endnode that is not unicode description and doesnt have a code
             //TODO: this will continually need to be handled
             String test = "";
-            throw new DataFormatException("missing codes from char: "+ originalInput);
+            //throw new DataFormatException("missing codes from char: "+ originalInput);
         } else if (splitBreakdown.size() == 1) {
             //handle node that has nodes and is not a fork
             List<List<String>> cecusiveList = recursiveNonForkNodeHandling(subsequentSubsections);

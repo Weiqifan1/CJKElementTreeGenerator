@@ -136,6 +136,7 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("刀", "bl"); //b=5+9 l=9
         arrayInspiredElemsV1.put("又", "bk"); //b=5+8 k=8又 对
         arrayInspiredElemsV1.put("尸", "bz"); //b=5+9 z=1+9  eg. 所
+        arrayInspiredElemsV1.put("𠃜", "bz"); //taken as a variant of 尸, 𠃜 from 声
         arrayInspiredElemsV1.put("艮", "bq"); //b=5+8 q=1+1 艮
         arrayInspiredElemsV1.put("己", "bb"); //EXCEPTION  = 己 from //巷	⿱共巳[GTK]	⿱共己[J]
         arrayInspiredElemsV1.put("癶", "b,"); // b=5+8 ,=8+9 //ids 癶 ⿰②③ from 發
