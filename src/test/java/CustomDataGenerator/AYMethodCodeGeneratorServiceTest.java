@@ -1,60 +1,23 @@
 package CustomDataGenerator;
 
-import org.example.CustomStaticDataGenerators.CustomIdsJsonMapGeneratorService;
 import org.example.ObjectTypes.GenericTypes.CharRecursionNode;
 import org.junit.Test;
 
-import java.nio.file.Paths;
-import java.util.*;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.zip.DataFormatException;
 
-import static org.example.CustomStaticDataGenerators.CustomIdsJsonMapGeneratorService.orderedFrequencyList;
-import static org.example.GlobalConstants.publicJundaFilePath;
-import static org.example.GlobalConstants.publicTzaiFilePath;
+import static org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.CodeRecursionObjectGenerator.getNodeList;
 import static org.junit.Assert.assertEquals;
 
 public class AYMethodCodeGeneratorServiceTest {
 
     @Test
-    public void testCreateCodesForTziaAndJunda_TzaiAndJunda(){
-        List<String> jundaLines = CustomIdsJsonMapGeneratorService.getFileLinesFromPath(Paths.get(publicJundaFilePath));
-        List<String> tzaiLines = CustomIdsJsonMapGeneratorService.getFileLinesFromPath(Paths.get(publicTzaiFilePath));
-        Map<String, String> jundaMap = CustomIdsJsonMapGeneratorService.generateJundaMap(jundaLines);
-        Map<String, String> tzaiMap = CustomIdsJsonMapGeneratorService.generateTzaiMap(tzaiLines);
-
-        List<String> sorted = getSortedCharList();
-
-        int currentOrdinal = 1;
-        List<List<String>> ordCharsAndCodes = new ArrayList<>();
-
-        for (String CJKchar : sorted) {
-            if (CJKchar.equals("最")) {
-                String test = "";
-            }
-            List<String> ordcharcode = new ArrayList<>();
-            ordcharcode.add(String.valueOf(currentOrdinal));
-            ordcharcode.add(CJKchar);
-            CharRecursionNode node = null;
-            try {
-                node = new CharRecursionNode(CJKchar, null);
-            } catch (Exception e) {
-                System.out.println(CJKchar);
-                System.out.println("tzai: " + tzaiMap.get(CJKchar));
-                System.out.println("junda: "+ jundaMap.get(CJKchar));
-                System.out.println("Ordinal " + currentOrdinal);
-            }
-            //add the tzai and junda numbers
-            ordcharcode.add(tzaiMap.get(CJKchar));
-            ordcharcode.add(jundaMap.get(CJKchar));
-            ordcharcode.addAll(node.getNormalCode());
-            ordCharsAndCodes.add(ordcharcode);
-            currentOrdinal++;
-        }
-
-        assertEquals(sorted.size(), ordCharsAndCodes.size());
+    public void testRecursionCodes() {
+        List<CharRecursionNode> nodelist = getNodeList();
+        assertEquals(16376, nodelist.size());
     }
-
 
     @Test
     public void testGenerateFullCodeFromCodeMap_basic() throws DataFormatException {
@@ -77,36 +40,6 @@ public class AYMethodCodeGeneratorServiceTest {
         assertEquals(Set.of("n/a."), hai56.getNormalCode().stream().collect(Collectors.toSet()));
     }
 
-    private List<String> getSortedCharList() {
-        List<String> jundaLines = CustomIdsJsonMapGeneratorService.getFileLinesFromPath(Paths.get(publicJundaFilePath));
-        List<String> tzaiLines = CustomIdsJsonMapGeneratorService.getFileLinesFromPath(Paths.get(publicTzaiFilePath));
-        Map<String, String> jundaMap = CustomIdsJsonMapGeneratorService.generateJundaMap(jundaLines);
-        Map<String, String> tzaiMap = CustomIdsJsonMapGeneratorService.generateTzaiMap(tzaiLines);
-        List<String> tzai = orderedFrequencyList(tzaiMap);
-        List<String> junda = orderedFrequencyList(jundaMap);
-
-        int tzailengt = tzai.size();
-        int jundalength = junda.size();
-        int longest = tzailengt > jundalength ? tzailengt : jundalength;
-
-        List<String> set = new ArrayList<>();
-
-        for (int i = 0; i < longest; i++) {
-            if (i < tzailengt) {
-                String tzaiChar = tzai.get(i).trim();
-                if (!set.contains(tzaiChar)) {
-                    set.add(tzaiChar);
-                }
-            }
-            if (i < jundalength) {
-                String jundaChar = junda.get(i).trim();
-                if (!set.contains(jundaChar)) {
-                    set.add(jundaChar);
-                }
-            }
-        }
-        return set;
-    }
 
 
 }
