@@ -10,6 +10,8 @@ import java.util.stream.Collectors;
 import static org.example.CustomStaticDataGenerators.CustomIdsJsonMapGeneratorService.orderedFrequencyList;
 import static org.example.GlobalConstants.publicJundaFilePath;
 import static org.example.GlobalConstants.publicTzaiFilePath;
+import static org.example.ObjectTypes.GenericTypes.CharMetaInfo.JUNDAORDINAL;
+import static org.example.ObjectTypes.GenericTypes.CharMetaInfo.TZAIORDINAL;
 
 public class CodeRecursionObjectGenerator {
 
@@ -61,10 +63,10 @@ public class CodeRecursionObjectGenerator {
                 System.out.println("junda: "+ jundaMap.get(CJKchar));
                 System.out.println("Ordinal " + currentOrdinal);
                 getCurrentOverlapInfoFromMap(overlappingNodes, "all characters:");
-                //Map<String, List<CharRecursionNode>> onlyTrad = getTop5000Trad(overlappingNodes);
-                //getCurrentOverlapInfoFromMap(onlyTrad, "only traditional:");
-                //Map<String, List<CharRecursionNode>> onlySimp = getTop5000Simp(overlappingNodes);
-                //getCurrentOverlapInfoFromMap(onlySimp, "only simplified:");
+                Map<String, List<CharRecursionNode>> onlyTrad = getTop5000Trad(overlappingNodes);
+                getCurrentOverlapInfoFromMap(onlyTrad, "only traditional:");
+                Map<String, List<CharRecursionNode>> onlySimp = getTop5000Simp(overlappingNodes);
+                getCurrentOverlapInfoFromMap(onlySimp, "only simplified:");
             }
             nodes.add(node);
             overlappingNodes = getUpdatedMap(node, overlappingNodes);
@@ -80,8 +82,8 @@ public class CodeRecursionObjectGenerator {
         for (String key : keys) {
             List<CharRecursionNode> oldEntry = oldMap.get(key);
             List<CharRecursionNode> updated = oldEntry.stream()
-                    .filter(node -> node.getSubsectionIdsMapResult().get("TZAIORDINAL").length() > 0)
-                    .filter(node -> Integer.parseInt(node.getSubsectionIdsMapResult().get("TZAIORDINAL")) < 5001).toList();
+                    .filter(node -> node.getSubsectionIdsMapResult().get(TZAIORDINAL).length() > 0)
+                    .filter(node -> Integer.parseInt(node.getSubsectionIdsMapResult().get(TZAIORDINAL)) < 5001).toList();
             returnMap.put(key, updated);
         }
         return returnMap;
@@ -94,8 +96,8 @@ public class CodeRecursionObjectGenerator {
         for (String key : keys) {
             List<CharRecursionNode> oldEntry = oldMap.get(key);
             List<CharRecursionNode> updated = oldEntry.stream()
-                    .filter(node -> node.getSubsectionIdsMapResult().get("JUNDAORDINAL").length() > 0)
-                    .filter(node -> Integer.parseInt(node.getSubsectionIdsMapResult().get("JUNDAORDINAL")) < 5001).toList();
+                    .filter(node -> node.getSubsectionIdsMapResult().get(JUNDAORDINAL).length() > 0)
+                    .filter(node -> Integer.parseInt(node.getSubsectionIdsMapResult().get(JUNDAORDINAL)) < 5001).toList();
             returnMap.put(key, updated);
         }
         return returnMap;
