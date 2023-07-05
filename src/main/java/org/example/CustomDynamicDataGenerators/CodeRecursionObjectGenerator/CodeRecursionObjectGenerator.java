@@ -126,8 +126,10 @@ public class CodeRecursionObjectGenerator {
 
         List<Integer> sortedOverlapSize = overlapSize.keySet().stream().sorted().toList();
         System.out.println(printMessage);
-        System.out.println("overlap Size: " + sortedOverlapSize);
+        System.out.println("overlap Sizes: " + sortedOverlapSize);
         System.out.println("overlapMap: " + overlapMap.size());
+        printOverlap("Sample Overlaps: ", keys, oldMap, overlapMap, overlapSize);
+
         System.out.println("Sorted key use frequency: ");
 
         List<Character> newMapOrder = List.of(
@@ -142,6 +144,28 @@ public class CodeRecursionObjectGenerator {
         Map<String, Long> fullCodeToMap = generateFullCodeToMap(allNodes, isTzai);
 
         System.out.println("end");
+    }
+
+    private static void printOverlap(String x, List<String> keys, Map<String, List<CharRecursionNode>> oldMap, Map<String, List<CharRecursionNode>> overlapMap, Map<Integer, String> overlapSize) {
+        System.out.println(x);
+        int printcounter = 0;
+        for (String key : keys) {
+            List<CharRecursionNode> oldEntry = oldMap.get(key);
+            if (oldEntry.size() > 1) {
+                overlapMap.put(key, oldEntry);
+                overlapSize.put(oldEntry.size(), key);
+                if (printcounter < 5) {
+                    String entryline = "";
+                    for (CharRecursionNode recurNode : oldEntry) {
+                        entryline = entryline + recurNode.getOriginalInput() + " Normal: " +
+                                recurNode.getNormalCodeString() + " Full: " +
+                                recurNode.getFullCodeString();
+                    }
+                    System.out.println(key + " " + entryline);
+                }
+                printcounter++;
+            }
+        }
     }
 
     private static Map<String, Long> generateFullCodeToMap(List<CharRecursionNode> allNodes, boolean isTzai) {
@@ -206,7 +230,6 @@ public class CodeRecursionObjectGenerator {
         List<String> keys = oldMap.keySet().stream().toList();
         //find the largest overlaps
         Map<Integer, String> overlapSize = new HashMap<>();
-
         for (String key : keys) {
             List<CharRecursionNode> oldEntry = oldMap.get(key);
             if (oldEntry.size() > 1) {
@@ -214,11 +237,13 @@ public class CodeRecursionObjectGenerator {
                 overlapSize.put(oldEntry.size(), key);
             }
         }
+
         List<Integer> sortedOverlapSize = overlapSize.keySet().stream().sorted().toList();
         System.out.println(printMessage);
-        System.out.println("overlap Size: " + sortedOverlapSize);
+        System.out.println("overlap Sizes: " + sortedOverlapSize);
         System.out.println("overlapMap: " + overlapMap.size());
-        System.out.println("largest Overlaps: ");
+        printOverlap("Test Overlaps: ", keys, oldMap, overlapMap, overlapSize);
+
         System.out.println("end");
     }
 

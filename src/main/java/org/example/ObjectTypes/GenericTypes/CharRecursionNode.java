@@ -17,9 +17,36 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
     private final List<CharRecursionNode> subsequentSubsections;
     private static Map<String, Map<CharMetaInfo, String>> idsMap;
     private static HashMap<String, String> codeMap;
+
+    public List<List<String>> getFullCode() {
+        return fullCode;
+    }
+
+    public String getFullCodeString() {
+        String result = "";
+        for (List<String> elementList : fullCode) {
+            String elementListStr = "[";
+            for (String element : elementList) {
+                elementListStr = elementListStr + element + ", ";
+            }
+            elementListStr = elementListStr + "] ";
+            result = result + elementListStr;
+        }
+        return result;
+    }
+
     //ful code is reversed by default
-    private final List<List<String>> fullCode;
+    public final List<List<String>> fullCode;
     private final List<String> normalCode;
+
+    public String getNormalCodeString() {
+        String elementListStr = "[";
+        for (String element : normalCode) {
+            elementListStr = elementListStr + element + ", ";
+        }
+        elementListStr = elementListStr + "] ";
+        return elementListStr;
+    }
 
     static {
         try {
@@ -30,6 +57,18 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public String getOriginalInput() {
+        return originalInput;
+    }
+
+    public static Map<String, Map<CharMetaInfo, String>> getIdsMap() {
+        return idsMap;
+    }
+
+    public static HashMap<String, String> getCodeMap() {
+        return codeMap;
     }
 
     public CharRecursionNode(String currentBreakdownSubsection, String originalInput) throws DataFormatException {
@@ -56,10 +95,6 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
 
     public void setCodeMap(HashMap<String, String> codeMap) {
         this.codeMap = codeMap;
-    }
-
-    public List<List<String>> getFullCode() {
-        return fullCode;
     }
 
     public List<String> getNormalCode() {
