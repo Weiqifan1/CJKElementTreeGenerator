@@ -68,6 +68,7 @@ public class CodeRecursionObjectGenerator {
                 getCurrentOverlapInfoFromMapFromTzaiAndJunda(onlySimp, "only simplified:", false);
             }
             nodes.add(node);
+
             overlappingNodes = getUpdatedMap(node, overlappingNodes);
             currentOrdinal++;
         }

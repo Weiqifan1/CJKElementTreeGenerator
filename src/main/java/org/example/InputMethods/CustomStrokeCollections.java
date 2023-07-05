@@ -22,8 +22,10 @@ public enum CustomStrokeCollections {
     //刁 ⿹𠃌㇀    七	⿻㇀乚   𢏻	⿰⿹⿱𠂊③㇀⿹弓⿱丿丿
 
 
-    DOUBLEBENT_52("㇉", true), //与 I need to make a decision regarding the 2nd stroke.
+    DOUBLEBENT_25("㇉", true), //与 I need to make a decision regarding the 2nd stroke.
     BENTTOPHOOK_LARGE("𠃌", true),
+    DOUBLEBENT_55("㇋", true),
+    DOUBLEBENT_52WITHHOOK("㇠", true),
     BENTTOP_SHARP("𠃍", true), // eg 過
     BENTTOP_ROUND("㇇", true), //㇇ from 樣
     RIGHTBENTBUTHOOK_LARGE("乚", true),
@@ -32,12 +34,18 @@ public enum CustomStrokeCollections {
     RIGHTSLANT_SHARP("乀", true),
     RIGHTSLANT_WITHHOOK("㇂", true),
     //last strke of 民 //for the moment, I will use the stroke ㇂
-    OUTER2TOP_STRAIGHT("冂", true), //冂 // 冂 from 向 南
-    OUTER2TOP_USEANDMOONE("⺆", true), //⺆ from 用 周
 
     //Non unicode stroke collections
     //I will use non CJK codepoints as the string key
 
+
+    OLAP3_BONESAW("⿺" + OVERLAP.desc()+RIGHTSLANT_WITHHOOK.val()+LEFTSLANT_SHARP.val()+DOTRIGHT.val()
+            , false), //last 3 strokes of 戈
+    LEFTSIDE5_FLAGWITHMIDDLE(OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()
+            +BENTTOP_SHARP.val+"一"+"一"+DOWNWITHHOOK.val+DOTRIGHT.val, false),//left side of 即
+    OUTER2TOP_STRAIGHT("冂", false), //冂 // 冂 from 向 南
+    OUTER2TOP_USEANDMOONE("⺆", false), //⺆ from 用 周
+    OUTTOPLEFT2(OVERLAP.desc() + "乛" + LEFTSLANT_SHARP.val ,false), //enclosing shape from, 虍, from 號
     OLAP3LEFTSIDEOFPEOPLE(OVERLAP.desc()+BENTTOP_SHARP.val()
             +OVERLAP.desc()+"一"+RIGHTBENTBUT_SHARP.val(), false),//first 3 strokes of 民
     OLAP3WORIGHTSTROKES("⿻"+"⿻"+ RIGHTSLANT_WITHHOOK.val() + LEFTSLANT_SHARP.val() + DOTRIGHT.val() , false), //戊 我
