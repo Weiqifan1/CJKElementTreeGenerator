@@ -25,7 +25,7 @@ public enum CustomStrokeCollections {
     DOUBLEBENT_25("㇉", true), //与 I need to make a decision regarding the 2nd stroke.
     BENTTOPHOOK_LARGE("𠃌", true),
     DOUBLEBENT_55("㇋", true),
-    DOUBLEBENT_52WITHHOOK("㇠", true),
+    DOUBLEBENT_52WITHHOOK("乙", true),
     BENTTOP_SHARP("𠃍", true), // eg 過
     BENTTOP_ROUND("㇇", true), //㇇ from 樣
     RIGHTBENTBUTHOOK_LARGE("乚", true),

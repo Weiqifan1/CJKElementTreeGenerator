@@ -58,7 +58,6 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("巛", "ww"); //w=2+2 w=2+2
 
         //s
-        arrayInspiredElemsV1.put("乙", "ss"); //s=2
         arrayInspiredElemsV1.put("𡿨", "ss"); //from 經
         arrayInspiredElemsV1.put("𠃋", "ss"); //𠃋 from 該
         arrayInspiredElemsV1.put("𠃊", "ss"); //𠃊 from 網
