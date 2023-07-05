@@ -95,9 +95,13 @@ public class CustomIdsJsonMapGeneratorService {
         validateList(list);
         String jundaResult = getFrequencyDataForIdsChar(list.get(1), jundaMap);
         newmap.put(CharMetaInfo.JUNDAORDINAL, jundaResult);
+        String jundaCharCount = getCharCountFromJunda(list.get(1), jundaMap);
+        newmap.put(CharMetaInfo.JUNDACHARCOUNT, jundaCharCount);
 
         String tzaiResult = getFrequencyDataForIdsChar(list.get(1), tzaiMap);
         newmap.put(CharMetaInfo.TZAIORDINAL, tzaiResult);
+        String tzaiCharCount = getCharCountFromTzai(list.get(1), tzaiMap);
+        newmap.put(CharMetaInfo.TZAICHARCOUNT, tzaiCharCount);
 
         newmap.put(CharMetaInfo.UNICODE, list.get(0));
         newmap.put(CharMetaInfo.CHAR, list.get(1));
@@ -113,6 +117,34 @@ public class CustomIdsJsonMapGeneratorService {
         return nestedMap;
     }
 
+    private static String getCharCountFromTzai(String idsChar, Map<String, String> tzaiMap) throws Exception {
+        String firstResult = tzaiMap.get(idsChar);
+        if (Objects.isNull(firstResult)) {
+            return "";
+        }else {
+            try {
+                String thirdElem = Arrays.stream(firstResult.split("\\s+")).toList().get(2);
+                return thirdElem;
+            } catch (Exception e) {
+                throw new Exception("Tzai map value doesnt have 3 parts: " + e);
+            }
+        }
+    }
+
+    private static String getCharCountFromJunda(String idsChar, Map<String, String> jundaMap) throws Exception {
+        String firstResult = jundaMap.get(idsChar);
+        if (Objects.isNull(firstResult)) {
+            return "";
+        }else {
+            try {
+                String thirdElem = Arrays.stream(firstResult.split("\\s+")).toList().get(2);
+                return thirdElem;
+            } catch (Exception e) {
+                throw new Exception("Junda map value doesnt have 3 parts: " + e);
+            }
+        }
+    }
+
     private static String getFrequencyDataForIdsChar(String idsChar, Map<String, String> jundaMap) {
         if (idsChar.equals("我")) {
             String test = "";
@@ -124,7 +156,7 @@ public class CustomIdsJsonMapGeneratorService {
         }
         List<String> splitResult = Arrays.stream(firstResult.split("\\s+")).toList();
         if (Objects.nonNull(splitResult)
-                && splitResult.size() == 2
+                && splitResult.size() == 3
                 && splitResult.get(1).matches("-?\\d+")) {
             return splitResult.get(1);
         } else {
@@ -193,13 +225,15 @@ public class CustomIdsJsonMapGeneratorService {
             if (splitLine.get(1).equals("的")) {
                 splitLine = Arrays.stream(line.substring(1).split("\\s+")).toList();
             }
-            jundaMap.put(splitLine.get(1), splitLine.get(1) + " " + splitLine.get(0));
+            jundaMap.put(splitLine.get(1),
+                    splitLine.get(1) + " "
+                    + splitLine.get(0) + " "
+                    + splitLine.get(2));
         }
         return jundaMap;
     }
 
     public static Map<String, String> generateTzaiMap(List<String> lines) {
-
         Map<String, String> tzaiMap = new HashMap<>();
         int lineNum = 1;
         for (String line : lines) {
@@ -208,10 +242,12 @@ public class CustomIdsJsonMapGeneratorService {
             if (splitLine.get(1).equals("6538132")) {
                 splitLine = Arrays.stream(line.substring(1).split("\\s+")).toList();
             }
-            tzaiMap.put(splitLine.get(0), splitLine.get(0) + " " + lineNum);
+            tzaiMap.put(splitLine.get(0),
+                    splitLine.get(0) + " "
+                    + lineNum + " "
+                    + splitLine.get(1));
             lineNum += 1;
         }
-
         return tzaiMap;
     }
 }

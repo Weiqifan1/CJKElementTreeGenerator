@@ -82,7 +82,8 @@ public class AYMethodCodeGeneratorService {
         return result;
     }
 
-    private static List<List<String>> nonForkFullCodeRecur(List<CharRecursionNode> subsequentSubsections, List<List<String>> result) {
+    private static List<List<String>> nonForkFullCodeRecur(List<CharRecursionNode> subsequentSubsections,
+                                                           List<List<String>> result) {
         if (subsequentSubsections.isEmpty()) {
             return result;
         }
@@ -114,7 +115,8 @@ public class AYMethodCodeGeneratorService {
                 .contains(currentBreakdownSubsection);
     }
 
-    public static List<String> generateNormalCodeFromFullCode(List<List<String>> fullCode, String originalInput) throws DataFormatException {
+    public static List<String> generateNormalCodeFromFullCode(List<List<String>> fullCode,
+                                                              String originalInput) throws DataFormatException {
         List<String> result = new ArrayList<>();
         for (List<String> eachCode : fullCode) {
             String code = normalCodeFromFullCode(eachCode, originalInput);

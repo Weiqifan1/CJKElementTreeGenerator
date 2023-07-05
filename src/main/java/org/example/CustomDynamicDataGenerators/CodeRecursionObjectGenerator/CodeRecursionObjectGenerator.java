@@ -10,8 +10,7 @@ import java.util.stream.Collectors;
 import static org.example.CustomStaticDataGenerators.CustomIdsJsonMapGeneratorService.orderedFrequencyList;
 import static org.example.GlobalConstants.publicJundaFilePath;
 import static org.example.GlobalConstants.publicTzaiFilePath;
-import static org.example.ObjectTypes.GenericTypes.CharMetaInfo.JUNDAORDINAL;
-import static org.example.ObjectTypes.GenericTypes.CharMetaInfo.TZAIORDINAL;
+import static org.example.ObjectTypes.GenericTypes.CharMetaInfo.*;
 
 public class CodeRecursionObjectGenerator {
 
@@ -62,11 +61,11 @@ public class CodeRecursionObjectGenerator {
                 System.out.println("tzai: " + tzaiMap.get(CJKchar));
                 System.out.println("junda: "+ jundaMap.get(CJKchar));
                 System.out.println("Ordinal " + currentOrdinal);
-                getCurrentOverlapInfoFromMap(overlappingNodes, "all characters:");
+                getCurrentOverlapInfoFromMapForFullMap(overlappingNodes, "all characters:");
                 Map<String, List<CharRecursionNode>> onlyTrad = getTop5000Trad(overlappingNodes);
-                getCurrentOverlapInfoFromMap(onlyTrad, "only traditional:");
+                getCurrentOverlapInfoFromMapFromTzaiAndJunda(onlyTrad, "only traditional:", true);
                 Map<String, List<CharRecursionNode>> onlySimp = getTop5000Simp(overlappingNodes);
-                getCurrentOverlapInfoFromMap(onlySimp, "only simplified:");
+                getCurrentOverlapInfoFromMapFromTzaiAndJunda(onlySimp, "only simplified:", false);
             }
             nodes.add(node);
             overlappingNodes = getUpdatedMap(node, overlappingNodes);
@@ -103,7 +102,105 @@ public class CodeRecursionObjectGenerator {
         return returnMap;
     }
 
-    public static void getCurrentOverlapInfoFromMap(Map<String, List<CharRecursionNode>> oldMap, String printMessage) {
+    public static void getCurrentOverlapInfoFromMapFromTzaiAndJunda(Map<String, List<CharRecursionNode>> oldMap, String printMessage, boolean isTzai) {
+        //create a map with all overlaps
+        Map<String, List<CharRecursionNode>> overlapMap = new HashMap<>();
+        List<String> keys = oldMap.keySet().stream().toList();
+        //find the largest overlaps
+        Map<Integer, String> overlapSize = new HashMap<>();
+
+        for (String key : keys) {
+            List<CharRecursionNode> oldEntry = oldMap.get(key);
+            if (oldEntry.size() > 1) {
+                overlapMap.put(key, oldEntry);
+                overlapSize.put(oldEntry.size(), key);
+            }
+        }
+        //calculate frequency that endusers should expect: characters in normal code and elements in full code
+        List<CharRecursionNode> allNodes = oldMap.values().stream().flatMap(Collection::stream).collect(Collectors.toSet()).stream().toList();
+        Map<Character, Long> normalCodeCharToMap = generateNormalCodeCharToMap(allNodes, isTzai);
+
+        //add all numbers from normalCodeCharToMap and devide by 30.
+        List<Long> listOfLongs = normalCodeCharToMap.values().stream().sorted().toList();
+        Double averageForEachKey = Double.valueOf(listOfLongs.stream().mapToLong(Long::longValue).sum())/30;
+
+        List<Integer> sortedOverlapSize = overlapSize.keySet().stream().sorted().toList();
+        System.out.println(printMessage);
+        System.out.println("overlap Size: " + sortedOverlapSize);
+        System.out.println("overlapMap: " + overlapMap.size());
+        System.out.println("Sorted key use frequency: ");
+
+        List<Character> newMapOrder = List.of(
+                'q','w','e','r','t','y','u','i','o','p',
+                'a','s','d','f','g','h','j','k','l',
+                'z','x','c','v','b','n','m');
+        for (Character currentChar : newMapOrder) {
+            Long entry = normalCodeCharToMap.get(currentChar);
+            System.out.println("Char: " +currentChar + " " + (Double.valueOf(entry)/averageForEachKey));
+        }
+        //There should not be any printout of element use. just a map to debug
+        Map<String, Long> fullCodeToMap = generateFullCodeToMap(allNodes, isTzai);
+
+        System.out.println("end");
+    }
+
+    private static Map<String, Long> generateFullCodeToMap(List<CharRecursionNode> allNodes, boolean isTzai) {
+        Map<String, Long> result = new HashMap<>();
+        for (CharRecursionNode node: allNodes) {
+            int cjkNumberToUse = 1;
+            if (isTzai) {
+                cjkNumberToUse = Integer.parseInt(node.getSubsectionIdsMapResult().get(TZAICHARCOUNT));
+            } else {
+                cjkNumberToUse = Integer.parseInt(node.getSubsectionIdsMapResult().get(JUNDACHARCOUNT));
+            }
+            Set<String> fullCodeSet = new HashSet<>();
+            for (List<String> fullcode : node.getFullCode()) {
+                for (String twoLetterCode : fullcode) {
+                    fullCodeSet.add(twoLetterCode);
+                }
+            }
+            for (String twoLetterCode : fullCodeSet) {
+                Long setResult = result.get(twoLetterCode);
+                if (Objects.isNull(setResult)) {
+                    result.put(twoLetterCode, Long.valueOf(String.valueOf(cjkNumberToUse)));
+                }else {
+                    Long newNumber = setResult + Long.valueOf(String.valueOf(cjkNumberToUse));
+                    result.put(twoLetterCode, newNumber);
+                }
+            }
+        }
+        return result;
+    }
+
+    private static Map<Character, Long> generateNormalCodeCharToMap(List<CharRecursionNode> allNodes, boolean isTzai) {
+        Map<Character, Long> result = new HashMap<>();
+        for (CharRecursionNode node: allNodes) {
+            int cjkNumberToUse = 1;
+            if (isTzai) {
+                cjkNumberToUse = Integer.parseInt(node.getSubsectionIdsMapResult().get(TZAICHARCOUNT));
+            } else {
+                cjkNumberToUse = Integer.parseInt(node.getSubsectionIdsMapResult().get(JUNDACHARCOUNT));
+            }
+            Set<Character> fullCodeSet = new HashSet<>();
+            for (String normalCode : node.getNormalCode()) {
+                for (char ch : normalCode.toCharArray()) {
+                    fullCodeSet.add(ch);
+                }
+            }
+            for (Character chFromSet: fullCodeSet) {
+                Long setResult = result.get(chFromSet);
+                if (Objects.isNull(setResult)) {
+                    result.put(chFromSet, Long.valueOf(String.valueOf(cjkNumberToUse)));
+                }else {
+                    Long newNumber = setResult + Long.valueOf(String.valueOf(cjkNumberToUse));
+                    result.put(chFromSet, newNumber);
+                }
+            }
+        }
+        return result;
+    }
+
+    public static void getCurrentOverlapInfoFromMapForFullMap(Map<String, List<CharRecursionNode>> oldMap, String printMessage) {
         //create a map with all overlaps
         Map<String, List<CharRecursionNode>> overlapMap = new HashMap<>();
         List<String> keys = oldMap.keySet().stream().toList();
