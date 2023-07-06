@@ -60,7 +60,9 @@ public enum CustomStrokeCollections {
     OLAP4TWOVERTTWOHORI(OVERLAP.desc()+"丨"+OVERLAP.desc()+"丨"+OVERLAP.desc()+"一"+"一", false), //example: 其 ⿱⿱⑤一八 and 面/囬
     OLAP4CHANGTOP(OVERLAP.desc()+"丨"+"⿳一一一", false), //ids 長 ⿳④一⿰𠄌⿺乀丿
     OLAP3ZHABUT(OVERLAP.desc()+ "丨二", false), //button side of 乍
-    OLAP4NIENBUT(OVERLAP.desc()+ "一" + OVERLAP.desc() +"丨" +OVERLAP.desc() + "一" +  "丨", false), //button side of 年
+    OLAP4NIENBUT("㐄", false), //button side of 年
+    //㐄 from 舞 seen as alternative of 年
+    //OLAP4NIENBUT(OVERLAP.desc()+ "一" + OVERLAP.desc() +"丨" +OVERLAP.desc() + "一" +  "丨", false), //button side of 年
     OLAP3RUSSIANCROSS(OVERLAP.desc() + "二丨", false),
     //middle side of 生, top side of 龶, top right of 請
     OLAP3YIANDCHANGBUTTOM("⿰𠄌⿺乀丿"

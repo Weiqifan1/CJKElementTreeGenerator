@@ -136,6 +136,8 @@ public class CustomIdsSupplementMaps {
             customIdsSupplement.put("豆", "⿳"+"一"+"口"+"⿱"+"丷"+"一"); //豆 from 體
             customIdsSupplement.put("贝", "⿵"+OUTER2TOP_STRAIGHT.val()+"人"); //贝 from 员
             customIdsSupplement.put("页", "⿱" +OVERLAP.desc() +"一"+DOTLEFT.val() + "贝"); //页 from 题
+            customIdsSupplement.put("㥑", "⿱"+"⿱"+OVERLAP.desc()+OVERLAP.desc() +"一"+DOTLEFT.val()+"⿵"+OUTER2TOP_STRAIGHT.val()
+                    +"⿱一一"+"冖"+"心"); //㥑 from 優
             customIdsSupplement.put("角", "⿱"+OVERLAP.desc()+LEFTSLANT_SHARP.val()+BENTTOP_SHARP.val()
                     +"⿵"+OUTER2TOP_USEANDMOONE.val()+"土"); //角 from 解
             customIdsSupplement.put("東", "木"+"日");//東
@@ -224,6 +226,8 @@ public class CustomIdsSupplementMaps {
                     +LEFTSLANT_SHARP.val()+"丨"+"一"+"一"+"卩"); //印 ids ⿰③卩
             customIdsSupplement.put("卬", "⿰"+OVERLAP.desc()+OVERLAP.desc()
                     +LEFTSLANT_SHARP.val()+"丨"+"一"+"卩"); //卬 ids ⿰②卩 from 迎
+            customIdsSupplement.put("𠂎", OVERLAP.desc()+OVERLAP.desc()+LEFTSLANT_SHARP.val()+RIGHTBENTBUT_SHARP.val()
+                    +LEFTSLANT_SHARP.val()); //𠂎 from 聊
             customIdsSupplement.put("㔾", OVERLAP.desc()+BENTTOPHOOK_LARGE.val()+RIGHTBENTBUTHOOK_LARGE.val());//㔾 from 创
             customIdsSupplement.put("承", "⿱"+BENTTOP_SHARP.val()+OVERLAP.desc()+"水"+"⿳一一一"); //承 ids 承
             customIdsSupplement.put("柬", OVERLAP.desc()+"木" + OVERLAP.desc()+"口"+"丷"); //柬 from 練
@@ -236,10 +240,25 @@ public class CustomIdsSupplementMaps {
                     +"川"); //州 from 洲
             customIdsSupplement.put("酉", OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()
                     +"一"+"囗"+"儿"+"一"); //酉 from 配
+            customIdsSupplement.put("烏", OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()
+                    +DOTLEFT.val()+"丨"+BENTTOP_SHARP.val()+"一"+"一"+BENTTOPHOOK_LARGE.val()+"灬"); //  烏 from 嗚
+            customIdsSupplement.put("亦", "⿱亠"+OVERLAP.desc()+OVERLAP.desc()+LEFTSLANT_SHARP.val()+"亅"+"八");//亦 ⿱亠④
+            customIdsSupplement.put("朿", OVERLAP.desc()+"木"+OUTER2TOP_STRAIGHT.val()); //朿 from 策
+            customIdsSupplement.put("隶", OVERLAP.desc()+OVERLAP.desc()+OLAP3HORIFORKLIKE.key()+"亅"+OVERLAP.desc()+OVERLAP.desc()+
+                    OVERLAP.desc()+DOTRIGHT.val()+"一"+DOTLEFT.val()+RIGHTSLANT_SHARP.val()); //隶 from 康
+            customIdsSupplement.put("兆", OVERLAP.desc()+"儿"+OVERLAP.desc()+OVERLAP.desc()+
+                    OVERLAP.desc()+DOTRIGHT.val()+"一"+DOTLEFT.val()+RIGHTSLANT_SHARP.val()); //兆 from 跳
+            customIdsSupplement.put("爪", "⿸"+"𠂆"+OVERLAP.desc()+"丨"+RIGHTSLANT_SHARP.val()); //爪 from 抓
+            customIdsSupplement.put("亞", "⿳一"+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()
+                    +"丨"+"一"+DOUBLEBENT_25_NOHOOK.val()+DOUBLEBENT_25_NOHOOK.val()+"一"+"丨"+"一"); //亞 ids ⿳一⑥一 from 惡
+            customIdsSupplement.put("岛", "⿹"+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()
+                    +DOTLEFT.val()+BENTTOPHOOK_LARGE.val()+DOTRIGHT.val()+DOUBLEBENT_25_WITHHOOK.val()+"山"); //岛 ids ⿹④山
+            customIdsSupplement.put("垂", OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()
+                    +LEFTSLANT_SHARP.val()+"十"+"艹"+"一一"); //垂 ids ⿳丿⑥一 from 睡
 
 
 
-            ///TODO: handle 嗚
+            ///TODO: handle 套
 
             //Custom String Replacements
             customIdsSupplement.put(LEFTSIDE5_FLAGWITHMIDDLE.key(), LEFTSIDE5_FLAGWITHMIDDLE.val()); //eg. 既 ids ⿰⑤旡 from 概
