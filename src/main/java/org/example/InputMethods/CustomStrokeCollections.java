@@ -22,9 +22,11 @@ public enum CustomStrokeCollections {
     //刁 ⿹𠃌㇀    七	⿻㇀乚   𢏻	⿰⿹⿱𠂊③㇀⿹弓⿱丿丿
 
 
-    DOUBLEBENT_25("㇉", true), //与 I need to make a decision regarding the 2nd stroke.
+    DOUBLEBENT_25_WITHHOOK("㇉", true), //与 I need to make a decision regarding the 2nd stroke.
+    DOUBLEBENT_25_NOHOOK("𠃑", true), //𠃑 from 誤
     BENTTOPHOOK_LARGE("𠃌", true),
     DOUBLEBENT_55("㇋", true),
+    DOUBLEBENT_55_WITHHOOK("𠄎", true), //𠄎 eg 仍
     DOUBLEBENT_52WITHHOOK("乙", true),
     BENTTOP_SHARP("𠃍", true), // eg 過
     BENTTOP_ROUND("㇇", true), //㇇ from 樣
@@ -39,6 +41,10 @@ public enum CustomStrokeCollections {
     //I will use non CJK codepoints as the string key
 
 
+    OLAP4_BENTMOON_ALT("⿴𠂊⺀", false), //𠂊⺀ eg 㓘	⿵夙玉[G]	⿵几⿳一⿴𠂊⺀王[T]
+    OLAP4_BENTMOON("⿴𠂊冫", false), //⿴𠂊冫 eg. upper left of 祭 from 察
+    OLAP6_EXPANDEDPLANT(OVERLAP.desc()+"廿"+OVERLAP.desc() +LEFTSLANT_SHARP.val
+            +RIGHTBENTBUTHOOK_LARGE.val,false),//top part of 帶
     OLAP3_BONESAW("⿺" + OVERLAP.desc()+RIGHTSLANT_WITHHOOK.val()+LEFTSLANT_SHARP.val()+DOTRIGHT.val()
             , false), //last 3 strokes of 戈
     LEFTSIDE5_FLAGWITHMIDDLE(OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()

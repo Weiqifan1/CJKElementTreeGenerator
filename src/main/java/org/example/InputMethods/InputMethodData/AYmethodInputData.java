@@ -61,7 +61,8 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("𡿨", "ss"); //from 經
         arrayInspiredElemsV1.put("𠃋", "ss"); //𠃋 from 該
         arrayInspiredElemsV1.put("𠃊", "ss"); //𠃊 from 網
-        arrayInspiredElemsV1.put(DOUBLEBENT_25.val(), "ss"); //s=2 //eg. 與 or 与
+        arrayInspiredElemsV1.put(DOUBLEBENT_25_WITHHOOK.val(), "ss"); //s=2 //eg. 與 or 与
+        arrayInspiredElemsV1.put(DOUBLEBENT_25_NOHOOK.val(), "ss"); // s=2 //𠃑 from 誤
         arrayInspiredElemsV1.put(RIGHTBENTBUTHOOK_LARGE.val(), "ss"); //s=2
         arrayInspiredElemsV1.put(RIGHTBENTBUT_SHARP.val(), "ss"); //s=2
         arrayInspiredElemsV1.put(DOWNWITHHOOK.val(), "ss"); //DOWNWITHHOOK - related to OLAP3YIANDCHANGBUTTOM
@@ -72,6 +73,7 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("糸", "xx"); //x=2+8 x=2+6  eg.    //乿	⿰⿱爫糸乚  糸 ⿱幺小  经
         arrayInspiredElemsV1.put("糹", "xx"); //short form of 糸 eg/ 經 ⿰糹巠[GTV]	⿰糸巠[JK]  ⿰纟𢀖
         arrayInspiredElemsV1.put("纟", "xx"); //short form of 纟
+        arrayInspiredElemsV1.put("乡", "xx"); //乡 from 響 taken as alternative form of 纟
         arrayInspiredElemsV1.put("爿", "xe"); //x=2+9 e=3+1
         arrayInspiredElemsV1.put("丬", "xe"); //丬 from 将, short form of 爿
 
@@ -142,6 +144,7 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put(BENTTOP_SHARP.val(), "gg"); //𠃍 eg.過
         arrayInspiredElemsV1.put(BENTTOP_ROUND.val(), "gg"); //㇇ from 永
         arrayInspiredElemsV1.put(DOUBLEBENT_55.val(), "gg"); // ㇋ DOUBLEBENT_52
+        arrayInspiredElemsV1.put(DOUBLEBENT_55_WITHHOOK.val(), "gg"); //DOUBLEBENT_55_WITHHOOK("𠄎", true), //𠄎 eg 仍
         arrayInspiredElemsV1.put(DOUBLEBENT_52WITHHOOK.val(), "gg"); //㇠
         arrayInspiredElemsV1.put("已", "gg");  //EXCEPTION //已 -- only used in ids character beyond BMP
         arrayInspiredElemsV1.put("弓", "ga"); //g=5+5 a=1+5 //弓 from 發
@@ -152,7 +155,7 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("尸", "bz"); //b=5+9 z=1+9  eg. 所
         arrayInspiredElemsV1.put("𠃜", "bz"); //taken as a variant of 尸, 𠃜 from 声
         arrayInspiredElemsV1.put("艮", "bq"); //b=5+8 q=1+1 艮
-        arrayInspiredElemsV1.put(LEFTSIDE5_FLAGWITHMIDDLE.key(), "bq"); //left of 即 //seen as a variatin of  艮
+        arrayInspiredElemsV1.put(LEFTSIDE5_FLAGWITHMIDDLE.val(), "bq"); //left of 即 //seen as a variatin of  艮
         arrayInspiredElemsV1.put("己", "bb"); //EXCEPTION  = 己 from //巷	⿱共巳[GTK]	⿱共己[J]
         arrayInspiredElemsV1.put("癶", "b,"); // b=5+8 ,=8+9 //ids 癶 ⿰②③ from 發
         arrayInspiredElemsV1.put("廴", "b,");//b=5+8 ,=8 廴 from     建
@@ -197,8 +200,10 @@ public class AYmethodInputData {
 
         //m
         arrayInspiredElemsV1.put("夕", "mh"); //m=7+6 h=6
+        arrayInspiredElemsV1.put("𠂊", "mh"); //𠂊 eg 久  taken as an alternative of 夕
         //⿵夙玉 ⿵几⿳一⿴𠂊⺀王
-        arrayInspiredElemsV1.put("⿴𠂊⺀", "mn"); //m=7+6 n=6+6x
+        arrayInspiredElemsV1.put(OLAP4_BENTMOON.val(), "mn"); //m=7+6 n=6+6x  //OLAP4_BENTMOON ⿴𠂊冫
+        arrayInspiredElemsV1.put(OLAP4_BENTMOON_ALT.val(), "");  //⿴𠂊⺀ eg 㓘	⿵夙玉[G]	⿵几⿳一⿴𠂊⺀王[T]
         arrayInspiredElemsV1.put("貝", "mq"); //m=7+8 q=1+1
 
         //Eighth column
