@@ -74,7 +74,7 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("糹", "xx"); //short form of 糸 eg/ 經 ⿰糹巠[GTV]	⿰糸巠[JK]  ⿰纟𢀖
         arrayInspiredElemsV1.put("纟", "xx"); //short form of 纟
         arrayInspiredElemsV1.put("乡", "xx"); //乡 from 響 taken as alternative form of 纟
-        arrayInspiredElemsV1.put("爿", "xe"); //x=2+9 e=3+1
+        arrayInspiredElemsV1.put("爿", "xe"); //x=2+9 e=3+1  /(also the mirro image as in 肅)
         arrayInspiredElemsV1.put("丬", "xe"); //丬 from 将, short form of 爿
 
 

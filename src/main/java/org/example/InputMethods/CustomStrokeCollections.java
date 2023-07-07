@@ -40,7 +40,9 @@ public enum CustomStrokeCollections {
     //Non unicode stroke collections
     //I will use non CJK codepoints as the string key
 
-
+    OLAP7_SHUBUTTON("⿲"+OVERLAP.desc()+RIGHTBENTBUT_SHARP.val+"⿱"+DOTRIGHT.val+DOTRIGHT.val
+            +OVERLAP.desc()+RIGHTBENTBUT_SHARP.val+"⿱"+DOTRIGHT.val+DOTRIGHT.val
+            +RIGHTSLANT_SHARP.val, false),//button of 鼠
     OLAP4_BENTMOON_ALT("⿴𠂊⺀", false), //𠂊⺀ eg 㓘	⿵夙玉[G]	⿵几⿳一⿴𠂊⺀王[T]
     OLAP4_BENTMOON("⿴𠂊冫", false), //⿴𠂊冫 eg. upper left of 祭 from 察
     OLAP6_EXPANDEDPLANT(OVERLAP.desc()+"廿"+OVERLAP.desc() +LEFTSLANT_SHARP.val

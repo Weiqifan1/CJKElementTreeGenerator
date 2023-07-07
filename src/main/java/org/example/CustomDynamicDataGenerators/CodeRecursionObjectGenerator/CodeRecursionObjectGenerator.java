@@ -50,7 +50,7 @@ public class CodeRecursionObjectGenerator {
         int currentOrdinal = 1;
 
         for (String CJKchar : sorted) {
-            if (CJKchar.equals("體")) {
+            if (CJKchar.equals("龜")) {
                 String test = "";
             }
             CharRecursionNode node = null;

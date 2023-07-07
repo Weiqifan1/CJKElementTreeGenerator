@@ -51,7 +51,7 @@ public class CharRecursionNodeService {
 
         while (currentUnprosessedUnicode.size() > 0) {
             if (substitutionIntToBeUsed > 9) {
-                throw new DataFormatException("substitution number is too large: " + unicodeFromSingleBreakdown);
+                //throw new DataFormatException("substitution number is too large: " + unicodeFromSingleBreakdown);
             }
             Integer lastBreakdonwDescIndex = getIndexOfLastBreakdonwDescriptionChar(currentUnprosessedUnicode);
             if (Objects.isNull(lastBreakdonwDescIndex)) {
