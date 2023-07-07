@@ -114,6 +114,7 @@ public class CustomIdsSupplementMaps {
             customIdsSupplement.put("牛", OVERLAP.desc()+LEFTSLANT_SHARP.val()+OLAP3RUSSIANCROSS.key()); //牛
             customIdsSupplement.put("攵", "⿱"+"𠂉"+"乂"); //攵 //ids 攵
             customIdsSupplement.put("長", "⿳" + OLAP4CHANGTOP.key() + "一" + OLAP3YIANDCHANGBUTTOM.key()); ////ids 長 ⿳④一⿰𠄌⿺乀丿
+            customIdsSupplement.put("镸", "⿳" + OLAP4CHANGTOP.key()+ "一" + "厶"); //镸 ids ⿱④𠫔  from 套
             customIdsSupplement.put("𧘇", OVERLAP.desc()+LEFTSLANT_SHARP.val()+OLAP3YIANDCHANGBUTTOM.key()); //from 還
             customIdsSupplement.put("皮", "⿸"+OVERLAP.desc()+OVERLAP.desc()+"乛"+LEFTSLANT_SHARP.val()+"丨"+"又"); //ids 皮 from 被
             customIdsSupplement.put("鳥", "⿹"
@@ -228,6 +229,7 @@ public class CustomIdsSupplementMaps {
                     +LEFTSLANT_SHARP.val()+"丨"+"一"+"卩"); //卬 ids ⿰②卩 from 迎
             customIdsSupplement.put("𠂎", OVERLAP.desc()+OVERLAP.desc()+LEFTSLANT_SHARP.val()+RIGHTBENTBUT_SHARP.val()
                     +LEFTSLANT_SHARP.val()); //𠂎 from 聊
+            customIdsSupplement.put("劉", "⿰⿱⿰𠂎刀金刂"); //劉 ids ⿰⿱⿰③刀金刂
             customIdsSupplement.put("㔾", OVERLAP.desc()+BENTTOPHOOK_LARGE.val()+RIGHTBENTBUTHOOK_LARGE.val());//㔾 from 创
             customIdsSupplement.put("承", "⿱"+BENTTOP_SHARP.val()+OVERLAP.desc()+"水"+"⿳一一一"); //承 ids 承
             customIdsSupplement.put("柬", OVERLAP.desc()+"木" + OVERLAP.desc()+"口"+"丷"); //柬 from 練
@@ -255,6 +257,12 @@ public class CustomIdsSupplementMaps {
                     +DOTLEFT.val()+BENTTOPHOOK_LARGE.val()+DOTRIGHT.val()+DOUBLEBENT_25_WITHHOOK.val()+"山"); //岛 ids ⿹④山
             customIdsSupplement.put("垂", OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()
                     +LEFTSLANT_SHARP.val()+"十"+"艹"+"一一"); //垂 ids ⿳丿⑥一 from 睡
+            customIdsSupplement.put("典", "⿱"+OVERLAP.desc()+OVERLAP.desc()+OUTER2TOP_STRAIGHT.val()+"艹" +"一" +"八"); //典 ids ⿱⑥八
+            customIdsSupplement.put("肉", OVERLAP.desc()+OUTER2TOP_STRAIGHT.val()+"⿱"+"人人"); // 肉 ids 肉
+            customIdsSupplement.put("臣", "⿷"+"匚"+OVERLAP.desc()+OVERLAP.desc()
+                    +"丨"+OVERLAP.desc()+BENTTOP_SHARP.val()+"一"+"丨"); //臣 ids 臣 from 藏
+            customIdsSupplement.put("巨", )
+
 
 
 
