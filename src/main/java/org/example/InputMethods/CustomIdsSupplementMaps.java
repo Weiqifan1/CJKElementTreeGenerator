@@ -313,6 +313,11 @@ public class CustomIdsSupplementMaps {
                     +OVERLAP.desc()+LEFTSLANT_SHARP.val()+"丨"); //肃ids 肃
             customIdsSupplement.put("𦈢", "⿱𠂉⿻一止"); //𦈢 ids ⿱𠂉⿻一③ ⿱𠂉⿻一止 from 御
             customIdsSupplement.put("齿", "⿱止⿶"+OVERLAP.desc()+RIGHTBENTBUT_SHARP.val()+"丨人"); //齿 from 龄
+            customIdsSupplement.put("逸", "⿷免丶"); //逸 ids ⿷免丶 ⿷免丶
+            customIdsSupplement.put("册", OVERLAP.desc()+"⿰"+OUTER2TOP_USEANDMOONE.val()+OUTER2TOP_USEANDMOONE.val()+"一"); //册 ids 册
+            customIdsSupplement.put("兂", OVERLAP.desc()+OVERLAP.desc()+"一"+RIGHTBENTBUT_SHARP.val()+"儿"); //兂 from 潛
+            customIdsSupplement.put("曰", OVERLAP.desc()+"口"+"一"); //曰 ids 曰
+            //亙 ids ⿳一④一 from 恆
 
             ///TODO: handle 逸
 

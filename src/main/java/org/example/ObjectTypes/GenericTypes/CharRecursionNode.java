@@ -87,7 +87,12 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
                 subsequentSubsections,
                 codeMap, this.originalInput);
         //2023-07-08 kl. 20.27 - test - use only the first full code
-        List<List<String>> firstFullCode = List.of(fullCode.get(0));
+        List<List<String>> firstFullCode = new ArrayList<>();
+        if (Objects.nonNull(fullCode) && !fullCode.isEmpty()) {
+            firstFullCode = List.of(fullCode.get(0));
+        }else {
+            firstFullCode = fullCode;
+        }
         this.normalCode = AYMethodCodeGeneratorService.generateNormalCodeFromFullCode(firstFullCode, originalInput);
     }
 
