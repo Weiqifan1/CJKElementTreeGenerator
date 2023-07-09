@@ -146,6 +146,7 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put(DOUBLEBENT_55.val(), "gg"); // ㇋ DOUBLEBENT_52
         arrayInspiredElemsV1.put(DOUBLEBENT_55_WITHHOOK.val(), "gg"); //DOUBLEBENT_55_WITHHOOK("𠄎", true), //𠄎 eg 仍
         arrayInspiredElemsV1.put(DOUBLEBENT_52WITHHOOK.val(), "gg"); //㇠
+        arrayInspiredElemsV1.put(DOUBLEBENT_52NOHOOK.val(), "gg"); //㇈ eg 凹
         arrayInspiredElemsV1.put("已", "gg");  //EXCEPTION //已 -- only used in ids character beyond BMP
         arrayInspiredElemsV1.put("弓", "ga"); //g=5+5 a=1+5 //弓 from 發
 

@@ -28,6 +28,7 @@ public enum CustomStrokeCollections {
     DOUBLEBENT_55("㇋", true),
     DOUBLEBENT_55_WITHHOOK("𠄎", true), //𠄎 eg 仍
     DOUBLEBENT_52WITHHOOK("乙", true),
+    DOUBLEBENT_52NOHOOK("㇈", true), //㇈ eg 凹
     BENTTOP_SHARP("𠃍", true), // eg 過
     BENTTOP_ROUND("㇇", true), //㇇ from 樣
     RIGHTBENTBUTHOOK_LARGE("乚", true),
