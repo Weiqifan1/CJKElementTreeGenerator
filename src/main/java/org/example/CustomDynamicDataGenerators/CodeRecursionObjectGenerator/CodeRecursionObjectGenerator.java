@@ -71,6 +71,18 @@ public class CodeRecursionObjectGenerator {
 
             overlappingNodes = getUpdatedMap(node, overlappingNodes);
             currentOrdinal++;
+            //2023-07-09 kl. 1624 - testing character code overlap for ordinals less than 7349
+            if (currentOrdinal == 7348) {
+                System.out.println("Ordinal reached: " + currentOrdinal);
+                getCurrentOverlapInfoFromMapForFullMap(overlappingNodes, "all characters:");
+                Map<String, List<CharRecursionNode>> onlyTrad = getTop5000Trad(overlappingNodes);
+                getCurrentOverlapInfoFromMapFromTzaiAndJunda(onlyTrad, "only traditional:", true);
+                Map<String, List<CharRecursionNode>> onlySimp = getTop5000Simp(overlappingNodes);
+                getCurrentOverlapInfoFromMapFromTzaiAndJunda(onlySimp, "only simplified:", false);
+            }
+            if (currentOrdinal > 7348) {
+                return nodes;
+            }
         }
         return nodes;
     }
