@@ -21,7 +21,8 @@ public class CustomDataReader {
             throw new Exception("Custom File Reading Error: " + e);
         }
         ObjectMapper objectMapper = new ObjectMapper();
-        Map<String, Map<CharMetaInfo, String>> map = objectMapper.readValue(content, new TypeReference<Map<String, Map<CharMetaInfo, String>>>() {});
+        Map<String, Map<CharMetaInfo, String>> map = objectMapper
+                .readValue(content, new TypeReference<Map<String, Map<CharMetaInfo, String>>>() {});
         HashMap<String, String> customIdsCodesMap = customIdsSupplement;
         List<String> keysFromCustom = customIdsCodesMap.keySet().stream().toList();
         List<CharMetaInfo> metaInfoVals = List.of(org.example.ObjectTypes.GenericTypes.CharMetaInfo.values());

@@ -3,9 +3,14 @@ in the folder
 it is a file named ids.txt
 you can get it here: https://github.com/cjkvi/cjkvi-ids
 
-and these two files:
+and these three files:
 Junda2005.txt and 
-Tzai2006.txt 
+Tzai2006.txt
+heisigSimp.txt (list of the simplified heisig characters)
+heisigTrad.txt (list of the traditional heisig characters)
+can be found here:
+https://github.com/agj/3000-traditional-hanzi/tree/master/data/external
+
 
 toMake the Program work,
 you need to have a file named customIdsJsonMap.txt

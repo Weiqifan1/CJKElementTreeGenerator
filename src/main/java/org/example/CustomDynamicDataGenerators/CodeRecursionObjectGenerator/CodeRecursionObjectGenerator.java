@@ -3,13 +3,13 @@ package org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator;
 import org.example.CustomStaticDataGenerators.CustomIdsJsonMapGeneratorService;
 import org.example.ObjectTypes.GenericTypes.CharRecursionNode;
 
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.example.CustomStaticDataGenerators.CustomIdsJsonMapGeneratorService.orderedFrequencyList;
-import static org.example.GlobalConstants.publicJundaFilePath;
-import static org.example.GlobalConstants.publicTzaiFilePath;
+import static org.example.GlobalConstants.*;
 import static org.example.ObjectTypes.GenericTypes.CharMetaInfo.*;
 
 public class CodeRecursionObjectGenerator {
@@ -38,7 +38,7 @@ public class CodeRecursionObjectGenerator {
         return oldMap;
     }
 
-    public static List<CharRecursionNode> getNodeList() {
+    public static List<CharRecursionNode> getNodeList(){
         List<String> jundaLines = CustomIdsJsonMapGeneratorService.getFileLinesFromPath(Paths.get(publicJundaFilePath));
         List<String> tzaiLines = CustomIdsJsonMapGeneratorService.getFileLinesFromPath(Paths.get(publicTzaiFilePath));
         Map<String, String> jundaMap = CustomIdsJsonMapGeneratorService.generateJundaMap(jundaLines);
@@ -72,19 +72,78 @@ public class CodeRecursionObjectGenerator {
             overlappingNodes = getUpdatedMap(node, overlappingNodes);
             currentOrdinal++;
             //2023-07-09 kl. 1624 - testing character code overlap for ordinals less than 7349
-            if (currentOrdinal == 7348) {
-                System.out.println("Ordinal reached: " + currentOrdinal);
-                getCurrentOverlapInfoFromMapForFullMap(overlappingNodes, "all characters:");
+            if (currentOrdinal == 7348) { //7348
+                //Integer contentSize = overlappingNodes.values().stream().flatMap(Collection::stream)
+                //        .collect(Collectors.toList()).size();
+                //System.out.println("all codes: " + contentSize);
+                //System.out.println("Ordinal reached: " + currentOrdinal);
+
+                //create a list of only heisig trad
                 Map<String, List<CharRecursionNode>> onlyTrad = getTop5000Trad(overlappingNodes);
-                getCurrentOverlapInfoFromMapFromTzaiAndJunda(onlyTrad, "only traditional:", true);
+                Map<String, List<CharRecursionNode>> onlyHtrad = getOverlapsFromList(overlappingNodes, publicHtradFilePath);
+                getCurrentOverlapInfoFromMapFromTzaiAndJunda(onlyHtrad, "Heisig Trad:", true);
+
+                //create a list of only heisig simp
                 Map<String, List<CharRecursionNode>> onlySimp = getTop5000Simp(overlappingNodes);
+                Map<String, List<CharRecursionNode>> onlyHsimp = getOverlapsFromList(overlappingNodes, publicHsimpFilePath);
+                getCurrentOverlapInfoFromMapFromTzaiAndJunda(onlyHsimp, "Heisig Simp:", false);
+
+                getCurrentOverlapInfoFromMapFromTzaiAndJunda(onlyTrad, "only traditional:", true);
                 getCurrentOverlapInfoFromMapFromTzaiAndJunda(onlySimp, "only simplified:", false);
+
+                //all characters:
+                getCurrentOverlapInfoFromMapForFullMap(overlappingNodes, "all characters:");
             }
             if (currentOrdinal > 7348) {
                 return nodes;
             }
         }
         return nodes;
+    }
+
+    private static Map<String, List<CharRecursionNode>> getOverlapsFromList(Map<String, List<CharRecursionNode>> oldMap,
+                                                                            String filePath){
+        Set<String> charsFromFile = new HashSet<>();
+        try {
+            charsFromFile = getCharsFromFile(filePath);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        Set<String> charsFromFile2 = charsFromFile;
+
+        List<String> keys = oldMap.keySet().stream().toList();
+        Map<String, List<CharRecursionNode>> returnMap = new HashMap<>();
+
+        for (String key : keys) {
+            List<CharRecursionNode> oldEntry = oldMap.get(key);
+            List<CharRecursionNode> updated = oldEntry.stream()
+                    .filter(node -> charsFromFile2.contains(node.getCurrentBreakdownSubsection().trim()))
+                    .toList();
+            if (updated.size() > 0) {
+                returnMap.put(key, updated);
+            }
+        }
+        return returnMap;
+    }
+
+    private static Set<String> getCharsFromFile(String filePath) throws Exception {
+        Set<Integer> codePoints = Files.lines(Paths.get(filePath))
+                .flatMapToInt(CharSequence::codePoints)
+                .boxed()
+                .filter(codePoint -> codePoint > 11900)
+                .collect(Collectors.toSet());
+
+        Set<String> stringSet = new HashSet<>();
+        for (int i : codePoints) {
+            if (i <= 0xFFFF) {
+                stringSet.add(Character.toString((char) i));
+            } else {
+                char[] chars = new char[2];
+                Character.toChars(i, chars, 0);
+                stringSet.add(new String(chars));
+            }
+        }
+        return stringSet;
     }
 
     public static Map<String, List<CharRecursionNode>> getTop5000Trad(Map<String, List<CharRecursionNode>> oldMap) {
@@ -115,7 +174,12 @@ public class CodeRecursionObjectGenerator {
         return returnMap;
     }
 
-    public static void getCurrentOverlapInfoFromMapFromTzaiAndJunda(Map<String, List<CharRecursionNode>> oldMap, String printMessage, boolean isTzai) {
+    public static void getCurrentOverlapInfoFromMapFromTzaiAndJunda(Map<String, List<CharRecursionNode>> oldMap,
+                                                                    String printMessage,
+                                                                    boolean isTzai) {
+        Integer contentSize = oldMap.values().stream().flatMap(Collection::stream)
+                .collect(Collectors.toList()).size();
+        System.out.println("all values in map: " + contentSize);
         //create a map with all overlaps
         Map<String, List<CharRecursionNode>> overlapMap = new HashMap<>();
         List<String> keys = oldMap.keySet().stream().toList();
@@ -130,7 +194,8 @@ public class CodeRecursionObjectGenerator {
             }
         }
         //calculate frequency that endusers should expect: characters in normal code and elements in full code
-        List<CharRecursionNode> allNodes = oldMap.values().stream().flatMap(Collection::stream).collect(Collectors.toSet()).stream().toList();
+        List<CharRecursionNode> allNodes = oldMap.values().stream()
+                .flatMap(Collection::stream).collect(Collectors.toSet()).stream().toList();
         Map<Character, Long> normalCodeCharToMap = generateNormalCodeCharToMap(allNodes, isTzai);
 
         //add all numbers from normalCodeCharToMap and devide by 30.
@@ -159,7 +224,11 @@ public class CodeRecursionObjectGenerator {
         System.out.println("end");
     }
 
-    private static void printOverlap(String x, List<String> keys, Map<String, List<CharRecursionNode>> oldMap, Map<String, List<CharRecursionNode>> overlapMap, Map<Integer, String> overlapSize) {
+    private static void printOverlap(String x,
+                                     List<String> keys,
+                                     Map<String, List<CharRecursionNode>> oldMap,
+                                     Map<String, List<CharRecursionNode>> overlapMap,
+                                     Map<Integer, String> overlapSize) {
         System.out.println(x);
         int printcounter = 0;
         for (String key : keys) {
@@ -185,11 +254,12 @@ public class CodeRecursionObjectGenerator {
         Map<String, Long> result = new HashMap<>();
         for (CharRecursionNode node: allNodes) {
             int cjkNumberToUse = 1;
-            if (isTzai) {
+            if (isTzai && !node.getSubsectionIdsMapResult().get(TZAICHARCOUNT).isEmpty()) {
                 cjkNumberToUse = Integer.parseInt(node.getSubsectionIdsMapResult().get(TZAICHARCOUNT));
-            } else {
+            } else if (!node.getSubsectionIdsMapResult().get(JUNDACHARCOUNT).isEmpty()) {
                 cjkNumberToUse = Integer.parseInt(node.getSubsectionIdsMapResult().get(JUNDACHARCOUNT));
             }
+
             Set<String> fullCodeSet = new HashSet<>();
             for (List<String> fullcode : node.getFullCode()) {
                 for (String twoLetterCode : fullcode) {
@@ -212,27 +282,35 @@ public class CodeRecursionObjectGenerator {
     private static Map<Character, Long> generateNormalCodeCharToMap(List<CharRecursionNode> allNodes, boolean isTzai) {
         Map<Character, Long> result = new HashMap<>();
         for (CharRecursionNode node: allNodes) {
-            int cjkNumberToUse = 1;
-            if (isTzai) {
-                cjkNumberToUse = Integer.parseInt(node.getSubsectionIdsMapResult().get(TZAICHARCOUNT));
-            } else {
-                cjkNumberToUse = Integer.parseInt(node.getSubsectionIdsMapResult().get(JUNDACHARCOUNT));
-            }
-            Set<Character> fullCodeSet = new HashSet<>();
-            for (String normalCode : node.getNormalCode()) {
-                for (char ch : normalCode.toCharArray()) {
-                    fullCodeSet.add(ch);
+            try {
+                if (node.getCurrentBreakdownSubsection().equals("数")) {
+                    String test2 = "";
                 }
-            }
-            for (Character chFromSet: fullCodeSet) {
-                Long setResult = result.get(chFromSet);
-                if (Objects.isNull(setResult)) {
-                    result.put(chFromSet, Long.valueOf(String.valueOf(cjkNumberToUse)));
-                }else {
-                    Long newNumber = setResult + Long.valueOf(String.valueOf(cjkNumberToUse));
-                    result.put(chFromSet, newNumber);
+                int cjkNumberToUse = 1;
+                if (isTzai && !node.getSubsectionIdsMapResult().get(TZAICHARCOUNT).isEmpty()) {
+                    cjkNumberToUse = Integer.parseInt(node.getSubsectionIdsMapResult().get(TZAICHARCOUNT));
+                } else if (!node.getSubsectionIdsMapResult().get(JUNDACHARCOUNT).isEmpty()) {
+                    cjkNumberToUse = Integer.parseInt(node.getSubsectionIdsMapResult().get(JUNDACHARCOUNT));
                 }
+                Set<Character> fullCodeSet = new HashSet<>();
+                for (String normalCode : node.getNormalCode()) {
+                    for (char ch : normalCode.toCharArray()) {
+                        fullCodeSet.add(ch);
+                    }
+                }
+                for (Character chFromSet: fullCodeSet) {
+                    Long setResult = result.get(chFromSet);
+                    if (Objects.isNull(setResult)) {
+                        result.put(chFromSet, Long.valueOf(String.valueOf(cjkNumberToUse)));
+                    }else {
+                        Long newNumber = setResult + Long.valueOf(String.valueOf(cjkNumberToUse));
+                        result.put(chFromSet, newNumber);
+                    }
+                }
+            }catch (Exception e) {
+                String test = "";
             }
+
         }
         return result;
     }

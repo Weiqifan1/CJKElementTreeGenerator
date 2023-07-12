@@ -4,6 +4,8 @@ target/
 !**/src/test/**/target/
 
 ### Large data files should be ignored ###
+src/main/java/org/example/Data/PublicIDSData/heisigSimp.txt
+src/main/java/org/example/Data/PublicIDSData/heisigTrad.txt
 src/main/java/org/example/Data/PublicIDSData/ids.txt
 src/main/java/org/example/Data/PublicIDSData/Junda2005.txt
 src/main/java/org/example/Data/PublicIDSData/Tzai2006.txt
@@ -44,3 +46,5 @@ build/
 
 ### Mac OS ###
 .DS_Store
+/src/main/java/org/example/Data/PublicIDSData/heisigTrad.txt
+/src/main/java/org/example/Data/PublicIDSData/heisigSimp.txt
