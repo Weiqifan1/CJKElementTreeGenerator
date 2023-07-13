@@ -82,17 +82,18 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
         this.subsectionIdsMapResult = CharRecursionNodeService.generateIdsMapResult(currentBreakdownSubsection, idsMap);
         this.subsequentSubsections = CharRecursionNodeService.handleSubsectionPathways(
                 currentBreakdownSubsection, idsMap, this.originalInput);
-        this.fullCode = AYMethodCodeGeneratorService.generateFullCodeFromCodeMap(
+        List<List<String>> tempFullCode = AYMethodCodeGeneratorService.generateFullCodeFromCodeMap(
                 currentBreakdownSubsection,
                 subsequentSubsections,
                 codeMap, this.originalInput);
         //2023-07-08 kl. 20.27 - test - use only the first full code
         List<List<String>> firstFullCode = new ArrayList<>();
-        if (Objects.nonNull(fullCode) && !fullCode.isEmpty()) {
-            firstFullCode = List.of(fullCode.get(0));
+        if (Objects.nonNull(tempFullCode) && !tempFullCode.isEmpty()) {
+            firstFullCode = List.of(tempFullCode.get(0));
         }else {
-            firstFullCode = fullCode;
+            firstFullCode = tempFullCode;
         }
+        this.fullCode = firstFullCode;
         this.normalCode = AYMethodCodeGeneratorService.generateNormalCodeFromFullCode(firstFullCode, originalInput);
     }
 

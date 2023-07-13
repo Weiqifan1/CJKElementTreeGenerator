@@ -22,6 +22,13 @@ public class CodeRecursionObjectGenerator {
         System.out.println("Recursion Object Generator ended!");
     }
 
+    public static List<CharRecursionNode> getNodesFromPathThatMatchFullCode_noDesc(String inputToMatch, String path) {
+        List<CharRecursionNode> allnodes = getNodeList();
+        List<CharRecursionNode> nodesFromPath = onlyNodesFromPath(allnodes, path);
+        List<CharRecursionNode> res = nodesMatchingStr_noDescription(nodesFromPath, inputToMatch);
+        return res;
+    }
+
     public static Map<String, List<CharRecursionNode>> getUpdatedMap(CharRecursionNode newNode, Map<String, List<CharRecursionNode>> oldMap) {
         List<String> codeList = newNode.getNormalCode().stream().collect(Collectors.toSet()).stream().toList();
         for (String code : codeList) {
@@ -367,6 +374,56 @@ public class CodeRecursionObjectGenerator {
             }
         }
         return set;
+    }
+
+    private static List<CharRecursionNode> onlyNodesFromPath(List<CharRecursionNode> nodes, String filePath) {
+        Set<String> charsFromFile = new HashSet<>();
+        try {
+            charsFromFile = getCharsFromFile(filePath);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        Set<String> charsFromFile2 = charsFromFile;
+        List<CharRecursionNode> result = nodes.stream()
+                .filter(node -> charsFromFile2.contains(node.getCurrentBreakdownSubsection())).toList();
+        return result;
+    }
+
+    private static List<CharRecursionNode> nodesMatchingStr_noDescription(List<CharRecursionNode> nodes, String input) {
+        List<CharRecursionNode> results = nodes.stream().filter(node -> checkNodeForStringNoDescription(node, input)).toList();
+        return results;
+    }
+
+    private static boolean checkNodeForStringNoDescription(CharRecursionNode node, String input) {
+        //find match with no description chars
+        for (List<String> code : node.fullCode) {
+            List<String> noShape = code.stream().filter(multicode -> isAscii(multicode)).toList();
+            List<String> resultToJoin = reverseList(noShape);
+            String joined = String.join("", resultToJoin);
+            if (joined.contains(input)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean isAscii(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            if ((int) str.charAt(i) > 127) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static List<String> reverseList(List<String> list) {
+        List<String> result = new ArrayList<>();
+        int size = list.size();
+        for (int i = list.size()-1; i > -1; i--) {
+            String temp = list.get(i);
+            result.add(temp);
+        }
+        return result;
     }
 
 }

@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 import java.util.zip.DataFormatException;
 
 import static org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.CodeRecursionObjectGenerator.getNodeList;
+import static org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.CodeRecursionObjectGenerator.getNodesFromPathThatMatchFullCode_noDesc;
+import static org.example.GlobalConstants.publicHtradFilePath;
 import static org.junit.Assert.assertEquals;
 
 public class AYMethodCodeGeneratorServiceTest {
@@ -17,6 +19,13 @@ public class AYMethodCodeGeneratorServiceTest {
     public void testRecursionCodes() {
         List<CharRecursionNode> nodelist = getNodeList();
         assertEquals(16376, nodelist.size());
+    }
+
+    @Test
+    public void testFullCodeContent() {
+        List<CharRecursionNode> res = getNodesFromPathThatMatchFullCode_noDesc("laa", publicHtradFilePath);
+        String test = "";
+        assertEquals(true, false);
     }
 
     @Test
