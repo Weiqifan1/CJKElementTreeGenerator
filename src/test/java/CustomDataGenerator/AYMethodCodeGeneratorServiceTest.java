@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import java.util.zip.DataFormatException;
 
 import static org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.CodeRecursionObjectGenerator.getNodeList;
-import static org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.CodeRecursionObjectGenerator.getNodesFromPathThatMatchFullCode_noDesc;
+import static org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.CodeRecursionObjectGenerator.getNodesFromPath_noDesc_fullCodeWholeTextMatch;
 import static org.example.GlobalConstants.publicHtradFilePath;
 import static org.junit.Assert.assertEquals;
 
@@ -23,7 +23,7 @@ public class AYMethodCodeGeneratorServiceTest {
 
     @Test
     public void testFullCodeContent() {
-        List<CharRecursionNode> res = getNodesFromPathThatMatchFullCode_noDesc("laa", publicHtradFilePath);
+        List<CharRecursionNode> res = getNodesFromPath_noDesc_fullCodeWholeTextMatch("laa", publicHtradFilePath);
         String test = "";
         assertEquals(true, false);
     }

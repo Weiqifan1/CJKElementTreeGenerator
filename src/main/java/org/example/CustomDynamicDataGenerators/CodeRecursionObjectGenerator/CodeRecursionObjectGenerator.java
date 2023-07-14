@@ -22,11 +22,18 @@ public class CodeRecursionObjectGenerator {
         System.out.println("Recursion Object Generator ended!");
     }
 
-    public static List<CharRecursionNode> getNodesFromPathThatMatchFullCode_noDesc(String inputToMatch, String path) {
+    public static List<CharRecursionNode> getNodesFromPath_noDesc_fullCodeWholeTextMatch(String inputToMatch, String path) {
         List<CharRecursionNode> allnodes = getNodeList();
         List<CharRecursionNode> nodesFromPath = onlyNodesFromPath(allnodes, path);
-        List<CharRecursionNode> res = nodesMatchingStr_noDescription(nodesFromPath, inputToMatch);
+        List<CharRecursionNode> res = noDesc_fullCodeWholeTextMatch(nodesFromPath, inputToMatch);
         return res;
+    }
+
+    //public static List<CharRecursionNode> nodesMatching
+
+    private static List<CharRecursionNode> noDesc_fullCodeWholeTextMatch(List<CharRecursionNode> nodes, String input) {
+        List<CharRecursionNode> results = nodes.stream().filter(node -> noDesc_fullCodeWholeTextMatch(node, input)).toList();
+        return results;
     }
 
     public static Map<String, List<CharRecursionNode>> getUpdatedMap(CharRecursionNode newNode, Map<String, List<CharRecursionNode>> oldMap) {
@@ -389,12 +396,7 @@ public class CodeRecursionObjectGenerator {
         return result;
     }
 
-    private static List<CharRecursionNode> nodesMatchingStr_noDescription(List<CharRecursionNode> nodes, String input) {
-        List<CharRecursionNode> results = nodes.stream().filter(node -> checkNodeForStringNoDescription(node, input)).toList();
-        return results;
-    }
-
-    private static boolean checkNodeForStringNoDescription(CharRecursionNode node, String input) {
+    private static boolean noDesc_fullCodeWholeTextMatch(CharRecursionNode node, String input) {
         //find match with no description chars
         for (List<String> code : node.fullCode) {
             List<String> noShape = code.stream().filter(multicode -> isAscii(multicode)).toList();
