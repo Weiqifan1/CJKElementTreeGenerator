@@ -74,7 +74,8 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("糹", "xx"); //short form of 糸 eg/ 經 ⿰糹巠[GTV]	⿰糸巠[JK]  ⿰纟𢀖
         arrayInspiredElemsV1.put("纟", "xx"); //short form of 纟
         arrayInspiredElemsV1.put("乡", "xx"); //乡 from 響 taken as alternative form of 纟
-        arrayInspiredElemsV1.put("爿", "xe"); //x=2+9 e=3+1  /(also the mirro image as in 肅)
+        arrayInspiredElemsV1.put("爿", "xe"); //x=2+9 e=3+1  //mirror image is 片  as in 肅
+
         arrayInspiredElemsV1.put("丬", "xe"); //丬 from 将, short form of 爿
 
 
@@ -82,6 +83,7 @@ public class AYmethodInputData {
         //1	 2	3	4	5	6	7	8	9	0
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
         //e
+        arrayInspiredElemsV1.put("⺊", "ea");
         arrayInspiredElemsV1.put("止", "eq"); //e=3+1 q=1+3
         arrayInspiredElemsV1.put("刂", "ed"); //e=3+3 d=3
         arrayInspiredElemsV1.put(OLAP3ZHABUT.val(), "eq"); //e=3+1  q=1+1 //button of 乍 or left side of 耳
@@ -91,7 +93,7 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("丨", "dd");
         arrayInspiredElemsV1.put("亅", "dd");
         arrayInspiredElemsV1.put("山", "dw"); //d=3+3 w=2+3
-        arrayInspiredElemsV1.put("片", "dz"); //d=3+5 z=1+9 mirro image of 片,
+        arrayInspiredElemsV1.put("片", "dz"); //d=3+5 z=1+9 mirro image of 爿,
             // I wanted to give them the same code, but they both are in first 5000
 
         //c
@@ -234,6 +236,7 @@ public class AYmethodInputData {
         //1	 2	3	4	5	6	7	8	9	0
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
         //o
+        arrayInspiredElemsV1.put("𠂉", "oa"); //𠂉
         arrayInspiredElemsV1.put("手", "oq"); //o=9+3 q=1+3 //I take the last 2 strokes to be 1 and 3, not 4
         arrayInspiredElemsV1.put("扌", "oq"); //手 short
         arrayInspiredElemsV1.put("龵", "oq"); //手 variant //龵 eg. 拜	⿰龵⿱一丰  掰 ⿲龵分手[G]  看	⿱龵目

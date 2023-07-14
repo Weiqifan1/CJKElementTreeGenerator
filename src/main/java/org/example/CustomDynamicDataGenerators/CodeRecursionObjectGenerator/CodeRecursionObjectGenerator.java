@@ -6,6 +6,7 @@ import org.example.ObjectTypes.GenericTypes.CharRecursionNode;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static org.example.CustomStaticDataGenerators.CustomIdsJsonMapGeneratorService.orderedFrequencyList;
@@ -20,6 +21,17 @@ public class CodeRecursionObjectGenerator {
         CharRecursionNode obj = new CharRecursionNode("的", null);
 
         System.out.println("Recursion Object Generator ended!");
+    }
+
+    public static Map<String, Long> getWholeFullCodeSortedCount(String path) {
+        List<CharRecursionNode> allnodes = getNodeList();
+        List<CharRecursionNode> nodesFromPath = onlyNodesFromPath(allnodes, path);
+        Map<String, Long> allCodes = nodesFromPath.stream()
+                .map(node -> node.getFullCode())
+                .flatMap(Collection::stream)
+                .flatMap(Collection::stream)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        return allCodes;
     }
 
     public static List<CharRecursionNode> getNodesFromPath_noDesc_fullCodeWholeTextMatch(String inputToMatch, String path) {

@@ -5,6 +5,7 @@ import org.example.ObjectTypes.GenericTypes.CharRecursionNode;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.zip.DataFormatException;
@@ -19,6 +20,14 @@ public class AYMethodCodeGeneratorServiceTest {
     public void testRecursionCodes() {
         List<CharRecursionNode> nodelist = getNodeList();
         assertEquals(16376, nodelist.size());
+    }
+
+    @Test
+    public void countElements() {
+        Map<String, Long> res = getWholeFullCodeSortedCount(publicHtradFilePath);
+        Long withStr = res.get("oa");
+
+        assertEquals(true, false);
     }
 
     @Test
