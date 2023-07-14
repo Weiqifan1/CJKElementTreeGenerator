@@ -194,7 +194,7 @@ public class CharRecursionNodeService {
         return false;
     }
 
-    private static List<String> CJKDescElems(List<String> unicodeFromSingleBreakdown) {
+    public static List<String> CJKDescElems(List<String> unicodeFromSingleBreakdown) {
         List<String> numberOfCJKelem = new ArrayList<>();
         for (int i = 0; i < unicodeFromSingleBreakdown.size(); i++) {
             boolean testBoolean = stringIsCJK(unicodeFromSingleBreakdown.get(i));
@@ -204,7 +204,6 @@ public class CharRecursionNodeService {
         }
         return numberOfCJKelem;
     }
-
 
     private static Map<String, CharRecursionNode> addToRecursion(Map<String, Map<CharMetaInfo, String>> customIds,
                                                                  List<String> substringToPassOn,

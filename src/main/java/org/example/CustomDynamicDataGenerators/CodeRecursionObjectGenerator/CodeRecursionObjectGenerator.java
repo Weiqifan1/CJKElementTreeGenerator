@@ -452,7 +452,7 @@ public class CodeRecursionObjectGenerator {
         return set;
     }
 
-    private static List<CharRecursionNode> onlyNodesFromPath(List<CharRecursionNode> nodes, String filePath) {
+    public static List<CharRecursionNode> onlyNodesFromPath(List<CharRecursionNode> nodes, String filePath) {
         Set<String> charsFromFile = new HashSet<>();
         try {
             charsFromFile = getCharsFromFile(filePath);
