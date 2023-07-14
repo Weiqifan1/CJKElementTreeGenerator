@@ -36,6 +36,24 @@ public class CodeRecursionObjectGenerator {
         return res;
     }
 
+    public static List<CharRecursionNode> getNodesFromPath_exactFullCodeEntryMatch(String inputToMatch, String path) {
+        List<CharRecursionNode> allnodes = getNodeList();
+        List<CharRecursionNode> nodesFromPath = onlyNodesFromPath(allnodes, path);
+        List<CharRecursionNode> res = nodesFromPath.stream().filter(node -> nodeHasFullCodeEntry(node, inputToMatch)).toList();
+        return res;
+    }
+
+    private static boolean nodeHasFullCodeEntry(CharRecursionNode node, String inputToMatch) {
+        for (List<String> fullCode : node.fullCode) {
+            for (String code : fullCode) {
+                if (code.equals(inputToMatch)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     private static List<CharRecursionNode> noDesc_fullCodeWholeTextMatch(List<CharRecursionNode> nodes, String input) {
         List<CharRecursionNode> results = nodes.stream().filter(node -> noDesc_fullCodeWholeTextMatch(node, input)).toList();
         return results;
