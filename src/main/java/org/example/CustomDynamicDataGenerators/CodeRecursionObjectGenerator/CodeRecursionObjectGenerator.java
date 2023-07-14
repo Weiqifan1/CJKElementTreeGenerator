@@ -29,11 +29,50 @@ public class CodeRecursionObjectGenerator {
         return res;
     }
 
-    //public static List<CharRecursionNode> nodesMatching
+    public static List<CharRecursionNode> getNodesFromPath_noDesc_fullCodeFirstLettersMatch(String inputToMatch, String path) {
+        List<CharRecursionNode> allnodes = getNodeList();
+        List<CharRecursionNode> nodesFromPath = onlyNodesFromPath(allnodes, path);
+        List<CharRecursionNode> res = noDesc_fullCodeFirstLettersMatch(nodesFromPath, inputToMatch);
+        return res;
+    }
 
     private static List<CharRecursionNode> noDesc_fullCodeWholeTextMatch(List<CharRecursionNode> nodes, String input) {
         List<CharRecursionNode> results = nodes.stream().filter(node -> noDesc_fullCodeWholeTextMatch(node, input)).toList();
         return results;
+    }
+
+    private static List<CharRecursionNode> noDesc_fullCodeFirstLettersMatch(List<CharRecursionNode> nodes, String input) {
+        List<CharRecursionNode> results = nodes.stream().filter(node -> noDesc_fullCodeFirstLetterMatch(node, input)).toList();
+        return results;
+    }
+
+    private static boolean noDesc_fullCodeFirstLetterMatch(CharRecursionNode node, String input) {
+        //find match with no description chars
+        for (List<String> code : node.fullCode) {
+            List<String> noShape = code.stream().filter(multicode -> isAscii(multicode)).toList();
+            List<String> resultToJoin = reverseList(noShape);
+            List<String> onlyFirstLetters = resultToJoin.stream()
+                    .filter(shape -> shape.length() > 0)
+                    .map(shape -> shape.substring(0,1)).toList();
+            String joined = String.join("", onlyFirstLetters);
+            if (joined.contains(input)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean noDesc_fullCodeWholeTextMatch(CharRecursionNode node, String input) {
+        //find match with no description chars
+        for (List<String> code : node.fullCode) {
+            List<String> noShape = code.stream().filter(multicode -> isAscii(multicode)).toList();
+            List<String> resultToJoin = reverseList(noShape);
+            String joined = String.join("", resultToJoin);
+            if (joined.contains(input)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static Map<String, List<CharRecursionNode>> getUpdatedMap(CharRecursionNode newNode, Map<String, List<CharRecursionNode>> oldMap) {
@@ -86,7 +125,7 @@ public class CodeRecursionObjectGenerator {
             overlappingNodes = getUpdatedMap(node, overlappingNodes);
             currentOrdinal++;
             //2023-07-09 kl. 1624 - testing character code overlap for ordinals less than 7349
-            if (currentOrdinal == 7348) { //7348
+            if (currentOrdinal == 99999) {//7348) { //7348
                 //Integer contentSize = overlappingNodes.values().stream().flatMap(Collection::stream)
                 //        .collect(Collectors.toList()).size();
                 //System.out.println("all codes: " + contentSize);
@@ -394,19 +433,6 @@ public class CodeRecursionObjectGenerator {
         List<CharRecursionNode> result = nodes.stream()
                 .filter(node -> charsFromFile2.contains(node.getCurrentBreakdownSubsection())).toList();
         return result;
-    }
-
-    private static boolean noDesc_fullCodeWholeTextMatch(CharRecursionNode node, String input) {
-        //find match with no description chars
-        for (List<String> code : node.fullCode) {
-            List<String> noShape = code.stream().filter(multicode -> isAscii(multicode)).toList();
-            List<String> resultToJoin = reverseList(noShape);
-            String joined = String.join("", resultToJoin);
-            if (joined.contains(input)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     private static boolean isAscii(String str) {

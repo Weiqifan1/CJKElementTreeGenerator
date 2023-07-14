@@ -1,5 +1,6 @@
 package CustomDataGenerator;
 
+import org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.CodeRecursionObjectGenerator;
 import org.example.ObjectTypes.GenericTypes.CharRecursionNode;
 import org.junit.Test;
 
@@ -24,6 +25,13 @@ public class AYMethodCodeGeneratorServiceTest {
     @Test
     public void testFullCodeContent() {
         List<CharRecursionNode> res = getNodesFromPath_noDesc_fullCodeWholeTextMatch("laa", publicHtradFilePath);
+        String test = "";
+        assertEquals(true, false);
+    }
+
+    @Test
+    public void testFirstLetterContent() {
+        List<CharRecursionNode> res = CodeRecursionObjectGenerator.getNodesFromPath_noDesc_fullCodeFirstLettersMatch("laa", publicHtradFilePath);
         String test = "";
         assertEquals(true, false);
     }
