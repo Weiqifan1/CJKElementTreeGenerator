@@ -35,7 +35,7 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("匸", "qs"); //alternative of 匚, 匸 from 區
 
         //a
-        arrayInspiredElemsV1.put("一", "a"); //a=1
+        arrayInspiredElemsV1.put("一", "aa"); //a=1
 
         //z
         arrayInspiredElemsV1.put("厂", "zl"); //z=1+9 l=9
@@ -206,7 +206,7 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("𠂊", "mh"); //𠂊 eg 久  taken as an alternative of 夕
         //⿵夙玉 ⿵几⿳一⿴𠂊⺀王
         arrayInspiredElemsV1.put(OLAP4_BENTMOON.val(), "mn"); //m=7+6 n=6+6x  //OLAP4_BENTMOON ⿴𠂊冫
-        arrayInspiredElemsV1.put(OLAP4_BENTMOON_ALT.val(), "");  //⿴𠂊⺀ eg 㓘	⿵夙玉[G]	⿵几⿳一⿴𠂊⺀王[T]
+        arrayInspiredElemsV1.put(OLAP4_BENTMOON_ALT.val(), "mn");  //⿴𠂊⺀ eg 㓘	⿵夙玉[G]	⿵几⿳一⿴𠂊⺀王[T]
         arrayInspiredElemsV1.put("貝", "mq"); //m=7+8 q=1+1
 
         //Eighth column
