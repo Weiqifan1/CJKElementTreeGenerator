@@ -109,6 +109,8 @@ public class CustomIdsSupplementMaps {
             customIdsSupplement.put("身", OVERLAP.desc()+DOTLEFT.val()+OVERLAP.desc()
                     +OUTER2TOP_STRAIGHT.val()+OVERLAP.desc()+"⿳"+"一一一"+LEFTSLANT_SHARP.val()); //身 from 謝
             customIdsSupplement.put("正", "⿱一止"); //ids 正 ⿱一止 ⿱④一
+            customIdsSupplement.put("止", OVERLAP.desc()+OVERLAP.desc()+"⺊丨一"); //止
+            customIdsSupplement.put("⺊", OVERLAP.desc()+"丨一");
             customIdsSupplement.put("干", "⿱一十"); //ids 干 ⿱一止
             customIdsSupplement.put("冉", OVERLAP.desc()+OUTER2TOP_STRAIGHT.val()+"土"); //冉from 再
             customIdsSupplement.put("比", "⿰匕匕");//ids 比
@@ -374,20 +376,21 @@ public class CustomIdsSupplementMaps {
             customIdsSupplement.put("襾", OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+"一口丨丨"); //襾 from 遷
             customIdsSupplement.put("歧", "⿰止支"); //歧 ids ⿰止支 ⿰③支
             customIdsSupplement.put("慨", "⿰忄既"); //慨 ids ⿰忄既 ⿰忄既
-            customIdsSupplement.put("丐", OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+"一丨一"+DOUBLEBENT_25_WITHHOOK.val()); //丐 ids 丐
+            customIdsSupplement.put("丐", OVERLAP.desc()+OVERLAP.desc()
+                    +"一"+OLAP2_STRAIGHTWAND.key()+DOUBLEBENT_25_WITHHOOK.val()); //丐 ids 丐
             customIdsSupplement.put("凸", OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+"丨一丨"+DOUBLEBENT_55.val()+"一"); //凸 ids 凸
             customIdsSupplement.put("凹", OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()
                     +"丨"+DOUBLEBENT_52NOHOOK.val()+"丨"+BENTTOP_SHARP.val()+"一"); //凹 ids 凹
             customIdsSupplement.put("雋", "⿱隹"+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()
                     +"丨"+DOUBLEBENT_52NOHOOK.val()+"丨"+BENTTOPHOOK_LARGE.val()); //雋 ids ⿱隹④
-            customIdsSupplement.put("卍", OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+"一一丨丨丨一"); //卍 ids 卍
-
+            customIdsSupplement.put("卍", OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+"一十丨丨一"); //卍 ids 卍
 
 
 
             ///TODO: handle 逸
 
             //Custom String Replacements
+            customIdsSupplement.put(OLAP2_STRAIGHTWAND.key(), OLAP2_STRAIGHTWAND.val()); //first 2 strokes of 止
             customIdsSupplement.put(OLAP7_SHUBUTTON.key(), OLAP7_SHUBUTTON.val()); //button of 鼠
             customIdsSupplement.put(LEFTSIDE5_FLAGWITHMIDDLE.key(), LEFTSIDE5_FLAGWITHMIDDLE.val()); //eg. 既 ids ⿰⑤旡 from 概
             customIdsSupplement.put(OLAP4_BENTMOON_ALT.key(), OLAP4_BENTMOON_ALT.val()); //𠂊⺀ eg 㓘	⿵夙玉[G]	⿵几⿳一⿴𠂊⺀王[T]

@@ -143,7 +143,7 @@ public class CodeRecursionObjectGenerator {
             overlappingNodes = getUpdatedMap(node, overlappingNodes);
             currentOrdinal++;
             //2023-07-09 kl. 1624 - testing character code overlap for ordinals less than 7349
-            if (currentOrdinal == 99999) {//7348) { //7348
+            if (currentOrdinal == 7348) {//7348) { //7348
                 //Integer contentSize = overlappingNodes.values().stream().flatMap(Collection::stream)
                 //        .collect(Collectors.toList()).size();
                 //System.out.println("all codes: " + contentSize);

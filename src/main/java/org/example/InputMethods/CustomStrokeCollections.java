@@ -41,6 +41,7 @@ public enum CustomStrokeCollections {
     //Non unicode stroke collections
     //I will use non CJK codepoints as the string key
 
+    OLAP2_STRAIGHTWAND("⺊", false), //卜 with straight lines: as in 止
     OLAP7_SHUBUTTON("⿲"+OVERLAP.desc()+RIGHTBENTBUT_SHARP.val+"⿱"+DOTRIGHT.val+DOTRIGHT.val
             +OVERLAP.desc()+RIGHTBENTBUT_SHARP.val+"⿱"+DOTRIGHT.val+DOTRIGHT.val
             +RIGHTSLANT_SHARP.val, false),//button of 鼠
