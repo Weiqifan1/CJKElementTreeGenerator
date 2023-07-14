@@ -167,8 +167,15 @@ public class AYMethodCodeGeneratorService {
             String oneone = noNullAndNoUni.get(0).substring(0, 1);
             String twoone = noNullAndNoUni.get(1).substring(0,1);
             String threeone = noNullAndNoUni.get(2).substring(0,1);
-            String threeTwo = noNullAndNoUni.get(2).substring(1);
-            return oneone + twoone + threeone + threeTwo;
+            String last = "";//noNullAndNoUni.get(2).substring(1);
+            if (noNullAndNoUni.get(2).length() > 1) {
+                last = noNullAndNoUni.get(2).substring(1);
+            }else if (noNullAndNoUni.get(1).length() > 1){
+                last = noNullAndNoUni.get(1).substring(1);
+            }else {
+                last = noNullAndNoUni.get(0).substring(1);
+            }
+            return oneone + twoone + threeone + last;
         }
 
         //four+
