@@ -23,6 +23,15 @@ public class CodeRecursionObjectGenerator {
         System.out.println("Recursion Object Generator ended!");
     }
 
+    public static CharRecursionNode getNodeByName(String name, List<CharRecursionNode> nodes) {
+        for (CharRecursionNode node : nodes) {
+            if (node.getCurrentBreakdownSubsection().equals(name)) {
+                return node;
+            }
+        }
+        return null;
+    }
+
     public static Map<String, Long> getWholeFullCodeSortedCount(String path) {
         List<CharRecursionNode> allnodes = getNodeList();
         List<CharRecursionNode> nodesFromPath = onlyNodesFromPath(allnodes, path);

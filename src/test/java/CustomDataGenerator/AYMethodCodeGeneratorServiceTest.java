@@ -20,6 +20,11 @@ public class AYMethodCodeGeneratorServiceTest {
     @Test
     public void testRecursionCodes() {
         List<CharRecursionNode> nodelist = getNodeList();
+
+        CharRecursionNode node1 = CodeRecursionObjectGenerator.getNodeByName("一", nodelist);
+        CharRecursionNode node2 = CodeRecursionObjectGenerator.getNodeByName("二", nodelist);
+        CharRecursionNode node3 = CodeRecursionObjectGenerator.getNodeByName("三", nodelist);
+
         assertEquals(16376, nodelist.size());
     }
 
