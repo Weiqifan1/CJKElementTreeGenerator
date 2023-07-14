@@ -24,13 +24,27 @@ public class AYmethodInputData {
         //if one stroke is left: use the relevant middle-row character.
         //if the element match a primitive, the second letter is the first letter.
 
+            //left side elem to letter:
+            /*
+            氵c  扌o  亻.  口;  木v  艹r  言y  糹x  辶n    金i        ?囗  ?? 禾𧾷火广亠貝山  ???米虍
+
+            月   忄n  宀n  土r  女w  日;   竹   彳o  阝t    虫/        -?-  舟
+
+            目u  尸b  犭z  門   車q   衤n   飠   馬c  雨   礻z
+
+            */
+
+
+
         //arrayInputMap.put("", "");
         //First column
         //q
+            //left side
+            arrayInspiredElemsV1.put("車", "qd"); //q=1+3 d=3+5
+            arrayInspiredElemsV1.put("车", "qd"); //车 simp fprm of 車
+
         arrayInspiredElemsV1.put("匕", "qs"); //q=1+2 s=2
         arrayInspiredElemsV1.put("工", "qe"); //q=1+1 e=3+1
-        arrayInspiredElemsV1.put("車", "qd"); //q=1+3 d=3+5
-        arrayInspiredElemsV1.put("车", "qd"); //车 simp fprm of 車
         arrayInspiredElemsV1.put("匚", "qs"); //q=1+2 s=2  匚 from 區
         arrayInspiredElemsV1.put("匸", "qs"); //alternative of 匚, 匸 from 區
 
@@ -38,6 +52,10 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("一", "aa"); //a=1
 
         //z
+            //left side
+            arrayInspiredElemsV1.put("示", "zq"); //z=1+8 q=1+3  示 ids 示
+            arrayInspiredElemsV1.put("礻", "zq");  // z=1+8 q=1+3 ,礻 from  神
+
         arrayInspiredElemsV1.put("厂", "zl"); //z=1+9 l=9
         arrayInspiredElemsV1.put(OUTTOPLEFT2.val(), "zl"); //虍 from 號, taken as alternative to 厂
         arrayInspiredElemsV1.put("𠂆", "zl"); //eg. 所 //alternative form of 厂
@@ -46,14 +64,14 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("乁", "zk"); //乁 from 气
         arrayInspiredElemsV1.put("大", "z."); //z=1+8 .=9+8
         arrayInspiredElemsV1.put("犭", "z."); //犭 left form of 犬 - but taken as short form of 大
-        arrayInspiredElemsV1.put("示", "zq"); //z=1+8 q=1+3  示 ids 示
-        arrayInspiredElemsV1.put("礻", "zq");  // z=1+8 q=1+3 ,礻 from  神
+
             //here, is taken as an alternative to 示
 
         // Second column
         //1	 2	3	4	5	6	7	8	9	0
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
         //w
+            //left side
         arrayInspiredElemsV1.put("女", "wo"); //w=2+1 o=9+1
         arrayInspiredElemsV1.put("巛", "ww"); //w=2+2 w=2+2
 
@@ -69,6 +87,7 @@ public class AYmethodInputData {
         //arrayInputMap.put("几", ""); //s=
 
         //x
+            //left side
         arrayInspiredElemsV1.put("厶", "xs"); //x=2+6 s=6
         arrayInspiredElemsV1.put("糸", "xx"); //x=2+8 x=2+6  eg.    //乿	⿰⿱爫糸乚  糸 ⿱幺小  经
         arrayInspiredElemsV1.put("糹", "xx"); //short form of 糸 eg/ 經 ⿰糹巠[GTV]	⿰糸巠[JK]  ⿰纟𢀖
@@ -83,6 +102,7 @@ public class AYmethodInputData {
         //1	 2	3	4	5	6	7	8	9	0
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
         //e
+            //left side
         arrayInspiredElemsV1.put("⺊", "ea");
         arrayInspiredElemsV1.put("止", "eq"); //e=3+1 q=1+3
         arrayInspiredElemsV1.put("刂", "ed"); //e=3+3 d=3
@@ -97,8 +117,10 @@ public class AYmethodInputData {
             // I wanted to give them the same code, but they both are in first 5000
 
         //c
-        arrayInspiredElemsV1.put("水", "cb"); //c=3+8 b=5+9  //ids: 水	⿲㇇亅⿺乀丿
-        arrayInspiredElemsV1.put("氵", "cb"); // 水 short
+            //left side
+            arrayInspiredElemsV1.put("水", "cb"); //c=3+8 b=5+9  //ids: 水	⿲㇇亅⿺乀丿
+            arrayInspiredElemsV1.put("氵", "cb"); // 水 short
+
         arrayInspiredElemsV1.put("小", "c."); //c=3+8 .=9+8
         arrayInspiredElemsV1.put("⺌", "c."); //⺌ variant of 小, from 当
         arrayInspiredElemsV1.put("𭕄", "c."); //variant of 小  //𭕄 eg.  学
@@ -110,11 +132,14 @@ public class AYmethodInputData {
         //1	 2	3	4	5	6	7	8	9	0
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
         //r
+            //left side
+            arrayInspiredElemsV1.put("廿", "rd"); //r=4+1 d=3+1
+            arrayInspiredElemsV1.put("艹", "rd"); //alternative form of 廿
+            arrayInspiredElemsV1.put("丱", "rd"); //taken as alternative form of 廿
+            arrayInspiredElemsV1.put("艹", "rd"); //艹 from 歡
+
         arrayInspiredElemsV1.put("土", "ra"); //r=4+1 a=1
-        arrayInspiredElemsV1.put("廿", "rd"); //r=4+1 d=3+1
-        arrayInspiredElemsV1.put("艹", "rd"); //alternative form of 廿
-        arrayInspiredElemsV1.put("丱", "rd"); //alternative form of 廿
-        arrayInspiredElemsV1.put("艹", "rd"); //艹 from 歡
+
 
         //f
         arrayInspiredElemsV1.put("十", "ff"); //f=4
@@ -123,6 +148,7 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put(OLAP4NIENBUT.val(), "fq");  //buton side of 年, alternative form of "二丨" //OLAP3RUSSIANCROSS
 
         //v
+            //left side
         arrayInspiredElemsV1.put("木", "v."); //v=4+8 .=9+8
         arrayInspiredElemsV1.put("𣎳", "v."); //𣎳 v=4+8 .=9+8 Taken as 十 + 八, or an alternative form of 木, eg. 麼
         arrayInspiredElemsV1.put("朩", "v.");//taken as alternative form of 木, eg. 新
@@ -131,6 +157,7 @@ public class AYmethodInputData {
         //1	 2	3	4	5	6	7	8	9	0
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
         //t
+            //left side
         arrayInspiredElemsV1.put("阝", "td"); //t=5+3 d=3 //first stroke taken as DOUBLEBENT_55
         arrayInspiredElemsV1.put("卩", "td"); //t=5+3 d=d卩 from 报
         arrayInspiredElemsV1.put("𠁣", "tg"); //t=5+3  q=1+1 𠁣 eg. 門	⿰𠁣𠃛
@@ -153,6 +180,7 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("弓", "ga"); //g=5+5 a=1+5 //弓 from 發
 
         //b
+            //left side
         arrayInspiredElemsV1.put("刀", "bl"); //b=5+9 l=9
         arrayInspiredElemsV1.put("又", "bk"); //b=5+8 k=8又 对
         arrayInspiredElemsV1.put("尸", "bz"); //b=5+9 z=1+9  eg. 所
@@ -167,6 +195,7 @@ public class AYmethodInputData {
         //1	 2	3	4	5	6	7	8	9	0
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
         //y
+            //left side
         arrayInspiredElemsV1.put("言", "yq"); //y=6+1 q=1+1
         arrayInspiredElemsV1.put("讠", "yq"); //言 short
         arrayInspiredElemsV1.put("立", "yz"); //y=6+1 z=1+8
@@ -177,6 +206,7 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("方", "hz"); //h=6+5 z=1+9
 
         //n
+            //left side
         arrayInspiredElemsV1.put("宀", "nd"); //n=6+7 d=3+5    //宀 eg. 家
         arrayInspiredElemsV1.put("之", "nb"); //n=6+8 b=5+8
         arrayInspiredElemsV1.put("辶", "nb"); //n=6+8 g=5+8
@@ -191,6 +221,7 @@ public class AYmethodInputData {
         //1	 2	3	4	5	6	7	8	9	0
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
         //u
+            //left side
         arrayInspiredElemsV1.put("皿", "ue"); //u=7+1 e=3+3
         arrayInspiredElemsV1.put("目", "uq"); //u=0+1  q=1+1
         arrayInspiredElemsV1.put("巾", "ud"); //u=7+3 d=3  巾 part of rain: eg. 電
@@ -202,6 +233,7 @@ public class AYmethodInputData {
         //arrayInputMap.put("目", "uq"); u=7+1 q=1+1
 
         //m
+            //left side
         arrayInspiredElemsV1.put("夕", "mh"); //m=7+6 h=6
         arrayInspiredElemsV1.put("𠂊", "mh"); //𠂊 eg 久  taken as an alternative of 夕
         //⿵夙玉 ⿵几⿳一⿴𠂊⺀王
@@ -213,6 +245,7 @@ public class AYmethodInputData {
         //1	 2	3	4	5	6	7	8	9	0
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
         //i
+            //left side
         arrayInspiredElemsV1.put("金", "iq"); //i=8+1 q=1+1    //arrayInputMap.put("半", ""); //i=8+3
         arrayInspiredElemsV1.put("钅", "iq"); //钅simp left-side form of 金
         arrayInspiredElemsV1.put("冫", "ik"); //i=6+1 k=1    ?  資
@@ -227,6 +260,7 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("入", "kl"); //k=8 l=9
 
         //,
+            //left side
         arrayInspiredElemsV1.put("火", ",."); //,=8+8 .=9+8
         arrayInspiredElemsV1.put("灬", ",."); //short form of 火
         arrayInspiredElemsV1.put("米", ",q"); //,=8+8 q=1+3
@@ -236,6 +270,7 @@ public class AYmethodInputData {
         //1	 2	3	4	5	6	7	8	9	0
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
         //o
+            //left side
         arrayInspiredElemsV1.put("𠂉", "oa"); //𠂉
         arrayInspiredElemsV1.put("手", "oq"); //o=9+3 q=1+3 //I take the last 2 strokes to be 1 and 3, not 4
         arrayInspiredElemsV1.put("扌", "oq"); //手 short
@@ -256,6 +291,7 @@ public class AYmethodInputData {
         //arrayInputMap.put("", "");
 
         //.
+            //left side
         arrayInspiredElemsV1.put("人", ".k"); //.=9+8 k=8
         arrayInspiredElemsV1.put("亻", ".k"); //short 人
         arrayInspiredElemsV1.put("乂", ".k"); //ex. 文
@@ -270,6 +306,7 @@ public class AYmethodInputData {
         //1	 2	3	4	5	6	7	8	9	0
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
         //p
+            //left side
         arrayInspiredElemsV1.put("田", "pq"); //p=0+4 q=1+3
         arrayInspiredElemsV1.put("毌", "pq"); //毌 from 實 and Top of 婁 from 數
             //taken as alternative form of 田
@@ -282,6 +319,7 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("囗", ";;"); //;=0
 
         // /
+            //left side
         arrayInspiredElemsV1.put("四", "/."); // /=0+8 .=9+8
         arrayInspiredElemsV1.put("虫", "/e"); // /=0+6 e=3+1
 
