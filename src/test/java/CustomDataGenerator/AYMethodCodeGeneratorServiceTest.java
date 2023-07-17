@@ -1,6 +1,7 @@
 package CustomDataGenerator;
 
 import org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.CodeRecursionObjectGenerator;
+import org.example.InputMethods.InputMethodCodeGenerators.AYMethodCodeGeneratorService;
 import org.example.ObjectTypes.GenericTypes.CharRecursionNode;
 import org.junit.Test;
 
@@ -135,6 +136,71 @@ public class AYMethodCodeGeneratorServiceTest {
         assertEquals(Set.of("n/a."), hai56.getNormalCode().stream().collect(Collectors.toSet()));
     }
 
+
+
+    @Test
+    public void testGenerateNormalCodeFromFullCode_4code_DoubleLetters() throws DataFormatException {
+        List<List<String>> fullCode = List.of(List.of(
+                "kk", "ra", "jj", "⿻", "aa", "dd", "ff", "⿻", "⿱", "⿳", "v.", "⿰"));
+        List<String> result = AYMethodCodeGeneratorService.generateNormalCodeFromFullCode_4code(fullCode, "横");
+        assertEquals(List.of("vfdk"),result);
+    }
+
+    @Test
+    public void testGenerateNormalCodeFromFullCode_4code_DoubleAndSingleLetters_2codes() throws DataFormatException {
+        List<List<String>> fullCode = List.of(List.of(
+                "k", "v.", "⿰"));
+        List<String> result = AYMethodCodeGeneratorService.generateNormalCodeFromFullCode_4code(fullCode, "横");
+        assertEquals(List.of("vk."),result);
+    }
+
+    @Test
+    public void testGenerateNormalCodeFromFullCode_4code_DoubleAndSingleLetters_3codes() throws DataFormatException {
+        List<List<String>> fullCode = List.of(List.of(
+                "k", "ar", "⿱", "v.", "⿰"));
+        List<String> result = AYMethodCodeGeneratorService.generateNormalCodeFromFullCode_4code(fullCode, "横");
+        assertEquals(List.of("vakr"),result);
+    }
+
+    @Test
+    public void testGenerateNormalCodeFromFullCode_5codeSecToLast_DoubleCodes() throws DataFormatException {
+        List<List<String>> fullCode = List.of(List.of(
+                "kr", "ra", "jj", "⿻", "aa", "dd", "ff", "⿻", "⿱", "⿳", "v.", "⿰"));
+        List<String> result = AYMethodCodeGeneratorService.generateNormalCodeFromFullCode_5codeSecToLast(fullCode, "横");
+        assertEquals(List.of("vfdrk"),result);
+    }
+
+    @Test
+    public void testGenerateNormalCodeFromFullCode_5codeSecToLast_3single() throws DataFormatException {
+        List<List<String>> fullCode = List.of(List.of(
+                "k", "r", "v"));
+        List<String> result = AYMethodCodeGeneratorService.generateNormalCodeFromFullCode_5codeSecToLast(fullCode, "横");
+        assertEquals(List.of("vrk"),result);
+    }
+
+    @Test
+    public void testGenerateNormalCodeFromFullCode_5codeSecToLast_4doublecode() throws DataFormatException {
+        List<List<String>> fullCode = List.of(List.of(
+                "ko", "ra", "fe", "⿻", "⿱", "v.", "⿰"));
+        List<String> result = AYMethodCodeGeneratorService.generateNormalCodeFromFullCode_5codeSecToLast(fullCode, "横");
+        assertEquals(List.of("vfrko"),result);
+    }
+
+    @Test
+    public void testGenerateNormalCodeFromFullCode_5codeSecToLast_4doubleAndSingle() throws DataFormatException {
+        List<List<String>> fullCode = List.of(List.of(
+                "k", "r", "fe", "⿻", "⿱", "v.", "⿰"));
+        List<String> result = AYMethodCodeGeneratorService.generateNormalCodeFromFullCode_5codeSecToLast(fullCode, "横");
+        assertEquals(List.of("vfrke"),result);
+    }
+
+    @Test
+    public void testGenerateNormalCodeFromFullCode_5codeSecToLast_4onlySingle() throws DataFormatException {
+        List<List<String>> fullCode = List.of(List.of(
+                "k", "r", "f", "⿻", "⿱", "v", "⿰"));
+        List<String> result = AYMethodCodeGeneratorService.generateNormalCodeFromFullCode_5codeSecToLast(fullCode, "横");
+        assertEquals(List.of("vfrk"),result);
+    }
 
 
 }

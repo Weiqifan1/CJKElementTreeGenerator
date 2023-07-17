@@ -7,8 +7,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.zip.DataFormatException;
 
-import static org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.CharRecursionNodeService.unicodeBreakup;
-
 public class AYMethodCodeGeneratorService {
     public static List<List<String>> generateFullCodeFromCodeMap(String currentBreakdownSubsection,
                                                            List<CharRecursionNode> subsequentSubsections,
@@ -115,17 +113,40 @@ public class AYMethodCodeGeneratorService {
                 .contains(currentBreakdownSubsection);
     }
 
-    public static List<String> generateNormalCodeFromFullCode(List<List<String>> fullCode,
-                                                              String originalInput) throws DataFormatException {
+    public static List<String> generateNormalCodeFromFullCode_4code(List<List<String>> fullCode,
+                                                                    String originalInput) throws DataFormatException {
         List<String> result = new ArrayList<>();
         for (List<String> eachCode : fullCode) {
-            String code = normalCodeFromFullCode(eachCode, originalInput);
+            String code = normalCodeFromFullCode_4code(eachCode, originalInput);
             result.add(code);
         }
         return result;
     }
 
-    private static String normalCodeFromFullCode(List<String> inputCode, String originalInput) throws DataFormatException {
+    public static List<String> generateNormalCodeFromFullCode_5codeSecToLast(List<List<String>> fullCode,
+                                                                             String originalInput) throws DataFormatException {
+        List<String> result = new ArrayList<>();
+        for (List<String> eachCode : fullCode) {
+            String code = normalCodeFromFullCode_5code(eachCode, originalInput);
+            result.add(code);
+        }
+        return result;
+    }
+
+    private static String normalCodeFromFullCode_4code(List<String> inputCode, String originalInput) throws DataFormatException {
+        if (Objects.isNull(inputCode)) {
+            return null;
+        }
+        //the full code is reversed by default. It needs to be corrected
+        List<String> fullCode = new ArrayList<>(inputCode);
+        Collections.reverse(fullCode);
+
+        //ids breakup doesnt follow strokeorder. At some point, it might be nessasary to change it here.
+        String resultingNormalCodes = extractFourCodes(fullCode);
+        return resultingNormalCodes;
+    }
+
+    private static String normalCodeFromFullCode_5code(List<String> inputCode, String originalInput) throws DataFormatException {
         if (Objects.isNull(inputCode)) {
             return null;
         }
@@ -135,8 +156,82 @@ public class AYMethodCodeGeneratorService {
 
         //ids breakup doesnt follow strokeorder. At some point, it might be nessasary to change it here.
 
-        String resultingNormalCodes = extractFourCodes(fullCode);
+        String resultingNormalCodes = extractFiveCodes(fullCode);
         return resultingNormalCodes;
+    }
+
+    private static String extractFiveCodes(List<String> fullCode) throws DataFormatException {   //filter our unicode character
+        List<String> noNullAndNoUni = fullCode.stream()
+                .filter(Objects::nonNull)
+                .filter(code -> !code.isEmpty())
+                .filter(code -> !isUnicodeDesc(code)).toList();
+        // no code
+        if (noNullAndNoUni.size() == 0) {
+            return null;
+        }
+        //one code
+        if (noNullAndNoUni.size() == 1) {
+            return noNullAndNoUni.get(0);
+        }
+        //two codes
+        if (noNullAndNoUni.size() == 2) {
+            String oneone = noNullAndNoUni.get(0).substring(0, 1);
+            String twoone = noNullAndNoUni.get(1).substring(0,1);
+            String twotwo = noNullAndNoUni.get(1).substring(1);
+            String oneTwo = noNullAndNoUni.get(0).substring(1);
+            return oneone + twoone + twotwo + oneTwo;
+        }
+
+        //three codes
+        if (noNullAndNoUni.size() == 3) {
+            String oneone = noNullAndNoUni.get(0).substring(0, 1);
+            String twoone = noNullAndNoUni.get(1).substring(0,1);
+            String threeone = noNullAndNoUni.get(2).substring(0,1);
+            String test = "";//noNullAndNoUni.get(2).substring(1);
+            String last = "";
+
+            String oneLast = noNullAndNoUni.get(0).substring(1);
+            String twoLast = noNullAndNoUni.get(1).substring(1);
+            String threeLast = noNullAndNoUni.get(2).substring(1);
+            test = threeLast + twoLast + oneLast;
+            if (test.length() < 3) {
+                last = test;
+            } else {
+                last = test.substring(0,2);
+            }
+            return oneone + twoone + threeone + last;
+        }
+
+        //four
+        if (noNullAndNoUni.size() == 4) {
+            String oneone = noNullAndNoUni.get(0).substring(0, 1);
+            String twoone = noNullAndNoUni.get(1).substring(0,1);
+            String threeone = noNullAndNoUni.get(2).substring(0,1);
+            String fourone = noNullAndNoUni.get(noNullAndNoUni.size()-1).substring(0,1);
+            String test = "";
+            String last = "";
+
+            String oneLast = noNullAndNoUni.get(0).substring(1);
+            String twoLast = noNullAndNoUni.get(1).substring(1);
+            String threeLast = noNullAndNoUni.get(2).substring(1);
+            String fourLast = noNullAndNoUni.get(3).substring(1);
+            test = fourLast + threeLast + twoLast + oneLast;
+            if (test.length() > 1) {
+                last = test.substring(0,1);
+            }
+            return oneone + twoone + threeone + fourone + last;
+        }
+
+        //five+
+        if (noNullAndNoUni.size() > 4) {
+            String oneone = noNullAndNoUni.get(0).substring(0, 1);
+            String twoone = noNullAndNoUni.get(1).substring(0,1);
+            String threeone = noNullAndNoUni.get(2).substring(0,1);
+            String seclast = noNullAndNoUni.get(noNullAndNoUni.size()-2).substring(0,1);
+            String lastone = noNullAndNoUni.get(noNullAndNoUni.size()-1).substring(0,1);
+            return oneone + twoone + threeone + seclast + lastone;
+        }
+        throw new DataFormatException("unhandled normal code code case");
     }
 
     private static String extractFourCodes(List<String> fullCode) throws DataFormatException {

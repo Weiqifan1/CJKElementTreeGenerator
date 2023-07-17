@@ -135,6 +135,7 @@ public class AYmethodInputData {
             //left side
             arrayInspiredElemsV1.put("廿", "rd"); //r=4+1 d=3+1
             arrayInspiredElemsV1.put("艹", "rd"); //alternative form of 廿
+            arrayInspiredElemsV1.put("卄", "rd"); //alternative form of 廿 卄 from 龷 黄
             arrayInspiredElemsV1.put("丱", "rd"); //taken as alternative form of 廿
             arrayInspiredElemsV1.put("艹", "rd"); //艹 from 歡
 
