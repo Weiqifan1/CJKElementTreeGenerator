@@ -3,6 +3,7 @@ package CustomDataGenerator;
 import org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.CodeRecursionObjectGenerator;
 import org.example.InputMethods.InputMethodCodeGenerators.AYMethodCodeGeneratorService;
 import org.example.ObjectTypes.GenericTypes.CharRecursionNode;
+import org.example.ObjectTypes.GenericTypes.CodeDecompositionType;
 import org.junit.Test;
 
 import java.util.*;
@@ -20,7 +21,7 @@ public class AYMethodCodeGeneratorServiceTest {
 
     @Test
     public void testRecursionCodes() {
-        List<CharRecursionNode> nodelist = getNodeList();
+        List<CharRecursionNode> nodelist = getNodeList(CodeDecompositionType.CODE5_123zy_LIMMITBACKTRACK);
 
         CharRecursionNode node1 = CodeRecursionObjectGenerator.getNodeByName("一", nodelist);
         CharRecursionNode node2 = CodeRecursionObjectGenerator.getNodeByName("二", nodelist);
@@ -31,7 +32,7 @@ public class AYMethodCodeGeneratorServiceTest {
 
     @Test
     public void listOfFirstElements() {
-        List<CharRecursionNode> allnodes = getNodeList();
+        List<CharRecursionNode> allnodes = getNodeList(CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK);
         List<CharRecursionNode> nodesFromPath = onlyNodesFromPath(allnodes, publicHtradFilePath);
 
         //get only char with description elem as first char
@@ -88,7 +89,7 @@ public class AYMethodCodeGeneratorServiceTest {
 
     @Test
     public void countElements() {
-        Map<String, Long> res = getWholeFullCodeSortedCount(publicHtradFilePath);
+        Map<String, Long> res = getWholeFullCodeSortedCount(publicHtradFilePath, CodeDecompositionType.CODE5_123zy_LIMMITBACKTRACK);
         Long withStr = res.get("oa");
 
         assertEquals(true, false);
@@ -96,21 +97,27 @@ public class AYMethodCodeGeneratorServiceTest {
 
     @Test
     public void testFullCodeContent() {
-        List<CharRecursionNode> res = getNodesFromPath_noDesc_fullCodeWholeTextMatch("laa", publicHtradFilePath);
+        List<CharRecursionNode> res = getNodesFromPath_noDesc_fullCodeWholeTextMatch(
+                "laa", publicHtradFilePath,
+                CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK);
         String test = "";
         assertEquals(true, false);
     }
 
     @Test
     public void testFirstLetterContent() {
-        List<CharRecursionNode> res = CodeRecursionObjectGenerator.getNodesFromPath_noDesc_fullCodeFirstLettersMatch("laa", publicHtradFilePath);
+        List<CharRecursionNode> res = CodeRecursionObjectGenerator.getNodesFromPath_noDesc_fullCodeFirstLettersMatch(
+                "laa", publicHtradFilePath,
+                CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK);
         String test = "";
         assertEquals(true, false);
     }
 
     @Test
     public void testFullCodeEntryContent() {
-        List<CharRecursionNode> res = getNodesFromPath_exactFullCodeEntryMatch("aa", publicHtradFilePath);
+        List<CharRecursionNode> res = getNodesFromPath_exactFullCodeEntryMatch(
+                "aa", publicHtradFilePath,
+                CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK);
         String test = "";
         assertEquals(true, false);
     }
@@ -119,18 +126,26 @@ public class AYMethodCodeGeneratorServiceTest {
     public void testGenerateFullCodeFromCodeMap_basic() throws DataFormatException {
 
         //的 1
-        CharRecursionNode de1 = new CharRecursionNode("的", null);
+        CharRecursionNode de1 = new CharRecursionNode(
+                "的", null,
+                CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK);
         assertEquals(Set.of("lplh", "lpla"), de1.getNormalCode().stream().collect(Collectors.toSet()));
 
         //我 4
-        CharRecursionNode wo4 = new CharRecursionNode("我", null);
+        CharRecursionNode wo4 = new CharRecursionNode(
+                "我", null,
+                CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK);
         assertEquals(Set.of("lokh"), wo4.getNormalCode().stream().collect(Collectors.toSet()));
         //就 26
-        CharRecursionNode jiu26 = new CharRecursionNode("就", null);
+        CharRecursionNode jiu26 = new CharRecursionNode(
+                "就", null,
+                CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK);
         assertEquals(Set.of("ha;h", "da;h"), jiu26.getNormalCode().stream().collect(Collectors.toSet()));
 
         //還 56
-        CharRecursionNode hai56 = new CharRecursionNode("還", null);
+        CharRecursionNode hai56 = new CharRecursionNode(
+                "還", null,
+                CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK);
         //n represent the 辶 stroke. For now, I will follow ids order, not stroke order for whole characters.
         //the codes for elements will still follow strokeorder, except for the normal array rules.
         assertEquals(Set.of("n/a."), hai56.getNormalCode().stream().collect(Collectors.toSet()));

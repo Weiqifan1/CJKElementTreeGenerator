@@ -2,6 +2,7 @@ package org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator;
 
 import org.example.CustomStaticDataGenerators.CustomIdsJsonMapGeneratorService;
 import org.example.ObjectTypes.GenericTypes.CharRecursionNode;
+import org.example.ObjectTypes.GenericTypes.CodeDecompositionType;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -18,7 +19,8 @@ public class CodeRecursionObjectGenerator {
     public static void main(String[] args) throws Exception {
         System.out.println("Recursion Object Generator started!");
 
-        CharRecursionNode obj = new CharRecursionNode("的", null);
+        CharRecursionNode obj = new CharRecursionNode("的", null,
+                CodeDecompositionType.CODE5_123zy_LIMMITBACKTRACK);
 
         System.out.println("Recursion Object Generator ended!");
     }
@@ -32,8 +34,8 @@ public class CodeRecursionObjectGenerator {
         return null;
     }
 
-    public static Map<String, Long> getWholeFullCodeSortedCount(String path) {
-        List<CharRecursionNode> allnodes = getNodeList();
+    public static Map<String, Long> getWholeFullCodeSortedCount(String path, CodeDecompositionType codeDecom) {
+        List<CharRecursionNode> allnodes = getNodeList(codeDecom);
         List<CharRecursionNode> nodesFromPath = onlyNodesFromPath(allnodes, path);
         Map<String, Long> allCodes = nodesFromPath.stream()
                 .map(node -> node.getFullCode())
@@ -43,22 +45,25 @@ public class CodeRecursionObjectGenerator {
         return allCodes;
     }
 
-    public static List<CharRecursionNode> getNodesFromPath_noDesc_fullCodeWholeTextMatch(String inputToMatch, String path) {
-        List<CharRecursionNode> allnodes = getNodeList();
+    public static List<CharRecursionNode> getNodesFromPath_noDesc_fullCodeWholeTextMatch(String inputToMatch, String path,
+                                                                                         CodeDecompositionType codeDecom) {
+        List<CharRecursionNode> allnodes = getNodeList(codeDecom);
         List<CharRecursionNode> nodesFromPath = onlyNodesFromPath(allnodes, path);
         List<CharRecursionNode> res = noDesc_fullCodeWholeTextMatch(nodesFromPath, inputToMatch);
         return res;
     }
 
-    public static List<CharRecursionNode> getNodesFromPath_noDesc_fullCodeFirstLettersMatch(String inputToMatch, String path) {
-        List<CharRecursionNode> allnodes = getNodeList();
+    public static List<CharRecursionNode> getNodesFromPath_noDesc_fullCodeFirstLettersMatch(String inputToMatch, String path,
+                                                                                            CodeDecompositionType codeDecom) {
+        List<CharRecursionNode> allnodes = getNodeList(codeDecom);
         List<CharRecursionNode> nodesFromPath = onlyNodesFromPath(allnodes, path);
         List<CharRecursionNode> res = noDesc_fullCodeFirstLettersMatch(nodesFromPath, inputToMatch);
         return res;
     }
 
-    public static List<CharRecursionNode> getNodesFromPath_exactFullCodeEntryMatch(String inputToMatch, String path) {
-        List<CharRecursionNode> allnodes = getNodeList();
+    public static List<CharRecursionNode> getNodesFromPath_exactFullCodeEntryMatch(String inputToMatch, String path,
+                                                                                   CodeDecompositionType codeDecom) {
+        List<CharRecursionNode> allnodes = getNodeList(codeDecom);
         List<CharRecursionNode> nodesFromPath = onlyNodesFromPath(allnodes, path);
         List<CharRecursionNode> res = nodesFromPath.stream().filter(node -> nodeHasFullCodeEntry(node, inputToMatch)).toList();
         return res;
@@ -130,7 +135,7 @@ public class CodeRecursionObjectGenerator {
         return oldMap;
     }
 
-    public static List<CharRecursionNode> getNodeList(){
+    public static List<CharRecursionNode> getNodeList(CodeDecompositionType codeDecom){
         List<String> jundaLines = CustomIdsJsonMapGeneratorService.getFileLinesFromPath(Paths.get(publicJundaFilePath));
         List<String> tzaiLines = CustomIdsJsonMapGeneratorService.getFileLinesFromPath(Paths.get(publicTzaiFilePath));
         Map<String, String> jundaMap = CustomIdsJsonMapGeneratorService.generateJundaMap(jundaLines);
@@ -147,7 +152,7 @@ public class CodeRecursionObjectGenerator {
             }
             CharRecursionNode node = null;
             try {
-                node = new CharRecursionNode(CJKchar, null);
+                node = new CharRecursionNode(CJKchar, null, codeDecom);
             } catch (Exception e) {
                 System.out.println(CJKchar);
                 System.out.println("tzai: " + tzaiMap.get(CJKchar));

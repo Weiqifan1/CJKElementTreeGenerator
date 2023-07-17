@@ -4,6 +4,7 @@ import org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.Char
 import org.example.CustomDataHandler.CustomDataReader;
 import org.example.ObjectTypes.GenericTypes.CharMetaInfo;
 import org.example.ObjectTypes.GenericTypes.CharRecursionNode;
+import org.example.ObjectTypes.GenericTypes.CodeDecompositionType;
 import org.junit.Test;
 
 import java.util.List;
@@ -23,7 +24,8 @@ public class ChrRecursionNodeServiceTest {
         String inputToOne = String.join("", input);
 
         //When
-        List<CharRecursionNode> res = handleSubsectionPathways(inputToOne, customIds, null);
+        List<CharRecursionNode> res = handleSubsectionPathways(
+                inputToOne, customIds, null, CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK);
 
         //Then
         assertEquals(5, res.size());
@@ -35,7 +37,9 @@ public class ChrRecursionNodeServiceTest {
         Map<String, Map<CharMetaInfo, String>> customIds = CustomDataReader.getCustomIdsMap(customIdsJsonMapPath);
         List<String> input = List.of("⿵", "几", "⿳", "一", "⿴", "𠂊" , "⺀", "王");
 
-        CharRecursionNode res = CharRecursionNodeService.getNestedSubstrings(input, customIds, null);
+        CharRecursionNode res = CharRecursionNodeService.getNestedSubstrings(
+                input, customIds, null,
+                CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK);
 
         assertEquals(8, CharRecursionNodeService.unicodeBreakup(res.getCurrentBreakdownSubsection()).size());
         assertEquals(3, res.getSubsequentSubsections().size());

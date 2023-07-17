@@ -4,6 +4,7 @@ package org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator;
 import org.example.ObjectTypes.GenericTypes.CJKDescription;
 import org.example.ObjectTypes.GenericTypes.CharMetaInfo;
 import org.example.ObjectTypes.GenericTypes.CharRecursionNode;
+import org.example.ObjectTypes.GenericTypes.CodeDecompositionType;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -20,7 +21,7 @@ public class CharRecursionNodeService {
 
     public static List<CharRecursionNode> handleSubsectionPathways(String currentBreakdownSubsection,
                                                                    Map<String, Map<CharMetaInfo, String>> customIds,
-                                                                   String originalInput) throws DataFormatException {
+                                                                   String originalInput, CodeDecompositionType codeDecom) throws DataFormatException {
         boolean isEndNode = isEndNode(currentBreakdownSubsection, customIds);
         if (isEndNode) return new ArrayList<>();
         List<String> splitMultiSubsections = Arrays.stream(currentBreakdownSubsection.split("\\s"))
@@ -35,7 +36,7 @@ public class CharRecursionNodeService {
             boolean severalDescElems = CJKDescElems(currentBreakdonwUnicode).size() > 1;
             updatedRecursionNode = doHandlePathways(
                     customIds, splitMultiSubsections, updatedRecursionNode, recur,
-                    substring, lookupResult, currentBreakdonwUnicode, severalDescElems, originalInput);
+                    substring, lookupResult, currentBreakdonwUnicode, severalDescElems, originalInput, codeDecom);
         }
         List<CharRecursionNode> result = avoidExcessivelyNestedBreakdowns(currentBreakdownSubsection, updatedRecursionNode);
         return result;
@@ -43,7 +44,7 @@ public class CharRecursionNodeService {
 
     public static CharRecursionNode getNestedSubstrings(List<String> unicodeFromSingleBreakdown,
                                                         Map<String, Map<CharMetaInfo, String>> customIds,
-                                                        String thisoriginalInput) throws DataFormatException {
+                                                        String thisoriginalInput, CodeDecompositionType codeDecom) throws DataFormatException {
         List<String> currentUnprosessedUnicode = unicodeFromSingleBreakdown;
         Map<String, List<String>> intSubstitutes = new HashMap<>();
         int substitutionIntToBeUsed = 1;
@@ -63,7 +64,7 @@ public class CharRecursionNodeService {
                         currentUnprosessedUnicode,
                         substitutionIntToBeUsed,
                         updatedRecursion,
-                        thisoriginalInput);
+                        thisoriginalInput, codeDecom);
                 currentUnprosessedUnicode = new ArrayList<>();
                 substitutionIntToBeUsed++;
 
@@ -76,7 +77,7 @@ public class CharRecursionNodeService {
                             substringToPassOn,
                             substitutionIntToBeUsed,
                             updatedRecursion,
-                            thisoriginalInput);
+                            thisoriginalInput, codeDecom);
                     intSubstitutes.put(String.valueOf(substitutionIntToBeUsed), substringToPassOn);
                     currentUnprosessedUnicode = removemiddleSubstringFromList(
                             currentUnprosessedUnicode, substringToPassOn,
@@ -90,7 +91,7 @@ public class CharRecursionNodeService {
                             substringToPassOn,
                             substitutionIntToBeUsed,
                             updatedRecursion,
-                            thisoriginalInput);
+                            thisoriginalInput, codeDecom);
                     intSubstitutes.put(String.valueOf(substitutionIntToBeUsed), substringToPassOn);
                     currentUnprosessedUnicode = removemiddleSubstringFromList(
                             currentUnprosessedUnicode, substringToPassOn,
@@ -113,7 +114,7 @@ public class CharRecursionNodeService {
                                                             Map<CharMetaInfo, String> lookupResult,
                                                             List<String> currentBreakdonwUnicode,
                                                             boolean severalDescElems,
-                                                            String originalInput) throws DataFormatException {
+                                                            String originalInput, CodeDecompositionType codeDecom) throws DataFormatException {
         String lookupStr = null;
         if (Objects.nonNull(lookupResult)) {
             lookupStr = lookupResult.get(CharMetaInfo.BREAKDOWN);
@@ -124,13 +125,13 @@ public class CharRecursionNodeService {
             updatedRecursionNode.add(recur);
         }else if (Objects.nonNull(lookupStr)) {
             //the lookup result is a char that has a novel breakupValue- this can be a split string
-            recur = new CharRecursionNode(lookupStr, originalInput);
+            recur = new CharRecursionNode(lookupStr, originalInput, codeDecom);
             updatedRecursionNode.add(recur);
         }else if (Objects.isNull(lookupStr)) {
             updatedRecursionNode = handleFinalSubsection(
                     customIds, splitMultiSubsections,
                     updatedRecursionNode, recur, substring,
-                    currentBreakdonwUnicode, severalDescElems, originalInput);
+                    currentBreakdonwUnicode, severalDescElems, originalInput, codeDecom);
         }else {
             throw new DataFormatException("unhandle SubsectionPathways case");
         }
@@ -157,15 +158,16 @@ public class CharRecursionNodeService {
                                                                  CharRecursionNode recur,
                                                                  String substring,
                                                                  List<String> currentBreakdonwUnicode,
-                                                                 boolean severalDescElems, String thisoriginalInput) throws DataFormatException {
+                                                                 boolean severalDescElems, String thisoriginalInput,
+                                                                 CodeDecompositionType codeDecom) throws DataFormatException {
         if (currentBreakdonwUnicode.size() == 1) {
             recur = new CharRecursionNode.Builder().withCurrentBreakdownSubsection(substring, thisoriginalInput).build();
         } else if (severalDescElems) {
-            recur = getNestedSubstrings(currentBreakdonwUnicode, customIds, thisoriginalInput);
+            recur = getNestedSubstrings(currentBreakdonwUnicode, customIds, thisoriginalInput, codeDecom);
         } else {
             List<CharRecursionNode> newlittlelist = currentBreakdonwUnicode.stream().map(each -> {
                 try {
-                    return new CharRecursionNode(each, thisoriginalInput);
+                    return new CharRecursionNode(each, thisoriginalInput, codeDecom);
                 } catch (DataFormatException e) {
                     throw new RuntimeException(e);
                 }
@@ -209,12 +211,12 @@ public class CharRecursionNodeService {
                                                                  List<String> substringToPassOn,
                                                                  int substitutionIntToBeUsed,
                                                                  Map<String, CharRecursionNode> updatedRecursion,
-                                                                 String thisoriginalInput) throws DataFormatException {
+                                                                 String thisoriginalInput, CodeDecompositionType codeDecom) throws DataFormatException {
         List<CharRecursionNode> nodeList = new ArrayList<>();
         for (String item: substringToPassOn) {
             CharRecursionNode lookup = updatedRecursion.get(item);
             if (Objects.isNull(lookup)) {
-                nodeList.add(new CharRecursionNode(item, thisoriginalInput));
+                nodeList.add(new CharRecursionNode(item, thisoriginalInput, codeDecom));
             }else {
                 nodeList.add(lookup);
             }

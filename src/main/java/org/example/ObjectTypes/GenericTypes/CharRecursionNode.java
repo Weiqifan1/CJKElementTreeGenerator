@@ -71,7 +71,8 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
         return codeMap;
     }
 
-    public CharRecursionNode(String currentBreakdownSubsection, String originalInput) throws DataFormatException {
+    public CharRecursionNode(String currentBreakdownSubsection, String originalInput,
+                             CodeDecompositionType codeDecom) throws DataFormatException {
         this.currentBreakdownSubsection = currentBreakdownSubsection;
         if (Objects.nonNull(originalInput)) {
             this.originalInput = originalInput;
@@ -81,7 +82,7 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
 
         this.subsectionIdsMapResult = CharRecursionNodeService.generateIdsMapResult(currentBreakdownSubsection, idsMap);
         this.subsequentSubsections = CharRecursionNodeService.handleSubsectionPathways(
-                currentBreakdownSubsection, idsMap, this.originalInput);
+                currentBreakdownSubsection, idsMap, this.originalInput, codeDecom);
         List<List<String>> tempFullCode = AYMethodCodeGeneratorService.generateFullCodeFromCodeMap(
                 currentBreakdownSubsection,
                 subsequentSubsections,
@@ -94,8 +95,20 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
             firstFullCode = tempFullCode;
         }
         this.fullCode = firstFullCode;
-        this.normalCode = AYMethodCodeGeneratorService.generateNormalCodeFromFullCode_5codeSecToLast(firstFullCode, originalInput);
+        this.normalCode = selectNormalCode(firstFullCode, originalInput, codeDecom);
     }
+
+    private List<String> selectNormalCode(List<List<String>> firstFullCode, String originalInput, CodeDecompositionType codeDecom) throws DataFormatException {
+        if (codeDecom.equals(CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK)) {
+            return AYMethodCodeGeneratorService.generateNormalCodeFromFullCode_4code(firstFullCode, originalInput);
+        } else if (codeDecom.equals(CodeDecompositionType.CODE5_123zy_LIMMITBACKTRACK)) {
+            return AYMethodCodeGeneratorService.generateNormalCodeFromFullCode_5codeSecToLast(firstFullCode, originalInput);
+        } else {
+            throw new DataFormatException("selectNormalCode error");
+        }
+    }
+
+    //this.normalCode =
 
     public void setIdsMap(Map<String, Map<CharMetaInfo, String>> idsMap) {
         this.idsMap = idsMap;
