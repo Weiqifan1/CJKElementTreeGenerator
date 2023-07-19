@@ -1,4 +1,4 @@
-package CustomDataGenerator;
+package CustomDataGenerator.AYMethodTestPackage;
 
 import org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.CodeRecursionObjectGenerator;
 import org.example.InputMethods.InputMethodCodeGenerators.AYMethodCodeGeneratorService;
@@ -7,14 +7,11 @@ import org.example.ObjectTypes.GenericTypes.CodeDecompositionType;
 import org.junit.Test;
 
 import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import java.util.zip.DataFormatException;
 
 import static org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.CharRecursionNodeService.CJKDescElems;
 import static org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.CharRecursionNodeService.unicodeBreakup;
-import static org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.CodeRecursionObjectGenerator.*;
-import static org.example.GlobalConstants.publicHtradFilePath;
+import static org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.CodeRecursionObjectGenerator.getNodeList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -30,6 +27,8 @@ public class AYMethodCodeGeneratorServiceTest {
 
         assertTrue(nodelist.size() >= 7348);
     }
+
+
 /*
     @Test
     public void listOfFirstElements() {

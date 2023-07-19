@@ -2,12 +2,25 @@ package org.example.InputMethods.InputMethodCodeGenerators;
 
 import org.example.ObjectTypes.GenericTypes.CJKDescription;
 import org.example.ObjectTypes.GenericTypes.CharRecursionNode;
+import org.example.ObjectTypes.GenericTypes.CodeDecompositionType;
 
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.zip.DataFormatException;
 
+import static org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.CodeRecursionObjectGenerator.getNodeList;
+
 public class AYMethodCodeGeneratorService {
+
+    public static Map<String, CharRecursionNode> nodeListToMap(List<CharRecursionNode> nodeList) {
+        Map<String, CharRecursionNode> result = new HashMap<>();
+        for (CharRecursionNode node : nodeList) {
+            String str = node.getOriginalInput();
+            result.put(str, node);
+        }
+        return result;
+    }
+
     public static List<List<String>> generateFullCodeFromCodeMap(String currentBreakdownSubsection,
                                                            List<CharRecursionNode> subsequentSubsections,
                                                            HashMap<String, String> codeMap,
