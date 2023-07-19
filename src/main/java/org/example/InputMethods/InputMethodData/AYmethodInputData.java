@@ -34,6 +34,12 @@ public class AYmethodInputData {
 
             */
 
+            /*  try to organize outer elems by strokes:  tryToAvoid: 冖
+            nr1hori: 礻馬-犭-車     nr2Bent: 糹女    nr3vert: 氵門
+            nr4cross: 木艹土       nr5Bent: 阝尸     nr6dot:   言-辶-宀衤
+            sevenOuterTop:  月目雨    nr8eightStrokes: 金忄飠
+            nr9leftSlant: 扌-亻-竹彳   nr10box:  口日虫       */
+
 
 
         //arrayInputMap.put("", "");
