@@ -26,29 +26,80 @@ public class AYmethodInputData {
 
             //left side elem to letter:
             /*
-            氵c  扌o  亻.  口;  木v  艹r  言y  糹x  辶n    金i        ?囗  ?? 禾𧾷火广亠貝山  ???米虍
+            氵c  扌o  亻.  口;  木v  艹r  言y  糹x  辶n    金i        ?囗  ?? 禾𧾷火广貝山  ???米虍
 
-            月   忄n  宀n  土r  女w  日;   竹   彳o  阝t    虫/        -?-  舟
+            月   忄n  宀n  土r  女w  日;   竹   彳o  阝t    尸            /   亠     -?-  舟大彳
 
-            目u  尸b  犭z  門   車q   衤n   飠   馬c  雨   礻z
+            虫   目u    犭z  門   車q   衤n   飠   馬c  雨   礻z
 
             */
 
-            /*  try to organize outer elems by strokes:  tryToAvoid: 冖
-            nr1hori: 礻馬-犭-車     nr2Bent: 糹女    nr3vert: 氵門
-            nr4cross: 木艹土       nr5Bent: 阝尸     nr6dot:   言-辶-宀衤
+            /*  try to organize outer elems by strokes:                     tryToAvoid: 宀冖火馬
+            nr1hori: 礻-犭-車     nr2Bent: 糹女山    nr3vert: 氵門
+            nr4cross: 木艹土       nr5Bent: 阝尸     nr6dot:   言-辶-衤
             sevenOuterTop:  月目雨    nr8eightStrokes: 金忄飠
-            nr9leftSlant: 扌-亻-竹彳   nr10box:  口日虫       */
+            nr9leftSlant: 扌-亻-竹   nr10box:  口日虫       */
+
+            //great left side elements
+        //q a z
+        arrayInspiredElemsV1.put("大", "za");
+        arrayInspiredElemsV1.put("犭", "za"); //犬 is the real full shape of 犭
+        arrayInspiredElemsV1.put("車", "aa");
+        arrayInspiredElemsV1.put("车", "aa"); //车 simp fprm of 車
+        arrayInspiredElemsV1.put("示", "qa");
+        arrayInspiredElemsV1.put("礻", "qa");
+
+        //w s x
+            arrayInspiredElemsV1.put("山", "ws");
+        arrayInspiredElemsV1.put("女", "ss");
+        arrayInspiredElemsV1.put("糸", "xs");
+        arrayInspiredElemsV1.put("糹", "xs");
+        arrayInspiredElemsV1.put("纟", "xs");
+        //e d c
+            arrayInspiredElemsV1.put("門", "ed");
+            arrayInspiredElemsV1.put("门", "ed");
+            arrayInspiredElemsV1.put("水", "ee"); //氵門
+            arrayInspiredElemsV1.put("氵", "ee");
+            //r f v
+            arrayInspiredElemsV1.put("艹", "rf"); //木艹土
+            arrayInspiredElemsV1.put("土", "ff");
+            arrayInspiredElemsV1.put("木", "vf");
+            //t g b
+            //arrayInspiredElemsV1.put("阝", "tg"); //阝尸
+            arrayInspiredElemsV1.put("子", "gg");
+            arrayInspiredElemsV1.put("尸", "bg");
+            //y h n
+            arrayInspiredElemsV1.put("言", "yh"); //言-辶-衤
+            arrayInspiredElemsV1.put("訁", "yh");
+            arrayInspiredElemsV1.put("讠", "yh");
+            arrayInspiredElemsV1.put("衣", "hh");
+            arrayInspiredElemsV1.put("衤", "hh");
+            arrayInspiredElemsV1.put("之", "nh");
+            arrayInspiredElemsV1.put("辶", "nh");
+            //u j m  //月目雨
+            arrayInspiredElemsV1.put("目", "uj");
+            arrayInspiredElemsV1.put("雨", "jj");
+            arrayInspiredElemsV1.put("月", "mj");
+            //i k ,
+            arrayInspiredElemsV1.put("心", "ik");
+            arrayInspiredElemsV1.put("忄", "ik"); //忄金飠
+            arrayInspiredElemsV1.put("金", "kk");
+            arrayInspiredElemsV1.put("钅", "kk");
+            arrayInspiredElemsV1.put("飠", ",k");
+            arrayInspiredElemsV1.put("饣", ",k");
+            //o l .
+            arrayInspiredElemsV1.put("手", "ol"); //扌-亻-
+            arrayInspiredElemsV1.put("扌", "ol");
+            arrayInspiredElemsV1.put("竹", "ll");
+            arrayInspiredElemsV1.put("人", ".l");
+            arrayInspiredElemsV1.put("亻", ".l");
+            arrayInspiredElemsV1.put("", "");
 
 
 
         //arrayInputMap.put("", "");
         //First column
-        //q
-            //left side
-            arrayInspiredElemsV1.put("車", "qd"); //q=1+3 d=3+5
-            arrayInspiredElemsV1.put("车", "qd"); //车 simp fprm of 車
-
+        //q//left side
         arrayInspiredElemsV1.put("匕", "qs"); //q=1+2 s=2
         arrayInspiredElemsV1.put("工", "qe"); //q=1+1 e=3+1
         arrayInspiredElemsV1.put("匚", "qs"); //q=1+2 s=2  匚 from 區

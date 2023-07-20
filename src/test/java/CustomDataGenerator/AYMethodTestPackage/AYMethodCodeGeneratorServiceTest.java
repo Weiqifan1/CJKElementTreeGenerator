@@ -7,11 +7,15 @@ import org.example.ObjectTypes.GenericTypes.CodeDecompositionType;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.zip.DataFormatException;
 
 import static org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.CharRecursionNodeService.CJKDescElems;
 import static org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.CharRecursionNodeService.unicodeBreakup;
 import static org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.CodeRecursionObjectGenerator.getNodeList;
+import static org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.CodeRecursionObjectGenerator.onlyNodesFromPath;
+import static org.example.GlobalConstants.publicHtradFilePath;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -28,8 +32,6 @@ public class AYMethodCodeGeneratorServiceTest {
         assertTrue(nodelist.size() >= 7348);
     }
 
-
-/*
     @Test
     public void listOfFirstElements() {
         List<CharRecursionNode> allnodes = getNodeList(CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK);
@@ -43,10 +45,11 @@ public class AYMethodCodeGeneratorServiceTest {
 
         Map<String, Long> sortedmap = reverseSortedFirstElements(groupBy);
 
-        String test = "";
-
-        assertEquals(true, false);
-    }*/
+        //at time of writing the size of the map is 958,  but the size might change slightly and thats ok
+        assertTrue(sortedmap.size() >= 900);
+        assertTrue(Objects.nonNull(sortedmap.get("扌")));
+        assertTrue(sortedmap.get("扌") == 149l);
+    }
 
     public static <K, V extends Comparable<? super V>> Map<K, V> reverseSortedFirstElements(Map<K, V> map) {
         List<Map.Entry<K, V>> list = new ArrayList<>(map.entrySet());
@@ -62,12 +65,12 @@ public class AYMethodCodeGeneratorServiceTest {
         if (Objects.isNull(node.getSubsequentSubsections()) || node.getSubsequentSubsections().size() < 1) {
             return null;
         }
-        String subs = node.getSubsequentSubsections().get(0).getCurrentBreakdownSubsection();
-        if (Objects.isNull(subs) || subs.length() < 1) {
-            return null;
+        CharRecursionNode secondSub = node.getSubsequentSubsections().get(0);
+        if (Objects.isNull(secondSub.getSubsequentSubsections()) || secondSub.getSubsequentSubsections().size() < 2) {
+            String test = "";
         }
-        String firstSub = unicodeBreakup(subs).get(1);
-        return firstSub;
+        CharRecursionNode nestedSecSub = secondSub.getSubsequentSubsections().get(1);
+        return nestedSecSub.getCurrentBreakdownSubsection();
     }
 
     private boolean descFirst(CharRecursionNode node) {

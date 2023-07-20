@@ -18,6 +18,7 @@ public class CustomIdsSupplementMaps {
         try {
             //Stroke collections that have unicode char representations
             //(for stroke collections that dont are in CustomStrokeCollection enums)
+            customIdsSupplement.put("彳", "⿱"+LEFTSLANT_SHARP + "亻" ); //彳
             customIdsSupplement.put("白", "⿻"+LEFTSLANT_SHARP.val()+"日");
             customIdsSupplement.put("戊", OVERLAP.desc()+"厂" + OLAP3WORIGHTSTROKES.val());//ids 戊
             customIdsSupplement.put("我", OVERLAP.desc()+OVERLAP.desc()+LEFTSLANT_SHARP.val()+"扌"+OLAP3WORIGHTSTROKES.val()); //ids 我
@@ -66,6 +67,7 @@ public class CustomIdsSupplementMaps {
             customIdsSupplement.put("厶", OVERLAP.desc() + RIGHTBENTBUTHOOK_LARGE.val() + DOTRIGHT.val()); //厶
             customIdsSupplement.put("乍", "⿱" + OVERLAP.desc() + LEFTSLANT_SHARP.val() + "一" + OLAP3ZHABUT.key() );// 乍
             customIdsSupplement.put("耳", OVERLAP.desc()+"一"+OVERLAP.desc()+OLAP3ZHABUT.key()+"十"); //ids 耳
+            customIdsSupplement.put("大", OVERLAP.desc()+"一"+"人"); //大
             customIdsSupplement.put("犬", "⿺" + "大" + DOTRIGHT.val()); //犬 eg 然
             customIdsSupplement.put("豕", "⿱一𧰨"); //button side of  家, full ids: ⿱一𧰨 ⿸𬺻⿺乀丿
             customIdsSupplement.put("豖", "⿻豕丶"); //豖 ids ⿻豕丶 ⿸⿻𬺻丶⿺乀丿 from 冢
@@ -86,7 +88,12 @@ public class CustomIdsSupplementMaps {
             customIdsSupplement.put("卌", OVERLAP.desc()+"一"+OVERLAP.desc()+"丨"+OVERLAP.desc()+"丨"+OVERLAP.desc()+"丨"+"丨"); //卌 from 無
             customIdsSupplement.put("其", "⿱⿱"+OVERLAP.desc()+"一"+OLAP4TWOVERTTWOHORI.key()+"一八"); //其 ⿱⿱⑤一八
             customIdsSupplement.put("此", "⿰止匕"); //此 from 些, ids ⿰止匕 ⿰③匕
-            customIdsSupplement.put("馬", "馬"); //ids ⿹⑥灬
+            customIdsSupplement.put("馬", "⿹"+OVERLAP.desc()+
+                    OVERLAP.desc()+"一丨"
+                    +OVERLAP.desc()
+                    +OVERLAP.desc()+OVERLAP.desc()+"一一丨"
+                    +BENTTOPHOOK_LARGE.val()
+                    +"灬"); //ids ⿹⑥灬
             customIdsSupplement.put("马", "马"); //马 ids ②
             customIdsSupplement.put("与", OVERLAP.desc()+"一"+OVERLAP.desc()+ DOUBLEBENT_25_WITHHOOK.val()+"一"); //ids 与
             customIdsSupplement.put("本", OVERLAP.desc()+"木"+"一"); //ids 本
@@ -101,7 +108,7 @@ public class CustomIdsSupplementMaps {
             customIdsSupplement.put("巴", OVERLAP.desc()+"巳" + "丨"); //ids 巴
             customIdsSupplement.put("永", OVERLAP.desc()+DOTRIGHT.val() + OVERLAP.desc()+BENTTOP_ROUND.val()
                     +OVERLAP.desc()+BENTTOP_SHARP.val()+OVERLAP.desc()+LEFTSLANT_SHARP.val()+RIGHTSLANT_SHARP.val()); //永 from 樣
-            customIdsSupplement.put("民", OVERLAP.desc()+OLAP3LEFTSIDEOFPEOPLE.val()+"一"+RIGHTSLANT_WITHHOOK.val()); //ids 民
+            customIdsSupplement.put("民", OVERLAP.desc()+OVERLAP.desc()+OLAP3LEFTSIDEOFPEOPLE.val()+"一"+RIGHTSLANT_WITHHOOK.val()); //ids 民
             customIdsSupplement.put("史", OVERLAP.desc()+"口"+"乂"); //史
             customIdsSupplement.put("糹", "糹"); //ids 糹 ⿱幺③ from 經
             customIdsSupplement.put("丝", "⿱⿰"+OVERLAP.desc()+RIGHTBENTBUT_SHARP.val()+RIGHTBENTBUT_SHARP.val()
