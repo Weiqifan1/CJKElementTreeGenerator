@@ -312,8 +312,8 @@ public class CodeRecursionObjectGenerator {
 
         List<Character> newMapOrder = List.of(
                 'q','w','e','r','t','y','u','i','o','p',
-                'a','s','d','f','g','h','j','k','l',
-                'z','x','c','v','b','n','m');
+                'a','s','d','f','g','h','j','k','l', ';',
+                'z','x','c','v','b','n','m', ',', '.', '/');
         for (Character currentChar : newMapOrder) {
             Long entry = normalCodeCharToMap.get(currentChar);
             if (Objects.isNull(entry)) {

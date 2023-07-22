@@ -39,6 +39,8 @@ public class AYMethodCodeGeneratorServiceTest {
         CharRecursionNode node2 = CodeRecursionObjectGenerator.getNodeByName("二", nodelist);
         CharRecursionNode node3 = CodeRecursionObjectGenerator.getNodeByName("三", nodelist);
 
+        CharRecursionNode test1 = CodeRecursionObjectGenerator.getNodeByName("出", nodelist);
+
         assertTrue(nodelist.size() >= 7348);
     }
 
