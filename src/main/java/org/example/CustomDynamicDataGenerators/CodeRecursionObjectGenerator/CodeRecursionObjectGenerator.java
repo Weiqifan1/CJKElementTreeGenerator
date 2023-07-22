@@ -152,6 +152,9 @@ public class CodeRecursionObjectGenerator {
             }
             CharRecursionNode node = null;
             try {
+                if (CJKchar.equals("得")) {
+                    String test = "";
+                }
                 node = new CharRecursionNode(CJKchar, null, codeDecom);
             } catch (Exception e) {
                 System.out.println(CJKchar);
@@ -313,6 +316,9 @@ public class CodeRecursionObjectGenerator {
                 'z','x','c','v','b','n','m');
         for (Character currentChar : newMapOrder) {
             Long entry = normalCodeCharToMap.get(currentChar);
+            if (Objects.isNull(entry)) {
+                entry = 0l;
+            }
             System.out.println("Char: " +currentChar + " " + (Double.valueOf(entry)/averageForEachKey));
         }
         //There should not be any printout of element use. just a map to debug

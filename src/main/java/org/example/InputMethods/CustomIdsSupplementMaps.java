@@ -18,7 +18,7 @@ public class CustomIdsSupplementMaps {
         try {
             //Stroke collections that have unicode char representations
             //(for stroke collections that dont are in CustomStrokeCollection enums)
-            customIdsSupplement.put("彳", "⿱"+LEFTSLANT_SHARP + "亻" ); //彳
+            customIdsSupplement.put("彳", "⿱"+LEFTSLANT_SHARP.val() + "亻" ); //彳
             customIdsSupplement.put("白", "⿻"+LEFTSLANT_SHARP.val()+"日");
             customIdsSupplement.put("戊", OVERLAP.desc()+"厂" + OLAP3WORIGHTSTROKES.val());//ids 戊
             customIdsSupplement.put("我", OVERLAP.desc()+OVERLAP.desc()+LEFTSLANT_SHARP.val()+"扌"+OLAP3WORIGHTSTROKES.val()); //ids 我

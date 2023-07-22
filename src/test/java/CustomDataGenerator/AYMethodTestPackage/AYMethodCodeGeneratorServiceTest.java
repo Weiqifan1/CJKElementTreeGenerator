@@ -4,6 +4,7 @@ import org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.Code
 import org.example.InputMethods.InputMethodCodeGenerators.AYMethodCodeGeneratorService;
 import org.example.ObjectTypes.GenericTypes.CharRecursionNode;
 import org.example.ObjectTypes.GenericTypes.CodeDecompositionType;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.*;
@@ -16,15 +17,24 @@ import static org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerat
 import static org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.CodeRecursionObjectGenerator.getNodeList;
 import static org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.CodeRecursionObjectGenerator.onlyNodesFromPath;
 import static org.example.GlobalConstants.publicHtradFilePath;
+import static org.example.InputMethods.InputMethodCodeGenerators.AYMethodCodeGeneratorService.nodeListToMap;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class AYMethodCodeGeneratorServiceTest {
 
+
+    private List<CharRecursionNode> nodelist;
+    private Map<String, CharRecursionNode> nodeMap;
+
+    @Before
+    public void setUp() {
+        nodelist = getNodeList(CodeDecompositionType.CODE5_123zy_LIMMITBACKTRACK);
+        nodeMap = nodeListToMap(nodelist);
+    }
+
     @Test
     public void testRecursionCodes() {
-        List<CharRecursionNode> nodelist = getNodeList(CodeDecompositionType.CODE5_123zy_LIMMITBACKTRACK);
-
         CharRecursionNode node1 = CodeRecursionObjectGenerator.getNodeByName("一", nodelist);
         CharRecursionNode node2 = CodeRecursionObjectGenerator.getNodeByName("二", nodelist);
         CharRecursionNode node3 = CodeRecursionObjectGenerator.getNodeByName("三", nodelist);
@@ -33,22 +43,76 @@ public class AYMethodCodeGeneratorServiceTest {
     }
 
     @Test
-    public void listOfFirstElements() {
-        List<CharRecursionNode> allnodes = getNodeList(CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK);
-        List<CharRecursionNode> nodesFromPath = onlyNodesFromPath(allnodes, publicHtradFilePath);
+    public void listOfFirstElementsAndDoubleNested() {
+        Map<String, Long> firstElem = sortedFirstElem();
+        Map<String, Long> doubleNestedAccumulated = sortedDoubleNested();
 
+        //at time of writing the size of the map is 958,  but the size might change slightly and thats ok
+        assertTrue(firstElem.size() >= 900);
+        assertTrue(Objects.nonNull(firstElem.get("扌")));
+        assertTrue(firstElem.get("扌") == 149l);
+    }
+
+    private Map<String, Long> sortedFirstElem() {
+        List<CharRecursionNode> nodesFromPath = onlyNodesFromPath(nodelist, publicHtradFilePath);
         //get only char with description elem as first char
         List<CharRecursionNode> firstDesc = nodesFromPath.stream().filter(node -> descFirst(node)).toList();
         List<String> firstElem = firstDesc.stream().map(node -> getSecondElem(node)).toList();
         Map<String, Long> groupBy = firstElem.stream()
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-
         Map<String, Long> sortedmap = reverseSortedFirstElements(groupBy);
+        return sortedmap;
+    }
 
-        //at time of writing the size of the map is 958,  but the size might change slightly and thats ok
-        assertTrue(sortedmap.size() >= 900);
-        assertTrue(Objects.nonNull(sortedmap.get("扌")));
-        assertTrue(sortedmap.get("扌") == 149l);
+    private Map<String, Long> sortedDoubleNested() {
+        List<CharRecursionNode> nodesFromPath = onlyNodesFromPath(nodelist, publicHtradFilePath);
+        //create a list of strings with all double nested elements
+        List<List<String>> doubleNestedElements = nodesFromPath.stream().map(node -> getDoubleNestedElemsFromNode(node)).toList();
+        List<String> flattened = flattenListOfListsImperatively(doubleNestedElements);
+        Map<String, Long> groupBy = flattened.stream()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        Map<String, Long> sortedmap = reverseSortedFirstElements(groupBy);
+        return sortedmap;
+    }
+
+    private List<String> getDoubleNestedElemsFromNode(CharRecursionNode node) {
+        List<CharRecursionNode> subs = node.getSubsequentSubsections(); 
+        if (Objects.isNull(subs) || subs.size() == 0) {
+            return List.of(node.getCurrentBreakdownSubsection());
+        }else {
+            List<List<CharRecursionNode>> nextnested = subs.stream()
+                    .map(nextnode -> nextnode.getSubsequentSubsections())
+                    .filter(nextsub -> Objects.nonNull(nextsub)).collect(Collectors.toList());
+            List<CharRecursionNode> flattened = flattenListOfListsImperatively(nextnested);
+
+            List<List<String>> convertToString = flattened.stream()
+                    .map(nextnode -> getBreakdown(nextnode)).collect(Collectors.toList());
+            List<String> firstGenConversion = flattenListOfListsImperatively(convertToString);
+
+            //double nested
+            List<List<CharRecursionNode>> doubleNested = flattened.stream()
+                    .map(nextnode -> nextnode.getSubsequentSubsections())
+                    .filter(nextsub -> Objects.nonNull(nextsub)).collect(Collectors.toList());
+            List<CharRecursionNode> doubleFlattened = flattenListOfListsImperatively(doubleNested);
+
+            List<List<String>> convertToStringDouble = doubleFlattened.stream()
+                    .map(nextnode -> getBreakdown(nextnode)).collect(Collectors.toList());
+            List<String> secondGenConversion = flattenListOfListsImperatively(convertToStringDouble);
+            secondGenConversion.addAll(firstGenConversion);
+
+            secondGenConversion.add(node.getCurrentBreakdownSubsection());
+            Set<String> result = unicodeBreakup(String.join("", secondGenConversion)).stream().collect(Collectors.toSet());
+            return result.stream().toList();
+        }
+    }
+
+    private List<String> getBreakdown(CharRecursionNode node) {
+        List<CharRecursionNode> subs = node.getSubsequentSubsections();
+        if (Objects.isNull(subs)) {
+            return List.of(node.getCurrentBreakdownSubsection());
+        } else {
+            return List.of(node.getCurrentBreakdownSubsection());
+        }
     }
 
     public static <K, V extends Comparable<? super V>> Map<K, V> reverseSortedFirstElements(Map<K, V> map) {
@@ -220,5 +284,10 @@ public class AYMethodCodeGeneratorServiceTest {
         assertEquals(List.of("vfrk"),result);
     }
 
-
+    public <T> List<T> flattenListOfListsImperatively(
+            List<List<T>> nestedList) {
+        List<T> ls = new ArrayList<>();
+        nestedList.forEach(ls::addAll);
+        return ls;
+    }
 }
