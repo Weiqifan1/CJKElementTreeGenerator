@@ -20,7 +20,9 @@ public class CustomIdsSupplementMaps {
             //(for stroke collections that dont are in CustomStrokeCollection enums)
             customIdsSupplement.put("彳", "⿱"+LEFTSLANT_SHARP.val() + "亻" ); //彳
             customIdsSupplement.put("女", OVERLAP.desc() + OVERLAP.desc() + RIGHTBENTBUT_SHARP.val()+LEFTSLANT_SHARP.val()+"一"); //女
+            customIdsSupplement.put("勹", OVERLAP.desc()+LEFTSLANT_SHARP.val()+BENTTOPHOOK_LARGE.val()); //勹
             customIdsSupplement.put("白", "⿻"+LEFTSLANT_SHARP.val()+"日");
+            customIdsSupplement.put("噩", "⿻王㗊");
             customIdsSupplement.put("戊", OVERLAP.desc()+"厂" + OLAP3WORIGHTSTROKES.val());//ids 戊
             customIdsSupplement.put("我", OVERLAP.desc()+OVERLAP.desc()+LEFTSLANT_SHARP.val()+"扌"+OLAP3WORIGHTSTROKES.val()); //ids 我
             customIdsSupplement.put("尢", "⿸𠂇"+ RIGHTBENTBUTHOOK_LARGE.val());
@@ -133,9 +135,9 @@ public class CustomIdsSupplementMaps {
             customIdsSupplement.put("皮", "⿸"+OVERLAP.desc()+OVERLAP.desc()+"乛"+LEFTSLANT_SHARP.val()+"丨"+"又"); //ids 皮 from 被
             customIdsSupplement.put("鳥", "⿹"
                     //the bird part
-                    +OVERLAP.desc()+DOTLEFT.val()+OVERLAP.desc()+"丨"+OVERLAP.desc()+BENTTOP_SHARP.val()
-                    +OVERLAP.desc()+"一"+OVERLAP.desc()+"一"+OVERLAP.desc()+"一"+BENTTOPHOOK_LARGE.val()
-                    +"灬"); //鳥 from 鳳 , ids 鳥 ⿹⑦灬
+                    +OVERLAP.desc()+DOTLEFT.val()+"𠁣"
+                    +OVERLAP.desc()+"一"
+                    +OVERLAP.desc()+BENTTOPHOOK_LARGE.val()+"灬"); //鳥 from 鳳 , ids 鳥 ⿹⑦灬
             customIdsSupplement.put("世", OVERLAP.desc()+"廿"+RIGHTBENTBUT_SHARP.val()); //世 //it be 廿 + └
             customIdsSupplement.put("曲", OVERLAP.desc()+"囗"+"艹"); //曲 from 體
             customIdsSupplement.put("𠂒", OVERLAP.desc()+LEFTSLANT_SHARP.val()+"土"); //𠂒 from 先
@@ -208,7 +210,7 @@ public class CustomIdsSupplementMaps {
                     +LEFTSLANT_SHARP.val()+"丨"+"一"+"丨"+"一"); //丘 from 兵
             customIdsSupplement.put("舟", "⿱"+DOTLEFT.val()+'⿵'+OUTER2TOP_USEANDMOONE.val()
                     +OVERLAP.desc()+OVERLAP.desc()+DOTRIGHT.val()+"一"+DOTRIGHT.val()); //舟 from 般
-            customIdsSupplement.put("疒",OVERLAP.desc()+"广"+OVERLAP.desc()+DOTRIGHT.val()+DOTLEFT.val()); //疒 from 病
+            customIdsSupplement.put("疒",OVERLAP.desc()+"广"+"冫"); //疒 from 病
             customIdsSupplement.put("彑", OVERLAP.desc()+OVERLAP.desc()
                     +RIGHTBENTBUT_SHARP.val()+BENTTOP_SHARP.val()+"一"); //彑 from 錄
             customIdsSupplement.put("戈", OVERLAP.desc()+"一"+OLAP3_BONESAW.key());
