@@ -242,10 +242,66 @@ public class AYMethodCodeGeneratorServiceTest_avoidOverlaps {
     }
 
     @Test
-    public void betAndObserve賭睹() {  //賭睹
+    public void betAndObserve() {  //賭睹
         CharRecursionNode bet = nodeMap.get("賭");
         CharRecursionNode observe = nodeMap.get("睹");
         assertNotEquals(bet.getNormalCode().get(0), observe.getNormalCode().get(0));
+    }
+
+    @Test
+    public void coldAndBell冷鈴() {  //冷鈴
+        CharRecursionNode cold = nodeMap.get("冷");
+        CharRecursionNode bell = nodeMap.get("鈴");
+        assertNotEquals(cold.getNormalCode().get(0), bell.getNormalCode().get(0));
+    }
+
+    @Test
+    public void actuallyParents_standMustBeOneElem() {  //竟親
+        CharRecursionNode actually = nodeMap.get("竟");
+        CharRecursionNode parents = nodeMap.get("親");
+        assertNotEquals(actually.getNormalCode().get(0), parents.getNormalCode().get(0));
+
+        CharRecursionNode x1 = nodeMap.get("辦"); //辦辯 - stand must be one element
+        CharRecursionNode x2 = nodeMap.get("辯");
+        assertNotEquals(x1.getNormalCode().get(0), x2.getNormalCode().get(0));
+    }
+
+    @Test
+    public void standAndClothes() {//章裡童
+        CharRecursionNode inside = nodeMap.get("裡");
+        CharRecursionNode boy = nodeMap.get("童");
+        assertNotEquals(inside.getNormalCode().get(0), boy.getNormalCode().get(0));
+    }
+
+    @Test
+    public void standAndHeart() {//靖情
+        CharRecursionNode emotion = nodeMap.get("情");
+        CharRecursionNode quit = nodeMap.get("靖");
+        assertNotEquals(emotion.getNormalCode().get(0), quit.getNormalCode().get(0));
+    }
+
+    @Test
+    public void spokesAndBat() {//輻蝠 car and
+        CharRecursionNode spokes = nodeMap.get("輻");
+        CharRecursionNode bat = nodeMap.get("蝠");
+        assertNotEquals(spokes.getNormalCode().get(0), bat.getNormalCode().get(0));
+    }
+
+    @Test
+    public void frogAndWow() {//哇蛙 car and
+        CharRecursionNode frog = nodeMap.get("哇");
+        CharRecursionNode wow = nodeMap.get("蛙");
+        assertNotEquals(frog.getNormalCode().get(0), wow.getNormalCode().get(0));
+    }
+
+    @Test
+    public void treeAndOne() { //本末未
+        CharRecursionNode root = nodeMap.get("本");
+        CharRecursionNode finalChar = nodeMap.get("末");
+        CharRecursionNode notyet = nodeMap.get("未");
+        assertNotEquals(root.getNormalCode().get(0), finalChar.getNormalCode().get(0));
+        assertNotEquals(root.getNormalCode().get(0), notyet.getNormalCode().get(0));
+        assertNotEquals(notyet.getNormalCode().get(0), finalChar.getNormalCode().get(0));
     }
 
     ///////////////////////////////////////////////////////////////////////
@@ -258,6 +314,24 @@ public class AYMethodCodeGeneratorServiceTest_avoidOverlaps {
         CharRecursionNode crocodile = nodeMap.get("鱷");
         assertNotEquals(rude.getNormalCode().get(0), crocodile.getNormalCode().get(0));
     }
+
+    @Test
+    public void motherAndToEnvy_nuShouldHaveCode() {  //娘妒
+        CharRecursionNode mother = nodeMap.get("娘");
+        CharRecursionNode toEnvy = nodeMap.get("妒");
+        assertNotEquals(mother.getNormalCode().get(0), toEnvy.getNormalCode().get(0));
+    }
+
+    @Test
+    public void rankAndToken() { //等籌   土士-cant start on same letters, or 寸 must be element
+        CharRecursionNode rank = nodeMap.get("等");
+        CharRecursionNode token = nodeMap.get("籌");
+        assertNotEquals(rank.getNormalCode().get(0), token.getNormalCode().get(0));
+
+    }
+
+    //@Test
+    //public void //拉撞攏
 
 
 }

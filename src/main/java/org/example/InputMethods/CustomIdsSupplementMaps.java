@@ -16,8 +16,9 @@ public class CustomIdsSupplementMaps {
     public static final HashMap<String, String> customIdsSupplement = new HashMap<>();
     static {
         try {
-            //Stroke collections that have unicode char representations
+            //Stroke collections that have unicode char representations  ⿱立日
             //(for stroke collections that dont are in CustomStrokeCollection enums)
+            customIdsSupplement.put("立", "⿱"+"亠"+"䒑");
             customIdsSupplement.put("彳", "⿱"+LEFTSLANT_SHARP.val() + "亻" ); //彳
             customIdsSupplement.put("女", OVERLAP.desc() + OVERLAP.desc() + RIGHTBENTBUT_SHARP.val()+LEFTSLANT_SHARP.val()+"一"); //女
             customIdsSupplement.put("勹", OVERLAP.desc()+LEFTSLANT_SHARP.val()+BENTTOPHOOK_LARGE.val()); //勹
@@ -104,7 +105,8 @@ public class CustomIdsSupplementMaps {
             customIdsSupplement.put("且", OVERLAP.desc()+OUTER2TOP_STRAIGHT.val()+OVERLAP.desc()+"一"+OVERLAP.desc()+"一"+"一");
             customIdsSupplement.put("头", OVERLAP.desc()+OVERLAP.desc()+DOTRIGHT.val()+DOTRIGHT.val()+"大");//头 eg. 实
             customIdsSupplement.put("斗", OVERLAP.desc()+OVERLAP.desc()+DOTRIGHT.val()+DOTRIGHT.val()+"十"); //斗 eg. 科
-            customIdsSupplement.put("黑", "⿱"+"里"+"灬"); //might have to be refactored later //top side of 黑 ⿱⑧灬 eg. 點
+            customIdsSupplement.put("里", OVERLAP.desc()+"日"+"土");
+            customIdsSupplement.put("黑", "⿱"+OVERLAP.desc()+"四"+"土"+"灬"); //might have to be refactored later //top side of 黑 ⿱⑧灬 eg. 點
             customIdsSupplement.put("頁", "⿱"+OVERLAP.desc()+"一"+DOTLEFT.val()+"貝"); //ids 頁
             customIdsSupplement.put("长", OVERLAP.desc()+LEFTSLANT_SHARP.val()
                     +OVERLAP.desc()+"一"+OVERLAP.desc()+RIGHTBENTBUTHOOK_LARGE.val()+RIGHTSLANT_SHARP.val()); //长
