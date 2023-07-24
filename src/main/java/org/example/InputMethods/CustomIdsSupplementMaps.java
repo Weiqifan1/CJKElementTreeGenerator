@@ -289,8 +289,6 @@ public class CustomIdsSupplementMaps {
                     +"川"); //州 from 洲
             customIdsSupplement.put("酉", OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()
                     +"一"+"囗"+"儿"+"一"); //酉 from 配
-            customIdsSupplement.put("烏", OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()
-                    +DOTLEFT.val()+"丨"+BENTTOP_SHARP.val()+"一"+"一"+BENTTOPHOOK_LARGE.val()+"灬"); //  烏 from 嗚
             customIdsSupplement.put("隶", OVERLAP.desc()+OVERLAP.desc()+OLAP3HORIFORKLIKE.key()+"亅"+OVERLAP.desc()+OVERLAP.desc()+
                     OVERLAP.desc()+DOTRIGHT.val()+"一"+DOTLEFT.val()+RIGHTSLANT_SHARP.val()); //隶 from 康
             customIdsSupplement.put("兼", "⿱䒑⿻"+OLAP3HORIFORKLIKE.key()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()
@@ -305,6 +303,8 @@ public class CustomIdsSupplementMaps {
             customIdsSupplement.put("壺", "⿱士⿳冖"+
                     OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()
                     +"丨"+"一"+DOUBLEBENT_25_NOHOOK.val()+DOUBLEBENT_25_NOHOOK.val()+"一"+"丨"+"一"); //壺 ids ⿱士⿳冖⑥一
+            customIdsSupplement.put("烏", OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()
+                    +DOTLEFT.val()+"丨"+BENTTOP_SHARP.val()+"一"+"一"+BENTTOPHOOK_LARGE.val()+"灬"); //  烏 from 嗚
             customIdsSupplement.put("島", "⿹"+
                     //The bird part
                     OVERLAP.desc()+DOTLEFT.val()+OVERLAP.desc()+"丨"+OVERLAP.desc()+BENTTOP_SHARP.val()

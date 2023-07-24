@@ -373,6 +373,16 @@ public class AYMethodCodeGeneratorServiceTest_avoidOverlaps {
         assertNotEquals(it.getNormalCode().get(0), already.getNormalCode().get(0));
     }
 
+    @Test //  鸣鳴  呜嗚
+    public void birds() {
+        CharRecursionNode simpcry = nodeMap.get("鸣");
+        CharRecursionNode tradcry = nodeMap.get("鳴");
+        CharRecursionNode simphumm = nodeMap.get("呜");
+        CharRecursionNode tradhumm = nodeMap.get("嗚");
+        assertNotEquals(simpcry.getNormalCode().get(0), simphumm.getNormalCode().get(0));
+        assertNotEquals(tradcry.getNormalCode().get(0), tradhumm.getNormalCode().get(0));
+    }
+
     ///////////////////////////////////////////////////////////////////////
     /////////////////    coincidental overlaps
     ///////////////////////////////////////////////////////////////////////
