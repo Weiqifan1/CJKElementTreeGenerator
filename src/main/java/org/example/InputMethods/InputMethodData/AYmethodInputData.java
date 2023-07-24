@@ -166,7 +166,7 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put(OLAP3RUSSIANCROSS.val(), "fq"); //f=4 q=1+3 //middle side of 生, top side of 龶, top right of 請, midle of
         arrayInspiredElemsV1.put(OVERLAP.desc() + "二丨", "fq"); //OLAP3RUSSIANCROSS full value, //middle side of 生, top side of 龶, top right of 請
         arrayInspiredElemsV1.put(OLAP4NIENBUT.val(), "fq");  //buton side of 年, alternative form of "二丨" //OLAP3RUSSIANCROSS
-            arrayInspiredElemsV1.put("土", "fa");
+            arrayInspiredElemsV1.put("土", "fr"); //士土
 
 
         //v
@@ -177,13 +177,14 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("朩", "vv");//taken as alternative form of 木, eg. 新
             arrayInspiredElemsV1.put("束", "v;"); //杏束 overlap
             arrayInspiredElemsV1.put("末", "va"); //末未(本)
+            arrayInspiredElemsV1.put("棘", "v,"); //棘棗
 
         //Fifth column
         //1	 2	3	4	5	6	7	8	9	0
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
             //t g b
             //arrayInspiredElemsV1.put("阝", "tg"); //阝尸
-            arrayInspiredElemsV1.put("之", "gg");
+            //arrayInspiredElemsV1.put("之", "gg");
             arrayInspiredElemsV1.put("辶", "gg"); //隊遂
             arrayInspiredElemsV1.put("子", "tg");
             arrayInspiredElemsV1.put("尸", "bg");
@@ -247,8 +248,6 @@ public class AYmethodInputData {
 
         //n
         arrayInspiredElemsV1.put("广", "nz"); //n=6+9  z=1+9 eg. 麼
-        //arrayInspiredElemsV1.put("衣", "nz"); //n=6+8 z=1+9 //衣 short form 衤 from 被
-        //arrayInspiredElemsV1.put("衤", "nz"); //short for of 衣
         arrayInspiredElemsV1.put(OLAP3YIANDCHANGBUTTOM.key(), "nz");//similar to 衣 //OLAP3YIANDCHANGBUTTOM butom part of 𧘇 長 丧 喪 𠅕
 
             //Seventh column
@@ -261,6 +260,7 @@ public class AYmethodInputData {
         //u
             //left side
         arrayInspiredElemsV1.put("皿", "ue"); //u=7+1 e=3+3
+            arrayInspiredElemsV1.put("且", "uu");
             arrayInspiredElemsV1.put("宀", "uj"); //n=6+7 d=3+5    //謬寥 言宀 diff  //富幅 宀巾 diff
 
         //j
@@ -332,8 +332,8 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put(LEFTSLANT_HORI.val(), "l"); //l=9 "㇀"
         arrayInspiredElemsV1.put(LEFTSLANT_SHARP.val(), "l"); //l=9
         arrayInspiredElemsV1.put(LEFTSlANT_VERT.val(), "l"); //l=9
-            arrayInspiredElemsV1.put("乂", "lk"); //ex. 文
-            arrayInspiredElemsV1.put("㐅", "lk"); //ex. 學
+            arrayInspiredElemsV1.put("乂", "l."); //ex. 文  //兄史
+            arrayInspiredElemsV1.put("㐅", "l."); //ex. 學  //兄史
         arrayInspiredElemsV1.put("勹", "lg"); //l=9+5 g=5
             arrayInspiredElemsV1.put("𠂤", "la");
         //arrayInputMap.put("", "");
@@ -370,8 +370,6 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("囗", ";/"); //;=0 //固咕 回品 surround cant be mouth and cant be mouth x 2
 
         // /
-            //left side
-
             arrayInspiredElemsV1.put("日", "/a"); //;=0 a=1
 
         //arrayInputMap.put("", "");

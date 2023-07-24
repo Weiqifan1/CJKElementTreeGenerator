@@ -342,6 +342,37 @@ public class AYMethodCodeGeneratorServiceTest_avoidOverlaps {
         assertNotEquals(team.getNormalCode().get(0), succeed.getNormalCode().get(0));
     }
 
+    @Test
+    public void extendAndShellAndReason() {  //申甲由
+        CharRecursionNode reason = nodeMap.get("由");
+        CharRecursionNode shell = nodeMap.get("甲");
+        CharRecursionNode extend = nodeMap.get("申");
+        assertNotEquals(reason.getNormalCode().get(0), shell.getNormalCode().get(0));
+        assertNotEquals(reason.getNormalCode().get(0), extend.getNormalCode().get(0));
+        assertNotEquals(shell.getNormalCode().get(0), extend.getNormalCode().get(0));
+    }
+
+    @Test //棘棗
+    public void thornsAndDate() {
+        CharRecursionNode date = nodeMap.get("棗");
+        CharRecursionNode thorns = nodeMap.get("棘");
+        assertNotEquals(thorns.getNormalCode().get(0), date.getNormalCode().get(0));
+    }
+
+    @Test
+    public void dirtAndShi() {
+        CharRecursionNode shi = nodeMap.get("士");
+        CharRecursionNode dirt = nodeMap.get("土");
+        assertNotEquals(shi.getNormalCode().get(0), dirt.getNormalCode().get(0));
+    }
+
+    @Test
+    public void itAndAlready() {  //之已
+        CharRecursionNode it = nodeMap.get("之");
+        CharRecursionNode already = nodeMap.get("已");
+        assertNotEquals(it.getNormalCode().get(0), already.getNormalCode().get(0));
+    }
+
     ///////////////////////////////////////////////////////////////////////
     /////////////////    coincidental overlaps
     ///////////////////////////////////////////////////////////////////////
@@ -387,8 +418,27 @@ public class AYMethodCodeGeneratorServiceTest_avoidOverlaps {
         assertNotEquals(lean.getNormalCode().get(0), sweet.getNormalCode().get(0));
     }
 
+    @Test //用申
+    public void yongAndReport() {
+        CharRecursionNode use = nodeMap.get("用");
+        CharRecursionNode report = nodeMap.get("申");
+        assertNotEquals(use.getNormalCode().get(0), report.getNormalCode().get(0));
+    }
 
-    //鍊煉
+    @Test //組繩
+    public void formAndRope() {
+        CharRecursionNode form = nodeMap.get("組");
+        CharRecursionNode rope = nodeMap.get("繩");
+        assertNotEquals(form.getNormalCode().get(0), rope.getNormalCode().get(0));
+    }
+
+    @Test //兄史
+    public void brotherAndHistory() {
+        CharRecursionNode brother = nodeMap.get("兄");
+        CharRecursionNode history = nodeMap.get("史");
+        assertNotEquals(brother.getNormalCode().get(0), history.getNormalCode().get(0));
+    }
+
 
 
 }
