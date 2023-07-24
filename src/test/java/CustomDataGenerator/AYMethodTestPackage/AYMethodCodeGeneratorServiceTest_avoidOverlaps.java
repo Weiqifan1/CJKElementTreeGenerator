@@ -304,6 +304,44 @@ public class AYMethodCodeGeneratorServiceTest_avoidOverlaps {
         assertNotEquals(notyet.getNormalCode().get(0), finalChar.getNormalCode().get(0));
     }
 
+    @Test
+    public void smeltAndVariant() { //煉鍊 fire and metal must have different codes
+        CharRecursionNode smelt = nodeMap.get("鍊");
+        CharRecursionNode variant = nodeMap.get("煉");
+        assertNotEquals(smelt.getNormalCode().get(0), variant.getNormalCode().get(0));
+    }
+
+    @Test
+    public void onlyAndBa() {
+        CharRecursionNode only = nodeMap.get("只");
+        CharRecursionNode ba = nodeMap.get("叭");
+        assertNotEquals(only.getNormalCode().get(0), ba.getNormalCode().get(0));
+    }
+
+    @Test
+    public void returnAndGoods() { //固咕 回品 surround cant be mouth and cant be mouth x 2
+        CharRecursionNode curve = nodeMap.get("回");
+        CharRecursionNode goods = nodeMap.get("品");
+        assertNotEquals(curve.getNormalCode().get(0), goods.getNormalCode().get(0));
+        CharRecursionNode hard = nodeMap.get("固");
+        CharRecursionNode birdsound = nodeMap.get("咕");
+        assertNotEquals(hard.getNormalCode().get(0), birdsound.getNormalCode().get(0));
+    }
+
+    @Test //富幅
+    public void richAndWidth() {
+        CharRecursionNode rich = nodeMap.get("富");
+        CharRecursionNode width = nodeMap.get("幅");
+        assertNotEquals(rich.getNormalCode().get(0), width.getNormalCode().get(0));
+    }
+
+    @Test //隊遂
+    public void teamAndSucceed() {
+        CharRecursionNode team = nodeMap.get("隊");
+        CharRecursionNode succeed = nodeMap.get("遂");
+        assertNotEquals(team.getNormalCode().get(0), succeed.getNormalCode().get(0));
+    }
+
     ///////////////////////////////////////////////////////////////////////
     /////////////////    coincidental overlaps
     ///////////////////////////////////////////////////////////////////////
@@ -330,8 +368,27 @@ public class AYMethodCodeGeneratorServiceTest_avoidOverlaps {
 
     }
 
-    //@Test
-    //public void //拉撞攏
+    @Test
+    public void obstructAndFoundation() { //礙礎 - 石 must be 1 or 2 codes, 丆 should probably be and element
+        CharRecursionNode obstruct = nodeMap.get("礙");
+        CharRecursionNode foundation = nodeMap.get("礎");
+        assertNotEquals(obstruct.getNormalCode().get(0), foundation.getNormalCode().get(0));
+
+        CharRecursionNode stone = nodeMap.get("石");
+        CharRecursionNode right = nodeMap.get("右");
+        assertNotEquals(stone.getNormalCode().get(0), right.getNormalCode().get(0));
+    }
+    //public void //礙礎
+
+    @Test //靠甜
+    public void leanAndSweet() {
+        CharRecursionNode lean = nodeMap.get("靠");
+        CharRecursionNode sweet = nodeMap.get("甜");
+        assertNotEquals(lean.getNormalCode().get(0), sweet.getNormalCode().get(0));
+    }
+
+
+    //鍊煉
 
 
 }

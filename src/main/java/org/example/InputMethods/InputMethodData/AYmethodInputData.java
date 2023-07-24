@@ -61,7 +61,7 @@ public class AYmethodInputData {
             arrayInspiredElemsV1.put("示", "zq"); //z=1+8 q=1+3  示 ids 示
             arrayInspiredElemsV1.put("礻", "zq");  // z=1+8 q=1+3 ,礻 from  神
 
-        arrayInspiredElemsV1.put("𠂇", "zl"); //z=1+9 l=9
+            arrayInspiredElemsV1.put("丆", "zl"); //礙礎 石 must be 1 or 2 codes, 丆 should probably be and element
         arrayInspiredElemsV1.put("⺄", "zk"); //z=1+8  k=8    //⺄  eg. 訊 el 飞
         arrayInspiredElemsV1.put("乁", "zk"); //乁 from 气
             arrayInspiredElemsV1.put("犬", "zh");
@@ -162,6 +162,7 @@ public class AYmethodInputData {
 
         //f
         arrayInspiredElemsV1.put("十", "f"); //f=4  //十and 龶 /russiancross cant overlap - 勒勤
+            arrayInspiredElemsV1.put("𠂇", "fl"); //z=1+9 l=9
         arrayInspiredElemsV1.put(OLAP3RUSSIANCROSS.val(), "fq"); //f=4 q=1+3 //middle side of 生, top side of 龶, top right of 請, midle of
         arrayInspiredElemsV1.put(OVERLAP.desc() + "二丨", "fq"); //OLAP3RUSSIANCROSS full value, //middle side of 生, top side of 龶, top right of 請
         arrayInspiredElemsV1.put(OLAP4NIENBUT.val(), "fq");  //buton side of 年, alternative form of "二丨" //OLAP3RUSSIANCROSS
@@ -182,13 +183,13 @@ public class AYmethodInputData {
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
             //t g b
             //arrayInspiredElemsV1.put("阝", "tg"); //阝尸
-            arrayInspiredElemsV1.put("之", "tg");
-            arrayInspiredElemsV1.put("辶", "tg");
-            arrayInspiredElemsV1.put("子", "gg");
+            arrayInspiredElemsV1.put("之", "gg");
+            arrayInspiredElemsV1.put("辶", "gg"); //隊遂
+            arrayInspiredElemsV1.put("子", "tg");
             arrayInspiredElemsV1.put("尸", "bg");
         //t
             //left side
-        arrayInspiredElemsV1.put("阝", "td"); //t=5+3 d=3 //first stroke taken as DOUBLEBENT_55
+        arrayInspiredElemsV1.put("阝", "td"); //t=5+3 d=3 //first stroke taken as DOUBLEBENT_55  //隊遂
         arrayInspiredElemsV1.put("卩", "td"); //t=5+3 d=d卩 from 报
 
 
@@ -260,11 +261,11 @@ public class AYmethodInputData {
         //u
             //left side
         arrayInspiredElemsV1.put("皿", "ue"); //u=7+1 e=3+3
+            arrayInspiredElemsV1.put("宀", "uj"); //n=6+7 d=3+5    //謬寥 言宀 diff  //富幅 宀巾 diff
 
         //j
         arrayInspiredElemsV1.put("冖", "j"); //j=5 冖
-            arrayInspiredElemsV1.put("宀", "jj"); //n=6+7 d=3+5    //謬寥 言宀 diff
-            arrayInspiredElemsV1.put("巾", "jd"); //巾
+            arrayInspiredElemsV1.put("巾", "jd"); //巾 //富幅 宀巾 diff
         arrayInspiredElemsV1.put(OUTER2TOP_STRAIGHT.val(), "j"); //j=5 冂 from 向 南 or mine: 身
         arrayInspiredElemsV1.put(OUTER2TOP_USEANDMOONE.val(), "j"); //j=5 ⺆  from 用 周
 
@@ -365,7 +366,8 @@ public class AYmethodInputData {
 
         //;
         arrayInspiredElemsV1.put("口", ";"); //;=0 --哇蛙
-        arrayInspiredElemsV1.put("囗", ";"); //;=0
+            arrayInspiredElemsV1.put("只", ";/"); //只叭
+        arrayInspiredElemsV1.put("囗", ";/"); //;=0 //固咕 回品 surround cant be mouth and cant be mouth x 2
 
         // /
             //left side

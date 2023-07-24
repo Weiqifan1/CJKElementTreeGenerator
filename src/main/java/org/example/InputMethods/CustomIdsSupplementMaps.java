@@ -159,7 +159,6 @@ public class CustomIdsSupplementMaps {
                     +"⿱一一"+"冖"+"心"); //㥑 from 優
             customIdsSupplement.put("角", "⿱"+OVERLAP.desc()+LEFTSLANT_SHARP.val()+BENTTOP_SHARP.val()
                     +"⿵"+OUTER2TOP_USEANDMOONE.val()+"土"); //角 from 解
-            customIdsSupplement.put("東", "木"+"日");//東
             customIdsSupplement.put("㠯", OVERLAP.desc()
                     + OVERLAP.desc() + OVERLAP.desc() + BENTTOP_SHARP.val() + "一" + "丨"
                     + OVERLAP.desc() + BENTTOP_SHARP.val() + "一"); //㠯 from 管
@@ -231,7 +230,7 @@ public class CustomIdsSupplementMaps {
             customIdsSupplement.put("氏", "⿸"+OVERLAP.desc()+OVERLAP.desc()
                     +LEFTSLANT_SHARP.val()+RIGHTBENTBUT_SHARP.val()+"一"+RIGHTSLANT_WITHHOOK.val());//氏 ids 底
             customIdsSupplement.put("叚", "⿰"+OVERLAP.desc()+"コ"+OLAP3ZHABUT.key()+"⿱コ又"); //叚 ids ⿰⑤⿱コ又 from 假
-            customIdsSupplement.put("甘",OVERLAP.desc()+"一"+OLAP4TWOVERTTWOHORI.key());//甘 from 某
+            customIdsSupplement.put("甘",OVERLAP.desc()+"廿"+"一");//甘 from 某
             customIdsSupplement.put("革", "⿱廿"+OVERLAP.desc()+"口"+"十"); //革 ids 革
             customIdsSupplement.put("𠂢", "⿸𠂆"+OVERLAP.desc()+LEFTSLANT_SHARP.val()+OLAP3YIANDCHANGBUTTOM.key()); //𠂢 ids ⿸𠂆④ from 派
             customIdsSupplement.put("免", "⿳𠂊口儿"); //免 ids ⿱𠂊⑤ ⿳𠂊𫩏儿 from 晚
@@ -274,7 +273,8 @@ public class CustomIdsSupplementMaps {
             customIdsSupplement.put("重", "⿳"+LEFTSLANT_SHARP.val()+"車"+"一"); // ids 重
             customIdsSupplement.put("熏", OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()
                     +LEFTSLANT_SHARP.val()+"一"+OVERLAP.desc()+"口"+"丷"+"土"+"灬"); //熏 from 勳
-            customIdsSupplement.put("柬", OVERLAP.desc()+"木" + OVERLAP.desc()+"口"+"丷"); //柬 from 練
+            customIdsSupplement.put("東", "束"+"一");//東 束丷
+            customIdsSupplement.put("柬", OVERLAP.desc()+"束" + "丷"); //柬 from 練
             customIdsSupplement.put("疋", "⿱"+"乛"+"龰"); //疋 from 疑
             customIdsSupplement.put("褱", "⿳亠⿱罒⿻丨⿱丷八𧘇"); //褱 ids ⿳亠眔𧘇 ⿳亠⿱罒⿻丨⿱丷八𧘇 from 壞
             customIdsSupplement.put("牙", OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()
