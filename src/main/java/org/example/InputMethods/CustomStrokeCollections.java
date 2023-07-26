@@ -73,7 +73,11 @@ public enum CustomStrokeCollections {
             , false), // DOWNWITHHOOK ⿰𠄌⿺乀丿 buoom part of 長  丧  喪 𠅕 (not including "一")
     OUTTOPRIGHT2(OVERLAP.desc()+"一"+"亅", false), //outer side of 寸
     OLAP3DOWNFORk("⿸"+LEFTSLANT_SHARP.val()+"卜", false),  //buttom side of 不
-    OUTTOPLEFT3("⿻𠂇丨", false)//outer side of 在
+    OUTTOPLEFT3("⿻𠂇丨", false), //outer side of 在
+    OLAP3SIMPCROWOUTSIDE(OVERLAP.desc()+OVERLAP.desc()
+            +DOTLEFT.val()+BENTTOPHOOK_LARGE.val()+DOUBLEBENT_25_WITHHOOK.val(), false), //outside of 乌
+    OLAP6TRADCROWOUTSIDE(OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()
+            +DOTLEFT.val()+"丨"+BENTTOP_SHARP.val()+"一一"+BENTTOPHOOK_LARGE.val() ,false), //烏
 
     ;
 

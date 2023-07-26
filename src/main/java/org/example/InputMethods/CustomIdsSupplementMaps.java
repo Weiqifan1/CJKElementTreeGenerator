@@ -136,11 +136,6 @@ public class CustomIdsSupplementMaps {
             customIdsSupplement.put("𧘇", OVERLAP.desc()+LEFTSLANT_SHARP.val()+OLAP3YIANDCHANGBUTTOM.key()); //from 還
             customIdsSupplement.put("旅", "⿰方⿱𠂉" + OVERLAP.desc()+LEFTSLANT_SHARP.val()+OLAP3YIANDCHANGBUTTOM.key()); //旅 ids ⿰方⿱𠂉④
             customIdsSupplement.put("皮", "⿸"+OVERLAP.desc()+OVERLAP.desc()+"乛"+LEFTSLANT_SHARP.val()+"丨"+"又"); //ids 皮 from 被
-            customIdsSupplement.put("鳥", "⿹"
-                    //the bird part
-                    +OVERLAP.desc()+DOTLEFT.val()+"𠁣"
-                    +OVERLAP.desc()+"一"
-                    +OVERLAP.desc()+BENTTOPHOOK_LARGE.val()+"灬"); //鳥 from 鳳 , ids 鳥 ⿹⑦灬
             customIdsSupplement.put("世", OVERLAP.desc()+"廿"+RIGHTBENTBUT_SHARP.val()); //世 //it be 廿 + └
             customIdsSupplement.put("曲", OVERLAP.desc()+"囗"+"艹"); //曲 from 體
             customIdsSupplement.put("𠂒", OVERLAP.desc()+LEFTSLANT_SHARP.val()+"土"); //𠂒 from 先
@@ -303,34 +298,16 @@ public class CustomIdsSupplementMaps {
             customIdsSupplement.put("壺", "⿱士⿳冖"+
                     OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()
                     +"丨"+"一"+DOUBLEBENT_25_NOHOOK.val()+DOUBLEBENT_25_NOHOOK.val()+"一"+"丨"+"一"); //壺 ids ⿱士⿳冖⑥一
-            customIdsSupplement.put("烏", OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()
-                    +DOTLEFT.val()+"丨"+BENTTOP_SHARP.val()+"一"+"一"+BENTTOPHOOK_LARGE.val()+"灬"); //  烏 from 嗚
-            customIdsSupplement.put("島", "⿹"+
-                    //The bird part
-                    OVERLAP.desc()+DOTLEFT.val()+OVERLAP.desc()+"丨"+OVERLAP.desc()+BENTTOP_SHARP.val()
-                    +OVERLAP.desc()+"一"+OVERLAP.desc()+"一"+OVERLAP.desc()+"一"+BENTTOPHOOK_LARGE.val()
-                            +"山"); //島 ids ⿹⑦山
-            customIdsSupplement.put("裊", "⿹"+
-                    //The bird part
-                    OVERLAP.desc()+DOTLEFT.val()+OVERLAP.desc()+"丨"+OVERLAP.desc()+BENTTOP_SHARP.val()
-                    +OVERLAP.desc()+"一"+OVERLAP.desc()+"一"+OVERLAP.desc()+"一"+BENTTOPHOOK_LARGE.val()
-                    +"衣");//裊 ids ⿹⑦衣
-            customIdsSupplement.put("梟", "⿹"+
-                    //The bird part
-                    OVERLAP.desc()+DOTLEFT.val()+OVERLAP.desc()+"丨"+OVERLAP.desc()+BENTTOP_SHARP.val()
-                    +OVERLAP.desc()+"一"+OVERLAP.desc()+"一"+OVERLAP.desc()+"一"+BENTTOPHOOK_LARGE.val()
-                    +"木");//梟
-            customIdsSupplement.put("岛", "⿹"+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()
-                    +DOTLEFT.val()+BENTTOPHOOK_LARGE.val()+DOTRIGHT.val()+DOUBLEBENT_25_WITHHOOK.val()+"山"); //岛 ids ⿹④山
-            customIdsSupplement.put("鸟", "⿹"+OVERLAP.desc()+OVERLAP.desc()+OVERLAP.desc()
-                    +DOTLEFT.val()+BENTTOPHOOK_LARGE.val()+DOTRIGHT.val()+DOUBLEBENT_25_WITHHOOK.val()+"一"); //鸟
-            customIdsSupplement.put("乌", "⿹"+OVERLAP.desc()+OVERLAP.desc()
-                    +DOTLEFT.val()+BENTTOPHOOK_LARGE.val()+DOUBLEBENT_25_WITHHOOK.val()+"一"); //乌 ids 乌
-            customIdsSupplement.put("袅", "⿹"+OVERLAP.desc()+OVERLAP.desc()
-                    +DOTLEFT.val()+BENTTOPHOOK_LARGE.val()+DOUBLEBENT_25_WITHHOOK.val()+"衣"); //袅 ids ⿹④衣
-            customIdsSupplement.put("枭", "⿹"+OVERLAP.desc()+OVERLAP.desc()
-                    +DOTLEFT.val()+BENTTOPHOOK_LARGE.val()+DOUBLEBENT_25_WITHHOOK.val()+"木");//枭
-
+            customIdsSupplement.put("烏", "⿹"+OLAP6TRADCROWOUTSIDE.key()+"灬"); //  烏 from 嗚
+            customIdsSupplement.put("島", "⿹"+OVERLAP.desc()+OLAP6TRADCROWOUTSIDE.key()+"一"+"山"); //島 ids ⿹⑦山
+            customIdsSupplement.put("裊", "⿹"+OVERLAP.desc()+OLAP6TRADCROWOUTSIDE.key()+"一"+"衣");//裊 ids ⿹⑦衣
+            customIdsSupplement.put("梟", "⿹"+OVERLAP.desc()+OLAP6TRADCROWOUTSIDE.key()+"一"+"木");//梟
+            customIdsSupplement.put("鳥", "⿹"+OVERLAP.desc()+OLAP6TRADCROWOUTSIDE.key()+"一"+"灬"); //鳥 from 鳳 , ids 鳥 ⿹⑦灬
+            customIdsSupplement.put("岛", "⿹"+OVERLAP.desc()+OLAP3SIMPCROWOUTSIDE.key()+DOTRIGHT.val()+"山"); //岛 ids ⿹④山
+            customIdsSupplement.put("鸟", "⿹"+OVERLAP.desc()+OLAP3SIMPCROWOUTSIDE.key()+DOTRIGHT.val()+"一"); //鸟
+            customIdsSupplement.put("乌", "⿹"+OLAP3SIMPCROWOUTSIDE.key()+"一"); //乌 ids 乌
+            customIdsSupplement.put("袅", "⿹"+OVERLAP.desc()+OLAP3SIMPCROWOUTSIDE.key()+DOTRIGHT.val()+"衣"); //袅 ids ⿹④衣
+            customIdsSupplement.put("枭", "⿹"+OVERLAP.desc()+OLAP3SIMPCROWOUTSIDE.key()+DOTRIGHT.val()+"木");//枭
             customIdsSupplement.put("廌", "⿸⿸广⿻コ⿰丨丨⿹"+OVERLAP.desc()+"一"+DOUBLEBENT_25_WITHHOOK.val()+"灬"); //廌 from 薦 ids ⿸⿸广⿻コ⿰丨丨⿹②灬
             customIdsSupplement.put("焉", "⿱正⿹"+OVERLAP.desc()+"一"+DOUBLEBENT_25_WITHHOOK.val()+"灬"); //焉 ids ⿱正⿹②灬
             customIdsSupplement.put("典", "⿱"+OVERLAP.desc()+OVERLAP.desc()+OUTER2TOP_STRAIGHT.val()+"艹" +"一" +"八"); //典 ids ⿱⑥八
@@ -405,6 +382,8 @@ public class CustomIdsSupplementMaps {
             ///TODO: handle 逸
 
             //Custom String Replacements
+            customIdsSupplement.put(OLAP6TRADCROWOUTSIDE.key(), OLAP6TRADCROWOUTSIDE.val()); //first 6 烏
+            customIdsSupplement.put(OLAP3SIMPCROWOUTSIDE.key(), OLAP3SIMPCROWOUTSIDE.val()); //first 3 乌
             customIdsSupplement.put(OLAP2_STRAIGHTWAND.key(), OLAP2_STRAIGHTWAND.val()); //first 2 strokes of 止
             customIdsSupplement.put(OLAP7_SHUBUTTON.key(), OLAP7_SHUBUTTON.val()); //button of 鼠
             customIdsSupplement.put(LEFTSIDE5_FLAGWITHMIDDLE.key(), LEFTSIDE5_FLAGWITHMIDDLE.val()); //eg. 既 ids ⿰⑤旡 from 概

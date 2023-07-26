@@ -375,12 +375,48 @@ public class AYMethodCodeGeneratorServiceTest_avoidOverlaps {
 
     @Test //  鸣鳴  呜嗚
     public void birds() {
+        //島烏
         CharRecursionNode simpcry = nodeMap.get("鸣");
         CharRecursionNode tradcry = nodeMap.get("鳴");
         CharRecursionNode simphumm = nodeMap.get("呜");
         CharRecursionNode tradhumm = nodeMap.get("嗚");
         assertNotEquals(simpcry.getNormalCode().get(0), simphumm.getNormalCode().get(0));
         assertNotEquals(tradcry.getNormalCode().get(0), tradhumm.getNormalCode().get(0));
+    }
+
+    @Test
+    public void weakAndFeather() {//弱羽 Bent stroke and Bow overlap
+        CharRecursionNode weak = nodeMap.get("弱");
+        CharRecursionNode feather = nodeMap.get("羽");
+        assertNotEquals(weak.getNormalCode().get(0), feather.getNormalCode().get(0));
+    }
+
+    @Test
+    public void workAndSpoon() {  //項頃
+        CharRecursionNode work = nodeMap.get("項");
+        CharRecursionNode spoon = nodeMap.get("頃");
+        assertNotEquals(work.getNormalCode().get(0), spoon.getNormalCode().get(0));
+    }
+
+    @Test
+    public void goldAndFire() {//欽炊
+        CharRecursionNode gold = nodeMap.get("欽");
+        CharRecursionNode fire = nodeMap.get("炊");
+        assertNotEquals(gold.getNormalCode().get(0), fire.getNormalCode().get(0));
+    }
+
+    @Test
+    public void fireAndSpoon() { //能熊
+        CharRecursionNode spoon = nodeMap.get("能");
+        CharRecursionNode fire = nodeMap.get("熊");
+        assertNotEquals(spoon.getNormalCode().get(0), fire.getNormalCode().get(0));
+    }
+
+    @Test
+    public void tinyAndScale() { //微徵
+        CharRecursionNode tiny = nodeMap.get("微");
+        CharRecursionNode scale = nodeMap.get("徵");
+        assertNotEquals(tiny.getNormalCode().get(0), scale.getNormalCode().get(0));
     }
 
     ///////////////////////////////////////////////////////////////////////
@@ -447,6 +483,13 @@ public class AYMethodCodeGeneratorServiceTest_avoidOverlaps {
         CharRecursionNode brother = nodeMap.get("兄");
         CharRecursionNode history = nodeMap.get("史");
         assertNotEquals(brother.getNormalCode().get(0), history.getNormalCode().get(0));
+    }
+
+    @Test
+    public void thereforeAndArtful() {
+        CharRecursionNode therefore = nodeMap.get("乃");
+        CharRecursionNode artful = nodeMap.get("刁");
+        assertNotEquals(therefore.getNormalCode().get(0), artful.getNormalCode().get(0));
     }
 
 

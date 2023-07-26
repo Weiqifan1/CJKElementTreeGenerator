@@ -5,6 +5,7 @@ import org.example.InputMethods.InputMethodCodeGenerators.AYMethodCodeGeneratorS
 import org.example.ObjectTypes.GenericTypes.CharRecursionNode;
 import org.example.ObjectTypes.GenericTypes.CodeDecompositionType;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.*;
@@ -23,12 +24,11 @@ import static org.junit.Assert.assertTrue;
 
 public class AYMethodCodeGeneratorServiceTest {
 
+    private static List<CharRecursionNode> nodelist;
+    private static Map<String, CharRecursionNode> nodeMap;
 
-    private List<CharRecursionNode> nodelist;
-    private Map<String, CharRecursionNode> nodeMap;
-
-    @Before
-    public void setUp() {
+    @BeforeClass
+    public static void setUp() {
         nodelist = getNodeList(CodeDecompositionType.CODE5_123zy_LIMMITBACKTRACK);
         nodeMap = nodeListToMap(nodelist);
     }
@@ -55,6 +55,14 @@ public class AYMethodCodeGeneratorServiceTest {
         assertTrue(firstElem.get("扌") == 149l);
     }
 
+    @Test
+    public void trad3039HeisigOverlap() {
+        List<CharRecursionNode> nodesFromPath = onlyNodesFromPath(nodelist, publicHtradFilePath);
+        Set<String> nodeNormalSet = nodesFromPath.stream().map(node -> node.getNormalCode().get(0)).collect(Collectors.toSet());
+        assertTrue(nodeNormalSet.size() == 3039);
+        assertTrue(nodeNormalSet.size() == nodesFromPath.size());
+    }
+    
     private Map<String, Long> sortedFirstElem() {
         List<CharRecursionNode> nodesFromPath = onlyNodesFromPath(nodelist, publicHtradFilePath);
         //get only char with description elem as first char
