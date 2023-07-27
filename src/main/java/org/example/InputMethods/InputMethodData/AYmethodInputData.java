@@ -64,7 +64,6 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("⺄", "zk"); //z=1+8  k=8    //⺄  eg. 訊 el 飞
         arrayInspiredElemsV1.put("乁", "zk"); //乁 from 气
             arrayInspiredElemsV1.put("犬", "zh");
-        arrayInspiredElemsV1.put("大", "z."); //z=1+8 .=9+8
         arrayInspiredElemsV1.put("犭", "zh"); //犭 left form of 犬 - but taken as short form of 大
 
             //here, is taken as an alternative to 示
@@ -164,7 +163,7 @@ public class AYmethodInputData {
 
         //f
         arrayInspiredElemsV1.put("十", "f"); //f=4  //十and 龶 /russiancross cant overlap - 勒勤
-            arrayInspiredElemsV1.put("𠂇", "fl"); //z=1+9 l=9
+            arrayInspiredElemsV1.put("𠂇", "fr"); //z=1+9 l=9 --龙尤
         arrayInspiredElemsV1.put(OLAP3RUSSIANCROSS.val(), "fq"); //f=4 q=1+3 //middle side of 生, top side of 龶, top right of 請, midle of
         arrayInspiredElemsV1.put(OVERLAP.desc() + "二丨", "fq"); //OLAP3RUSSIANCROSS full value, //middle side of 生, top side of 龶, top right of 請
         arrayInspiredElemsV1.put(OLAP4NIENBUT.val(), "fq");  //buton side of 年, alternative form of "二丨" //OLAP3RUSSIANCROSS
@@ -249,8 +248,10 @@ public class AYmethodInputData {
             arrayInspiredElemsV1.put(OLAP3SIMPCROWOUTSIDE.key(), "hg"); //烏乌 trad And simp crow outerShape
 
         //n
-        arrayInspiredElemsV1.put("广", "nz"); //n=6+9  z=1+9 eg. 麼
+        arrayInspiredElemsV1.put("广", "nd"); //n=6+9  z=1+9 eg. 麼 --长广
         arrayInspiredElemsV1.put(OLAP3YIANDCHANGBUTTOM.key(), "nz");//similar to 衣 //OLAP3YIANDCHANGBUTTOM butom part of 𧘇 長 丧 喪 𠅕
+            arrayInspiredElemsV1.put("长", "nz"); //--账帐
+            arrayInspiredElemsV1.put("大", "n."); //z=1+8 .=9+8
 
             //Seventh column
         //1	 2	3	4	5	6	7	8	9	0
@@ -258,16 +259,17 @@ public class AYmethodInputData {
             //u j m  //月目雨
             arrayInspiredElemsV1.put("目", "uj");
             arrayInspiredElemsV1.put("雨", "jj");
-            arrayInspiredElemsV1.put("月", "mj");
+            arrayInspiredElemsV1.put("貝", "jk"); //貝
+            arrayInspiredElemsV1.put("贝", "jk");
         //u
             //left side
         arrayInspiredElemsV1.put("皿", "ue"); //u=7+1 e=3+3
             arrayInspiredElemsV1.put("且", "uu");
-            arrayInspiredElemsV1.put("宀", "uj"); //n=6+7 d=3+5    //謬寥 言宀 diff  //富幅 宀巾 diff
 
         //j
         arrayInspiredElemsV1.put("冖", "j"); //j=5 冖
             arrayInspiredElemsV1.put("巾", "jd"); //巾 //富幅 宀巾 diff
+            //arrayInspiredElemsV1.put("用", "ja");
         arrayInspiredElemsV1.put(OUTER2TOP_STRAIGHT.val(), "j"); //j=5 冂 from 向 南 or mine: 身
         arrayInspiredElemsV1.put(OUTER2TOP_USEANDMOONE.val(), "j"); //j=5 ⺆  from 用 周
 
@@ -275,10 +277,12 @@ public class AYmethodInputData {
             //left side
         arrayInspiredElemsV1.put("夕", "mh"); //m=7+6 h=6
         arrayInspiredElemsV1.put("𠂊", "mh"); //𠂊 eg 久  taken as an alternative of 夕
+            arrayInspiredElemsV1.put(OLAP2_BENTTOP_UNITED.val(), "mh"); //⺈ 角 ⿱⿻丿𠃍⿵⺆土 --触蟹 simp
+            arrayInspiredElemsV1.put(OLAP2_BENTTOP_SPLIT.val(), "mh");  //⺈ 角 ⿱⿻丿𠃍⿵⺆土  --触蟹 simp
         //⿵夙玉 ⿵几⿳一⿴𠂊⺀王
         arrayInspiredElemsV1.put(OLAP4_BENTMOON.val(), "mn"); //m=7+6 n=6+6x  //OLAP4_BENTMOON ⿴𠂊冫
         arrayInspiredElemsV1.put(OLAP4_BENTMOON_ALT.val(), "mn");  //⿴𠂊⺀ eg 㓘	⿵夙玉[G]	⿵几⿳一⿴𠂊⺀王[T]
-            arrayInspiredElemsV1.put("貝", "mk"); //貝
+            arrayInspiredElemsV1.put("月", "mj");
 
         //Eighth column
         //1	 2	3	4	5	6	7	8	9	0
@@ -286,20 +290,21 @@ public class AYmethodInputData {
             //i k ,
             arrayInspiredElemsV1.put("金", "ik"); //飲欽  冷鈴 欽炊
             arrayInspiredElemsV1.put("钅", "ik");
-            arrayInspiredElemsV1.put("立", "kk"); //請靖 -sayAndStand cant have same first elem
+            arrayInspiredElemsV1.put("立", "kk"); //請靖 -sayAndStand cant have same first elem -况竞兑
             arrayInspiredElemsV1.put("飠", ",k");  //饅慢 飽炮
             arrayInspiredElemsV1.put("饣", ",k");
         //i
             //left side
-        arrayInspiredElemsV1.put("冫", "kk"); //i=6+1 k=1    ?  資   冷鈴
+        arrayInspiredElemsV1.put("冫", "kd"); //i=6+1 k=1    ?  資   冷鈴 --况竞兑
             arrayInspiredElemsV1.put("弓", "kb"); //g=5+5 a=1+5 //弓 from 發 //𠃍弓g 弱羽
 
         //k
+            arrayInspiredElemsV1.put("宀", "kj"); //n=6+7 d=3+5    //謬寥 言宀 diff  //富幅 宀巾 diff //宁盯
         arrayInspiredElemsV1.put("㇂", "k");
         arrayInspiredElemsV1.put("乀", "k"); //k=8
         arrayInspiredElemsV1.put(RIGHTSLANT_WITHHOOK.val(), "k"); //RIGHTSLANT_WITHHOOK
         arrayInspiredElemsV1.put("八", "k"); //k=8 //eg. 卻 stroke 1+2 and 3+4
-        arrayInspiredElemsV1.put("丷", "k"); //丷 --八 variation
+        arrayInspiredElemsV1.put("丷", "k"); //丷 --八 variation -况竞兑
         arrayInspiredElemsV1.put("入", "kl"); //k=8 l=9
 
         //,
@@ -333,9 +338,6 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put(LEFTSLANT_HORI.val(), "l"); //l=9 "㇀"
         arrayInspiredElemsV1.put(LEFTSLANT_SHARP.val(), "l"); //l=9
         arrayInspiredElemsV1.put(LEFTSlANT_VERT.val(), "l"); //l=9
-            arrayInspiredElemsV1.put("攵", "l."); //微徵 攵 must be one elem
-            arrayInspiredElemsV1.put("乂", "l."); //ex. 文  //兄史
-            arrayInspiredElemsV1.put("㐅", "l."); //ex. 學  //兄史
         arrayInspiredElemsV1.put("勹", "lg"); //l=9+5 g=5
             arrayInspiredElemsV1.put("𠂤", "la");
         //arrayInputMap.put("", "");
@@ -373,6 +375,9 @@ public class AYmethodInputData {
 
         // /
             arrayInspiredElemsV1.put("日", "/a"); //;=0 a=1
+            arrayInspiredElemsV1.put("攵", "/."); //微徵 攵 must be one elem
+            arrayInspiredElemsV1.put("乂", "/."); //ex. 文  //兄史
+            arrayInspiredElemsV1.put("㐅", "/."); //ex. 學  //兄史
 
         //arrayInputMap.put("", "");
         //arrayInputMap.put("", "");

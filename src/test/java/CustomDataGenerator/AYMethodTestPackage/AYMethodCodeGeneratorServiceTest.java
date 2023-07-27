@@ -294,6 +294,14 @@ public class AYMethodCodeGeneratorServiceTest {
         assertEquals(List.of("vfrk"),result);
     }
 
+    @Test
+    public void testGenerateNormalCodeFromFullCode_5codeSecToLast_4Oor5FirstCodeHas2() throws DataFormatException {
+        List<List<String>> fullCode = List.of(List.of("k", "l", "⿻", ";", "⿱", "kk", "⿰")); //况竞兑
+        List<String> result = AYMethodCodeGeneratorService.generateNormalCodeFromFullCode_5codeSecToLast(fullCode, "况");
+        assertEquals(List.of("k;lkk"),result);
+    }
+
+    //况竞兑
     public <T> List<T> flattenListOfListsImperatively(
             List<List<T>> nestedList) {
         List<T> ls = new ArrayList<>();

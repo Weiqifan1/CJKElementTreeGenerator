@@ -47,6 +47,9 @@ public enum CustomStrokeCollections {
             +RIGHTSLANT_SHARP.val, false),//button of 鼠
     OLAP4_BENTMOON_ALT("⿴𠂊⺀", false), //𠂊⺀ eg 㓘	⿵夙玉[G]	⿵几⿳一⿴𠂊⺀王[T]
     OLAP4_BENTMOON("⿴𠂊冫", false), //⿴𠂊冫 eg. upper left of 祭 from 察
+
+    OLAP2_BENTTOP_UNITED("⺈", false),   //⺈ 角 ⿱⿻丿𠃍⿵⺆土
+    OLAP2_BENTTOP_SPLIT("⿻丿𠃍", false), //⺈ 角 ⿱⿻丿𠃍⿵⺆土
     OLAP6_EXPANDEDPLANT(OVERLAP.desc()+"廿"+OVERLAP.desc() +LEFTSLANT_SHARP.val
             +RIGHTBENTBUTHOOK_LARGE.val,false),//top part of 帶
     OLAP3_BONESAW("⿺" + OVERLAP.desc()+RIGHTSLANT_WITHHOOK.val()+LEFTSLANT_SHARP.val()+DOTRIGHT.val()

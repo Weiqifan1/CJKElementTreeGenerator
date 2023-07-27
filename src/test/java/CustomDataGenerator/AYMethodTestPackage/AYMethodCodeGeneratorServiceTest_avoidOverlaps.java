@@ -419,6 +419,56 @@ public class AYMethodCodeGeneratorServiceTest_avoidOverlaps {
         assertNotEquals(tiny.getNormalCode().get(0), scale.getNormalCode().get(0));
     }
 
+    //利刹 simp
+    @Test
+    public void sharpAndBreak() { //left slant and cross must have different starting letters - simp
+        CharRecursionNode sharp = nodeMap.get("利");
+        CharRecursionNode breaK = nodeMap.get("刹");
+        assertNotEquals(sharp.getNormalCode().get(0), breaK.getNormalCode().get(0));
+    }
+
+    @Test //内贝
+    public void insideAndCowrie() { //shell 贝 has to be a separate element --simp
+        CharRecursionNode inside = nodeMap.get("内");
+        CharRecursionNode shell = nodeMap.get("贝");
+        assertNotEquals(inside.getNormalCode().get(0), shell.getNormalCode().get(0));
+    }
+
+    @Test
+    public void swellAndBill() {  //胀账 -- simp
+        CharRecursionNode swell = nodeMap.get("胀");
+        CharRecursionNode bill = nodeMap.get("账");
+        assertNotEquals(swell.getNormalCode().get(0), bill.getNormalCode().get(0));
+    }
+
+    @Test
+    public void preferAndGaze() { //宁盯 -- simp
+        CharRecursionNode prefer = nodeMap.get("宁");
+        CharRecursionNode gaze = nodeMap.get("盯");
+        assertNotEquals(prefer.getNormalCode().get(0), gaze.getNormalCode().get(0));
+    }
+
+    @Test
+    public void hogAndExtravagant() { //奢猪 -- dog and dog radical -simp
+        CharRecursionNode dog = nodeMap.get("猪");
+        CharRecursionNode dograd = nodeMap.get("奢");
+        assertNotEquals(dog.getNormalCode().get(0), dograd.getNormalCode().get(0));
+    }
+
+    @Test
+    public void canopyAndBill() {   //帐账 -- simp
+        CharRecursionNode canopy = nodeMap.get("帐");
+        CharRecursionNode bill = nodeMap.get("账");
+        assertNotEquals(canopy.getNormalCode().get(0), bill.getNormalCode().get(0));
+    }
+
+    @Test
+    public void excuseAndRabbit() {   //免兔 -- simp
+        CharRecursionNode excuse = nodeMap.get("免");
+        CharRecursionNode rabbit = nodeMap.get("兔");
+        assertNotEquals(excuse.getNormalCode().get(0), rabbit.getNormalCode().get(0));
+    }
+
     ///////////////////////////////////////////////////////////////////////
     /////////////////    coincidental overlaps
     ///////////////////////////////////////////////////////////////////////
@@ -492,6 +542,19 @@ public class AYMethodCodeGeneratorServiceTest_avoidOverlaps {
         assertNotEquals(therefore.getNormalCode().get(0), artful.getNormalCode().get(0));
     }
 
+    @Test
+    public void touchAndCrab_simp() {//simplified
+        CharRecursionNode touch = nodeMap.get("触");
+        CharRecursionNode crab = nodeMap.get("蟹");
+        assertNotEquals(touch.getNormalCode().get(0), crab.getNormalCode().get(0));
+    }
+
+    @Test
+    public void dragonAndOutstanding() { //龙尤 -- simp
+        CharRecursionNode dragon = nodeMap.get("龙");
+        CharRecursionNode outs = nodeMap.get("尤");
+        assertNotEquals(dragon.getNormalCode().get(0), outs.getNormalCode().get(0));
+    }
 
 
 }

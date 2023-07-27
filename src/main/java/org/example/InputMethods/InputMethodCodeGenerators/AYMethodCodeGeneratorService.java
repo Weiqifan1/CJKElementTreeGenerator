@@ -229,7 +229,7 @@ public class AYMethodCodeGeneratorService {
             String threeLast = noNullAndNoUni.get(2).substring(1);
             String fourLast = noNullAndNoUni.get(3).substring(1);
             test = fourLast + threeLast + twoLast + oneLast;
-            if (test.length() > 1) {
+            if (test.length() > 0) {
                 last = test.substring(0,1);
             }
             return oneone + twoone + threeone + fourone + last;
