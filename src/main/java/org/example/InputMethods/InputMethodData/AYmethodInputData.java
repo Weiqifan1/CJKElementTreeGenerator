@@ -261,9 +261,9 @@ public class AYmethodInputData {
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
             //u j m  //月目雨
             arrayInspiredElemsV1.put("目", "uj");
-            arrayInspiredElemsV1.put("雨", "jj");
-            arrayInspiredElemsV1.put("貝", "jk"); //貝
-            arrayInspiredElemsV1.put("贝", "jk");
+            arrayInspiredElemsV1.put("貝", "jj"); //貝
+            arrayInspiredElemsV1.put("贝", "jj");
+            arrayInspiredElemsV1.put("月", "mj");
         //u
             //left side
         arrayInspiredElemsV1.put("皿", "ue"); //u=7+1 e=3+3
@@ -272,7 +272,7 @@ public class AYmethodInputData {
         //j
         arrayInspiredElemsV1.put("冖", "j"); //j=5 冖
             arrayInspiredElemsV1.put("巾", "jd"); //巾 //富幅 宀巾 diff
-            //arrayInspiredElemsV1.put("用", "ja");
+            arrayInspiredElemsV1.put("雨", "jk");
         arrayInspiredElemsV1.put(OUTER2TOP_STRAIGHT.val(), "j"); //j=5 冂 from 向 南 or mine: 身
         arrayInspiredElemsV1.put(OUTER2TOP_USEANDMOONE.val(), "j"); //j=5 ⺆  from 用 周
 
@@ -285,7 +285,7 @@ public class AYmethodInputData {
         //⿵夙玉 ⿵几⿳一⿴𠂊⺀王
         arrayInspiredElemsV1.put(OLAP4_BENTMOON.val(), "mn"); //m=7+6 n=6+6x  //OLAP4_BENTMOON ⿴𠂊冫
         arrayInspiredElemsV1.put(OLAP4_BENTMOON_ALT.val(), "mn");  //⿴𠂊⺀ eg 㓘	⿵夙玉[G]	⿵几⿳一⿴𠂊⺀王[T]
-            arrayInspiredElemsV1.put("月", "mj");
+
 
         //Eighth column
         //1	 2	3	4	5	6	7	8	9	0
@@ -326,7 +326,6 @@ public class AYmethodInputData {
             arrayInspiredElemsV1.put("竹", "ll");
             arrayInspiredElemsV1.put("人", ".l");
             arrayInspiredElemsV1.put("亻", ".l");
-            arrayInspiredElemsV1.put("𠂉", ".a");
         //o
             //left side
         arrayInspiredElemsV1.put("斤", "oo"); //o=9+3 o=9+1
@@ -342,7 +341,8 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put(LEFTSLANT_SHARP.val(), "l"); //l=9
         arrayInspiredElemsV1.put(LEFTSlANT_VERT.val(), "l"); //l=9
         arrayInspiredElemsV1.put("勹", "lg"); //l=9+5 g=5
-            arrayInspiredElemsV1.put("𠂤", "la");
+            arrayInspiredElemsV1.put("𠂉", "lg");
+            arrayInspiredElemsV1.put("𠂤", "lg");
         //arrayInputMap.put("", "");
 
         //.
@@ -360,16 +360,15 @@ public class AYmethodInputData {
             //p  ;  /
             arrayInspiredElemsV1.put("車", "/;"); //車虫
             arrayInspiredElemsV1.put("车", "/;"); //车 simp fprm of 車
+            arrayInspiredElemsV1.put("田", "p;"); //p=0+4 q=1+3
+            arrayInspiredElemsV1.put("毌", "p;"); //毌 from 實 and Top of 婁 from 數  //taken as alternative form of 田
 
             //p
             //left side
-        arrayInspiredElemsV1.put("田", "pq"); //p=0+4 q=1+3
-        arrayInspiredElemsV1.put("毌", "pq"); //毌 from 實 and Top of 婁 from 數
-            //taken as alternative form of 田
         arrayInspiredElemsV1.put("罒", "pe"); // p=0+3 e=3+3
             arrayInspiredElemsV1.put("四", "pe"); // /=0+8 .=9+8 eg. 黑
         arrayInspiredElemsV1.put("甲", "pd"); // p=0+3 d=3 ()  (甲 eg. 里-will create conflicts)   //撞攏-里 cant end in doubleYi --里
-            arrayInspiredElemsV1.put("虫", "p;"); // /=0+6 e=3+1 --車虫 哇蛙
+            arrayInspiredElemsV1.put("虫", "pk"); // /=0+6 e=3+1 --車虫 哇蛙
 
         //;
         arrayInspiredElemsV1.put("口", ";"); //;=0 --哇蛙
