@@ -17,6 +17,7 @@ import static org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerat
 import static org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.CharRecursionNodeService.unicodeBreakup;
 import static org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.CodeRecursionObjectGenerator.getNodeList;
 import static org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.CodeRecursionObjectGenerator.onlyNodesFromPath;
+import static org.example.GlobalConstants.publicHsimpFilePath;
 import static org.example.GlobalConstants.publicHtradFilePath;
 import static org.example.InputMethods.InputMethodCodeGenerators.AYMethodCodeGeneratorService.nodeListToMap;
 import static org.junit.Assert.assertEquals;
@@ -62,7 +63,15 @@ public class AYMethodCodeGeneratorServiceTest {
         assertTrue(nodeNormalSet.size() == 3039);
         assertTrue(nodeNormalSet.size() == nodesFromPath.size());
     }
-    
+
+    @Test
+    public void simp3049HeisigOverlap() {
+        List<CharRecursionNode> nodesFromPath = onlyNodesFromPath(nodelist, publicHsimpFilePath);
+        Set<String> nodeNormalSet = nodesFromPath.stream().map(node -> node.getNormalCode().get(0)).collect(Collectors.toSet());
+        assertTrue(nodeNormalSet.size() == 3049);
+        assertTrue(nodeNormalSet.size() == nodesFromPath.size());
+    }
+
     private Map<String, Long> sortedFirstElem() {
         List<CharRecursionNode> nodesFromPath = onlyNodesFromPath(nodelist, publicHtradFilePath);
         //get only char with description elem as first char

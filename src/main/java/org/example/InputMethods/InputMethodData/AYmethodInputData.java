@@ -193,7 +193,7 @@ public class AYmethodInputData {
             //left side
         arrayInspiredElemsV1.put("阝", "td"); //t=5+3 d=3 //first stroke taken as DOUBLEBENT_55  //隊遂
         arrayInspiredElemsV1.put("卩", "td"); //t=5+3 d=d卩 from 报
-
+            arrayInspiredElemsV1.put("刀", "tl"); //b=5+9 l=9
         arrayInspiredElemsV1.put(OLAP3HORIFORKLIKE.key(), "tq"); //t=5+1 q=1+1 eg. 事 stroke 6,7,8 or ids 尹 ⿻⿻コ一丿 stroke 1,2,3
         arrayInspiredElemsV1.put("巳", "tq"); //t=5+2 q=1+2  //巳 from 僊 凞 包
         arrayInspiredElemsV1.put(OLAP3LEFTSIDEOFPEOPLE.key(), "tq"); //first 3 strokes of 民, taken as alternative form of 巳
@@ -211,7 +211,7 @@ public class AYmethodInputData {
 
         //b
             //left side
-        arrayInspiredElemsV1.put("刀", "bl"); //b=5+9 l=9
+            arrayInspiredElemsV1.put("力", "bl"); //势抛执  --simp
         arrayInspiredElemsV1.put("又", "bk"); //b=5+8 k=8又 对
         //arrayInspiredElemsV1.put("尸", "bz"); //b=5+9 z=1+9  eg. 所
         arrayInspiredElemsV1.put("𠃜", "bz"); //taken as a variant of 尸, 𠃜 from 声
@@ -275,10 +275,10 @@ public class AYmethodInputData {
 
         //m
             //left side
-        arrayInspiredElemsV1.put("夕", "mh"); //m=7+6 h=6
-        arrayInspiredElemsV1.put("𠂊", "mh"); //𠂊 eg 久  taken as an alternative of 夕
-            arrayInspiredElemsV1.put(OLAP2_BENTTOP_UNITED.val(), "mh"); //⺈ 角 ⿱⿻丿𠃍⿵⺆土 --触蟹 simp
-            arrayInspiredElemsV1.put(OLAP2_BENTTOP_SPLIT.val(), "mh");  //⺈ 角 ⿱⿻丿𠃍⿵⺆土  --触蟹 simp
+        arrayInspiredElemsV1.put("夕", "mg"); //m=7+6 h=6
+        arrayInspiredElemsV1.put("𠂊", "mg"); //𠂊 eg 久  taken as an alternative of 夕 --免兔
+            arrayInspiredElemsV1.put(OLAP2_BENTTOP_UNITED.val(), "mg"); //⺈ 角 ⿱⿻丿𠃍⿵⺆土 --触蟹 simp
+            arrayInspiredElemsV1.put(OLAP2_BENTTOP_SPLIT.val(), "mg");  //⺈ 角 ⿱⿻丿𠃍⿵⺆土  --触蟹 simp
         //⿵夙玉 ⿵几⿳一⿴𠂊⺀王
         arrayInspiredElemsV1.put(OLAP4_BENTMOON.val(), "mn"); //m=7+6 n=6+6x  //OLAP4_BENTMOON ⿴𠂊冫
         arrayInspiredElemsV1.put(OLAP4_BENTMOON_ALT.val(), "mn");  //⿴𠂊⺀ eg 㓘	⿵夙玉[G]	⿵几⿳一⿴𠂊⺀王[T]

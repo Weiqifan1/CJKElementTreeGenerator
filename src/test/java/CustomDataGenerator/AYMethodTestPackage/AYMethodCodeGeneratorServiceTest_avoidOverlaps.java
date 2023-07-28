@@ -469,6 +469,23 @@ public class AYMethodCodeGeneratorServiceTest_avoidOverlaps {
         assertNotEquals(excuse.getNormalCode().get(0), rabbit.getNormalCode().get(0));
     }
 
+    @Test
+    public void forceAndAbandon() { //势抛 //势执  -- simp
+        CharRecursionNode force = nodeMap.get("势");
+        CharRecursionNode abandon = nodeMap.get("抛");
+        CharRecursionNode grasp = nodeMap.get("执");
+        assertNotEquals(force.getNormalCode().get(0), abandon.getNormalCode().get(0));
+        assertNotEquals(force.getNormalCode().get(0), grasp.getNormalCode().get(0));
+        assertNotEquals(abandon.getNormalCode().get(0), grasp.getNormalCode().get(0));
+    }
+
+    @Test
+    public void powerAndAgain() {  //力又
+        CharRecursionNode power = nodeMap.get("力");
+        CharRecursionNode again = nodeMap.get("又");
+        assertNotEquals(power.getNormalCode().get(0), again.getNormalCode().get(0));
+    }
+
     ///////////////////////////////////////////////////////////////////////
     /////////////////    coincidental overlaps
     ///////////////////////////////////////////////////////////////////////
