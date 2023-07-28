@@ -39,6 +39,8 @@ public class AYmethodInputData {
             //q a z
             arrayInspiredElemsV1.put("示", "qa");
             arrayInspiredElemsV1.put("礻", "qa");
+            arrayInspiredElemsV1.put("犬", "za");
+            arrayInspiredElemsV1.put("犭", "za"); //犭 left form of 犬 - but taken as short form of 大
 
 
         //First column
@@ -63,8 +65,7 @@ public class AYmethodInputData {
             arrayInspiredElemsV1.put("丆", "zl"); //礙礎 石 must be 1 or 2 codes, 丆 should probably be and element
         arrayInspiredElemsV1.put("⺄", "zk"); //z=1+8  k=8    //⺄  eg. 訊 el 飞
         arrayInspiredElemsV1.put("乁", "zk"); //乁 from 气
-            arrayInspiredElemsV1.put("犬", "zh");
-        arrayInspiredElemsV1.put("犭", "zh"); //犭 left form of 犬 - but taken as short form of 大
+
 
             //here, is taken as an alternative to 示
 
