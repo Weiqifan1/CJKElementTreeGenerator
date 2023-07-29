@@ -82,7 +82,7 @@ public class CustomIdsSupplementMaps {
             customIdsSupplement.put("コ", "⿻"+BENTTOP_SHARP.val()+"一"); //from 事
             customIdsSupplement.put("耂", "⿻"+"土"+LEFTSLANT_SHARP.val()); //eg. 都
             customIdsSupplement.put("ス", "⿻"+BENTTOP_SHARP.val() + "乀"); //ス from 经
-            customIdsSupplement.put("儿", "⿻"+LEFTSLANT_SHARP.val()+"乀"); //儿 from 现 and 见
+            customIdsSupplement.put("儿", "⿻"+LEFTSLANT_SHARP.val()+RIGHTBENTBUTHOOK_LARGE.val()); //儿 from 现 and 见
             customIdsSupplement.put("见", "⿵"+OUTER2TOP_STRAIGHT.val()+"儿"); // 见 from 现 //arrayInspiredElemsV1.put("", "⿵"+""); //    //见
             customIdsSupplement.put("彐", OVERLAP.desc()+OVERLAP.desc()+BENTTOP_SHARP.val()+"一"+"一"); //彐 from 当
             customIdsSupplement.put("囬", "⿴囗"+OLAP4TWOVERTTWOHORI.key()); //囬  from 面, 囬 ids ⿴囗④

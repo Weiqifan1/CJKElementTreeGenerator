@@ -486,6 +486,20 @@ public class AYMethodCodeGeneratorServiceTest_avoidOverlaps {
         assertNotEquals(power.getNormalCode().get(0), again.getNormalCode().get(0));
     }
 
+    @Test
+    public void darkAndBald() { // 黎禿  simp
+        CharRecursionNode dark = nodeMap.get("黎");
+        CharRecursionNode bald = nodeMap.get("禿");
+        assertNotEquals(dark.getNormalCode().get(0), bald.getNormalCode().get(0));
+    }
+
+    @Test
+    public void tinyAndDevil() { // 麼魔  trad
+        CharRecursionNode tiny = nodeMap.get("麼");
+        CharRecursionNode devil = nodeMap.get("魔");
+        assertNotEquals(tiny.getNormalCode().get(0), devil.getNormalCode().get(0));
+    }
+
     ///////////////////////////////////////////////////////////////////////
     /////////////////    coincidental overlaps
     ///////////////////////////////////////////////////////////////////////
