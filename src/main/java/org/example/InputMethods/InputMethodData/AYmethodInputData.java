@@ -119,7 +119,8 @@ public class AYmethodInputData {
             //e d c
             arrayInspiredElemsV1.put("門", "ed");
             arrayInspiredElemsV1.put("门", "ed");
-
+            arrayInspiredElemsV1.put("長", "dd");
+            arrayInspiredElemsV1.put("长", "dd"); //--账帐
             arrayInspiredElemsV1.put("水", "cd"); //氵門
             arrayInspiredElemsV1.put("氵", "cd");
 
@@ -134,7 +135,7 @@ public class AYmethodInputData {
         //d
         arrayInspiredElemsV1.put("丨", "d");
         arrayInspiredElemsV1.put("亅", "d");
-            arrayInspiredElemsV1.put("刂", "dd"); //e=3+3 d=3
+            arrayInspiredElemsV1.put("刂", "d"); //e=3+3 d=3
         arrayInspiredElemsV1.put("片", "da"); //d=3+5 z=1+9 mirro image of 爿,
             // I wanted to give them the same code, but they both are in first 5000
 
@@ -242,8 +243,6 @@ public class AYmethodInputData {
 
         //n
         arrayInspiredElemsV1.put("广", "nd"); //n=6+9  z=1+9 eg. 麼 --长广
-        arrayInspiredElemsV1.put(OLAP3YIANDCHANGBUTTOM.key(), "nz");//similar to 衣 //OLAP3YIANDCHANGBUTTOM butom part of 𧘇 長 丧 喪 𠅕
-            arrayInspiredElemsV1.put("长", "nz"); //--账帐
             arrayInspiredElemsV1.put("大", "n."); //z=1+8 .=9+8
 
             //Seventh column
@@ -251,8 +250,7 @@ public class AYmethodInputData {
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
             //u j m  //月目雨
             arrayInspiredElemsV1.put("目", "uj");
-            arrayInspiredElemsV1.put("貝", "jj"); //貝
-            arrayInspiredElemsV1.put("贝", "jj");
+            arrayInspiredElemsV1.put("雨", "jj");
             arrayInspiredElemsV1.put("月", "mj");
         //u
             //left side
@@ -260,9 +258,9 @@ public class AYmethodInputData {
             arrayInspiredElemsV1.put("且", "uu");
 
         //j
-        arrayInspiredElemsV1.put("冖", "j"); //j=5 冖
-            arrayInspiredElemsV1.put("巾", "jd"); //巾 //富幅 宀巾 diff
-            arrayInspiredElemsV1.put("雨", "jk");
+            arrayInspiredElemsV1.put("貝", "jk"); //貝
+            arrayInspiredElemsV1.put("贝", "jk");
+            arrayInspiredElemsV1.put("冖", "j"); //j=5 冖
         arrayInspiredElemsV1.put(OUTER2TOP_STRAIGHT.val(), "j"); //j=5 冂 from 向 南 or mine: 身
         arrayInspiredElemsV1.put(OUTER2TOP_USEANDMOONE.val(), "j"); //j=5 ⺆  from 用 周
 
@@ -273,8 +271,8 @@ public class AYmethodInputData {
             arrayInspiredElemsV1.put(OLAP2_BENTTOP_UNITED.val(), "mg"); //⺈ 角 ⿱⿻丿𠃍⿵⺆土 --触蟹 simp
             arrayInspiredElemsV1.put(OLAP2_BENTTOP_SPLIT.val(), "mg");  //⺈ 角 ⿱⿻丿𠃍⿵⺆土  --触蟹 simp
         //⿵夙玉 ⿵几⿳一⿴𠂊⺀王
-        arrayInspiredElemsV1.put(OLAP4_BENTMOON.val(), "mn"); //m=7+6 n=6+6x  //OLAP4_BENTMOON ⿴𠂊冫
-        arrayInspiredElemsV1.put(OLAP4_BENTMOON_ALT.val(), "mn");  //⿴𠂊⺀ eg 㓘	⿵夙玉[G]	⿵几⿳一⿴𠂊⺀王[T]
+        arrayInspiredElemsV1.put(OLAP4_BENTMOON.val(), "mg"); //m=7+6 n=6+6x  //OLAP4_BENTMOON ⿴𠂊冫
+        arrayInspiredElemsV1.put(OLAP4_BENTMOON_ALT.val(), "mg");  //⿴𠂊⺀ eg 㓘	⿵夙玉[G]	⿵几⿳一⿴𠂊⺀王[T]
 
 
         //Eighth column

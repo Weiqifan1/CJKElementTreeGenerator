@@ -380,6 +380,7 @@ public class CustomIdsSupplementMaps {
             //𠃜
             customIdsSupplement.put("𠃜", OVERLAP.desc() + "尸" + "丨");
             customIdsSupplement.put("廴", OVERLAP.desc() + DOUBLEBENT_55.val()+RIGHTSLANT_SHARP.val());
+            customIdsSupplement.put("巾", OVERLAP.desc() + OUTER2TOP_STRAIGHT.val()+"丨"); //巾 //富幅 宀巾 diff
 
 
 
