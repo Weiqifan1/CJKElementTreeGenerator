@@ -257,6 +257,9 @@ public class AYmethodInputData {
             //left side
         arrayInspiredElemsV1.put("皿", "ue"); //u=7+1 e=3+3
             arrayInspiredElemsV1.put("且", "uu");
+            arrayInspiredElemsV1.put("几", "jg"); //l=9+5 g=5  eg. 亢  亮  仉
+            arrayInspiredElemsV1.put("𠘧", "jg"); //𠘧  from 没 or 船
+            arrayInspiredElemsV1.put("殳", "jk"); //穀穀 - 殳 needs to be an element
 
         //j
             arrayInspiredElemsV1.put("貝", "jk"); //貝
@@ -324,9 +327,7 @@ public class AYmethodInputData {
         arrayInspiredElemsV1.put("臼", "oe"); //o=9+1 e=3+1
         arrayInspiredElemsV1.put("𦥑", "oe"); //o=9+1 e=3+1
         arrayInspiredElemsV1.put("隹", "oc"); //o=9+1 c=3+6 //隹 ids 隹
-            arrayInspiredElemsV1.put("几", "og"); //l=9+5 g=5  eg. 亢  亮  仉
-            arrayInspiredElemsV1.put("𠘧", "og"); //𠘧  from 没 or 船
-            arrayInspiredElemsV1.put("殳", "ok"); //穀穀 - 殳 needs to be an element
+
 
         //l
         arrayInspiredElemsV1.put(LEFTSLANT_HORI.val(), "l"); //l=9 "㇀"
