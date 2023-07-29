@@ -18,8 +18,12 @@ public class AYmethodInputData {
         //(1-4 == top row, 5 == middle row, 6-0 == buttom row).
         //1	 2	3	4	5	6	7	8	9	0
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
+            //
+
         //If the elememnt match a primitive, the letter will be from the middle row.
         //second letter:
+            //if short cut character - second letter is from same middle row
+            //if other character: --
         //take the element and substract the first primitive. If 2+ strokes are left: then use stroke 1 and 2.
         //if one stroke is left: use the relevant middle-row character.
         //if the element match a primitive, the second letter is the first letter.
@@ -45,13 +49,14 @@ public class AYmethodInputData {
 
         //First column
         //q//left side
-        arrayInspiredElemsV1.put("工", "qe"); //q=1+1 e=3+1
+        arrayInspiredElemsV1.put("工", "qd"); //q=1+1 e=3+1
         arrayInspiredElemsV1.put("匚", "qs"); //q=1+2 s=2  匚 from 區
+            arrayInspiredElemsV1.put("臣", "qs"); //臣
         arrayInspiredElemsV1.put("匸", "qs"); //alternative of 匚, 匸 from 區
             arrayInspiredElemsV1.put("厂", "ql"); //z=1+9 l=9  //友反 canNotOverlap
-            arrayInspiredElemsV1.put(OUTTOPLEFT2.val(), "ql"); //虍 from 號, taken as alternative to 厂
             arrayInspiredElemsV1.put("𠂆", "ql"); //eg. 所 //alternative form of 厂
-            arrayInspiredElemsV1.put("臣", "qd"); //臣
+            arrayInspiredElemsV1.put("丆", "ql"); //礙礎 石 must be 1 or 2 codes, 丆 should probably be and element
+
 
 
         //a
@@ -62,7 +67,7 @@ public class AYmethodInputData {
             arrayInspiredElemsV1.put("示", "zq"); //z=1+8 q=1+3  示 ids 示
             arrayInspiredElemsV1.put("礻", "zq");  // z=1+8 q=1+3 ,礻 from  神
 
-            arrayInspiredElemsV1.put("丆", "zl"); //礙礎 石 must be 1 or 2 codes, 丆 should probably be and element
+
         arrayInspiredElemsV1.put("⺄", "zk"); //z=1+8  k=8    //⺄  eg. 訊 el 飞
         arrayInspiredElemsV1.put("乁", "zk"); //乁 from 气
 
