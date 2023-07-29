@@ -158,14 +158,18 @@ public class AYmethodInputData {
             arrayInspiredElemsV1.put("丱", "rf"); //taken as alternative form of 廿
             arrayInspiredElemsV1.put("艹", "rf"); //艹 from 歡
             arrayInspiredElemsV1.put("土", "ff"); //士土
+
         //r
             //left side
-            arrayInspiredElemsV1.put("匕", "rs"); //q=1+2 s=2 //項頃 overlap
-
+            arrayInspiredElemsV1.put("夂", "rg"); //.=9+9 b=5+8 夂  ex. 後
+            arrayInspiredElemsV1.put("夊", "rg"); //.=9+9 b=5+8  夊 eg. 後
+            arrayInspiredElemsV1.put("攵", "rl"); //微徵 攵 must be one elem
+            arrayInspiredElemsV1.put("乂", "rk"); //ex. 文  //兄史
+            arrayInspiredElemsV1.put("㐅", "rk"); //ex. 學  //兄史
         //f
             arrayInspiredElemsV1.put("寸", "fv"); //寸
         arrayInspiredElemsV1.put("十", "f"); //f=4  //十and 龶 /russiancross cant overlap - 勒勤
-            arrayInspiredElemsV1.put("𠂇", "fr"); //z=1+9 l=9 --龙尤
+            arrayInspiredElemsV1.put("𠂇", "fo"); //z=1+9 l=9 --龙尤
         arrayInspiredElemsV1.put(OLAP3RUSSIANCROSS.val(), "fq"); //f=4 q=1+3 //middle side of 生, top side of 龶, top right of 請, midle of
         arrayInspiredElemsV1.put(OVERLAP.desc() + "二丨", "fq"); //OLAP3RUSSIANCROSS full value, //middle side of 生, top side of 龶, top right of 請
         arrayInspiredElemsV1.put(OLAP4NIENBUT.val(), "fq");  //buton side of 年, alternative form of "二丨" //OLAP3RUSSIANCROSS
@@ -231,9 +235,6 @@ public class AYmethodInputData {
             arrayInspiredElemsV1.put("方", "yz"); //h=6+5 z=1+9
             arrayInspiredElemsV1.put("亠", "yy"); //竟親
             //left side
-        //arrayInspiredElemsV1.put("言", "yq"); //y=6+1 q=1+1
-        //arrayInspiredElemsV1.put("讠", "yq"); //言 short
-        //arrayInspiredElemsV1.put("立", "nz"); //y=6+1 z=1+8
 
         //h
         arrayInspiredElemsV1.put(DOTLEFT.val(), "h"); //、 eg. 自
@@ -317,6 +318,8 @@ public class AYmethodInputData {
             arrayInspiredElemsV1.put("亻", ".l");
         //o
             //left side
+
+            arrayInspiredElemsV1.put("匕", "os"); //q=1+2 s=2 //項頃 overlap
         arrayInspiredElemsV1.put("斤", "oo"); //o=9+3 o=9+1
         arrayInspiredElemsV1.put("臼", "oe"); //o=9+1 e=3+1
         arrayInspiredElemsV1.put("𦥑", "oe"); //o=9+1 e=3+1
@@ -337,8 +340,6 @@ public class AYmethodInputData {
         //.
             //left side
 
-        arrayInspiredElemsV1.put("夂", ".b"); //.=9+9 b=5+8 夂  ex. 後
-        arrayInspiredElemsV1.put("夊", ".b"); //.=9+9 b=5+8  夊 eg. 後
         arrayInspiredElemsV1.put("𧰨", ".."); // .=9+8  .=9+9  𧰨 from 家
         arrayInspiredElemsV1.put("豸", ".n");//.=9+9 n=6+6 //豸 from 貓
         //arrayInputMap.put("", "");
@@ -366,9 +367,7 @@ public class AYmethodInputData {
 
         // /
             arrayInspiredElemsV1.put("日", "/a"); //;=0 a=1
-            arrayInspiredElemsV1.put("攵", "/."); //微徵 攵 must be one elem
-            arrayInspiredElemsV1.put("乂", "/."); //ex. 文  //兄史
-            arrayInspiredElemsV1.put("㐅", "/."); //ex. 學  //兄史
+
 
         //arrayInputMap.put("", "");
         //arrayInputMap.put("", "");
