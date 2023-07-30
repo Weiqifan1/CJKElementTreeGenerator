@@ -2,12 +2,12 @@ package org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator;
 
 import org.example.CustomStaticDataGenerators.CustomIdsJsonMapGeneratorService;
 import org.example.ObjectTypes.GenericTypes.CharRecursionNode;
+import org.example.ObjectTypes.GenericTypes.CharacterSet;
 import org.example.ObjectTypes.GenericTypes.CodeDecompositionType;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static org.example.CustomStaticDataGenerators.CustomIdsJsonMapGeneratorService.orderedFrequencyList;
@@ -472,7 +472,10 @@ public class CodeRecursionObjectGenerator {
         return set;
     }
 
-    public static List<CharRecursionNode> onlyNodesFromPathAndBelowNumber(List<CharRecursionNode> nodes, String filePath, int minimumNumber) {
+    public static List<CharRecursionNode> onlyNodesFromPathAndBelowNumber(List<CharRecursionNode> nodes,
+                                                                          String filePath,
+                                                                          int minimumNumber,
+                                                                          CharacterSet characterset) {
         Set<String> charsFromFile = new HashSet<>();
         try {
             charsFromFile = getCharsFromFile(filePath);
@@ -481,8 +484,45 @@ public class CodeRecursionObjectGenerator {
         }
         Set<String> charsFromFile2 = charsFromFile;
         List<CharRecursionNode> result = nodes.stream()
-                .filter(node -> charsFromFile2.contains(node.getCurrentBreakdownSubsection())).toList();
+                .filter(node -> isContainsOrBelowNumber(charsFromFile2, node, minimumNumber, characterset)).toList();
         return result;
+    }
+
+    private static boolean isContainsOrBelowNumber(Set<String> charsFromFile2,
+                                                   CharRecursionNode node,
+                                                   int minimumNumber,
+                                                   CharacterSet characterset) {
+        boolean charNodeInHeisigList = charsFromFile2.contains(node.getCurrentBreakdownSubsection());
+        Integer tradNum = getOrdinal(node.getSubsectionIdsMapResult().get(TZAIORDINAL));
+        Integer simpNum = getOrdinal(node.getSubsectionIdsMapResult().get(JUNDAORDINAL));
+        List<Integer> frequencyList = new ArrayList<>();
+        if (Objects.nonNull(tradNum) && CharacterSet.MANDARINTRADITIONAL.equals(characterset)) {
+            frequencyList.add(tradNum);
+        }
+        if (Objects.nonNull(simpNum) && CharacterSet.MANDARINSIMPLIFIED.equals(characterset)) {
+            frequencyList.add(simpNum);
+        }
+
+        boolean simpAndTradNumBelowMinimum = aNumberIsBelow(frequencyList, minimumNumber);
+        return charNodeInHeisigList || simpAndTradNumBelowMinimum;
+    }
+
+    private static boolean aNumberIsBelow(List<Integer> frequencyNumbers, int minimumNumber) {
+        for (Integer frequencyNumber : frequencyNumbers) {
+            if (Objects.nonNull(frequencyNumber) && frequencyNumber <= minimumNumber) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static Integer getOrdinal(String stringOrdinal) {
+        if (Objects.nonNull(stringOrdinal) && stringOrdinal.length() > 0) {
+            Integer ordinal = Integer.parseInt(stringOrdinal);
+            return ordinal;
+        } else {
+            return null;
+        }
     }
 
     private static boolean isAscii(String str) {

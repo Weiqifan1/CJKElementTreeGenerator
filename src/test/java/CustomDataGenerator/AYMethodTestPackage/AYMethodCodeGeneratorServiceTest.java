@@ -3,6 +3,7 @@ package CustomDataGenerator.AYMethodTestPackage;
 import org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.CodeRecursionObjectGenerator;
 import org.example.InputMethods.InputMethodCodeGenerators.AYMethodCodeGeneratorService;
 import org.example.ObjectTypes.GenericTypes.CharRecursionNode;
+import org.example.ObjectTypes.GenericTypes.CharacterSet;
 import org.example.ObjectTypes.GenericTypes.CodeDecompositionType;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -16,8 +17,7 @@ import static org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerat
 import static org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.CharRecursionNodeService.unicodeBreakup;
 import static org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.CodeRecursionObjectGenerator.getNodeList;
 import static org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.CodeRecursionObjectGenerator.onlyNodesFromPathAndBelowNumber;
-import static org.example.GlobalConstants.publicHsimpFilePath;
-import static org.example.GlobalConstants.publicHtradFilePath;
+import static org.example.GlobalConstants.*;
 import static org.example.InputMethods.InputMethodCodeGenerators.AYMethodCodeGeneratorService.nodeListToMap;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -25,15 +25,19 @@ import static org.junit.Assert.assertTrue;
 public class AYMethodCodeGeneratorServiceTest {
 
     private static List<CharRecursionNode> nodelist;
-    private static List<CharRecursionNode> nodelistTrad_3500;
-    private static List<CharRecursionNode> nodelistSimp_3500;
+    private static List<CharRecursionNode> nodelist_HeisigTrad;
+    private static List<CharRecursionNode> nodelist_HeisigSimp;
+    private static List<CharRecursionNode> nodelistTrad_3500x;
+    private static List<CharRecursionNode> nodelistSimp_3500x;
     private static Map<String, CharRecursionNode> nodeMap;
 
     @BeforeClass
     public static void setUp() {
         nodelist = getNodeList(CodeDecompositionType.CODE5_123zy_LIMMITBACKTRACK);
-        nodelistTrad_3500 = onlyNodesFromPathAndBelowNumber(nodelist, publicHtradFilePath, 3500);
-        nodelistSimp_3500 = onlyNodesFromPathAndBelowNumber(nodelist, publicHsimpFilePath, 3500);
+        nodelist_HeisigTrad = onlyNodesFromPathAndBelowNumber(nodelist, publicHtradFilePath, 0, CharacterSet.MANDARINTRADITIONAL);
+        nodelist_HeisigSimp = onlyNodesFromPathAndBelowNumber(nodelist, publicHsimpFilePath, 0, CharacterSet.MANDARINSIMPLIFIED);
+        nodelistTrad_3500x = onlyNodesFromPathAndBelowNumber(nodelist, publicHtradFilePath, 3500, CharacterSet.MANDARINTRADITIONAL);
+        nodelistSimp_3500x = onlyNodesFromPathAndBelowNumber(nodelist, publicHsimpFilePath, 3500, CharacterSet.MANDARINSIMPLIFIED);
         nodeMap = nodeListToMap(nodelist);
     }
 
@@ -62,23 +66,37 @@ public class AYMethodCodeGeneratorServiceTest {
     @Test
     public void trad3039HeisigOverlap() {
         //List<CharRecursionNode> nodesFromPath = onlyNodesFromPath(nodelist, publicHtradFilePath);
-        Set<String> nodeNormalSet = nodelistTrad_3500.stream().map(node -> node.getNormalCode().get(0)).collect(Collectors.toSet());
+        Set<String> nodeNormalSet = nodelist_HeisigTrad.stream().map(node -> node.getNormalCode().get(0)).collect(Collectors.toSet());
         assertTrue(nodeNormalSet.size() == 3039);
-        assertTrue(nodeNormalSet.size() == nodelistTrad_3500.size());
+        assertTrue(nodeNormalSet.size() == nodelist_HeisigTrad.size());
     }
 
     @Test
     public void simp3049HeisigOverlap() {
         //List<CharRecursionNode> nodesFromPath = onlyNodesFromPathAndBelowNumber(nodelist, publicHsimpFilePath);
-        Set<String> nodeNormalSet = nodelistSimp_3500.stream().map(node -> node.getNormalCode().get(0)).collect(Collectors.toSet());
+        Set<String> nodeNormalSet = nodelist_HeisigSimp.stream().map(node -> node.getNormalCode().get(0)).collect(Collectors.toSet());
         assertTrue(nodeNormalSet.size() == 3049);
-        assertTrue(nodeNormalSet.size() == nodelistSimp_3500.size());
+        assertTrue(nodeNormalSet.size() == nodelist_HeisigSimp.size());
+    }
+
+    @Test
+    public void tradHeisigAndFirst3500() {
+        Set<String> nodeNormalSet = nodelistTrad_3500x.stream().map(node -> node.getNormalCode().get(0)).collect(Collectors.toSet());
+        assertTrue(nodelistTrad_3500x.size() == 3616);
+        assertTrue(nodeNormalSet.size() == 3616); //3607
+    }
+
+    @Test
+    public void simpHeisigAndFirst3500() {
+        Set<String> nodeNormalSet = nodelistSimp_3500x.stream().map(node -> node.getNormalCode().get(0)).collect(Collectors.toSet());
+        assertTrue(nodelistSimp_3500x.size() == 3563);
+        assertTrue(nodeNormalSet.size() == 3563); //3547
     }
 
     private Map<String, Long> sortedFirstElem() {
         //List<CharRecursionNode> nodesFromPath = onlyNodesFromPathAndBelowNumber(nodelist, publicHtradFilePath);
         //get only char with description elem as first char
-        List<CharRecursionNode> firstDesc = nodelistTrad_3500.stream().filter(node -> descFirst(node)).toList();
+        List<CharRecursionNode> firstDesc = nodelist_HeisigTrad.stream().filter(node -> descFirst(node)).toList();
         List<String> firstElem = firstDesc.stream().map(node -> getSecondElem(node)).toList();
         Map<String, Long> groupBy = firstElem.stream()
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
@@ -89,7 +107,7 @@ public class AYMethodCodeGeneratorServiceTest {
     private Map<String, Long> sortedDoubleNested() {
         //List<CharRecursionNode> nodesFromPath = onlyNodesFromPathAndBelowNumber(nodelist, publicHtradFilePath);
         //create a list of strings with all double nested elements
-        List<List<String>> doubleNestedElements = nodelistTrad_3500.stream().map(node -> getDoubleNestedElemsFromNode(node)).toList();
+        List<List<String>> doubleNestedElements = nodelist_HeisigTrad.stream().map(node -> getDoubleNestedElemsFromNode(node)).toList();
         List<String> flattened = flattenListOfListsImperatively(doubleNestedElements);
         Map<String, Long> groupBy = flattened.stream()
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
