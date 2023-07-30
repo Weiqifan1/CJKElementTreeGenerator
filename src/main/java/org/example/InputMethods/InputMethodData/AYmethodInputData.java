@@ -349,26 +349,25 @@ public class AYmethodInputData {
         //1	 2	3	4	5	6	7	8	9	0
         //一 └	〡	十	┐	、	ㄇ	八＼	丿	口
             //p  ;  /
-            arrayInspiredElemsV1.put("車", "/;"); //車虫
-            arrayInspiredElemsV1.put("车", "/;"); //车 simp fprm of 車
-            arrayInspiredElemsV1.put("田", "p;"); //p=0+4 q=1+3
-            arrayInspiredElemsV1.put("毌", "p;"); //毌 from 實 and Top of 婁 from 數  //taken as alternative form of 田
+            arrayInspiredElemsV1.put("車", "p;"); //車虫
+            arrayInspiredElemsV1.put("车", "p;"); //车 simp fprm of 車
+            arrayInspiredElemsV1.put("田", "/;"); //p=0+4 q=1+3
+            arrayInspiredElemsV1.put("毌", "/;"); //毌 from 實 and Top of 婁 from 數  //taken as alternative form of 田
 
             //p
             //left side
-        arrayInspiredElemsV1.put("罒", "pe"); // p=0+3 e=3+3
-            arrayInspiredElemsV1.put("四", "pe"); // /=0+8 .=9+8 eg. 黑
-        arrayInspiredElemsV1.put("甲", "pd"); // p=0+3 d=3 ()  (甲 eg. 里-will create conflicts)   //撞攏-里 cant end in doubleYi --里
-            arrayInspiredElemsV1.put("虫", "pk"); // /=0+6 e=3+1 --車虫 哇蛙
+            arrayInspiredElemsV1.put("日", "pa"); //;=0 a=1
 
-        //;
+            //;
         arrayInspiredElemsV1.put("口", ";"); //;=0 --哇蛙
-            arrayInspiredElemsV1.put("只", ";/"); //只叭
-        arrayInspiredElemsV1.put("囗", ";/"); //;=0 //固咕 回品 surround cant be mouth and cant be mouth x 2
+            arrayInspiredElemsV1.put("只", ";p"); //只叭
+        arrayInspiredElemsV1.put("囗", ";p"); //;=0 //固咕 回品 surround cant be mouth and cant be mouth x 2
 
         // /
-            arrayInspiredElemsV1.put("日", "/a"); //;=0 a=1
-
+            arrayInspiredElemsV1.put("罒", "/e"); // p=0+3 e=3+3
+            arrayInspiredElemsV1.put("四", "/e"); // /=0+8 .=9+8 eg. 黑
+            arrayInspiredElemsV1.put("甲", "/d"); // p=0+3 d=3 ()  (甲 eg. 里-will create conflicts)   //撞攏-里 cant end in doubleYi --里
+            arrayInspiredElemsV1.put("虫", "/k"); // /=0+6 e=3+1 --車虫 哇蛙
 
         //arrayInputMap.put("", "");
         //arrayInputMap.put("", "");
