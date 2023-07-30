@@ -33,41 +33,41 @@ public class CodeRecursionObjectGenerator {
         }
         return null;
     }
-
+/*
     public static Map<String, Long> getWholeFullCodeSortedCount(String path, CodeDecompositionType codeDecom) {
         List<CharRecursionNode> allnodes = getNodeList(codeDecom);
-        List<CharRecursionNode> nodesFromPath = onlyNodesFromPath(allnodes, path);
+        List<CharRecursionNode> nodesFromPath = onlyNodesFromPathAndBelowNumber(allnodes, path);
         Map<String, Long> allCodes = nodesFromPath.stream()
                 .map(node -> node.getFullCode())
                 .flatMap(Collection::stream)
                 .flatMap(Collection::stream)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         return allCodes;
-    }
-
+    }*/
+/*
     public static List<CharRecursionNode> getNodesFromPath_noDesc_fullCodeWholeTextMatch(String inputToMatch, String path,
                                                                                          CodeDecompositionType codeDecom) {
         List<CharRecursionNode> allnodes = getNodeList(codeDecom);
-        List<CharRecursionNode> nodesFromPath = onlyNodesFromPath(allnodes, path);
+        List<CharRecursionNode> nodesFromPath = onlyNodesFromPathAndBelowNumber(allnodes, path);
         List<CharRecursionNode> res = noDesc_fullCodeWholeTextMatch(nodesFromPath, inputToMatch);
         return res;
-    }
-
+    }*/
+/*
     public static List<CharRecursionNode> getNodesFromPath_noDesc_fullCodeFirstLettersMatch(String inputToMatch, String path,
                                                                                             CodeDecompositionType codeDecom) {
         List<CharRecursionNode> allnodes = getNodeList(codeDecom);
-        List<CharRecursionNode> nodesFromPath = onlyNodesFromPath(allnodes, path);
+        List<CharRecursionNode> nodesFromPath = onlyNodesFromPathAndBelowNumber(allnodes, path);
         List<CharRecursionNode> res = noDesc_fullCodeFirstLettersMatch(nodesFromPath, inputToMatch);
         return res;
-    }
-
+    }*/
+/*
     public static List<CharRecursionNode> getNodesFromPath_exactFullCodeEntryMatch(String inputToMatch, String path,
                                                                                    CodeDecompositionType codeDecom) {
         List<CharRecursionNode> allnodes = getNodeList(codeDecom);
-        List<CharRecursionNode> nodesFromPath = onlyNodesFromPath(allnodes, path);
+        List<CharRecursionNode> nodesFromPath = onlyNodesFromPathAndBelowNumber(allnodes, path);
         List<CharRecursionNode> res = nodesFromPath.stream().filter(node -> nodeHasFullCodeEntry(node, inputToMatch)).toList();
         return res;
-    }
+    }*/
 
     private static boolean nodeHasFullCodeEntry(CharRecursionNode node, String inputToMatch) {
         for (List<String> fullCode : node.fullCode) {
@@ -472,7 +472,7 @@ public class CodeRecursionObjectGenerator {
         return set;
     }
 
-    public static List<CharRecursionNode> onlyNodesFromPath(List<CharRecursionNode> nodes, String filePath) {
+    public static List<CharRecursionNode> onlyNodesFromPathAndBelowNumber(List<CharRecursionNode> nodes, String filePath, int minimumNumber) {
         Set<String> charsFromFile = new HashSet<>();
         try {
             charsFromFile = getCharsFromFile(filePath);
