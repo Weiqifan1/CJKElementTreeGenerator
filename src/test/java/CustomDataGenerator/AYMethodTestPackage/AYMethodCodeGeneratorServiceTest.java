@@ -2,6 +2,7 @@ package CustomDataGenerator.AYMethodTestPackage;
 
 import org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.CodeRecursionObjectGenerator;
 import org.example.InputMethods.InputMethodCodeGenerators.AYMethodCodeGeneratorService;
+import org.example.ObjectTypes.GenericTypes.CharMetaInfo;
 import org.example.ObjectTypes.GenericTypes.CharRecursionNode;
 import org.example.ObjectTypes.GenericTypes.CharacterSet;
 import org.example.ObjectTypes.GenericTypes.CodeDecompositionType;
@@ -11,6 +12,8 @@ import org.junit.Test;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 import java.util.zip.DataFormatException;
 
 import static org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.CharRecursionNodeService.CJKDescElems;
@@ -19,6 +22,8 @@ import static org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerat
 import static org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.CodeRecursionObjectGenerator.onlyNodesFromPathAndBelowNumber;
 import static org.example.GlobalConstants.*;
 import static org.example.InputMethods.InputMethodCodeGenerators.AYMethodCodeGeneratorService.nodeListToMap;
+import static org.example.ObjectTypes.GenericTypes.CharacterSet.MANDARINSIMPLIFIED;
+import static org.example.ObjectTypes.GenericTypes.CharacterSet.MANDARINTRADITIONAL;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -35,9 +40,9 @@ public class AYMethodCodeGeneratorServiceTest {
     public static void setUp() {
         nodelist = getNodeList(CodeDecompositionType.CODE5_123zy_LIMMITBACKTRACK);
         nodelist_HeisigTrad = onlyNodesFromPathAndBelowNumber(nodelist, publicHtradFilePath, 0, CharacterSet.MANDARINTRADITIONAL);
-        nodelist_HeisigSimp = onlyNodesFromPathAndBelowNumber(nodelist, publicHsimpFilePath, 0, CharacterSet.MANDARINSIMPLIFIED);
+        nodelist_HeisigSimp = onlyNodesFromPathAndBelowNumber(nodelist, publicHsimpFilePath, 0, MANDARINSIMPLIFIED);
         nodelistTrad_3500x = onlyNodesFromPathAndBelowNumber(nodelist, publicHtradFilePath, 3500, CharacterSet.MANDARINTRADITIONAL);
-        nodelistSimp_3500x = onlyNodesFromPathAndBelowNumber(nodelist, publicHsimpFilePath, 3500, CharacterSet.MANDARINSIMPLIFIED);
+        nodelistSimp_3500x = onlyNodesFromPathAndBelowNumber(nodelist, publicHsimpFilePath, 3500, MANDARINSIMPLIFIED);
         nodeMap = nodeListToMap(nodelist);
     }
 
@@ -89,9 +94,36 @@ public class AYMethodCodeGeneratorServiceTest {
     @Test
     public void simpHeisigAndFirst3500() {
         Set<String> nodeNormalSet = nodelistSimp_3500x.stream().map(node -> node.getNormalCode().get(0)).collect(Collectors.toSet());
+
+        Long simpOccurrences = getOccurrences(nodelistSimp_3500x, MANDARINSIMPLIFIED);
+
         assertTrue(nodelistSimp_3500x.size() == 3563);
         assertTrue(nodeNormalSet.size() == 3563); //3547
     }
+
+    private Long getOccurrences(List<CharRecursionNode> nodelistSimp3500x, CharacterSet characterSet) {
+        Long occurrences = 0L;
+        Long allOccurrences = 0L;
+        if (MANDARINSIMPLIFIED.equals(characterSet)) {
+            occurrences = nodelistSimp3500x.stream()
+                    .map(node -> getNumberFromString(node.getSubsectionIdsMapResult().get(CharMetaInfo.TZAICHARCOUNT)))
+                    .mapToLong(i -> i).sum();
+        }else if (MANDARINTRADITIONAL.equals(characterSet)) {
+            occurrences = nodelistSimp3500x.stream()
+                    .map(node -> getNumberFromString(node.getSubsectionIdsMapResult().get(CharMetaInfo.JUNDACHARCOUNT)))
+                    .mapToLong(i -> i).sum();
+        }
+        return occurrences;
+    }
+
+    private Long getNumberFromString(String number) {
+        if (Objects.isNull(number) || number.length() == 0) {
+            return 0L;
+        } else {
+            return Long.parseLong(number);
+        }
+    }
+
 
     private Map<String, Long> sortedFirstElem() {
         //List<CharRecursionNode> nodesFromPath = onlyNodesFromPathAndBelowNumber(nodelist, publicHtradFilePath);
