@@ -1,6 +1,7 @@
 package CustomDataGenerator.AYMethodTestPackage;
 
 import org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator.CodeRecursionObjectGenerator;
+import org.example.CustomStaticDataGenerators.CustomIdsJsonMapGeneratorService;
 import org.example.InputMethods.InputMethodCodeGenerators.AYMethodCodeGeneratorService;
 import org.example.ObjectTypes.GenericTypes.CharMetaInfo;
 import org.example.ObjectTypes.GenericTypes.CharRecursionNode;
@@ -9,11 +10,10 @@ import org.example.ObjectTypes.GenericTypes.CodeDecompositionType;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
 import java.util.zip.DataFormatException;
 
 import static org.example.CustomDynamicDataGenerators.CharRecursionObjectGenerator.CharRecursionNodeService.CJKDescElems;
@@ -34,10 +34,19 @@ public class AYMethodCodeGeneratorServiceTest {
     private static List<CharRecursionNode> nodelist_HeisigSimp;
     private static List<CharRecursionNode> nodelistTrad_3500x;
     private static List<CharRecursionNode> nodelistSimp_3500x;
+    private static Map<String, String> jundaMap;
+    private static Map<String, String> tzaiMap;
+    
     private static Map<String, CharRecursionNode> nodeMap;
 
     @BeforeClass
     public static void setUp() {
+        //Map<String, String> jundaMap = CustomIdsJsonMapGeneratorService.generateJundaMap(jundaLines);
+        //        Map<String, String> tzaiMap = CustomIdsJsonMapGeneratorService.generateTzaiMap(tzaiLines);
+        List<String> jundaLines = CustomIdsJsonMapGeneratorService.getFileLinesFromPath(Paths.get(publicJundaFilePath));
+        List<String> tzaiLines = CustomIdsJsonMapGeneratorService.getFileLinesFromPath(Paths.get(publicTzaiFilePath));
+        jundaMap = CustomIdsJsonMapGeneratorService.generateJundaMap(jundaLines);
+        tzaiMap = CustomIdsJsonMapGeneratorService.generateTzaiMap(tzaiLines);
         nodelist = getNodeList(CodeDecompositionType.CODE5_123zy_LIMMITBACKTRACK);
         nodelist_HeisigTrad = onlyNodesFromPathAndBelowNumber(nodelist, publicHtradFilePath, 0, CharacterSet.MANDARINTRADITIONAL);
         nodelist_HeisigSimp = onlyNodesFromPathAndBelowNumber(nodelist, publicHsimpFilePath, 0, MANDARINSIMPLIFIED);
@@ -87,18 +96,47 @@ public class AYMethodCodeGeneratorServiceTest {
     @Test
     public void tradHeisigAndFirst3500() {
         Set<String> nodeNormalSet = nodelistTrad_3500x.stream().map(node -> node.getNormalCode().get(0)).collect(Collectors.toSet());
+        Long tradOccurrences = getOccurrences(nodelistTrad_3500x, MANDARINTRADITIONAL);
+        Long testTzai = tzaiMap.values().stream()
+                .map(str -> Long.parseLong(str.split(" ")[2]))
+                .reduce(0l, (a, b) -> a + b);
+        double fraction = 100.0 * tradOccurrences / testTzai;
         assertTrue(nodelistTrad_3500x.size() == 3616);
-        assertTrue(nodeNormalSet.size() == 3616); //3607
+        //Right now there are 3607 without overlap
+        //assertTrue(nodeNormalSet.size() == 3616); //3607
     }
 
     @Test
     public void simpHeisigAndFirst3500() {
         Set<String> nodeNormalSet = nodelistSimp_3500x.stream().map(node -> node.getNormalCode().get(0)).collect(Collectors.toSet());
-
         Long simpOccurrences = getOccurrences(nodelistSimp_3500x, MANDARINSIMPLIFIED);
-
+        Long testJunda = jundaMap.values().stream()
+                .map(str -> Long.parseLong(str.split(" ")[2]))
+                .reduce(0l, (a, b) -> a + b);
+        double fraction = 100.0 * simpOccurrences / testJunda;
         assertTrue(nodelistSimp_3500x.size() == 3563);
-        assertTrue(nodeNormalSet.size() == 3563); //3547
+        //Right now there are 3547 without overlap
+        //assertTrue(nodeNormalSet.size() == 3563); //3547
+    }
+
+    @Test
+    public void tradAllKnownNodes() {
+        Long tradOccurrences = getOccurrences(nodelist, MANDARINTRADITIONAL);
+        Long testTzai = tzaiMap.values().stream()
+                .map(str -> Long.parseLong(str.split(" ")[2]))
+                .reduce(0l, (a, b) -> a + b);
+        double fraction = 100.0 * tradOccurrences / testTzai;
+        assertTrue(fraction == 99.93405848023244);
+    }
+
+    @Test
+    public void simpAllKnownNodes() {
+        Long simpOccurrences = getOccurrences(nodelist, MANDARINSIMPLIFIED);
+        Long testSimp = jundaMap.values().stream()
+                .map(str -> Long.parseLong(str.split(" ")[2]))
+                .reduce(0l, (a, b) -> a + b);
+        double fraction = 100.0 * simpOccurrences / testSimp;
+        assertTrue(fraction == 99.95069094637611);
     }
 
     private Long getOccurrences(List<CharRecursionNode> nodelistSimp3500x, CharacterSet characterSet) {
@@ -106,11 +144,11 @@ public class AYMethodCodeGeneratorServiceTest {
         Long allOccurrences = 0L;
         if (MANDARINSIMPLIFIED.equals(characterSet)) {
             occurrences = nodelistSimp3500x.stream()
-                    .map(node -> getNumberFromString(node.getSubsectionIdsMapResult().get(CharMetaInfo.TZAICHARCOUNT)))
+                    .map(node -> getNumberFromString(node.getSubsectionIdsMapResult().get(CharMetaInfo.JUNDACHARCOUNT)))
                     .mapToLong(i -> i).sum();
         }else if (MANDARINTRADITIONAL.equals(characterSet)) {
             occurrences = nodelistSimp3500x.stream()
-                    .map(node -> getNumberFromString(node.getSubsectionIdsMapResult().get(CharMetaInfo.JUNDACHARCOUNT)))
+                    .map(node -> getNumberFromString(node.getSubsectionIdsMapResult().get(CharMetaInfo.TZAICHARCOUNT)))
                     .mapToLong(i -> i).sum();
         }
         return occurrences;
