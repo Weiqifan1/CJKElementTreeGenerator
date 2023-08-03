@@ -17,7 +17,7 @@ public class RecursionObjectGeneratorServiceTest {
         //的
         CharRecursionNode obj = new CharRecursionNode(
                 "的", null,
-                CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK);
+                CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK, null);
 
         assertEquals(1, obj.getSubsequentSubsections().size());
         assertEquals("⿰白勺", obj.getSubsequentSubsections().get(0).getCurrentBreakdownSubsection());
@@ -48,7 +48,7 @@ public class RecursionObjectGeneratorServiceTest {
     public void testRecursionObjectGeneratorService_nestedCodes() throws DataFormatException {
         CharRecursionNode obj = new CharRecursionNode(
                 "𥵋", null,
-                CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK);
+                CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK, null);
 
         assertEquals("𥵋", obj.getCurrentBreakdownSubsection());
         assertEquals(1, obj.getSubsequentSubsections().size());
@@ -65,7 +65,7 @@ public class RecursionObjectGeneratorServiceTest {
     public void testRecursionObjectGeneratorService_doubleCodes() throws DataFormatException {
         CharRecursionNode obj = new CharRecursionNode(
                 "㓘", null,
-                CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK);
+                CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK, null);
 
         assertEquals("㓘", obj.getCurrentBreakdownSubsection());
         assertEquals(1, obj.getSubsequentSubsections().size());

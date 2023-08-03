@@ -20,7 +20,7 @@ public class CodeRecursionObjectGenerator {
         System.out.println("Recursion Object Generator started!");
 
         CharRecursionNode obj = new CharRecursionNode("的", null,
-                CodeDecompositionType.CODE5_123zy_LIMMITBACKTRACK);
+                CodeDecompositionType.CODE5_123zy_LIMMITBACKTRACK, null);
 
         System.out.println("Recursion Object Generator ended!");
     }
@@ -155,7 +155,7 @@ public class CodeRecursionObjectGenerator {
                 if (CJKchar.equals("得")) {
                     String test = "";
                 }
-                node = new CharRecursionNode(CJKchar, null, codeDecom);
+                node = new CharRecursionNode(CJKchar, null, codeDecom, null);
             } catch (Exception e) {
                 System.out.println(CJKchar);
                 System.out.println("tzai: " + tzaiMap.get(CJKchar));

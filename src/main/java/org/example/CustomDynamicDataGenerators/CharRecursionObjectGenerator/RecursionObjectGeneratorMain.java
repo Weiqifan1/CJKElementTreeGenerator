@@ -9,7 +9,9 @@ public class RecursionObjectGeneratorMain {
     public static void main(String[] args) throws Exception {
         System.out.println("Recursion Object Generator started!");
 
-        CharRecursionNode obj = new CharRecursionNode("才", null, CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK);
+        CharRecursionNode obj = new CharRecursionNode(
+                "才", null,
+                CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK, null);
 
 
 

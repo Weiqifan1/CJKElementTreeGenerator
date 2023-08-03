@@ -25,7 +25,7 @@ public class ChrRecursionNodeServiceTest {
 
         //When
         List<CharRecursionNode> res = handleSubsectionPathways(
-                inputToOne, customIds, null, CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK);
+                inputToOne,  null, CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK);
 
         //Then
         assertEquals(5, res.size());

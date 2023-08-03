@@ -71,8 +71,17 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
         return codeMap;
     }
 
-    public CharRecursionNode(String currentBreakdownSubsection, String originalInput,
-                             CodeDecompositionType codeDecom) throws DataFormatException {
+    public CharRecursionNode(String currentBreakdownSubsection,
+                             String originalInput,
+                             CodeDecompositionType codeDecom,
+                             Map<String, Map<CharMetaInfo, String>> customIds) throws DataFormatException {
+        CharRecursionNodeService nodeService = new CharRecursionNodeService();
+        if (Objects.nonNull(customIds)) {
+            nodeService.setCustomIds(customIds);
+        } else {
+            nodeService.setCustomIds(idsMap);
+        }
+
         this.currentBreakdownSubsection = currentBreakdownSubsection;
         if (Objects.nonNull(originalInput)) {
             this.originalInput = originalInput;
@@ -80,9 +89,9 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
             this.originalInput = currentBreakdownSubsection;
         }
 
-        this.subsectionIdsMapResult = CharRecursionNodeService.generateIdsMapResult(currentBreakdownSubsection, idsMap);
-        this.subsequentSubsections = CharRecursionNodeService.handleSubsectionPathways(
-                currentBreakdownSubsection, idsMap, this.originalInput, codeDecom);
+        this.subsectionIdsMapResult = nodeService.generateIdsMapResult(currentBreakdownSubsection);
+        this.subsequentSubsections = nodeService.handleSubsectionPathways(
+                currentBreakdownSubsection, this.originalInput, codeDecom);
         List<List<String>> tempFullCode = AYMethodCodeGeneratorService.generateFullCodeFromCodeMap(
                 currentBreakdownSubsection,
                 subsequentSubsections,
