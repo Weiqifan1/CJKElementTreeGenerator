@@ -18,6 +18,7 @@ public class CustomIdsSupplementMaps {
         try {
             //Stroke collections that have unicode char representations  ⿱立日
             //(for stroke collections that dont are in CustomStrokeCollection enums)
+            customIdsSupplement.put("卩", OVERLAP.desc() + BENTTOPHOOK_LARGE.val() + "丨");
             customIdsSupplement.put("工", VERT3.desc()+"一丨一");
             customIdsSupplement.put("立", "⿱"+"亠"+"䒑");
             customIdsSupplement.put("彳", "⿱"+LEFTSLANT_SHARP.val() + "亻" ); //彳

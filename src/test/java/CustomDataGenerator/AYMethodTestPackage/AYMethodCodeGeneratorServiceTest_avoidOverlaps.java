@@ -500,9 +500,25 @@ public class AYMethodCodeGeneratorServiceTest_avoidOverlaps {
         assertNotEquals(tiny.getNormalCode().get(0), devil.getNormalCode().get(0));
     }
 
+    //昂
+    @Test
+    public void liftAndPleiades() { //昂昴
+        CharRecursionNode toLift = nodeMap.get("昂");
+        CharRecursionNode pleiades = nodeMap.get("昴");
+        assertNotEquals(toLift.getNormalCode().get(0), pleiades.getNormalCode().get(0));
+    }
+
+
     ///////////////////////////////////////////////////////////////////////
     /////////////////    coincidental overlaps
     ///////////////////////////////////////////////////////////////////////
+
+    @Test
+    public void disguiseAndBreakoff() { //扮掰
+        CharRecursionNode disguise = nodeMap.get("扮");
+        CharRecursionNode breakoff = nodeMap.get("掰");
+        assertNotEquals(disguise.getNormalCode().get(0), breakoff.getNormalCode().get(0));
+    }
 
     @Test
     public void rudeAndCrocodile() {
