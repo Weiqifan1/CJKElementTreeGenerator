@@ -11,7 +11,7 @@ public class RecursionObjectGeneratorMain {
 
         CharRecursionNode obj = new CharRecursionNode(
                 "才", null,
-                CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK, null);
+                CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK, null, null);
 
 
 

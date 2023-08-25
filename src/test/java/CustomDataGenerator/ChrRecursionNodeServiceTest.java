@@ -38,7 +38,7 @@ public class ChrRecursionNodeServiceTest {
         List<String> input = List.of("⿵", "几", "⿳", "一", "⿴", "𠂊" , "⺀", "王");
 
         CharRecursionNode res = CharRecursionNodeService.getNestedSubstrings(
-                input, customIds, null,
+                input, customIds, null, null,
                 CodeDecompositionType.CODE4_123z_LIMMITBACKTRACK);
 
         assertEquals(8, CharRecursionNodeService.unicodeBreakup(res.getCurrentBreakdownSubsection()).size());

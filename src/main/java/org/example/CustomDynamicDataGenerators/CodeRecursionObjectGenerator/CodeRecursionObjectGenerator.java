@@ -1,6 +1,7 @@
 package org.example.CustomDynamicDataGenerators.CodeRecursionObjectGenerator;
 
 import org.example.CustomStaticDataGenerators.CustomIdsJsonMapGeneratorService;
+import org.example.ObjectTypes.GenericTypes.CharMetaInfo;
 import org.example.ObjectTypes.GenericTypes.CharRecursionNode;
 import org.example.ObjectTypes.GenericTypes.CharacterSet;
 import org.example.ObjectTypes.GenericTypes.CodeDecompositionType;
@@ -20,7 +21,7 @@ public class CodeRecursionObjectGenerator {
         System.out.println("Recursion Object Generator started!");
 
         CharRecursionNode obj = new CharRecursionNode("的", null,
-                CodeDecompositionType.CODE5_123zy_LIMMITBACKTRACK, null);
+                CodeDecompositionType.CODE5_123zy_LIMMITBACKTRACK, null, null);
 
         System.out.println("Recursion Object Generator ended!");
     }
@@ -136,17 +137,25 @@ public class CodeRecursionObjectGenerator {
     }
 
     public static List<CharRecursionNode> getNodeList(CodeDecompositionType codeDecom){
+        List<String> sorted = getSortedCharList();
+        List<CharRecursionNode> nodes = getNodeList(codeDecom, sorted, null, null);
+        return nodes;
+    }
+
+    public static List<CharRecursionNode> getNodeList(CodeDecompositionType codeDecom,
+                                                      List<String> charList,
+                                                      Map<String, Map<CharMetaInfo, String>> customIdsMap,
+                                                      Map<String, String> customCodeMap){
         List<String> jundaLines = CustomIdsJsonMapGeneratorService.getFileLinesFromPath(Paths.get(publicJundaFilePath));
         List<String> tzaiLines = CustomIdsJsonMapGeneratorService.getFileLinesFromPath(Paths.get(publicTzaiFilePath));
         Map<String, String> jundaMap = CustomIdsJsonMapGeneratorService.generateJundaMap(jundaLines);
         Map<String, String> tzaiMap = CustomIdsJsonMapGeneratorService.generateTzaiMap(tzaiLines);
-        List<String> sorted = getSortedCharList();
         List<CharRecursionNode> nodes = new ArrayList<>();
         Map<String, List<CharRecursionNode>> overlappingNodes = new HashMap<>();
 
         int currentOrdinal = 1;
 
-        for (String CJKchar : sorted) {
+        for (String CJKchar : charList) {
             if (CJKchar.equals("龜")) {
                 String test = "";
             }
@@ -155,8 +164,11 @@ public class CodeRecursionObjectGenerator {
                 if (CJKchar.equals("得")) {
                     String test = "";
                 }
-                node = new CharRecursionNode(CJKchar, null, codeDecom, null);
+                node = new CharRecursionNode(CJKchar, null, codeDecom, customIdsMap, customCodeMap);
             } catch (Exception e) {
+                System.out.println("************************** top error info: *****************************");
+                System.out.println(e);
+                System.out.println("additional info:");
                 System.out.println(CJKchar);
                 System.out.println("tzai: " + tzaiMap.get(CJKchar));
                 System.out.println("junda: "+ jundaMap.get(CJKchar));
@@ -414,6 +426,33 @@ public class CodeRecursionObjectGenerator {
                 String test = "";
             }
 
+        }
+        return result;
+    }
+
+    public static Map<String, List<CharRecursionNode>> overlapMapByNormalCode(List<CharRecursionNode> list) {
+        Map<String, List<CharRecursionNode>> rawMap = groupByNormalCode(list);
+
+        Map<String, List<CharRecursionNode>> resultMap = new HashMap<>();
+        for (String normLCode : rawMap.keySet()) {
+            if (rawMap.get(normLCode).size() > 1) {
+                resultMap.put(normLCode, rawMap.get(normLCode));
+            }
+        }
+        return resultMap;
+    }
+
+    private static Map<String, List<CharRecursionNode>> groupByNormalCode(List<CharRecursionNode> list) {
+        Map<String, List<CharRecursionNode>> result = new HashMap<>();
+        for (CharRecursionNode obj : list) {
+            String key = String.join("", obj.getNormalCode());
+            if (result.containsKey(key)) {
+                result.get(key).add(obj);
+            } else {
+                List<CharRecursionNode> value = new ArrayList<>();
+                value.add(obj);
+                result.put(key, value);
+            }
         }
         return result;
     }

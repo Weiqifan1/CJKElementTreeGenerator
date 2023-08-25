@@ -74,13 +74,24 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
     public CharRecursionNode(String currentBreakdownSubsection,
                              String originalInput,
                              CodeDecompositionType codeDecom,
-                             Map<String, Map<CharMetaInfo, String>> customIds) throws DataFormatException {
+                             Map<String, Map<CharMetaInfo, String>> customIds,
+                             Map<String, String> customCodeMap) throws DataFormatException {
         CharRecursionNodeService nodeService = new CharRecursionNodeService();
+        //if (Objects.nonNull(customIds) && customIds.size() == 88957) {//if (currentBreakdownSubsection.equals("這")) {
+        //    String test = "";
+        //}
+
         if (Objects.nonNull(customIds)) {
-            nodeService.setCustomIds(customIds);
+            nodeService.setAttributeIds(customIds);
         } else {
-            nodeService.setCustomIds(idsMap);
+            nodeService.setAttributeIds(idsMap);
         }
+        if (Objects.nonNull(customCodeMap)) {
+            nodeService.setAttributeCodeMap(customCodeMap);
+        } else {
+            nodeService.setAttributeCodeMap(codeMap);
+        }
+
 
         this.currentBreakdownSubsection = currentBreakdownSubsection;
         if (Objects.nonNull(originalInput)) {
@@ -95,7 +106,7 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
         List<List<String>> tempFullCode = AYMethodCodeGeneratorService.generateFullCodeFromCodeMap(
                 currentBreakdownSubsection,
                 subsequentSubsections,
-                codeMap, this.originalInput);
+                nodeService.getAttributeCodeMap(), this.originalInput);
         //2023-07-08 kl. 20.27 - test - use only the first full code
         List<List<String>> firstFullCode = new ArrayList<>();
         if (Objects.nonNull(tempFullCode) && !tempFullCode.isEmpty()) {
@@ -195,7 +206,8 @@ public class CharRecursionNode implements CharRecursionNodeInterface {
             return this;
         }
 
-        public CharRecursionNode build() throws DataFormatException {
+        public CharRecursionNode build(Map<String, Map<CharMetaInfo, String>> customIds,
+                                       Map<String, String> codeMap) throws DataFormatException {
             return new CharRecursionNode(this);
         }
     }

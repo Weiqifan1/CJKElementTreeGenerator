@@ -23,7 +23,7 @@ public class AYMethodCodeGeneratorService {
 
     public static List<List<String>> generateFullCodeFromCodeMap(String currentBreakdownSubsection,
                                                            List<CharRecursionNode> subsequentSubsections,
-                                                           HashMap<String, String> codeMap,
+                                                           Map<String, String> codeMap,
                                                            String originalInput) throws DataFormatException {
 
         //split currentBreakdownSubsection
@@ -58,7 +58,7 @@ public class AYMethodCodeGeneratorService {
             //handle endnode that is not unicode description and doesnt have a code
             //TODO: this will continually need to be handled
             String test = "";
-            throw new DataFormatException("missing codes from char: "+ originalInput);
+            throw new DataFormatException("missing codes from char: "+ originalInput + " elemMissimg: " + currentBreakdownSubsection);
         } else if (splitBreakdown.size() == 1) {
             //handle node that has nodes and is not a fork
             List<List<String>> cecusiveList = recursiveNonForkNodeHandling(subsequentSubsections);
