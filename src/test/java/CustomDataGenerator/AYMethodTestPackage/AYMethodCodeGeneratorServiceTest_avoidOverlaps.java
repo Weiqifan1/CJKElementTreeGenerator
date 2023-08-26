@@ -23,7 +23,7 @@ public class AYMethodCodeGeneratorServiceTest_avoidOverlaps {
 
     @BeforeClass
     public static void setUp() {
-         nodelist = getNodeList(CodeDecompositionType.CODE5_123zy_LIMMITBACKTRACK);
+         nodelist = getNodeList(CodeDecompositionType.CODE5_123zy_LIMMITBACKTRACK, true);
          nodeMap = nodeListToMap(nodelist);
         codeMap = AYmethodInputData.arrayInspiredElemsV1;
     }

@@ -136,16 +136,16 @@ public class CodeRecursionObjectGenerator {
         return oldMap;
     }
 
-    public static List<CharRecursionNode> getNodeList(CodeDecompositionType codeDecom){
+    public static List<CharRecursionNode> getNodeList(CodeDecompositionType codeDecom, boolean showOverlapInfo){
         List<String> sorted = getSortedCharList();
-        List<CharRecursionNode> nodes = getNodeList(codeDecom, sorted, null, null);
+        List<CharRecursionNode> nodes = getNodeList(codeDecom, sorted, null, null, showOverlapInfo);
         return nodes;
     }
 
     public static List<CharRecursionNode> getNodeList(CodeDecompositionType codeDecom,
                                                       List<String> charList,
                                                       Map<String, Map<CharMetaInfo, String>> customIdsMap,
-                                                      Map<String, String> customCodeMap){
+                                                      Map<String, String> customCodeMap, boolean showOverlapInfo){
         List<String> jundaLines = CustomIdsJsonMapGeneratorService.getFileLinesFromPath(Paths.get(publicJundaFilePath));
         List<String> tzaiLines = CustomIdsJsonMapGeneratorService.getFileLinesFromPath(Paths.get(publicTzaiFilePath));
         Map<String, String> jundaMap = CustomIdsJsonMapGeneratorService.generateJundaMap(jundaLines);
@@ -184,7 +184,7 @@ public class CodeRecursionObjectGenerator {
             overlappingNodes = getUpdatedMap(node, overlappingNodes);
             currentOrdinal++;
             //2023-07-09 kl. 1624 - testing character code overlap for ordinals less than 7349
-            if (currentOrdinal == 7348) {//7348) { //7348
+            if (currentOrdinal == 7348 && showOverlapInfo) {//7348) { //7348
                 //Integer contentSize = overlappingNodes.values().stream().flatMap(Collection::stream)
                 //        .collect(Collectors.toList()).size();
                 //System.out.println("all codes: " + contentSize);

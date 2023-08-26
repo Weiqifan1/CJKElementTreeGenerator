@@ -31,7 +31,7 @@ public class MissingCustomElementsTest {
     private static List<CharRecursionNode> nodelistSimp_3500x;
     @BeforeClass
     public static void setUp() throws Exception {
-        nodelist = getNodeList(CodeDecompositionType.CODE5_123zy_LIMMITBACKTRACK);
+        nodelist = getNodeList(CodeDecompositionType.CODE5_123zy_LIMMITBACKTRACK, false);
         nodeMap = nodeListToMap(nodelist);
         codeMap = AYmethodInputData.arrayInspiredElemsV1;
         idsMap = CustomDataReader.getCustomIdsMap(customIdsJsonMapPath);
@@ -41,10 +41,9 @@ public class MissingCustomElementsTest {
 
     @Test
     public void leftSideHandAndLeftFoot() {
-
         List<String> elemsThatCanBeRemoved = findElemsWithSameOrLessOverlap(
                 CodeDecompositionType.CODE5_123zy_LIMMITBACKTRACK,
-                nodelistTrad_3500x);
+                nodelistTrad_3500x, false);
 
         CharRecursionNode leftSideHand = nodeMap.get("投");
         CharRecursionNode leftSideLeftFoot = nodeMap.get("役");
@@ -52,13 +51,15 @@ public class MissingCustomElementsTest {
     }
 
     //CodeDecompositionType.CODE5_123zy_LIMMITBACKTRACK //nodelistTrad_3500x
-    private List<String> findElemsWithSameOrLessOverlap(CodeDecompositionType decom, List<CharRecursionNode> nodeListTypeWithNumber) {
+    private List<String> findElemsWithSameOrLessOverlap(CodeDecompositionType decom,
+                                                        List<CharRecursionNode> nodeListTypeWithNumber,
+                                                        boolean showOverlapInfo) {
         List<String> codeElemsThatCanBeRemoved = new ArrayList<>();
         Map<String, List<CharRecursionNode>> overlapNoMising = overlapMapByNormalCode(nodeListTypeWithNumber);
         int baseOverlaps = overlapNoMising.size();
         Set<String> codeElementList = codeMap.keySet();
         for (String codeElement : codeElementList) {
-            List<CharRecursionNode> nodesForMissingElem = getNodesWithItemRemoved(codeElement, decom, nodeListTypeWithNumber);
+            List<CharRecursionNode> nodesForMissingElem = getNodesWithItemRemoved(codeElement, decom, nodeListTypeWithNumber, showOverlapInfo);
             Map<String, List<CharRecursionNode>> overlapWithMissingChar = overlapMapByNormalCode(nodesForMissingElem);
             int missingCharOverlap = overlapWithMissingChar.size();
             if (baseOverlaps <= missingCharOverlap) {
@@ -71,7 +72,8 @@ public class MissingCustomElementsTest {
     //CodeDecompositionType.CODE5_123zy_LIMMITBACKTRACK //nodelistTrad_3500x
     private List<CharRecursionNode> getNodesWithItemRemoved(String elementToRemove,
                                                             CodeDecompositionType decom,
-                                                            List<CharRecursionNode> nodeListTypeWithNumber) {
+                                                            List<CharRecursionNode> nodeListTypeWithNumber,
+                                                            boolean showOverlapInfo) {
         List<String> relevantNodeListCharacters = nodeListTypeWithNumber.stream()
                 .filter(node -> nodeHasElement_onlyOneVersionPrChar(elementToRemove, node))
                 .map(node -> node.getCurrentBreakdownSubsection()).toList();
@@ -82,7 +84,7 @@ public class MissingCustomElementsTest {
         codeMapSansOneChar.putAll(coreElements());
 
         List<CharRecursionNode> smallCharSample = getNodeList(
-                decom, relevantNodeListCharacters, null, codeMapSansOneChar);
+                decom, relevantNodeListCharacters, null, codeMapSansOneChar, showOverlapInfo);
         remainingNodeListCharacters.addAll(smallCharSample);
         return remainingNodeListCharacters;
     }

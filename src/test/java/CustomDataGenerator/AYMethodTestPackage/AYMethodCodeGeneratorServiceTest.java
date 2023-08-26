@@ -47,7 +47,7 @@ public class AYMethodCodeGeneratorServiceTest {
         List<String> tzaiLines = CustomIdsJsonMapGeneratorService.getFileLinesFromPath(Paths.get(publicTzaiFilePath));
         jundaMap = CustomIdsJsonMapGeneratorService.generateJundaMap(jundaLines);
         tzaiMap = CustomIdsJsonMapGeneratorService.generateTzaiMap(tzaiLines);
-        nodelist = getNodeList(CodeDecompositionType.CODE5_123zy_LIMMITBACKTRACK);
+        nodelist = getNodeList(CodeDecompositionType.CODE5_123zy_LIMMITBACKTRACK, true);
         nodelist_HeisigTrad = onlyNodesFromPathAndBelowNumber(nodelist, publicHtradFilePath, 0, CharacterSet.MANDARINTRADITIONAL);
         nodelist_HeisigSimp = onlyNodesFromPathAndBelowNumber(nodelist, publicHsimpFilePath, 0, MANDARINSIMPLIFIED);
         nodelistTrad_3500x = onlyNodesFromPathAndBelowNumber(nodelist, publicHtradFilePath, 3500, CharacterSet.MANDARINTRADITIONAL);
