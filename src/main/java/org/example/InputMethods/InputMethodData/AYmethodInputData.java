@@ -11,36 +11,36 @@ import static org.example.ObjectTypes.GenericTypes.CJKDescription.OVERLAP;
 
 public class AYmethodInputData {
     //top elements
-    private static List<String> topRow = Arrays.asList("q","w","e","r","t","y","u","i","o","p");
-    private static List<String> middleRow = Arrays.asList("a","s","d","f","g","h","j","k","l",";");
-    private static List<String> bottomRow = Arrays.asList("z","x","c","v","b","n","m",",",".","/");
+    public static List<String> topRow = Arrays.asList("q","w","e","r","t","y","u","i","o","p");
+    public static List<String> middleRow = Arrays.asList("a","s","d","f","g","h","j","k","l",";");
+    public static List<String> bottomRow = Arrays.asList("z","x","c","v","b","n","m",",",".","/");
 
-    private static List<String> listForTopElems = middleRow; //middlerow
-    private static List<String> listForOrdinaryElems = topRow; //toprow
+    public static List<String> listForTopElems = middleRow; //middlerow
+    public static List<String> listForOrdinaryElems = topRow; //toprow
 
 
-    private static String t1 = listForTopElems.get(0);
-    private static String t2 = listForTopElems.get(1);
-    private static String t3 = listForTopElems.get(2);
-    private static String t4 = listForTopElems.get(3);
-    private static String t5 = listForTopElems.get(4);
-    private static String t6 = listForTopElems.get(5);
-    private static String t7 = listForTopElems.get(6);
-    private static String t8 = listForTopElems.get(7);
-    private static String t9 = listForTopElems.get(8);
-    private static String t0 = listForTopElems.get(9);
+    public static String t1 = listForTopElems.get(0);
+    public static String t2 = listForTopElems.get(1);
+    public static String t3 = listForTopElems.get(2);
+    public static String t4 = listForTopElems.get(3);
+    public static String t5 = listForTopElems.get(4);
+    public static String t6 = listForTopElems.get(5);
+    public static String t7 = listForTopElems.get(6);
+    public static String t8 = listForTopElems.get(7);
+    public static String t9 = listForTopElems.get(8);
+    public static String t0 = listForTopElems.get(9);
 
     //ordinary elements
-    private static String o1 = listForOrdinaryElems.get(0);
-    private static String o2 = listForOrdinaryElems.get(1);
-    private static String o3 = listForOrdinaryElems.get(2);
-    private static String o4 = listForOrdinaryElems.get(3);
-    private static String o5 = listForOrdinaryElems.get(4);
-    private static String o6 = listForOrdinaryElems.get(5);
-    private static String o7 = listForOrdinaryElems.get(6);
-    private static String o8 = listForOrdinaryElems.get(7);
-    private static String o9 = listForOrdinaryElems.get(8);
-    private static String o0 = listForOrdinaryElems.get(9);
+    public static String o1 = listForOrdinaryElems.get(0);
+    public static String o2 = listForOrdinaryElems.get(1);
+    public static String o3 = listForOrdinaryElems.get(2);
+    public static String o4 = listForOrdinaryElems.get(3);
+    public static String o5 = listForOrdinaryElems.get(4);
+    public static String o6 = listForOrdinaryElems.get(5);
+    public static String o7 = listForOrdinaryElems.get(6);
+    public static String o8 = listForOrdinaryElems.get(7);
+    public static String o9 = listForOrdinaryElems.get(8);
+    public static String o0 = listForOrdinaryElems.get(9);
 
     //
 
