@@ -58,13 +58,20 @@ public class MissingCustomElementsTest {
         Map<String, List<CharRecursionNode>> overlapNoMising = overlapMapByNormalCode(nodeListTypeWithNumber);
         int baseOverlaps = overlapNoMising.size();
         Set<String> codeElementList = codeMap.keySet();
-        for (String codeElement : codeElementList) {
+        Set<String> coreElements = coreElements().keySet();
+        Set<String> codeElementsWithoutCode = codeElementList.stream().filter(element -> !coreElements.contains(element)).collect(Collectors.toSet());
+        int counter = 0;
+        for (String codeElement : codeElementsWithoutCode) {
             List<CharRecursionNode> nodesForMissingElem = getNodesWithItemRemoved(codeElement, decom, nodeListTypeWithNumber, showOverlapInfo);
             Map<String, List<CharRecursionNode>> overlapWithMissingChar = overlapMapByNormalCode(nodesForMissingElem);
             int missingCharOverlap = overlapWithMissingChar.size();
             if (baseOverlaps <= missingCharOverlap) {
                 codeElemsThatCanBeRemoved.add(codeElement);
             }
+            counter++;
+            System.out.println("toProsess: " + counter
+                    + " total: " + codeElementsWithoutCode.size()
+                    + " elemsCanBeRemoved: " + codeElemsThatCanBeRemoved.size());
         }
         return codeElemsThatCanBeRemoved;
     }
@@ -81,7 +88,7 @@ public class MissingCustomElementsTest {
                 .filter(node -> !nodeHasElement_onlyOneVersionPrChar(elementToRemove, node)).collect(Collectors.toList());
         //create a new ids map with one key less
         Map<String, String> codeMapSansOneChar = removeKey(elementToRemove, codeMap);
-        codeMapSansOneChar.putAll(coreElements());
+        //codeMapSansOneChar.putAll(coreElements());
 
         List<CharRecursionNode> smallCharSample = getNodeList(
                 decom, relevantNodeListCharacters, null, codeMapSansOneChar, showOverlapInfo);
