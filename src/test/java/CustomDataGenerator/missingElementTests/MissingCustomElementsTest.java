@@ -50,7 +50,6 @@ public class MissingCustomElementsTest {
         assertNotEquals(leftSideHand.getNormalCode(), leftSideLeftFoot.getNormalCode());
     }
 
-    //CodeDecompositionType.CODE5_123zy_LIMMITBACKTRACK //nodelistTrad_3500x
     private List<String> findElemsWithSameOrLessOverlap(CodeDecompositionType decom,
                                                         List<CharRecursionNode> nodeListTypeWithNumber,
                                                         boolean showOverlapInfo) {
@@ -65,13 +64,19 @@ public class MissingCustomElementsTest {
             List<CharRecursionNode> nodesForMissingElem = getNodesWithItemRemoved(codeElement, decom, nodeListTypeWithNumber, showOverlapInfo);
             Map<String, List<CharRecursionNode>> overlapWithMissingChar = overlapMapByNormalCode(nodesForMissingElem);
             int missingCharOverlap = overlapWithMissingChar.size();
-            if (baseOverlaps <= missingCharOverlap) {
+            if (baseOverlaps >= missingCharOverlap) {
                 codeElemsThatCanBeRemoved.add(codeElement);
             }
             counter++;
-            System.out.println("toProsess: " + counter
-                    + " total: " + codeElementsWithoutCode.size()
-                    + " elemsCanBeRemoved: " + codeElemsThatCanBeRemoved.size());
+            if (codeElemsThatCanBeRemoved.size() > 0) {
+                System.out.println("toProsess: " + counter
+                        + " total: " + codeElementsWithoutCode.size()
+                        + " elemsCanBeRemoved: " + codeElement
+                        + " missingCharOverlap: " + missingCharOverlap);
+            } else if (counter == codeElementsWithoutCode.size() - 1) {
+                System.out.println("the end");
+            }
+            codeElemsThatCanBeRemoved = new ArrayList<>();
         }
         return codeElemsThatCanBeRemoved;
     }
